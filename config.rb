@@ -72,11 +72,37 @@ page "/feed.xml", layout: false
 # activate :livereload
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def tag_class(tag_name)
+    return "no_tag" if tag_name.nil?
+    
+    tag_hash = {
+      "教育": "edu",
+      "生活": "life",
+      "開發": "dev"
+    }
+
+    return tag_hash[tag_name.to_sym]
+  end
+
+  def link_to_tag(tag_name: nil)
+    link_to "/tags" do
+      content_tag(:span, tag_name[0], class: "#{tag_class(tag_name)} big") + 
+      content_tag(:span, tag_name[1], class: "#{tag_class(tag_name)} small")
+    end
+  end
+
+  def date_content(date: nil)
+    date_array = date.split
+    year  = date_array[0]
+    month = date_array[1]
+    day   = date_array[2]
+
+    return content_tag(:div, year, class: "year") +
+           content_tag(:div, month, class: "month") +
+           content_tag(:div, day, class: "day")
+  end
+end
 
 set :css_dir, 'stylesheets'
 
