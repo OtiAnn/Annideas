@@ -24,9 +24,9 @@ activate :blog do |blog|
   blog.calendar_template = "calendar.html"
 
   # Enable pagination
-  # blog.paginate = true
-  # blog.per_page = 10
-  # blog.page_link = "page/{num}"
+  blog.paginate = true
+  blog.per_page = 10
+  blog.page_link = "page/{num}"
 end
 
 page "/feed.xml", layout: false
@@ -77,7 +77,7 @@ helpers do
     return "no_tag" if tag_name.nil?
     
     tag_hash = {
-      "教育": "edu",
+      "學習": "edu",
       "生活": "life",
       "開發": "dev"
     }
@@ -101,6 +101,21 @@ helpers do
     return content_tag(:div, year, class: "year") +
            content_tag(:div, month, class: "month") +
            content_tag(:div, day, class: "day")
+  end
+
+  def title_desc
+    sentence = [
+      "有些事情還不做 你的理由 會是什麼？",
+      "火箭發射，轟隆隆隆～",
+      "再吃一顆蘋果。",
+      "我不轉彎 我不轉彎 我不轉彎 我不轉彎",
+      "嗯嗯 搭啦 我又 忘了",
+      "嗯嗯 搭拉 想起 來了",
+      "我不是頭腦空空",
+      "我不是一隻米蟲",
+      "你說那 C 和弦就是 Do Mi So"
+    ]
+    return sentence.sample
   end
 end
 
