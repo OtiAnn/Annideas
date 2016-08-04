@@ -1,0 +1,17 @@
+.menu_icon_block.show_menu
+  .menu_icon
+.mask.hide.hide_menu.transition
+nav.hide.transition
+  = image_tag("cross.svg", class: "close hide_menu")
+  .avatar
+    = image_tag "annie_pic.jpg"
+  .social_link
+    = link_to "/", target: "_blank"
+      = image_tag("me.svg", class: "resume")
+    = link_to "https://twitter.com/_OtiAnn", target: "_blank"
+      = image_tag("twitter.svg", class: "twitter")
+    = link_to "https://www.facebook.com/OtiAnn", target: "_blank"
+      = image_tag("facebook.svg", class: "facebook")
+  .desc_block
+    .name = "陳祐禎 Annie"
+    .description = "A coach of Rails Girls Taiwan, a math teacher, a RoR learner."

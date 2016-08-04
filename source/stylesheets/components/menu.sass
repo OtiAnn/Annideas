@@ -1,0 +1,71 @@
+.menu_icon_block
+  position: absolute !important
+  top: 30px
+  right: 40px
+  width: 26px
+  height: 20px
+  &:hover
+    cursor: pointer
+  .menu_icon
+    width: 26px
+    height: 3px
+    background: $c-grey-lighter
+    position: relative
+    &:before, &:after
+      content: ""
+      display: block
+      position: absolute
+      left: 0
+      width: 26px
+      height: 3px
+      background: inherit
+    &:before
+      top: 8px
+    &:after
+      top: 16px
+
+.mask
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(0,0,0,0.1)
+
+nav
+  position: absolute
+  top: 0
+  right: -300px
+  width: 300px
+  height: 100vh
+  background: #fff
+  box-shadow: -3px 0 2px 0 rgba(170,170,170,0.5)
+  .close
+    position: absolute
+    top: 0
+    right: 0
+    padding: 10px 15px
+    cursor: pointer
+  .avatar
+    margin-top: 70px
+    width: 100px
+    margin: 70px auto 30px
+    img
+      width: 100px
+      height: 100px
+      border-radius: 50%
+  .social_link
+    text-align: center
+    margin-bottom: 30px
+    .resume, .twitter, .facebook
+      margin: 10px
+  .desc_block
+    font-size: 14px
+    color: $c-grey-regular
+    padding: 0 25px
+    .name 
+      font-size: 24px
+      color: $c-grey-deep
+      margin-bottom: 15px
+    .description
+      line-height: 1.5
