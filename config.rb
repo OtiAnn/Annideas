@@ -86,10 +86,16 @@ helpers do
     return tag_hash[tag_name.to_sym]
   end
 
-  def link_to_tag(tag_name: nil)
-    link_to "/tags" do
-      content_tag(:span, tag_name[0], class: "#{tag_class(tag_name)} big") + 
-      content_tag(:span, tag_name[1], class: "#{tag_class(tag_name)} small")
+  def link_to_tag(tag_name: nil, index: true)
+    if index
+      link_to "/tags" do
+        content_tag(:span, tag_name[0], class: "#{tag_class(tag_name)} big") + 
+        content_tag(:span, tag_name[1], class: "#{tag_class(tag_name)} small")
+      end
+    else
+      link_to "/tags" do
+        content_tag(:span, tag_name.chars.join(' '), class: "#{tag_class(tag_name)}")
+      end
     end
   end
 
@@ -102,21 +108,6 @@ helpers do
     return content_tag(:div, year, class: "year") +
            content_tag(:div, month, class: "month") +
            content_tag(:div, day, class: "day")
-  end
-
-  def title_desc
-    sentence = [
-      "有些事情還不做 你的理由 會是什麼？",
-      "火箭發射，轟隆隆隆～",
-      "再吃一顆蘋果。",
-      "我不轉彎 我不轉彎 我不轉彎 我不轉彎",
-      "嗯嗯 搭啦 我又 忘了",
-      "嗯嗯 搭拉 想起 來了",
-      "我不是頭腦空空",
-      "我不是一隻米蟲",
-      "你說那 C 和弦就是 Do Mi So"
-    ]
-    return sentence.sample
   end
 end
 
