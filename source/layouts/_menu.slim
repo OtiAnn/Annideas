@@ -1,8 +1,8 @@
-.menu_icon_block.show_menu
+.menu_icon_block [data-show-menu]
   .menu_icon
-.mask.hide.hide_menu.transition
-nav.hide.transition
-  = image_tag("cross.svg", class: "close hide_menu")
+.mask [data-hide-menu]
+nav
+  = image_tag("cross.svg", class: "close", "data-hide-menu" => true)
   .avatar
     = image_tag "annie_pic.jpg"
   .social_link

@@ -1,30 +1,31 @@
 var showMenu = function(){
-  $('.hide').removeClass('hide').addClass('show');
+  // ban scrolling event
   $('body').addClass('stop-scrolling');
-  //for mobile
   $('body').bind('touchmove', function(e){e.preventDefault()});
-  $( "nav" ).animate({ "right": "0px" }, 1, "linear");
+
+  $('nav').addClass('is-open')
+  $('.mask').addClass('is-open')
 }
 
 var hideMenu = function(){
-  function hide(){
-    $('.show').removeClass('show').addClass('hide');
-  }
+  // recover scrolling event
   $('body').removeClass('stop-scrolling');
-  //for mobile
   $('body').unbind('touchmove');
-  $( "nav" ).animate({ "right": "-300px" }, 1, "linear");
-  setTimeout(hide, 200);
+
+  $('nav').removeClass('is-open')
+  $('.mask').removeClass('is-open')
 }
 
 var menuControl = function(){
-  $('.show_menu').click(function(){
+  $('[data-show-menu]').click(function(){
     showMenu();
   });
-  $('.hide_menu').click(function(){
+  $('[data-hide-menu]').click(function(){
     hideMenu();
   });
 }
+
+
 
 $().ready(function(){
   menuControl();
