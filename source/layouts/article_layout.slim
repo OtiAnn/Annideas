@@ -14,8 +14,19 @@ html
       .articleContent
         .articleContent-category = link_to_tag(tag_name: current_article.tags.first, index: false)
         .articleContent-title = current_article.title
-        .articleContent-date = current_article.date.strftime('%b %d, %Y')
+        .articleContent-date = current_article.date.strftime('%Y．%b．%d')
         .articleContent-article.tp-in-content
           = yield
+        .articleContent-nav
+          - if current_article.next_article.present?
+            .page.prev_page
+              = link_to current_article.next_article
+                .prev_article_title = "#{current_article.next_article.title}"
+                .prev_article_date = current_article.next_article.date.strftime('%Y．%b．%d')
+          - if current_article.previous_article.present?
+            .page.next_page
+              = link_to current_article.previous_article
+                .next_article_title = "#{current_article.previous_article.title}"
+                .next_article_date = current_article.previous_article.date.strftime('%Y．%b．%d')
       .designer designed by Otis
     = partial "layouts/menu"

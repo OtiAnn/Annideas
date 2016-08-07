@@ -67,3 +67,30 @@ a.articleContent-category,
 .articleContent-article
   padding: 45px 0
 
+.articleContent-nav
+  margin-top: 58px
+  .page
+    max-width: 700px
+    padding: 58px 29px
+    position: relative
+    .prev_article_date, .next_article_date
+      font-size: 12px
+      text-align: center
+    &.prev_page
+      margin-left: 29px
+      &:before
+        content: '〈 '
+        display: block
+        position: absolute
+        top: 70px
+        left: 0
+        color: $c-grey-light
+    &.next_page
+      margin-right: 29px
+      &:after
+        content: ' 〉'
+        display: block
+        position: absolute
+        top: 70px
+        right: 0
+        color: $c-grey-light
