@@ -1,3 +1,10 @@
+// *************************************
+//
+//   tpInContent
+//   -> 內文樣式
+//
+// *************************************
+
 .tp-in-content
   font-family: Helvetica, Arial, sans-serif
   font-weight: 400
@@ -80,13 +87,17 @@
     display: block
     width: 100%
     overflow: auto
+    
     thead
       border-bottom: 2px solid #ccc
+    
     th 
       font-weight: bold
+    
     th, td 
       border: 1px solid #ccc
       padding: 6px 13px
+    
     tr
       &:nth-child(2n) 
         background-color: #f5f5f5
@@ -94,44 +105,55 @@
     display: block
     margin: 0 auto
     max-width: 100%
+  
   pre
     overflow-x: scroll
     padding-left: 10px
+  
   p code, li code
     background: #f5f5f5
     font-family: monospace
     padding: 3px 5px
     margin: 0 3px
+  
   strong
     background-image: linear-gradient(to bottom, transparent 40%, rgb(255, 241, 145) 60%)
+  
   em
     text-decoration: line-through
-    color: #aaa
+    color: $c-text-implicit
+  
   a
-    color: #C59292
+    color: $c-pink
+  
   blockquote, q
     position: relative
     background: #ffeaeb
     text-indent: 45px
     padding: 10px
-    border-left: 5px solid #C59292
+    border-left: 5px solid $c-pink
+    
     p
       margin: 0
+    
     &:before
-      color: #C59292
+      color: $c-pink
       content: '’’'
       position: absolute
       left: -40px
       top: 26px
       font-size: 87px
       font-family: helvetica
+  
   ul, ol, dl
     padding-left: 29px
     list-style: disc
+    
     li ul
       list-style-type: circle
+  
   hr
-    border: 1px solid #ccc
+    border: 1px solid $c-border
     margin: 29px auto
 
   pre.highlight code .c1

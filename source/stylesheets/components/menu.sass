@@ -1,17 +1,28 @@
+// *************************************
+//
+//   menu
+//   -> 側邊Menu內容
+//
+// *************************************
+
 .menu_icon_block
   position: absolute !important
   top: 30px
   right: 40px
   width: 26px
   height: 20px
+
   &:hover
     cursor: pointer
+
   .menu_icon
     width: 26px
     height: 3px
-    background: $c-grey-lighter
+    background: $c-border
     position: relative
-    &:before, &:after
+
+    &:before,
+    &:after
       content: ""
       display: block
       position: absolute
@@ -19,8 +30,10 @@
       width: 26px
       height: 3px
       background: inherit
+
     &:before
       top: 8px
+
     &:after
       top: 16px
 
@@ -48,7 +61,7 @@ nav
   right: -300px
   width: 300px
   height: 100vh
-  background: #fff
+  background: $c-bg
   border-left: 2px solid #DFDFDF
   transition: 0.3s right, 0.3s opacity
   
@@ -62,26 +75,35 @@ nav
     right: 0
     padding: 10px 15px
     cursor: pointer
+
   .avatar
     margin-top: 70px
     width: 100px
     margin: 70px auto 30px
+
     img
       width: 100px
       height: 100px
       border-radius: 50%
+
   .social_link
     text-align: center
     margin-bottom: 30px
-    .resume, .twitter, .facebook
+
+    .resume,
+    .twitter,
+    .facebook
       margin: 10px
+
   .desc_block
     font-size: 14px
-    color: $c-grey-regular
+    color: #ADADAD
     padding: 0 25px
+
     .name 
       font-size: 24px
-      color: $c-grey-deep
+      color: #787878
       margin-bottom: 15px
+    
     .description
       line-height: 1.5
