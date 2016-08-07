@@ -5,14 +5,9 @@ tags: 開發
 desc: 我是OtiAnn，這篇文章是說明rails的helper的好處，以及實際的做法。
 ---
 
-噢，這篇在說自製Helper！
+噢，這篇在說自製Helper！做出來的Helper 根本跟我老媽一樣，幫我把房間整理得乾乾淨淨的！利用Helper 整理選單/連結列的selected style
 
-做出來的Helper根本跟我老媽一樣，幫我把房間整理得乾乾淨淨的！
-
-利用Helper整理選單/連結列的selected style
-
-
-Rails 有很多自己的Helper，例如：`link_to`就幫我們把字串變成超連結、`form_for`/`form_tag`就幫我們做出表單...，Rails既然已經有很多Helper了，那我們幹嘛還要再自製Helper呢？以自己目前學Rails 三個多月的經驗來說，最能領悟的大概就是以下幾點：
+Rails 有很多自己的Helper，例如： `link_to` 就幫我們把字串變成超連結、`form_for` / `form_tag`就幫我們做出表單...，Rails 既然已經有很多Helper 了，那我們幹嘛還要再自製Helper 呢？以自己目前學Rails 三個多月的經驗來說，最能領悟的大概就是以下幾點：
 
 * 不要把邏輯敘述放在View中
 
@@ -26,10 +21,9 @@ Rails 有很多自己的Helper，例如：`link_to`就幫我們把字串變成�
 
   幫自己的Helper取個好懂的名字，過幾週再回來看還是能讀懂，以專案開發來說一定較好維護。
 
-(其實從很多大大的文章中都可以看到，當View中太多邏輯，會造成效能減弱，要做判斷的部分最好移到Controller或Model，讓View直接呈現最後結果即可)
+(其實從很多大大的文章中都可以看到，當View 中太多邏輯，會造成效能減弱，要做判斷的部分最好移到Controller 或Model，讓View 直接呈現最後結果即可)
 
-
-#利用Helper整理選單/連結列的selected style
+##利用Helper 整理選單/連結列的selected style
 
 如果希望做出類似以下這種選單，選了連結後，選單的style會改變：
 
@@ -37,7 +31,7 @@ Rails 有很多自己的Helper，例如：`link_to`就幫我們把字串變成�
 
 可以這麼做：
 
-先將原本選單的`link_to`code整理至`app/helpers/application_helper.rb`
+先將原本選單的`link_to`code 整理至`app/helpers/application_helper.rb`
 
 原本
 
@@ -52,7 +46,7 @@ Rails 有很多自己的Helper，例如：`link_to`就幫我們把字串變成�
 
 後來
 
-自定一個名叫`nav_li`的Helper，意思就是導航列的list，將`<li>`tag改用Rails的`content_tag`來寫([content_tag的用法介紹](http://apidock.com/rails/ActionView/Helpers/TagHelper/content_tag))，如下：
+自定一個名叫`nav_li` 的Helper，意思就是導航列的list，將 `<li>` tag 改用Rails 的 `content_tag` 來寫([content_tag 的用法介紹](http://apidock.com/rails/ActionView/Helpers/TagHelper/content_tag))，如下：
 
 ~~~ruby
 module ApplicationHelper
@@ -62,9 +56,9 @@ module ApplicationHelper
 end
 ~~~
 
-將選單中不同的部分用參數替換掉，參數直接寫在Helper名字的後面即可(如上例中的`name`與`url`)。
+將選單中不同的部分用參數替換掉，參數直接寫在Helper 名字的後面即可(如上例中的`name`與`url`)。
 
-接下來View的部分即簡化如下：
+接下來View 的部分即簡化如下：
 
 ~~~erb
 <ul class="navbar">
@@ -75,7 +69,7 @@ end
 </ul>
 ~~~
 
-接著，在Helper加入selected 判斷，運用request.path
+接著，在Helper 加入selected 判斷，運用request.path
 
 原本
 
@@ -100,5 +94,5 @@ module ApplicationHelper
 end
 ~~~
 
-用Helper的寫法，大大改善我原本用純html的方式，減少了許多重複的code！
+用Helper 的寫法，大大改善我原本用純html 的方式，減少了許多重複的code！
 不知為何，開始想去整理自己的房間了...

@@ -7,9 +7,9 @@ desc: 我是OtiAnn，這篇文章是閱讀『Refactoring:RubyEdition』這本書
 
 這篇文章是閱讀『Refactoring: Ruby Edition』這本書的學習筆記，會記錄在書中看到的觀念，以及書中提供的重構範例。
 
-#重構初體驗
+##重構初體驗
 
-##起點
+###起點
 
 影片出租店的客戶請你做一隻程式：
 
@@ -21,7 +21,6 @@ Movie | Rental | Customer
 -|-|-
 price_code|days_rented|
 ||statement()
-
 
 **Movie**
 
@@ -120,7 +119,7 @@ end
 
 > 小提示：當你需要向一段程式裡添加功能，而程式的結構又不便於動手時，首要之務，就是重構程式碼來降低添加功能的難度，然後再加入需要的功能。
 
-##第一步
+###第一步
 
 - 先寫測試(來源：[Taian's github](https://github.com/taiansu/refactoring-ruby))
 
@@ -147,7 +146,7 @@ end
 
 > 小提示：進行重構之前，要先準備好一段可靠的測試。一步一步地進行修改與測試，犯錯時才好發現bug的位置。
 
-##statement方法的分解和再組合
+###statement方法的分解和再組合
 
 **目的：將太長的方法分解成小片段，並移到更適合它們的類別中**
 
@@ -475,7 +474,7 @@ end
 
 - 製作這個新方法速度沒花太多時間，是因為共用了statement的方法
 
-##用多態替換價格代碼中的條件邏輯
+###用多態替換價格代碼中的條件邏輯
 
 - Rental.charge的方法中用到了case
 	- case所操作的卻是movie的價錢，應該要把charge移到Movie類別中。
