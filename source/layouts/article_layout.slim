@@ -10,6 +10,7 @@ html
   body class=page_classes
     = link_to "/", class: "go_home_logo" do
       = image_tag("go_home_logo.png")
+      h1.title Annideas?
     .container
       .articleContent
         .articleContent-category = link_to_tag(tag_name: current_article.tags.first, index: false)

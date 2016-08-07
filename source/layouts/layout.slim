@@ -11,11 +11,11 @@ html
     .container
       .designer designed by Otis
       header
-        .logo = link_to "/" do
-          = image_tag("logo.png")
-        .title_block
-          h1.title = "Annideas?"
-          h2.desc
+        = link_to "/" do
+          .logo = image_tag("logo.png")
+          .title_block
+            h1.title = "Annideas?"
+            h2.desc
       .content
         = yield
     = partial "layouts/menu"

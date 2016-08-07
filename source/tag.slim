@@ -1,0 +1,11 @@
+---
+pageable: false
+---
+
+.articleList
+  .articleList-tagName class=tag_class(tagname) = tagname.chars.join(' ')
+  ul
+    - page_articles.each_with_index do |article, i|
+      li = link_to article
+        h2.articleList-title = article.title
+        .articleList-date = article.date.strftime('%Y．%b．%d')
