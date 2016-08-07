@@ -5,7 +5,6 @@
   font-size: 16px
   line-height: 29px
   max-width: 700px
-  padding: 58px 29px
   margin: 0 auto
   color: #777
 
@@ -98,13 +97,13 @@
   pre
     overflow-x: scroll
     padding-left: 10px
-  p code
+  p code, li code
     background: #f5f5f5
     font-family: monospace
     padding: 3px 5px
     margin: 0 3px
   strong
-    font-weight: bold
+    background-image: linear-gradient(to bottom, transparent 40%, rgb(255, 241, 145) 60%)
   em
     text-decoration: line-through
     color: #aaa
@@ -134,3 +133,6 @@
   hr
     border: 1px solid #ccc
     margin: 29px auto
+
+  pre.highlight code .c1
+    color: #777

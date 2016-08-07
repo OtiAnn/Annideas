@@ -5,7 +5,7 @@ tags: 生活
 desc: 我是OtiAnn，這篇文章是分享第一次擔任Rails Girls Taipei教練「教」與「學」的歷程。
 ---
 
-今年四月初才po了一篇[第一次成為Rails Girls @Taipei](/2014/04/09/fisrt-time-be-a-rails-girl/)，當時我第一次進到Rails 的世界中，後來遇到了好多貴人，幫助我能夠持續不斷地在這個世界中探索！今年八月底我以教練的身份再一次參與了這個盛會！很是感動！
+今年四月初才po了一篇[第一次成為Rails Girls @Taipei](/2014/04/09/fisrt-time-be-a-rails-girl)，當時我第一次進到Rails 的世界中，後來遇到了好多貴人，幫助我能夠持續不斷地在這個世界中探索！今年八月底我以教練的身份再一次參與了這個盛會！很是感動！
 
 ##Rails Girls的「教」與「學」
 
@@ -17,7 +17,7 @@ desc: 我是OtiAnn，這篇文章是分享第一次擔任Rails Girls Taipei教�
 
 ![Rails Girls Taipei第四屆活動照片](/images/railsgirls4th.jpg)
 
-<span style="font-size: 14px; display: block; max-width: 680px; text-align: right; margin-top:-25px;">(圖片來源：[Rails Girls Taiwan 粉絲團](https://www.facebook.com/railsgirlstw))</span>
+<span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(圖片來源：[Rails Girls Taiwan 粉絲團](https://www.facebook.com/railsgirlstw))</span>
 
 2014/8/29 ~ 30 [Rails Girls Taipei 4th](http://railsgirls.com/taipei) 活動終於千呼萬喚始出來了XD
 
@@ -45,18 +45,16 @@ $ say Hello
 
 其實可以發現兩天下來，複製貼上這麼多指令後，學員最熟的終端機指令就是 `cd` 了XD
 
-一天半的時間真的好短，Html、CSS都好想講，可惜時間不允許，不過Rails Girls 活動本來就只是一個提供女孩認識Rails 的機會，對我來說，我參加Rails Girls Taipei 3rd，也只是一個開始，一個相見歡！有興趣繼續深入的話，一定會重頭再學習的！
+一天半的時間真的好短，Html、CSS 都好想講，可惜時間不允許，不過Rails Girls 活動本來就只是一個提供女孩認識Rails 的機會，對我來說，我參加Rails Girls Taipei 3rd，也只是一個開始，一個相見歡！有興趣繼續深入的話，一定會重頭再學習的！
 
-本來很擔心自己只有四個多月的經驗，而且又是個非本科的，可能沒辦法太專業說給學員聽，很感謝Rails Girls Taiwan 主辦大大們給我這個機會，我發現，其實就跟我當初當學員的心情一樣，女孩學習程式，不見得會想把自己丟在一個學習最 **快** 的地方，而是想找一個學習最 **快樂** 的地方！可以分享自己從學員角度學習Ruby、Rails 的經驗給他們，真的蠻開心的！
+本來很擔心自己只有四個多月的經驗，而且又是個非本科的，可能沒辦法太專業說給學員聽，很感謝Rails Girls Taiwan 主辦大大們給我這個機會，我發現，其實就跟我當初當學員的心情一樣，女孩學習程式，不見得會想把自己丟在一個學習最快的地方，而是想找一個學習最快樂的地方！可以分享自己從學員角度學習Ruby、Rails 的經驗給他們，真的蠻開心的！
 
 謝謝學員最後給我的鼓勵XD 快一起進這個坑吧！！！
 
 ---
 
-※Rails Girls 官方資源：
+※ Rails Girls 官方資源：
 
 1. [Rails Girls Taiwan 官網](http://railsgirls.tw/)
-
 2. [Rails Girls Taiwan 後續活動](http://rgweekly.kktix.cc/)
-
 3. [Rails Girls Taiwan Facebook粉絲團](https://www.facebook.com/railsgirlstw)

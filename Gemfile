@@ -11,3 +11,5 @@ gem "builder", "~> 3.0"
 
 gem "slim"
 gem "pry"
+
+gem "middleman-disqus"

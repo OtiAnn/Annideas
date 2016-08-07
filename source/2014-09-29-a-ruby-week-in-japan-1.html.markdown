@@ -23,7 +23,7 @@ desc: 很開心可以入選RubyKaigi 2014 獎學金辦法，這一切都要感�
 
 ![Line公司介紹meeting](/images/Japan/line2.jpg)
 
-<span style="font-size: 14px; display: block; max-width: 680px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
+<span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
 
 LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情況，也看得出來跟台灣LINE 的交流頻繁！讓我印象深刻的，是在他們的介紹影片中，有一間遊戲測試室，裡面就是給玩家玩LINE 的週邊遊戲，他們會在另一個房間觀察使用者操作情形，感受得出他們非常重視使用者經驗！
 大家從照片中應該可以看到桌上有一大堆禮物XD，LINE 超大方的送了很多紀念品給我們，這是我們參觀的第一家公司，意思就是我們會帶著這大包紀念品去其他公司參觀，其他公司應該會有很大的壓力XD"
@@ -49,13 +49,13 @@ LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情
 
 ![與spice life開發部長五十嵐先生的大合照](/images/Japan/spicelife2.jpg)
 
-<span style="font-size: 14px; display: block; max-width: 680px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
+<span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
 
 下面這張，我們三個臺北鐵道女孩所穿的衣服，也是來自Spice Life 的噢！我們最後一天，有穿著它上[Ruby Hiroba 2014的生活發表會]，這部分後面的文章會再多作說明！
 
 ![謝謝spicelife送我們三個RailsGirls衣服！](/images/Japan/spicelife3.jpg)
 
-<span style="font-size: 14px; display: block; max-width: 680px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
+<span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
 
 
 ###CrowdWorks
@@ -64,7 +64,7 @@ LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情
 
 ![與CrowdWorks的CTO大場光一郎先生合照](/images/Japan/crowdworks.jpg)
 
-<span style="font-size: 14px; display: block; max-width: 680px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
+<span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
 
 啊，轉換個心情，覺得網站有一個功能非常可愛，大家看FB 看到不錯的會按『讚』，有些平台也會給類似『喜歡』的功能，但CrowdWorks 是讓案主可以在案子結束後對接案者按一個『謝謝』的按鈕！覺得非常貼心啊！另外，上網找了一下，有看到類似當時大場先生介紹公司的[投影片]，有興趣大家可以去看看，只是都日文XD，其中印象較深刻的，是他們對UI和UX很重視，有請學生來公司實習，並請學生們組成小組來實際操作他們的網站服務，然後學生們真的對一些使用者經驗的部分提出了建議，公司也真的有採用呢！
 
@@ -74,7 +74,7 @@ LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情
 
 ![與GMO的Shibata先生、Kuribayashi先生合照](/images/Japan/gmo.jpg)
 
-<span style="font-size: 14px; display: block; max-width: 680px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
+<span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
 
 而GMO 本身也是有在做APP、遊戲...產品也是非常多元，不過有一個很特別就是，它提供把域名換成「.tokyo」的服務，詳情也可以在這裡看到：[.tokyo]。這天晚上GMO 剛好提供給Pre-Ruby Kaigi Welcome Party 場地，GMO 介紹時其實已有許多人陸陸續續進到會場中，在GMO 介紹完後，我們也真正開始進入認識大大們之旅，這部分就待下篇文章再作說明囉！
 

@@ -40,7 +40,7 @@ desc: 我是OtiAnn，這篇文章是檢討寫code的格式該注意的禮節。
 </html>
 ~~~
 
-上面是來自[Ruby on Rails 教程](http://railstutorial-china.org/)的範例。而下方是我的`application.html.erb` (#不敢見人#)
+上面是來自[Ruby on Rails 教程](http://railstutorial-china.org/)的範例。而下方是我的`application.html.erb` (*不敢見人*)
 
 ~~~erb
 <%= render 'partials/header' %>
@@ -95,6 +95,6 @@ desc: 我是OtiAnn，這篇文章是檢討寫code的格式該注意的禮節。
 
 從這天起，我開始參考強者前輩們的code 了，每個人的code 都有自己的一套規範，共通點都是讓人很好讀懂！希望自己在吸收日月精華後，也能訂定一套屬於我自己且友善的code 規範！
 
->走出自己的sublime 看看其他人的code 吧！
+**走出自己的sublime 看看其他人的code 吧！**
 
 (看看code 不自閉還能偷學好招，何樂而不為！)

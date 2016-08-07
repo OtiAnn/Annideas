@@ -9,17 +9,17 @@ desc: 我是OtiAnn，這篇文章是說明rails的helper的好處，以及實際
 
 Rails 有很多自己的Helper，例如： `link_to` 就幫我們把字串變成超連結、`form_for` / `form_tag`就幫我們做出表單...，Rails 既然已經有很多Helper 了，那我們幹嘛還要再自製Helper 呢？以自己目前學Rails 三個多月的經驗來說，最能領悟的大概就是以下幾點：
 
-* 不要把邏輯敘述放在View中
+**(1) 不要把邏輯敘述放在View 中**
 
-  當View中需要有具邏輯性判斷的頁面呈現時，很容易造成View的程式碼雜亂無章，運用Helper將邏輯判斷的部分整理出去，讓View保持清爽且好閱讀。
+  當View 中需要有具邏輯性判斷的頁面呈現時，很容易造成View 的程式碼雜亂無章，運用Helper 將邏輯判斷的部分整理出去，讓View 保持清爽且好閱讀。
 
-* 減少重複的Code(Don't Repeat Yourself)
+**(2) 減少重複的Code (Don't Repeat Yourself)**
 
-  當View中出現大量重複的內容時，除了可使用partial來切開一片一片的code之外，還可以用Helper來幫忙處理有邏輯內容的頁面。
+  當View 中出現大量重複的內容時，除了可使用partial 來切開一片一片的code 之外，還可以用Helper 來幫忙處理有邏輯內容的頁面。
 
-* 方便維護與閱讀
+**(3) 方便維護與閱讀**
 
-  幫自己的Helper取個好懂的名字，過幾週再回來看還是能讀懂，以專案開發來說一定較好維護。
+  幫自己的Helper 取個好懂的名字，過幾週再回來看還是能讀懂，以專案開發來說一定較好維護。
 
 (其實從很多大大的文章中都可以看到，當View 中太多邏輯，會造成效能減弱，要做判斷的部分最好移到Controller 或Model，讓View 直接呈現最後結果即可)
 
@@ -33,7 +33,7 @@ Rails 有很多自己的Helper，例如： `link_to` 就幫我們把字串變成
 
 先將原本選單的`link_to`code 整理至`app/helpers/application_helper.rb`
 
-原本
+**原本**
 
 ~~~erb
 <ul class="navbar">
@@ -44,7 +44,7 @@ Rails 有很多自己的Helper，例如： `link_to` 就幫我們把字串變成
 </ul>
 ~~~
 
-後來
+**後來**
 
 自定一個名叫`nav_li` 的Helper，意思就是導航列的list，將 `<li>` tag 改用Rails 的 `content_tag` 來寫([content_tag 的用法介紹](http://apidock.com/rails/ActionView/Helpers/TagHelper/content_tag))，如下：
 
@@ -71,7 +71,7 @@ end
 
 接著，在Helper 加入selected 判斷，運用request.path
 
-原本
+**原本**
 
 ~~~ruby
 module ApplicationHelper
@@ -81,7 +81,7 @@ module ApplicationHelper
 end
 ~~~
 
-後來
+**後來**
 
 ~~~ruby
 module ApplicationHelper

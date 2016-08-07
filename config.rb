@@ -5,6 +5,10 @@
 # Time.zone = "UTC"
 activate :syntax
 
+activate :disqus do |d|
+  d.shortname = 'otiannie5' # Replace with your Disqus shortname.
+end
+
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "blog"

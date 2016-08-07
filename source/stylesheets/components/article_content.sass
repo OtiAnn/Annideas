@@ -65,32 +65,48 @@ a.articleContent-category,
   text-align: center
 
 .articleContent-article
-  padding: 45px 0
+  padding-top: 60px
 
-.articleContent-nav
-  margin-top: 58px
-  .page
-    max-width: 700px
-    padding: 58px 29px
-    position: relative
-    .prev_article_date, .next_article_date
-      font-size: 12px
-      text-align: center
-    &.prev_page
-      margin-left: 29px
-      &:before
-        content: '〈 '
-        display: block
-        position: absolute
-        top: 70px
-        left: 0
-        color: $c-grey-light
-    &.next_page
-      margin-right: 29px
-      &:after
-        content: ' 〉'
-        display: block
-        position: absolute
-        top: 70px
-        right: 0
-        color: $c-grey-light
+.articleContent-social
+  text-align: right
+  padding-right: 30px
+
+.articleContent-paging
+  display: flex
+  justify-content: space-between
+  padding: 30px 0
+  margin-top: 30px
+  margin-bottom: 60px
+
+.articleContent-paging-item
+  position: relative
+  color: $c-grey-light
+  max-width: 700px
+
+.articleContent-paging-item--prev
+  text-align: left
+  padding-left: 29px
+
+  &:before
+    content: '〈 '
+    display: block
+    position: absolute
+    top: 15px
+    left: 0
+
+.articleContent-paging-item--next
+  text-align: right
+  padding-right: 29px
+
+  &:after
+    content: ' 〉'
+    display: block
+    position: absolute
+    top: 15px
+    right: 0
+    color: $c-grey-light
+
+.articleContent-paging-item-title
+  font-size: 16px
+.articleContent-paging-item-date
+  font-size: 12px

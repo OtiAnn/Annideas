@@ -5,7 +5,7 @@ tags: 學習
 desc: 我是OtiAnn，這篇文章整理了幾個新手學習Ruby時的線上資源，如：Codecademy、Try Ruby、Rubymonk、Ruby Warrior，可供初學者參考。
 ---
 
-其實上一篇原本的標題就是線上學習資源心得比較，沒想到前言打一打，開始打Ruby 跟Rails 的差別，反倒獨立成一篇了。算惹算惹，老師的通病好像就是想到哪裡就會講到哪裡，Out of control XD(?)
+其實上一篇原本的標題就是線上學習資源心得比較，沒想到前言打一打，開始打Ruby 跟Rails 的差別，反倒獨立成一篇了。老師的通病好像就是想到哪裡就會講到哪裡，Out of control XD(?)
 
 ##線上學習資源心得與比較(學習Ruby )
 
@@ -61,9 +61,9 @@ end
 ---
 
 所以阿，就一個中文為母語的 Ruby 初學者來說，以上這四個學習資源，我比較推薦的學習順序是：
-(2)[Try Ruby](http://tryruby.org/levels/1/challenges/0)
-(3)[Ruby Monk](https://rubymonk.com/)
-(4)[Ruby Warrior](https://www.bloc.io/ruby-warrior/)
+(2)[Try Ruby](http://tryruby.org/levels/1/challenges/0) >> 
+(3)[Ruby Monk](https://rubymonk.com/) >> 
+(4)[Ruby Warrior](https://www.bloc.io/ruby-warrior/) >>
 (1)[Codecademy](http://www.codecademy.com/)
 
 先有了簡單的Ruby畫面(2)，再用中文解說加強(3)，途中用個遊戲提起動機(4)，最後再以一個完整的學習系統複習並鞏固知識(1)(主要是中文都讀過了，回來看英文較深一些的字詞應能比較快速吸收XD)。建議是建議啦，不過自己還沒有完成(1)和(4)，也正在努力中！也許完成所有練習後也有別的想法，再寫出來:P

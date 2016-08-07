@@ -22,14 +22,17 @@ desc: 我是OtiAnn，這篇文章是說明rails的兩個gem:will_paginate、rans
 
 * 首先先裝 **will_paginate gem**
 
-`gem 'will_paginate', '~> 3.0'`
+~~~ruby
+# Gemfile
+gem 'will_paginate', '~> 3.0'
+~~~
 
 * 接著到需要使用分頁功能的 `posts_controller.rb` ，將原本在index 中的 `@posts=Post.all` 修改為：
 
 ~~~ruby
 def index
-  @posts = Post.paginate(:page => params[:page], :per_page => 4)
   #分頁設定每頁顯示四篇文章
+  @posts = Post.paginate(:page => params[:page], :per_page => 4)
 end
 ~~~
 
@@ -41,18 +44,24 @@ end
 </div>
 ~~~
 
-
 ##ransack
 
 * 再來裝 **ransack gem**
-`gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4.1"`
+
+~~~ruby
+# Gemfile
+gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4.1"
+~~~
 
 * 到 `posts_controller.rb` 加入：
 
 ~~~ruby
 def index
-  @posts = Post.paginate(:page => params[:page], :per_page => 4)   #這是剛剛will_paginate加的
-  @posts = @q.result   #讓posts#index可以顯現搜尋結果，@q 是ransack gem定義的寫法，下方在做說明
+  #這是剛剛will_paginate加的
+  @posts = Post.paginate(:page => params[:page], :per_page => 4)
+
+  #讓posts#index可以顯現搜尋結果，@q 是ransack gem定義的寫法，下方再做說明
+  @posts = @q.result
 end
 ~~~
 
@@ -60,8 +69,8 @@ end
 
 ~~~ruby
 class ApplicationController < ActionController::Base
-  before_action :set_search
   #讓在執行任何動作之前，先呼叫set_search，才能讓view知道 `@q` 是啥！不然會噴錯，說他找不到ransack！
+  before_action :set_search
 
   protected
   def set_search
@@ -70,15 +79,15 @@ class ApplicationController < ActionController::Base
 end
 ~~~
 
-* controller 都設定好就可以去view 加上搜尋表單了，我是加在 `_sidebar.html.erb` ：
+* controller 都設定好就可以去view 加上搜尋表單了：
 
 ~~~erb
 <div id="search" >
   <%= search_form_for @q do |f| %>
   #search_form_for是ransack自己定義的form helper。
 
-    <%= f.text_field :title_or_body_cont %>
     #cont 就是 contains，所以我設定我的搜尋位置為文章的 title 或 body
+    <%= f.text_field :title_or_body_cont %>
 
     <%= f.submit ' ', :class => 'btn-search' %>
   <% end %>
