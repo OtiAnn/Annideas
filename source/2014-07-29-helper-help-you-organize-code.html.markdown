@@ -1,8 +1,9 @@
 ---
 title: 用Rails Helper幫你打掃Code
 date: 2014-07-29 10:09 UTC
-tags: 開發
+tags: Rails
 desc: 我是OtiAnn，這篇文章是說明rails的helper的好處，以及實際的做法。
+category: 開發
 ---
 
 噢，這篇在說自製Helper！做出來的Helper 根本跟我老媽一樣，幫我把房間整理得乾乾淨淨的！利用Helper 整理選單/連結列的selected style

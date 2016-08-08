@@ -13,7 +13,7 @@ html
       h1.title Annideas?
     .container
       .articleContent
-        .articleContent-category = link_to_tag(tag_name: current_article.tags.first, index: false)
+        .articleContent-category = link_to_cat(cat_name: current_article.data.category, homepage: false)
         .articleContent-title = current_article.title
         .articleContent-date = current_article.date.strftime('%Y．%b．%d')
         .articleContent-article.tp-in-content

@@ -1,8 +1,9 @@
 ---
 title: will_paginate與ransack
 date: 2014-06-05 10:01 UTC
-tags: 開發
+tags: Gem, Rails
 desc: 我是OtiAnn，這篇文章是說明rails的兩個gem:will_paginate、ransack，並解決兩個在分頁設定上會互相衝突的地方。
+category: 開發
 ---
 
 這篇主要介紹兩個很方便的gem : will_paginate、ransack

@@ -3,7 +3,7 @@ pageable: false
 ---
 
 .articleList
-  .articleList-tagName = tagname
+  .articleList-tagName class=cat_class(category) = category.chars.join(' ')
   ul
     - page_articles.each_with_index do |article, i|
       li = link_to article

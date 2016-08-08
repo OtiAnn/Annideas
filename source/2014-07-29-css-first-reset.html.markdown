@@ -1,8 +1,9 @@
 ---
 title: 噢原來CSS要先Reset
 date: 2014-07-29 10:14 UTC
-tags: 開發
+tags: CSS
 desc: 我是OtiAnn，這篇文章是筆記CSS Reset要打的內容。
+category: 開發
 ---
 
 各大瀏覽器之間，龍爭虎鬥，勾心鬥角(?) 每個瀏覽器html 標籤樣式的預設值都不一樣，為解決兵家之爭，必先統一！

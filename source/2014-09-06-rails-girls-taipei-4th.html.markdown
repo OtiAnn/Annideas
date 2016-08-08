@@ -1,8 +1,9 @@
 ---
 title: Rails Girls Taipei 4th
 date: 2014-09-06 16:16 UTC
-tags: 生活
+tags: RailsGirls
 desc: 我是OtiAnn，這篇文章是分享第一次擔任Rails Girls Taipei教練「教」與「學」的歷程。
+category: 生活
 ---
 
 今年四月初才po了一篇[第一次成為Rails Girls @Taipei](/2014/04/09/fisrt-time-be-a-rails-girl)，當時我第一次進到Rails 的世界中，後來遇到了好多貴人，幫助我能夠持續不斷地在這個世界中探索！今年八月底我以教練的身份再一次參與了這個盛會！很是感動！

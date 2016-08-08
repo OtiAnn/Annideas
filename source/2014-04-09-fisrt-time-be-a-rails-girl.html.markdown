@@ -1,8 +1,9 @@
 ---
 title: 第一次成為Rails Girls @Taipei
 date: 2014-04-09 09:09 UTC
-tags: 生活
+tags: RailsGirls, Codecademy, Nitrous
 desc: 我是OtiAnn，這篇文章是分享一個非本科生參加Rails Girls Taipei 活動後的心得分享。
+category: 生活
 ---
 
 第一次成為Rails Girls(☆_☆)！「女孩」與「程式」真的這麼格格不入嗎？哼！ **對於一個要學習程式的女孩來說，不見得想把自己丟去一個學習最快的地方，而是想找一個學習最快樂的地方**

@@ -32,6 +32,13 @@ activate :blog do |blog|
   blog.paginate = true
   blog.per_page = 10
   blog.page_link = "page/{num}"
+
+  blog.custom_collections = {
+    category: {
+      link: '/categories/{category}',
+      template: 'category.html'
+    }
+  }
 end
 
 page "/feed.xml", layout: false
@@ -66,6 +73,10 @@ page "/feed.xml", layout: false
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
 #  which_fake_page: "Rendering a fake page with a local variable" }
 
+["學習", "開發", "生活", "鐵人"].each do |name|
+  proxy "/categories/#{name}", "/category.html"
+end
+
 ###
 # Helpers
 ###
@@ -78,27 +89,28 @@ page "/feed.xml", layout: false
 
 # Methods defined in the helpers block are available in templates
 helpers do
-  def tag_class(tag_name)
-    return "no_tag" if tag_name.nil?
+  def cat_class(cat_name)
+    return "no_cat" if cat_name.nil?
     
-    tag_hash = {
+    cat_hash = {
       "學習": "edu",
       "生活": "life",
-      "開發": "dev"
+      "開發": "dev",
+      "鐵人": "ironman"
     }
 
-    return tag_hash[tag_name.to_sym]
+    return cat_hash[cat_name.to_sym]
   end
 
-  def link_to_tag(tag_name: nil, index: true)
-    if index
-      link_to tag_path(tag_name) do
-        content_tag(:span, tag_name[0], class: "#{tag_class(tag_name)} big") + 
-        content_tag(:span, tag_name[1], class: "#{tag_class(tag_name)} small")
+  def link_to_cat(cat_name: nil, homepage: true)
+    if homepage
+      link_to category_path(cat_name) do
+        content_tag(:span, cat_name[0], class: "#{cat_class(cat_name)} big") + 
+        content_tag(:span, cat_name[1], class: "#{cat_class(cat_name)} small")
       end
     else
-      link_to tag_path(tag_name) do
-        content_tag(:span, tag_name.chars.join(' '), class: "#{tag_class(tag_name)}")
+      link_to category_path(cat_name) do
+        content_tag(:span, cat_name.chars.join(' '), class: "#{cat_class(cat_name)}")
       end
     end
   end
