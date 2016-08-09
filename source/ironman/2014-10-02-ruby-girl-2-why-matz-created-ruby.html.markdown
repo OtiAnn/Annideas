@@ -1,9 +1,10 @@
 ---
-title: Matz為什麼要創造Ruby？
+title: Ruby女孩(2)：Matz為什麼要創造Ruby？
 date: 2014-10-02 08:58 UTC
-tags: 鐵人
+tags: ruby
 desc: 我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。
 category: 鐵人
+order: 2
 ---
 
 [Matz](https://twitter.com/yukihiro_matz)是誰？他是**Ruby的爸爸-Yukihiro Matsumoto(松本行弘)**，也是我要讀的這本【The Ruby Programming Language】的原著作者之一。英語系的Ruby社群，都叫他Matz。

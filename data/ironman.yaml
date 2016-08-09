@@ -1,0 +1,14 @@
+articles:
+  - title: Ruby女孩(1)：為什麼選擇Ruby？
+    date: 2014-10-01
+    url: /ironman/2014-10-01-ruby-girl-1-why-ruby.html
+  - title: Ruby女孩(2)：Matz為什麼要創造Ruby？
+    date: 2014-10-02
+    url: /ironman/2014-10-02-ruby-girl-2-why-matz-created-ruby.html
+  - title: Ruby女孩(3)：我該怎麼try Ruby的語法？
+    date: 2014-10-03
+    url: /ironman/2014-10-03-ruby-girl-3-how-to-try-ruby.html
+  - title: Ruby女孩(4)：Ruby的語彙結構簡介
+    date: 2014-10-04
+    url: /ironman/2014-10-04-ruby-girl-4-ruby-intro.html
+  

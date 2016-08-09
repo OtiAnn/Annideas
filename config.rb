@@ -65,17 +65,19 @@ page "/feed.xml", layout: false
 # page "/path/to/file.html", layout: :otherlayout
 #
 # A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
+with_layout :ironman_layout do
+  page "/ironman/*"
+end
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
 #  which_fake_page: "Rendering a fake page with a local variable" }
 
-["學習", "開發", "生活", "鐵人"].each do |name|
+["學習", "開發", "生活"].each do |name|
   proxy "/categories/#{name}", "/category.html"
 end
+
+proxy "/ironman", "/ironman.html"
 
 ###
 # Helpers
@@ -95,8 +97,7 @@ helpers do
     cat_hash = {
       "學習": "edu",
       "生活": "life",
-      "開發": "dev",
-      "鐵人": "ironman"
+      "開發": "dev"
     }
 
     return cat_hash[cat_name.to_sym]

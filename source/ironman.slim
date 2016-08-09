@@ -1,0 +1,19 @@
+---
+pageable: false
+---
+
+.articleList
+  .articleList-tagName 鐵人賽文章
+  .articleList-topic-desc-block
+    h2.articleList-topic Ruby女孩：10萬.times { puts "為什麼？" }
+    .articleList-desc
+      | 非常開心能夠得到
+      = link_to "2014 年第七屆iT 邦幫忙鐵人賽優選", "http://ithelp.ithome.com.tw/question/10163245?tag=hp.all"
+      | ！這裡的文章，是在參加鐵人賽時每天絞盡腦汁所寫下的XD 比較適合給初學Ruby 的朋友參考看看喔！建議先讀第30篇：
+      = link_to "Ruby女孩(30)：想學Ruby嗎？來聞香吧！", "http://ithelp.ithome.com.tw/question/10161778"
+      | 有導讀的作用XD
+  ul
+    - data.ironman.articles.each do |article|
+      li = link_to article.url
+        h2.articleList-title = article.title
+        .articleList-date = article.date.to_date.strftime('%Y．%b．%d')

@@ -1,9 +1,10 @@
 ---
-title: Ruby的語彙結構簡介
+title: Ruby女孩(4)：Ruby的語彙結構簡介
 date: 2014-10-04 08:58 UTC
-tags: 鐵人
+tags: ruby
 desc: 我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。
 category: 鐵人
+order: 4
 ---
 
 今天終於要進入**Ruby的語彙結構**，依照書中編排，接下來會簡單說明Ruby的註解(comment)、實字(literal)、標點符號(punctuation)、識別字(identifier)與關鍵字(keyword)。
