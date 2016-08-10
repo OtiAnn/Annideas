@@ -116,6 +116,13 @@ helpers do
     end
   end
 
+  def cat_name_and_articles_count(cat_name: nil)
+    articles = blog.articles.select do |article|
+      article.data.category == cat_name
+    end
+    return "#{cat_name} (#{articles.size})"
+  end
+
   def date_content(date: nil)
     date_array = date.split
     year  = date_array[0]

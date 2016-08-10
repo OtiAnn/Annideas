@@ -15,3 +15,8 @@ nav
   .desc_block
     .name = "陳祐禎 Annie"
     .description = "A coach of Rails Girls Taiwan, a math teacher, a RoR learner."
+  ul.catgory_list
+    li = link_to cat_name_and_articles_count(cat_name: "生活"), category_path("生活"), class: cat_class("生活")
+    li = link_to cat_name_and_articles_count(cat_name: "學習"), category_path("學習"), class: cat_class("學習")
+    li = link_to cat_name_and_articles_count(cat_name: "開發"), category_path("開發"), class: cat_class("開發")
+    li = link_to "鐵人賽文章 (30)", "/ironman"
