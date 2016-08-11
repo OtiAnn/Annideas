@@ -11,4 +11,82 @@ articles:
   - title: Ruby女孩(4)：Ruby的語彙結構簡介
     date: 2014-10-04
     url: /ironman/2014-10-04-ruby-girl-4-ruby-intro.html
+  - title: Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？
+    date: 2014-10-05
+    url: /ironman/2014-10-05-ruby-girl-5-ruby-math-intro.html
+  - title: Ruby女孩(6)：Ruby的"-字-字-字-字-字-"
+    date: 2014-10-06
+    url: /ironman/2014-10-06-ruby-girl-6-ruby-string-intro.html
+  - title: Ruby女孩(7)：原來字串也可以比大小？
+    date: 2014-10-07
+    url: /ironman/2014-10-07-ruby-girl-7-ruby-string-compare.html
+  - title: Ruby女孩(8)：字串迭代小練習！
+    date: 2014-10-08
+    url: /ironman/2014-10-08-ruby-girl-8-ruby-string-each-char.html
+  - title: Ruby女孩(9)：老媽，你不能決定，讓我用紅寶石的陣列幫你決定吧！
+    date: 2014-10-09
+    url: /ironman/2014-10-09-ruby-girl-9-ruby-array-life-example.html
+  - title: Ruby女孩(10)：["十年","好姐妹","陣列萬歲"]
+    date: 2014-10-10
+    url: /ironman/2014-10-10-ruby-girl-10-ruby-array-intro.html
+  - title: Ruby女孩(11)：雜湊雜湊雜湊，重要的事情會說三次！
+    date: 2014-10-11
+    url: /ironman/2014-10-11-ruby-girl-11-ruby-hash-intro.html
+  - title: Ruby女孩(12)：Range讓我知道..我是草莓族，Ruby不是QQ
+    date: 2014-10-12
+    url: /ironman/2014-10-12-ruby-girl-12-ruby-range-intro.html
+  - title: Ruby女孩(13)：到底字串跟符號什麼時候使用比較好？
+    date: 2014-10-13
+    url: /ironman/2014-10-13-ruby-girl-13-ruby-string-vs-symbol.html
+  - title: Ruby女孩(14)：在Ruby中，萬事萬物都是物件 => true
+    date: 2014-10-14
+    url: /ironman/2014-10-14-ruby-girl-14-ruby-object-intro.html
+  - title: Ruby女孩(15)：Ruby物件的生與死
+    date: 2014-10-15
+    url: /ironman/2014-10-15-ruby-girl-15-ruby-object-life.html
+  - title: Ruby女孩(16)：物件之間相等性的比較
+    date: 2014-10-16
+    url: /ironman/2014-10-16-ruby-girl-16-ruby-equal-method.html
+  - title: Ruby女孩(17)：自己做排序的方法！
+    date: 2014-10-17
+    url: /ironman/2014-10-17-ruby-girl-17-ruby-order-method.html
+  - title: Ruby女孩(18)：自己的類別自己做啦！
+    date: 2014-10-18
+    url: /ironman/2014-10-18-ruby-girl-18-ruby-class-diy.html
+  - title: Ruby女孩(19)：類別中的getter與setter
+    date: 2014-10-19
+    url: /ironman/2014-10-19-ruby-girl-19-ruby-class-getter-setter.html
+  - title: Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！
+    date: 2014-10-20
+    url: /ironman/2014-10-20-ruby-girl-20-ruby-instance-and-class-methods.html
+  - title: Ruby女孩(21)：來聽聽類別變數與類別實體變數的自白(?)
+    date: 2014-10-21
+    url: /ironman/2014-10-21-ruby-girl-21-ruby-instance-and-class-variables.html
+  - title: Ruby女孩(22)：公用、受保護、私用方法大亂鬥
+    date: 2014-10-22
+    url: /ironman/2014-10-22-ruby-girl-22-ruby-public-protected-private-methods.html
+  - title: Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)
+    date: 2014-10-23
+    url: /ironman/2014-10-23-ruby-girl-23-ruby-inherit.html
+  - title: Ruby女孩(24)：模組是不生孩子的！模組與類別差異及mixin介紹
+    date: 2014-10-24
+    url: /ironman/2014-10-24-ruby-girl-24-ruby-module-class.html
+  - title: Ruby女孩(25)：來認識方法的定義與解除！
+    date: 2014-10-25
+    url: /ironman/2014-10-25-ruby-girl-25-ruby-method-def-undef.html
+  - title: Ruby女孩(26)：別鬧了，方法的( )別亂省！
+    date: 2014-10-26
+    url: /ironman/2014-10-26-ruby-girl-26-ruby-method-rule.html
+  - title: Ruby女孩(27)：方法的引數傳遞方式，你覺得很簡單嗎？進來小試身手看看XD
+    date: 2014-10-27
+    url: /ironman/2014-10-27-ruby-girl-27-ruby-method-test.html
+  - title: Ruby女孩(28)：慢慢打開區塊引數的包裝
+    date: 2014-10-28
+    url: /ironman/2014-10-28-ruby-girl-28-ruby-block.html
+  - title: Ruby女孩(29)：揭開區塊的面紗-Proc、lambda
+    date: 2014-10-29
+    url: /ironman/2014-10-29-ruby-girl-29-ruby-proc-lambda.html
+  - title: Ruby女孩(30)：想學Ruby嗎？來聞香吧！
+    date: 2014-10-30
+    url: /ironman/2014-10-30-ruby-girl-30-ruby-learning-outline.html
   

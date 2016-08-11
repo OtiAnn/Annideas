@@ -7,23 +7,23 @@ category: 鐵人
 order: 3
 ---
 
-原本這篇要介紹Ruby的語彙結構，但文章開始之前，先介紹一個網站：[repl.it](http://repl.it/)。它提供了一個簡單的互動寫程式環境，而且它在沒有網路的情況下也可以使用噢(因為它的直譯器是以JS寫的，不用傳回Server，所以很快，不延遲！)唉，是因為看到上一篇留言才提醒了我，對吼，我忘記說要怎麼試Ruby程式了...囧"真是感謝留言的人提醒我XD
+原本這篇要介紹Ruby 的語彙結構，但文章開始之前，先介紹一個網站：[repl.it](http://repl.it/)。它提供了一個簡單的互動寫程式環境，而且它在沒有網路的情況下也可以使用噢(因為它的直譯器是以JavaScript 寫的，不用傳回Server，所以很快，不延遲！)唉，是因為看到上一篇留言才提醒了我，對吼，我忘記說要怎麼試Ruby程式了...囧"真是感謝留言的人提醒我XD
 
-如果你真的想要直接在自己的電腦中裝上Ruby，就不用去上面的網站囉，那是給只想trytry Ruby的人去的，你想安裝的話，就直接去[Ruby中文官網](https://www.ruby-lang.org/zh_tw/downloads/)按照步驟安裝就可以了。
+如果你真的想要直接在自己的電腦中裝上Ruby，就不用去上面的網站囉，那是給只想try try Ruby 的人去的，你想安裝的話，就直接去[Ruby 中文官網](https://www.ruby-lang.org/zh_tw/downloads/)按照步驟安裝就可以了。
 
-上一篇有人留言提到[Try Ruby](http://tryruby.org/)這個網站！這是一個非常可愛的網站，我剛接觸Ruby時就是去這裡看教材練習的，他也提供了一個互動寫程式環境，只是因為他會連回Server比較慢，但因為這裡有教材說明，想學的可以去這裡看！
+上一篇有人留言提到[Try Ruby](http://tryruby.org/) 這個網站！這是一個非常可愛的網站，我剛接觸Ruby 時就是去這裡看教材練習的，他也提供了一個互動寫程式環境，只是因為他會連回Server 比較慢，但因為這裡有教材說明，想學的可以去這裡看！
 
-下面這兩張是在[repl.it](http://repl.it/)上把[上一篇文章](/2014/10/02/ruby-girl-2-why-matz-created-ruby/)的Ruby code寫上去，它的介面很單純，左邊是寫程式的地方，寫好後滑鼠滑到約中間的地方，會出現Play按鈕，按下去就可以執行ruby程式！而右邊就是程式執行的結果，綠色箭頭指的是回傳值，我們看綠箭頭上方的才是執行結果。
+下面這兩張是在[repl.it](http://repl.it/) 上把[上一篇文章](/ironman/2014-10-02-ruby-girl-2-why-matz-created-ruby.html)的Ruby code 寫上去，它的介面很單純，左邊是寫程式的地方，寫好後滑鼠滑到約中間的地方，會出現Play 按鈕，按下去就可以執行ruby 程式！而右邊就是程式執行的結果，綠色箭頭指的是回傳值，我們看綠箭頭上方的才是執行結果。
 
 ![repl.it-intro](http://ithelp.ithome.com.tw/upload/images/20141003/20141003125455542e2c1f5430f_resize_600.jpg)
 
-就英文語義來說，程式碼寫```3.times```，就是希望印出三次雙引號中的文字，而右邊的結果，確實印出了三次！看起來真的非常直覺！
+就英文語義來說，程式碼寫 `3.times` ，就是希望印出三次雙引號中的文字，而右邊的結果，確實印出了三次！看起來真的非常直覺！
 
 ![repl.it-intro](http://ithelp.ithome.com.tw/upload/images/20141003/20141003125627542e2c7b3aaa3_resize_600.jpg)
 
 而這個例子也是一樣，英文語義希望印出1到9，而右邊的結果，就按照順序把1到9印出來！
 
-所以在之後的文章中，如果有用到範例，都可以去[repl.it](http://repl.it/)或[Try Ruby](http://tryruby.org/)中測試噢！另外，這篇部落格文章〖[Ruby/Rails線上學習資源](/2014/04/11/online-resource-of-learning-experience/)〗，是自己剛學Ruby時，做的Ruby的線上學習資源比較，也給有興趣的人看看喔！
+所以在之後的文章中，如果有用到範例，都可以去[repl.it](http://repl.it/) 或[Try Ruby](http://tryruby.org/) 中測試噢！另外，這篇部落格文章〖[Ruby /Rails 線上學習資源](/2014/04/11/online-resource-of-learning-experience)〗，是自己剛學Ruby 時，整理的Ruby 的線上學習資源比較，也給有興趣的人看看喔！
 
 這個第三天的文章不如預期XD，不過還是希望可以解決一些人的困擾，今天給自己的話是：
 
