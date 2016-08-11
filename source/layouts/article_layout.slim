@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
+    title = current_page.data.title || "Annideas?"
+    = stylesheet_link_tag "application"
+    = javascript_include_tag"https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"
+    = javascript_include_tag "application"
+  body class=page_classes
+    = link_to "/", class: "go_home_logo" do
+      = image_tag("go_home_logo.png")
+      h1.title Annideas?
+    .container
+      .articleContent
+        .articleContent-category = link_to_cat(cat_name: current_article.data.category, homepage: false)
+        .articleContent-title = current_article.title
+        .articleContent-date = current_article.date.strftime('%Y．%b．%d')
+        .articleContent-article.tp-in-content
+          = yield
+        .articleContent-social
+          = partial "layouts/social_media", locals: { current_article_url: current_article.url }
+        .articleContent-paging
+          - if current_article.next_article.present?
+            = link_to current_article.next_article, class: 'articleContent-paging-item articleContent-paging-item--prev'
+              .articleContent-paging-item-title = "#{current_article.next_article.title}"
+              .articleContent-paging-item-date = current_article.next_article.date.strftime('%Y．%b．%d')
+          - if current_article.previous_article.present?
+              = link_to current_article.previous_article, class: 'articleContent-paging-item articleContent-paging-item--next'
+                .articleContent-paging-item-title = "#{current_article.previous_article.title}"
+                .articleContent-paging-item-date = current_article.previous_article.date.strftime('%Y．%b．%d')
+        = disqus
+      .designer designed by Otis
+    = partial "layouts/menu"

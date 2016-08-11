@@ -1,0 +1,121 @@
+// *************************************
+//
+//   articleContent
+//   -> 文章詳細頁面的內容
+//
+// *************************************
+
+.articleContent
+  display: block
+  max-width: 760px
+  margin: 0 auto
+  padding-top: 125px
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+.articleContent-category, 
+a.articleContent-category, 
+.articleContent-category a
+  font-size: 24px
+  text-align: center
+  line-height: 72px
+  height: 72px
+  color: $c-green
+
+  .life
+    color: $c-orange
+  
+  .dev
+    color: $c-blue
+  
+  .edu
+    color: $c-yellow
+
+  &:after
+    display: block
+    content: ''
+    height: 2px
+    width: 34px
+    margin: 0 auto
+    background-color: $c-border
+
+.articleContent-title
+  display: block
+  line-height: 46px
+  text-align: center
+  font-size: 36px
+  margin-top: 28px
+  margin-bottom: 22px
+  margin-left: auto
+  margin-right: auto
+  color: $c-text-title
+
+.articleContent-date
+  color: $c-text-implicit
+  font-size: 18px
+  line-height: 18px
+  height: 18px
+  font-weight: 300
+  text-align: center
+
+.articleContent-article
+  padding-top: 60px
+
+.articleContent-social
+  text-align: right
+  padding-right: 30px
+  height: 35px
+
+.articleContent-paging
+  display: block
+  position: relative
+  padding: 30px 0
+  margin-top: 30px
+  margin-bottom: 60px
+
+.articleContent-paging-item
+  position: absolute
+  color: $c-text-implicit
+  max-width: 700px
+
+.articleContent-paging-item--prev
+  text-align: left
+  padding-left: 29px
+  left: 0
+
+  &:before
+    content: '〈 '
+    display: block
+    position: absolute
+    top: 15px
+    left: 0
+
+.articleContent-paging-item--next
+  text-align: right
+  padding-right: 29px
+  right: 0
+
+  &:after
+    content: ' 〉'
+    display: block
+    position: absolute
+    top: 15px
+    right: 0
+
+.articleContent-paging-item-title
+  font-size: 16px
+  width: 300px
+
+.articleContent-paging-item-date
+  font-size: 12px
+
+iframe a.publisher-anchor-color 
+  color: $c-pink

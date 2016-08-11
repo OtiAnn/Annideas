@@ -1,0 +1,80 @@
+// *************************************
+//
+//   articleBlock
+//   -> 文章列表的區塊樣式
+//
+// *************************************
+
+.content
+  position: relative
+  
+  .page
+    position: absolute
+    bottom: -80px
+  
+    &.prev_page
+      left: 0
+  
+    &.next_page
+      right: 0
+  
+    a
+      color: $c-text-implicit
+
+.article_block
+  position: relative
+  padding-left: 100px
+  margin-bottom: 60px
+  
+  .article_attr
+    position: absolute
+    left: 0
+    width: 70px
+    height: 155px
+    margin-right: 20px
+    
+    .article_tag,
+    .article_date
+      text-align: center
+    
+    .article_tag
+      font-size: 36px
+      letter-spacing: 5px
+      
+      .big, .small
+        color: $c-green
+
+      .small
+        font-size: 20px
+      
+      .life
+        color: $c-orange
+      
+      .dev
+        color: $c-blue
+      
+      .edu
+        color: $c-yellow
+    
+    .article_date
+      font-size: 14px
+      color: $c-text-implicit
+      line-height: 2
+      margin-top: 10px
+      letter-spacing: 2px
+      
+  .article_content
+    
+    .article_title
+      font-size: 24px
+      color: $c-text-title
+      padding-bottom: 13px
+      text-indent: 5px
+      border-bottom: 2px solid $c-border
+      line-height: 1
+
+    .article_desc
+      font-size: 16px
+      padding: 10px 5px
+      line-height: 28px
+      color: $c-text-content

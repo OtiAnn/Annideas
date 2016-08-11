@@ -1,0 +1,74 @@
+*
+  -webkit-box-sizing: border-box
+  -moz-box-siziing: border-box
+  box-sizing: border-box
+
+body
+  position: relative
+  overflow-x: hidden
+
+.designer
+  position: absolute
+  display: block
+  right: 10px
+  bottom: 10px
+  font-family: 'Helvetica Neue', helvitca, san-serif
+  font-size: 14px
+  font-weight: lighter
+  color: #E9E9E9
+
+.container
+  position: relative
+  margin: 0 auto
+  padding-bottom: 100px 
+  width: 700px
+  font-family: helvitca
+  letter-spacing: 1px
+  line-height: 1.8
+  
+  header
+    padding-top: 55px
+    padding-left: 110px
+    margin-bottom: 80px
+    
+    .logo, .title_block
+      display: inline-block
+      vertical-align: middle
+    
+    .title_block
+      margin-left: 40px
+      
+      .title
+        color: #787878
+        font-size: 36px
+        letter-spacing: 3px
+        line-height: 40px
+      
+      .desc
+        color: #ADADAD
+        font-size: 18px
+        line-height: 24px
+        height: 24px
+
+.go_home_logo
+  position: absolute
+  top: 20px
+  left: 30px
+  z-index: 1
+  
+  .title
+    position: absolute
+    bottom: -20px
+    left: 10px
+    color: #E4D9D9
+    opacity: 0
+    transition: .3s opacity
+
+  &:hover .title
+    opacity: 1
+
+.single-dot
+  -o-text-overflow: ellipsis
+  text-overflow : ellipsis
+  overflow : hidden
+  white-space : nowrap

@@ -1,0 +1,18 @@
+---
+pageable: false
+---
+
+.articleList
+  .articleList-tagName
+    - case page_type
+    - when 'day'
+      = Date.new(year, month, day).strftime('%Y．%b．%d')
+    - when 'month'
+      = Date.new(year, month, 1).strftime('%Y．%b')
+    - when 'year'
+      = year
+  ul
+    - page_articles.each_with_index do |article, i|
+      li = link_to article
+        h2.articleList-title = article.title
+        .articleList-date = article.date.strftime('%Y．%b．%d')

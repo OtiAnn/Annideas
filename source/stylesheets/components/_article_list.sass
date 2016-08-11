@@ -1,0 +1,69 @@
+// *************************************
+//
+//   articleList
+//   -> 文章列表樣式(tag頁, calendar頁)
+//
+// *************************************
+
+.articleList
+  display: block
+  max-width: 760px
+  text-align: center
+  ul
+    margin-top: 54px
+  li
+    line-height: 29px
+    padding-bottom: 29px
+
+
+.articleList-tagName
+  font-size: 28px
+  text-align: center
+  line-height: 72px
+  color: $c-green
+
+  &:after
+    display: block
+    content: ''
+    height: 4px
+    width: 34px
+    margin: 0 auto
+    background-color: $c-border
+
+  &.life
+    color: $c-orange
+  
+  &.dev
+    color: $c-blue
+  
+  &.edu
+    color: $c-yellow
+
+.articleList-title
+  font-size: 22px
+  color: $c-text-content
+
+.articleList-date
+  font-size: 14px
+  color: $c-text-implicit
+
+.articleList-topic-desc-block
+  background-color: #ffffec
+  margin: 29px
+  padding: 20px
+
+.articleList-topic
+  text-align: left
+  font-weight: 600
+  font-size: 24px
+  line-height: 29px
+  height: 29px
+  margin-bottom: 29px
+  color: $c-text-title
+
+.articleList-desc
+  font-size: 16px
+  color: $c-text-content
+  text-align: left
+  a
+    color: $c-pink
