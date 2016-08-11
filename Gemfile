@@ -13,3 +13,6 @@ gem "slim"
 gem "pry"
 
 gem "middleman-disqus"
+
+#for config.ru try_static
+gem "rack-contrib"
