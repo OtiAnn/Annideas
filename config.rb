@@ -13,16 +13,16 @@ activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "blog"
 
-  blog.permalink = "{year}/{month}/{day}/{title}"
+  # blog.permalink = "{year}/{month}/{day}/{title}"
   # Matcher for blog source files
   # blog.sources = "{year}-{month}-{day}-{title}.html"
-  blog.taglink = "tags/{tag}"
+  # blog.taglink = "tags/{tag}"
   blog.layout = "article_layout"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
-  blog.year_link = "{year}"
-  blog.month_link = "{year}/{month}"
-  blog.day_link = "{year}/{month}/{day}"
+  # blog.year_link = "{year}"
+  # blog.month_link = "{year}/{month}"
+  # blog.day_link = "{year}/{month}/{day}"
   # blog.default_extension = ".markdown"
 
   blog.tag_template = "tag.html"
@@ -35,7 +35,7 @@ activate :blog do |blog|
 
   blog.custom_collections = {
     category: {
-      link: '/categories/{category}',
+      link: '/categories/{category}.html',
       template: 'category.html'
     }
   }
@@ -74,7 +74,7 @@ end
 #  which_fake_page: "Rendering a fake page with a local variable" }
 
 ["學習", "開發", "生活"].each do |name|
-  proxy "/categories/#{name}", "/category.html"
+  proxy "/categories/#{name}.html", "/category.html"
 end
 
 proxy "/ironman", "/ironman.html"
