@@ -135,6 +135,8 @@ helpers do
   end
 end
 
+activate :directory_indexes
+
 set :build_dir, 'tmp'
 
 set :css_dir, 'stylesheets'
