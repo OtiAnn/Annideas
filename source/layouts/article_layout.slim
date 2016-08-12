@@ -26,6 +26,8 @@ html
     meta property="og:type" content="website"
     meta itemprop="name" content="Annideas?"
     meta property="og:image" content="http://blog.annideas.com/images/logo.png"
+    meta name="viewport" content="width=device-width; initial-scale=1.0"
+    
     = stylesheet_link_tag "application"
     = javascript_include_tag"https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"
     = javascript_include_tag "application"
@@ -46,11 +48,11 @@ html
         .articleContent-paging
           - if current_article.next_article.present?
             = link_to current_article.next_article, class: 'articleContent-paging-item articleContent-paging-item--prev'
-              .articleContent-paging-item-title = "#{current_article.next_article.title}"
+              .articleContent-paging-item-title.single-dot = "#{current_article.next_article.title}"
               .articleContent-paging-item-date = current_article.next_article.date.strftime('%Y．%b．%d')
           - if current_article.previous_article.present?
               = link_to current_article.previous_article, class: 'articleContent-paging-item articleContent-paging-item--next'
-                .articleContent-paging-item-title = "#{current_article.previous_article.title}"
+                .articleContent-paging-item-title.single-dot = "#{current_article.previous_article.title}"
                 .articleContent-paging-item-date = current_article.previous_article.date.strftime('%Y．%b．%d')
         = disqus
       .designer designed by Otis
