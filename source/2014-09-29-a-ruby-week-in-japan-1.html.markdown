@@ -18,11 +18,11 @@ category: 生活
 ###LINE
 [LINE] 的總公司與下方將介紹的[DeNA] 公司都是在涉谷Shibuya 的Hikarie 大樓中，進去前得先換上他們的訪客證才能進入～
 
-![Line總公司一隅](/images/line.jpg)
+![Line總公司一隅](article_images/line.jpg)
 
 其實一進入LINE的公司中，會瞬間以為自己成了熊大和兔兔的同事一樣，公司的佈置充滿了LINE的人物，[Inside]在去年曾經有很詳盡的報導，裡面照片很多，大家也可以連去看看：[【東京直擊！】參訪 LINE 新總部]。
 
-![Line公司介紹meeting](/images/line2.jpg)
+![Line公司介紹meeting](article_images/line2.jpg)
 
 <span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
 
@@ -32,11 +32,11 @@ LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情
 ###DeNA
 [DeNA] 跟LINE 在同一棟大樓，但我們不能直接坐電梯去該樓層，得回到入口處換上DeNA 的訪客證才能進入！他們的安檢真的做得很好啊！
 
-![DeNA的LOGO](/images/dena1.jpg)
+![DeNA的LOGO](article_images/dena1.jpg)
 
 這是他們的LOGO，很可愛的笑臉:D，他們還特別安排中國籍的經營計劃部方蕾小姐為我們介紹公司，DeNA 在1999 年就成立了，所以公司用的語言幾乎都是Perl，公司的發展非常多面向，有APP、遊戲、教育...還養了一支[棒球隊-橫濱DeNA 海灣之星]呢，我覺得超酷XD！對了，目前中華職棒中信兄弟的投手[鄭凱文]，就曾經是橫濱DeNA 海灣之星的球員喔，鄭凱文超強啊，今年仁川亞運表現超好，我在球場看過他一次，投球超穩！*大離題XD*
 
-![DeNA 的公司內部咖啡廳一隅](/images/dena2.jpg)
+![DeNA 的公司內部咖啡廳一隅](article_images/dena2.jpg)
 
 不曉得是不是在大公司上班都會不喜歡待在自己的辦公室XD，這是他們公司在另一個樓層的咖啡廳一隅，會發現很多工程師出沒在這裡！在這裡員工吃飯不用錢，但外來者就要付喔！
 
@@ -44,17 +44,17 @@ LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情
 
 [Spice Life] 公司，有提供製作與印製T-shirt 的服務-[tmix]、[Tmaker]，這次看到[Rails Girls Tokyo]教練們穿的衣服就是他們幫忙做的！除此之外他們也有推出幫忙送花的服務喔！很特別！
 
-![spice life Logo](/images/spicelife.jpg)
+![spice life Logo](article_images/spicelife.jpg)
 
 相較於前兩間公司雖然小了些，但他們公司散發出一種非常歡樂的氣息，冰箱裡也擺滿滿工程師們愛喝的飲料，如果辦公室的大小以100 來算的話，大概有80 的區域都是工程師的地盤，剩下20 的區域是給客服以及設計的成員！非常重視工程師呢！
 
-![與spice life開發部長五十嵐先生的大合照](/images/spicelife2.jpg)
+![與spice life開發部長五十嵐先生的大合照](article_images/spicelife2.jpg)
 
 <span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
 
 下面這張，我們三個臺北鐵道女孩所穿的衣服，也是來自Spice Life 的噢！我們最後一天，有穿著它上[Ruby Hiroba 2014的生活發表會]，這部分後面的文章會再多作說明！
 
-![謝謝spicelife送我們三個RailsGirls衣服！](/images/spicelife3.jpg)
+![謝謝spicelife送我們三個RailsGirls衣服！](article_images/spicelife3.jpg)
 
 <span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
 
@@ -63,7 +63,7 @@ LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情
 
 [CrowdWorks] 公司就在等等要介紹的[GMO] 的對面呢！從照片可以很清楚看到窗外的GMO XD！我們真的很榮幸可以直接聽CrowdWorks 的CTO [大場光一郎]先生說明公司概況！雖然全程都日文，但好險有慕凡幫我們翻譯QQ！全日本最大的工程、設計接案平台，就是他們公司做的，我隨便點一個網站開發的案子進去，就看到一個Rails 的案子時薪給3000 ~ 4000 日幣，大概台幣850 ~ 1120 元QQ...
 
-![與CrowdWorks的CTO大場光一郎先生合照](/images/crowdworks.jpg)
+![與CrowdWorks的CTO大場光一郎先生合照](article_images/crowdworks.jpg)
 
 <span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
 
@@ -73,7 +73,7 @@ LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情
 
 [GMO] 是我們這一天的最後一站，說實在，整天下來英文、日文資訊轟炸，當時有點累了XD 但在這個moment，出現了非常強大的人物，讓我不得不把眼睛睜亮點！照片中脖子掛著 *大砲* 看起來很厲害也真的很厲害的單眼的那位，就是Ruby 的Committer， Hiroshi Shibata 柴田先生，他在Ruby Kaigi 的下一週也有受邀來到台灣的Rails Pacific 演講噢！
 
-![與GMO的Shibata先生、Kuribayashi先生合照](/images/gmo.jpg)
+![與GMO的Shibata先生、Kuribayashi先生合照](article_images/gmo.jpg)
 
 <span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(照片來自[五十嵐先生(@igaiga)的flickr])</span>
 
@@ -83,7 +83,7 @@ LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情
 
 隔天下午我們來到了位在神保町的[万葉]，這家公司令我非常憧憬呢！照片中與我們對話的女士是万葉的代表取締役(應該等同於社長了)[大場寧子]，哈！有沒有發現與CrowdWorks 的CTO 一樣叫做大場，原來他們是夫妻啊！夫妻都在做Rails 的工作真是太酷了！不止這樣，在大場女士隔壁的那位是万葉的開發者[鳥井雪]，她致力于推廣RailsGirls，也是本次[Ruby Kaigi] 的講者，而且她的老公[Sasada 先生]也是很強的人啊！與前面所提的Shibata 先生一樣都是Ruby Committer，Sasada 先生目前也跟Matz 一起在[Heroku] 的團隊中呢！
 
-![聽万葉的社長大場寧子分享公司的概況](/images/everyleaf.jpg)
+![聽万葉的社長大場寧子分享公司的概況](article_images/everyleaf.jpg)
 
 万葉這家公司有一半的工程師都是女生噢！他們說工作的氣氛非常...吵雜哈哈哈，透過閒談後，才知道這麼厲害的兩位女士，她們本身都是非本科生呢！都是自己對寫程式很有興趣，這著實給我很大的鼓舞啊！她們都是利用自己閒暇時間精進技術，很值得學習！她們兩位在這次[Ruby Kaigi] 中的演說，也很振奮人心！之後再好好的分享！
 

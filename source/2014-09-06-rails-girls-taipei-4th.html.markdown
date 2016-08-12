@@ -16,7 +16,7 @@ category: 生活
 
 ##Rails Girls Taipei 4th @ 犇亞會議中心
 
-![Rails Girls Taipei第四屆活動照片](/images/railsgirls4th.jpg)
+![Rails Girls Taipei第四屆活動照片](article_images/railsgirls4th.jpg)
 
 <span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;">(圖片來源：[Rails Girls Taiwan 粉絲團](https://www.facebook.com/railsgirlstw))</span>
 
