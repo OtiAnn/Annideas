@@ -2,7 +2,7 @@
 title: 看看世界-多看前輩的code
 date: 2014-05-25 09:44 UTC
 tags: RailsGirls
-desc: 我是OtiAnn，這篇文章是檢討寫code的格式該注意的禮節。
+desc: 我是Annie Chen，這篇文章是檢討寫code 的格式該注意的禮節。
 category: 開發
 ---
 

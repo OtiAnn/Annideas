@@ -2,7 +2,7 @@
 title: 噢原來CSS要先Reset
 date: 2014-07-29 10:14 UTC
 tags: CSS
-desc: 我是OtiAnn，這篇文章是筆記CSS Reset要打的內容。
+desc: 我是Annie Chen，這篇文章是筆記CSS Reset要打的內容。
 category: 開發
 ---
 

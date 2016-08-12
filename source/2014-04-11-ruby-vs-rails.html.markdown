@@ -2,7 +2,7 @@
 title: Ruby和Rails的差別(女孩譬喻法)
 date: 2014-04-11 09:16 UTC
 tags: Ruby, Rails
-desc: 我是OtiAnn，這篇文章是以初學者的角度去比較Ruby與Rails。
+desc: 我是Annie Chen，這篇文章是以初學者的角度去比較Ruby與Rails。
 category: 學習
 ---
 

@@ -2,7 +2,7 @@
 title: Rails Girls Taipei 4th
 date: 2014-09-06 16:16 UTC
 tags: RailsGirls
-desc: 我是OtiAnn，這篇文章是分享第一次擔任Rails Girls Taipei教練「教」與「學」的歷程。
+desc: 我是Annie Chen，這篇文章是分享第一次擔任Rails Girls Taipei 教練「教」與「學」的歷程。
 category: 生活
 ---
 
