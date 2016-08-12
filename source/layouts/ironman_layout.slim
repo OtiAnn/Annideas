@@ -33,31 +33,32 @@ html
     = javascript_include_tag "application"
     link rel="shortcut icon" href="/images/icon.png"
   body class=page_classes
-    = link_to "/", class: "go_home_logo" do
-      = image_tag("go_home_logo.png")
-      h1.title Annideas?
-    .container
-      .articleContent
-        .articleContent-category = link_to current_page.data.category.chars.join(' '), "/ironman"
-        .articleContent-title = current_page.data.title
-        .articleContent-date = current_page.data.date.to_date.strftime('%Y．%b．%d')
-        .articleContent-article.tp-in-content
-          = yield
-        .articleContent-social
-          = partial "layouts/social_media", locals: { current_article_url: current_page.url }
-        .articleContent-paging
-          - order = current_page.data.order
-          - if (1..29).include? order
-            - next_article = data.ironman.articles[order]
-            = link_to next_article.url, class: 'articleContent-paging-item articleContent-paging-item--prev'
-              .articleContent-paging-item-title.single-dot = "#{next_article.title}"
-              .articleContent-paging-item-date = next_article.date.to_date.strftime('%Y．%b．%d')
-          - if (2..30).include? order
-            - prev_article = data.ironman.articles[order - 2]
-            = link_to prev_article.url, class: 'articleContent-paging-item articleContent-paging-item--next'
-              .articleContent-paging-item-title.single-dot = "#{prev_article.title}"
-              .articleContent-paging-item-date = prev_article.date.to_date.strftime('%Y．%b．%d')
-        = disqus
-      .designer designed by Otis
-    = partial "layouts/menu"
-    = partial "layouts/ga"
+    .wrapper
+      = link_to "/", class: "go_home_logo" do
+        = image_tag("go_home_logo.png")
+        h1.title Annideas?
+      .container
+        .articleContent
+          .articleContent-category = link_to current_page.data.category.chars.join(' '), "/ironman"
+          .articleContent-title = current_page.data.title
+          .articleContent-date = current_page.data.date.to_date.strftime('%Y．%b．%d')
+          .articleContent-article.tp-in-content
+            = yield
+          .articleContent-social
+            = partial "layouts/social_media", locals: { current_article_url: current_page.url }
+          .articleContent-paging
+            - order = current_page.data.order
+            - if (1..29).include? order
+              - next_article = data.ironman.articles[order]
+              = link_to next_article.url, class: 'articleContent-paging-item articleContent-paging-item--prev'
+                .articleContent-paging-item-title.single-dot = "#{next_article.title}"
+                .articleContent-paging-item-date = next_article.date.to_date.strftime('%Y．%b．%d')
+            - if (2..30).include? order
+              - prev_article = data.ironman.articles[order - 2]
+              = link_to prev_article.url, class: 'articleContent-paging-item articleContent-paging-item--next'
+                .articleContent-paging-item-title.single-dot = "#{prev_article.title}"
+                .articleContent-paging-item-date = prev_article.date.to_date.strftime('%Y．%b．%d')
+          = disqus
+        .designer designed by Otis
+      = partial "layouts/menu"
+      = partial "layouts/ga"

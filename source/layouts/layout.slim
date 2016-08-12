@@ -33,15 +33,16 @@ html
     = javascript_include_tag "application"
     link rel="shortcut icon" href="/images/icon.png"
   body class=page_classes
-    .container
-      .designer designed by Otis
-      header
-        = link_to "/" do
-          .logo = image_tag("logo.png")
-          .title_block
-            h1.title = "Annideas?"
-            h2.desc
-      .content
-        = yield
-    = partial "layouts/menu"
-    = partial "layouts/ga"
+    .wrapper
+      .container
+        .designer designed by Otis
+        header
+          = link_to "/" do
+            .logo = image_tag("logo.png")
+            .title_block
+              h1.title = "Annideas?"
+              h2.desc
+        .content
+          = yield
+      = partial "layouts/menu"
+      = partial "layouts/ga"
