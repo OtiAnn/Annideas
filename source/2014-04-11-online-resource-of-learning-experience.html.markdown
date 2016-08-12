@@ -2,7 +2,7 @@
 title: Ruby/Rails線上學習資源
 date: 2014-04-11 09:22 UTC
 tags: Codecademy, Codeschool, Rubymonk, Rubywarrior, Ruby, Rails
-desc: 我是OtiAnn，這篇文章整理了幾個新手學習Ruby時的線上資源，如：Codecademy、Try Ruby、Rubymonk、Ruby Warrior，可供初學者參考。
+desc: 我是Annie Chen，這篇文章整理了幾個新手學習Ruby 時的線上資源，如：Codecademy、Try Ruby、Rubymonk、Ruby Warrior，可供初學者參考。
 category: 學習
 ---
 

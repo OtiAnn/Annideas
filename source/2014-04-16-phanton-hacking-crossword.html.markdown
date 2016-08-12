@@ -2,7 +2,7 @@
 title: 幽靈-Rails的駭客填字遊戲
 date: 2014-04-16 09:29 UTC
 tags: Hacking, XSS, SQLInjection, Rails
-desc: 我是OtiAnn，這篇文章是說明在實作rails專案時，可能會遇到的XSS或SQL Injection攻擊。
+desc: 我是Annie Chen，這篇文章是說明在實作Rails 專案時，可能會遇到的XSS 或SQL Injection 攻擊。
 category: 開發
 ---
 

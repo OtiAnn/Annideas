@@ -2,7 +2,7 @@
 title: Rails常用指令小筆記
 date: 2014-08-04 10:16 UTC
 tags: Rails, Postgres
-desc: 我是OtiAnn，這篇文章是記錄自己常用卻常忘的rails指令，如：建初始專案時設定資料庫、略過不需要的template、進rails console刪掉錯誤的table。
+desc: 我是Annie Chen，這篇文章是記錄自己常用卻常忘的Rails 指令，如：建初始專案時設定資料庫、略過不需要的template、進rails console刪掉錯誤的table。
 category: 開發
 ---
 
