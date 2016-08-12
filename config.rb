@@ -135,6 +135,8 @@ helpers do
   end
 end
 
+set :build_dir, 'tmp'
+
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'
