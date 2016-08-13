@@ -77,7 +77,7 @@ end
   proxy "/categories/#{name}.html", "/category.html"
 end
 
-proxy "/ironman", "/ironman.html"
+proxy "/ironman7", "/ironman7.html"
 
 ###
 # Helpers
