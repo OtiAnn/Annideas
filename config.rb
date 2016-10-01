@@ -70,7 +70,7 @@ with_layout :ironman_layout do
 end
 
 with_layout :resume_layout do
-  page "/resume"
+  page "/resume*"
 end
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
