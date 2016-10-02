@@ -30,7 +30,7 @@
     bottom: 0
     text-align: right
     color: #aaa
-  @include respond-to('iphone')
+  @include respond-to('ipad')
     .cv_header_name_block
       .cv_header_chi_name
         font-size: 40px
@@ -98,7 +98,9 @@
         margin-right: 15px
         padding-bottom: 3px
         color: $c-blue
-      @include respond-to('iphone')
+    @include respond-to('ipad')
+      li
+        margin-bottom: 40px
         .left_block, .right_block
           width: 100%
           text-align: left
@@ -106,10 +108,6 @@
           h3, .during_time
             display: inline-block
             margin-right: 10px
-          h3
+          .job_title
             font-weight: bold
             font-size: 14px
-          .company_name, .community_name
-            font-size: 18px
-          p, p a
-            font-size: 12px
