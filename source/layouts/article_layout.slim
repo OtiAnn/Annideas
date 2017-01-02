@@ -56,6 +56,6 @@ html
                   .articleContent-paging-item-title.single-dot = "#{current_article.previous_article.title}"
                   .articleContent-paging-item-date = current_article.previous_article.date.strftime('%Y．%b．%d')
           = disqus
-        .designer designed by Otis
+        = partial "includes/designer"
       = partial "layouts/menu"
       = partial "layouts/ga"
