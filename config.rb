@@ -5,6 +5,9 @@
 # Time.zone = "UTC"
 activate :syntax
 
+require 'slim'
+Slim::Engine.disable_option_validator!
+
 activate :disqus do |d|
   d.shortname = 'otiannie5' # Replace with your Disqus shortname.
 end
