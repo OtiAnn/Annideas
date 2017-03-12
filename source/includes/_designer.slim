@@ -3,3 +3,8 @@
   span.love ❤
   |  by 
   = link_to "Otis Chou", "http://otischou.tw/"
+
+  javascript:
+    $('.designer a').click(function(){
+      ga('send', 'event', 'Footer', 'click', 'Otis Chou');
+    })
