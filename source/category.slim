@@ -2,6 +2,8 @@
 pageable: false
 ---
 
+- category = category || current_page.metadata[:locals][:category] || ""
+
 .articleList
   .articleList-tagName class=cat_class(category) = category.chars.join(' ')
   ul

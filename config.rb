@@ -80,13 +80,6 @@ end
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
 #  which_fake_page: "Rendering a fake page with a local variable" }
 
-["學習", "開發", "生活"].each do |name|
-  proxy "/categories/#{name}.html", "/category.html"
-end
-
-proxy "/ironman7", "/ironman7.html"
-proxy "/resume", "/resume.html"
-
 ###
 # Helpers
 ###
