@@ -1,0 +1,1200 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>重構Ruby程式碼(學習筆記)</title><meta content="重構Ruby程式碼(學習筆記)" name="title" /><meta content="重構Ruby程式碼(學習筆記)" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/2015/02/25/refactoring-ruby/" name="url" /><meta content="http://blog.annideas.com/2015/02/25/refactoring-ruby/" property="og:url" /><meta content="我是Annie Chen，這篇文章是閱讀『Refactoring:RubyEdition』這本書的學習筆記，會記錄在書中看到的觀念，以及書中提供的重構範例。" name="description" /><meta content="我是Annie Chen，這篇文章是閱讀『Refactoring:RubyEdition』這本書的學習筆記，會記錄在書中看到的觀念，以及書中提供的重構範例。" property="og:description" /><meta content="我是Annie Chen，這篇文章是閱讀『Refactoring:RubyEdition』這本書的學習筆記，會記錄在書中看到的觀念，以及書中提供的重構範例。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="x2015 x2015_02 x2015_02_25 x2015_02_25_refactoring-ruby x2015_02_25_refactoring-ruby_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/categories/開發/"><span class="dev">開 發</span></a></div><div class="articleContent-title">重構Ruby程式碼(學習筆記)</div><div class="articleContent-date">2015．Feb．25</div><div class="articleContent-article tp-in-content"><p>這篇文章是閱讀『Refactoring: Ruby Edition』這本書的學習筆記，會記錄在書中看到的觀念，以及書中提供的重構範例。</p>
+
+<h2 id="section">重構初體驗</h2>
+
+<h3 id="section-1">起點</h3>
+
+<p>影片出租店的客戶請你做一隻程式：</p>
+
+<p>『在影片出租店中，顧客可以選擇不同的影片、不同的租期，而商家會依照影片的租期來計算費用。影片類型分為三種：一般片、兒童片、新片。程式要能夠計算費用、並輸出收據，收據上會有收費明細與顧客的點數，點數計算方法會依據影片是否為新片而有所不同。』</p>
+
+<p>起始例子：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Rental</th>
+      <th>Customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>price_code</td>
+      <td>days_rented</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>statement()</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Movie</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Movie</span>
+  <span class="nc">REGULAR</span>     <span class="o">=</span> <span class="mi">0</span>
+  <span class="no">NEW_RELEASE</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="no">CHILDREN</span>    <span class="o">=</span> <span class="mi">2</span>
+
+  <span class="kp">attr_reader</span>   <span class="ss">:title</span>
+  <span class="kp">attr_accessor</span> <span class="ss">:price_code</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">price_code</span><span class="p">)</span>
+    <span class="vi">@title</span><span class="p">,</span> <span class="vi">@price_code</span> <span class="o">=</span> <span class="n">title</span><span class="p">,</span> <span class="n">price_code</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><strong>Rental</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Rental</span>
+  <span class="kp">attr_reader</span> <span class="ss">:movie</span><span class="p">,</span> <span class="ss">:days_rented</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span> <span class="n">days_rented</span><span class="p">)</span>
+    <span class="vi">@movie</span><span class="p">,</span> <span class="vi">@days_rented</span> <span class="o">=</span> <span class="n">movie</span><span class="p">,</span> <span class="n">days_rented</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><strong>Customer</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Customer</span>
+  <span class="kp">attr_reader</span> <span class="ss">:name</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+    <span class="vi">@rentals</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">add_rental</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+    <span class="vi">@rentals</span> <span class="o">&lt;&lt;</span> <span class="n">arg</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">statement</span>
+    <span class="n">total_amount</span><span class="p">,</span> <span class="n">frequent_renter_points</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">"Rental Record for </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+      <span class="n">this_amount</span> <span class="o">=</span> <span class="mi">0</span>
+
+      <span class="c1"># determine amounts for each line</span>
+      <span class="k">case</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">price_code</span>
+      <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">REGULAR</span>
+        <span class="n">this_amount</span> <span class="o">+=</span> <span class="mi">2</span>
+        <span class="n">this_amount</span> <span class="o">+=</span> <span class="p">(</span><span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">2</span>
+      <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span>
+        <span class="n">this_amount</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">*</span> <span class="mi">3</span>
+      <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">CHILDREN</span>
+        <span class="n">this_amount</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
+        <span class="n">this_amount</span> <span class="o">+=</span> <span class="p">(</span><span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">3</span>
+      <span class="k">end</span>
+
+      <span class="c1"># add frequent renter points</span>
+      <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="c1"># add bonus for a two day new release rental</span>
+      <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">price_code</span> <span class="o">==</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span> <span class="o">&amp;&amp;</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span>
+        <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="k">end</span>
+
+      <span class="c1">#show figures for this rental</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">title</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span> <span class="o">+</span> <span class="n">this_amount</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+      <span class="n">total_amount</span> <span class="o">+=</span> <span class="n">this_amount</span>
+    <span class="k">end</span>
+    <span class="c1"># add footer lines</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"Amount owed is </span><span class="si">#{</span><span class="n">total_amount</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"You earned </span><span class="si">#{</span><span class="n">frequent_renter_points</span><span class="si">}</span><span class="s2"> frequent renter points"</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><strong>對以上程式碼的評語</strong></p>
+
+<ul>
+  <li>Customer類別裡的statement方法太長！</li>
+  <li>statement裡放很多應是其他類別做的事情。</li>
+  <li>對這段醜陋的程式碼來說，『電腦』不關心它美不美，但『人』會關心！
+    <ul>
+      <li>設計糟糕的系統會讓『人』很難維護。</li>
+    </ul>
+  </li>
+  <li>當客戶想將收據輸出成html格式時，目前的statement方法完全不能直接搬過去，除了寫一個全新的html_statement方法來複製大多數行為。
+    <ul>
+      <li>如果收費標準改了，得同時去修改statement和html_statement的方法才行！</li>
+      <li>如果還要做其他修改，就得一直複製貼上、複製貼上…(潛在威脅誕生)</li>
+      <li>當程式碼越來越複雜，就很難保證修改的地方都是一致的。</li>
+    </ul>
+  </li>
+  <li>最可怕的是，當客戶說：『我們想要修改影片分類的方式，但我們還沒想好要怎麼改&gt;_^』
+    <ul>
+      <li>身為一個專業的工程師，雖然什麼都不確定，但能肯定的是六個月內一定會再修改程式碼。</li>
+      <li>雖然目前程式可以動，程式界的老話：『只要它還沒壞，就別去碰它』。但已經可以預見之後的日子很不好過…此時不重構程式碼，更待何時？</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>小提示：當你需要向一段程式裡添加功能，而程式的結構又不便於動手時，首要之務，就是重構程式碼來降低添加功能的難度，然後再加入需要的功能。</p>
+</blockquote>
+
+<h3 id="section-2">第一步</h3>
+
+<ul>
+  <li>先寫測試(來源：<a href="https://github.com/taiansu/refactoring-ruby">Taian's github</a>)</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'minitest/autorun'</span>
+<span class="nb">require_relative</span> <span class="s1">'ch1'</span>
+
+<span class="n">describe</span> <span class="no">Customer</span><span class="p">,</span> <span class="s2">"#statement"</span> <span class="k">do</span>
+  <span class="n">it</span> <span class="s2">"generate statement"</span> <span class="k">do</span>
+    <span class="n">movie</span> <span class="o">=</span> <span class="no">Movie</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Star War"</span><span class="p">,</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span><span class="p">)</span>
+    <span class="n">rental</span> <span class="o">=</span> <span class="no">Rental</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">customer</span> <span class="o">=</span> <span class="no">Customer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"John Doe"</span><span class="p">)</span>
+
+    <span class="n">customer</span><span class="p">.</span><span class="nf">add_rental</span><span class="p">(</span><span class="n">rental</span><span class="p">)</span>
+    <span class="n">customer</span><span class="p">.</span><span class="nf">statement</span><span class="p">.</span><span class="nf">must_equal</span> <span class="o">&lt;&lt;-</span><span class="no">EOS</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/^\s+/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\n$/</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span><span class="sh">
+      Rental Record for John Doe
+      Star War</span><span class="se">\t</span><span class="sh">9
+      Amount owed is 9
+      You earned 2 frequent renter points
+</span><span class="no">    EOS</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<blockquote>
+  <p>小提示：進行重構之前，要先準備好一段可靠的測試。一步一步地進行修改與測試，犯錯時才好發現bug的位置。</p>
+</blockquote>
+
+<h3 id="statement">statement方法的分解和再組合</h3>
+
+<p><strong>目的：將太長的方法分解成小片段，並移到更適合它們的類別中</strong></p>
+
+<ul>
+  <li>觀察程式碼片段中所有作用域中的變數(含區域變數與參數)：rental, this_amount</li>
+  <li>先將一部分程式碼抽取出去(如下)，並先給個方法名字為：amount_for</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">statement</span>
+  <span class="n">total_amount</span><span class="p">,</span> <span class="n">frequent_renter_points</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="s2">"Rental Record for </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+  <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+    <span class="n">this_amount</span> <span class="o">=</span> <span class="n">amount_for</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="c1">#這行改變了！</span>
+
+    <span class="c1"># add frequent renter points</span>
+    <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># add bonus for a two day new release rental</span>
+    <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">price_code</span> <span class="o">==</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span> <span class="o">&amp;&amp;</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span>
+      <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">end</span>
+
+    <span class="c1">#show figures for this rental</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">title</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span> <span class="o">+</span> <span class="n">this_amount</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="n">total_amount</span> <span class="o">+=</span> <span class="n">this_amount</span>
+  <span class="k">end</span>
+  <span class="c1"># add footer lines</span>
+  <span class="n">result</span> <span class="o">+=</span> <span class="s2">"Amount owed is </span><span class="si">#{</span><span class="n">total_amount</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+  <span class="n">result</span> <span class="o">+=</span> <span class="s2">"You earned </span><span class="si">#{</span><span class="n">frequent_renter_points</span><span class="si">}</span><span class="s2"> frequent renter points"</span>
+  <span class="n">result</span>
+<span class="k">end</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">amount_for</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+  <span class="n">this_amount</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">case</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">price_code</span>
+  <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">REGULAR</span>
+    <span class="n">this_amount</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="n">this_amount</span> <span class="o">+=</span> <span class="p">(</span><span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">2</span>
+  <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span>
+    <span class="n">this_amount</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">*</span> <span class="mi">3</span>
+  <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">CHILDREN</span>
+    <span class="n">this_amount</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
+    <span class="n">this_amount</span> <span class="o">+=</span> <span class="p">(</span><span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">3</span>
+  <span class="k">end</span>
+  <span class="n">this_amount</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>切開來後，就可以一一針對片段做修改。</li>
+  <li>先改命名！(閱讀程式碼，在理解程式的同時，把這些理解嵌入程式碼中，以防止將來忘記從中領悟到的東西。)</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">amount_for</span><span class="p">(</span><span class="n">rental</span><span class="p">)</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">case</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">price_code</span>
+  <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">REGULAR</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">2</span>
+  <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">*</span> <span class="mi">3</span>
+  <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">CHILDREN</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">3</span>
+  <span class="k">end</span>
+  <span class="n">result</span>
+<span class="k">end</span>
+</code></pre>
+
+<blockquote>
+  <p>小提示：傻瓜寫的程式碼只有電腦才能理解，優秀的工程師寫的程式碼可以讓其他人都能看懂。</p>
+</blockquote>
+
+<ul>
+  <li>觀察amount_for，其實它使用的是來自rental的內容，而非customer。
+    <ul>
+      <li>amount_for放錯class了，通常，一個方法應該放在它資料來源的對象中，因此要移回rental中。</li>
+      <li>為了適應新位置，需調整，此處要將參數刪掉，並給了個新名字。</li>
+    </ul>
+  </li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Rental</span>
+  <span class="k">def</span> <span class="nf">charge</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">case</span> <span class="n">movie</span><span class="p">.</span><span class="nf">price_code</span>
+    <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">REGULAR</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="mi">2</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">2</span>
+    <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">days_rented</span> <span class="o">*</span> <span class="mi">3</span>
+    <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">CHILDREN</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">3</span>
+    <span class="k">end</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>再把程式中所有引用舊方法的地方改成引用新方法。</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Customer</span>
+  <span class="k">def</span> <span class="nf">statement</span>
+    <span class="p">.</span><span class="nf">.</span><span class="o">.</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+      <span class="n">this_amount</span> <span class="o">=</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span>
+    <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+  <span class="nf">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>目前程式狀態：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Rental</th>
+      <th>Customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>price_code</td>
+      <td>days_rented</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>charge()</td>
+      <td>statement()</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>Rental.charge暫時先放下，先回頭看看Customer.statement</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">statement</span>
+  <span class="n">total_amount</span><span class="p">,</span> <span class="n">frequent_renter_points</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="s2">"Rental Record for </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+  <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+    <span class="n">this_amount</span> <span class="o">=</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span>
+
+    <span class="c1"># add frequent renter points</span>
+    <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># add bonus for a two day new release rental</span>
+    <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">price_code</span> <span class="o">==</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span> <span class="o">&amp;&amp;</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span>
+      <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">end</span>
+
+    <span class="c1">#show figures for this rental</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">title</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span> <span class="o">+</span> <span class="n">this_amount</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="n">total_amount</span> <span class="o">+=</span> <span class="n">this_amount</span>
+  <span class="k">end</span>
+  <span class="c1"># add footer lines</span>
+  <span class="n">result</span> <span class="o">+=</span> <span class="s2">"Amount owed is </span><span class="si">#{</span><span class="n">total_amount</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+  <span class="n">result</span> <span class="o">+=</span> <span class="s2">"You earned </span><span class="si">#{</span><span class="n">frequent_renter_points</span><span class="si">}</span><span class="s2"> frequent renter points"</span>
+  <span class="n">result</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>目前，statement方法中的this_amount變數變成多餘了，此時可以用Replace Temp with Query方法來去掉this_amount。</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">statement</span>
+  <span class="n">total_amount</span><span class="p">,</span> <span class="n">frequent_renter_points</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="s2">"Rental Record for </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+  <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+
+    <span class="c1"># add frequent renter points</span>
+    <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># add bonus for a two day new release rental</span>
+    <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">price_code</span> <span class="o">==</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span> <span class="o">&amp;&amp;</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span>
+      <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">end</span>
+
+    <span class="c1">#show figures for this rental #下面這兩行改變了～～</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">title</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span> <span class="o">+</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="n">total_amount</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span>
+  <span class="k">end</span>
+  <span class="c1"># add footer lines</span>
+  <span class="n">result</span> <span class="o">+=</span> <span class="s2">"Amount owed is </span><span class="si">#{</span><span class="n">total_amount</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+  <span class="n">result</span> <span class="o">+=</span> <span class="s2">"You earned </span><span class="si">#{</span><span class="n">frequent_renter_points</span><span class="si">}</span><span class="s2"> frequent renter points"</span>
+  <span class="n">result</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>接下來，處理計算點數規則的部分，想把此段切出去，下方為原本的位置：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">statement</span>
+  <span class="p">.</span><span class="nf">.</span><span class="o">.</span>
+  <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+
+    <span class="c1"># add frequent renter points</span>
+    <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># add bonus for a two day new release rental</span>
+    <span class="k">if</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">price_code</span> <span class="o">==</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span> <span class="o">&amp;&amp;</span> <span class="n">element</span><span class="p">.</span><span class="nf">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span>
+      <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">end</span>
+  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+  <span class="nf">end</span>
+  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+<span class="nf">end</span>
+</code></pre>
+
+<ul>
+  <li>一樣，先找區域變數：
+    <ul>
+      <li>element：可以被當作參數傳進來。</li>
+      <li>frequent_renter_points：已經在前面附值過，而且沒有讀取的動作，就不需要當參數傳，只需要寫加法動作即可。</li>
+    </ul>
+  </li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Customer</span>
+  <span class="k">def</span> <span class="nf">statement</span>
+    <span class="n">total_amount</span><span class="p">,</span> <span class="n">frequent_renter_points</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">"Rental Record for </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+
+      <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">frequent_renter_points</span> <span class="c1">#改在這裡！！</span>
+
+      <span class="c1">#show figures for this rental</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">title</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span> <span class="o">+</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+      <span class="n">total_amount</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span>
+    <span class="k">end</span>
+    <span class="c1"># add footer lines</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"Amount owed is </span><span class="si">#{</span><span class="n">total_amount</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"You earned </span><span class="si">#{</span><span class="n">frequent_renter_points</span><span class="si">}</span><span class="s2"> frequent renter points"</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Rental</span>
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span>
+    <span class="p">(</span><span class="n">movie</span><span class="p">.</span><span class="nf">price_code</span> <span class="o">==</span> <span class="no">Movie</span><span class="o">.</span><span class="no">NEW_RELEASE</span> <span class="o">&amp;&amp;</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">?</span> <span class="mi">2</span> <span class="p">:</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>目前程式狀態：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Rental</th>
+      <th>Customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>price_code</td>
+      <td>days_rented</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>charge()</td>
+      <td>statement()</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>frequent_renter_points()</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>現在要來移除區域變數
+    <ul>
+      <li>原因：區域變數只有在自己的方法裡才有用，因此很容易寫出很長很複雜的方法。</li>
+      <li>作法：把Customer類別中的total_amount, frequent_renter_points替換成相對應的查詢方式(Replace Temp with Query)。</li>
+    </ul>
+  </li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Customer</span>
+  <span class="k">def</span> <span class="nf">statement</span>
+    <span class="n">frequent_renter_points</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#先拿掉total_amount</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">"Rental Record for </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+
+      <span class="n">frequent_renter_points</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">frequent_renter_points</span>
+
+      <span class="c1">#show figures for this rental</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">title</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span> <span class="o">+</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="k">end</span>
+    <span class="c1"># add footer lines</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"Amount owed is </span><span class="si">#{</span><span class="n">total_charge</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span> <span class="c1">#這裡也改了！</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"You earned </span><span class="si">#{</span><span class="n">frequent_renter_points</span><span class="si">}</span><span class="s2"> frequent renter points"</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">total_charge</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span>
+    <span class="k">end</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>上面private中的total_charge方法還可再簡化(運用Collection Closure Method)</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">total_charge</span>
+  <span class="vi">@rentals</span><span class="p">.</span><span class="nf">inject</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">sum</span><span class="p">,</span> <span class="n">rental</span><span class="o">|</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">rental</span><span class="p">.</span><span class="nf">charge</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>接著對另一個區域變數frequent_renter_points進行相同的操作</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Customer</span>
+  <span class="k">def</span> <span class="nf">statement</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">"Rental Record for </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+      <span class="c1">#show figures for this rental</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">title</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span> <span class="o">+</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="k">end</span>
+    <span class="c1"># add footer lines</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"Amount owed is </span><span class="si">#{</span><span class="n">total_charge</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"You earned </span><span class="si">#{</span><span class="n">total_frequent_renter_points</span><span class="si">}</span><span class="s2"> frequent renter points"</span>
+     <span class="c1">#上面那行改了！</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">total_frequent_renter_points</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">inject</span><span class="p">(</span><span class="mi">0</span><span class="p">){</span> <span class="o">|</span><span class="n">sum</span><span class="p">,</span> <span class="n">rental</span><span class="o">|</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">rental</span><span class="p">.</span><span class="nf">frequent_renter_points</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>目前程式狀態：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Rental</th>
+      <th>Customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>price_code</td>
+      <td>days_rented</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>charge()</td>
+      <td>statement()</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>frequent_renter_points()</td>
+      <td>total_charge()</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>total_frequent_renter_points()</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>產生效能疑慮
+    <ul>
+      <li>此時很多人可會對效能產生疑慮(把區域變數切開來所做的修改)，但先把程式碼整理清楚比較重要，之後可以再通過Profiler處理效能問題！</li>
+      <li>而且方法切開後，如果其他部分需要一樣的內容，很容易就能使用。</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>接下來，暫時放下重構，加入html_statement方法</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Customer</span>
+  <span class="k">def</span> <span class="nf">html_statement</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">"&lt;h1&gt;Rentals for &lt;em&gt;</span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="s2">&lt;/em&gt;&lt;/h1&gt;&lt;p&gt;</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+      <span class="c1"># show figures for this rental</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">title</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">+</span> <span class="s2">"&lt;br&gt;</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="k">end</span>
+    <span class="c1">#add footer lines</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"&lt;p&gt;You owe &lt;em&gt;</span><span class="si">#{</span><span class="n">total_charge</span><span class="si">}</span><span class="s2">&lt;/em&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"On this rental you earned "</span> <span class="o">+</span>
+           <span class="s2">"&lt;em&gt;</span><span class="si">#{</span><span class="n">total_frequent_renter_points</span><span class="si">}</span><span class="s2">&lt;/em&gt; "</span> <span class="o">+</span>
+           <span class="s2">"frequent renter points&lt;/p&gt;"</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>製作這個新方法速度沒花太多時間，是因為共用了statement的方法</li>
+</ul>
+
+<h3 id="section-3">用多態替換價格代碼中的條件邏輯</h3>
+
+<ul>
+  <li>Rental.charge的方法中用到了case
+    <ul>
+      <li>case所操作的卻是movie的價錢，應該要把charge移到Movie類別中。</li>
+      <li>下方是原本的程式碼：</li>
+    </ul>
+  </li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Rental</span>
+  <span class="k">def</span> <span class="nf">charge</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">case</span> <span class="n">movie</span><span class="p">.</span><span class="nf">price_code</span>
+    <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">REGULAR</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="mi">2</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">2</span>
+    <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">days_rented</span> <span class="o">*</span> <span class="mi">3</span>
+    <span class="k">when</span> <span class="no">Movie</span><span class="o">::</span><span class="no">CHILDREN</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">3</span>
+    <span class="k">end</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>移到Movie後：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Rental</span>
+  <span class="k">def</span> <span class="nf">charge</span>
+    <span class="n">movie</span><span class="p">.</span><span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Movie</span>
+  <span class="k">def</span> <span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">case</span> <span class="n">price_code</span>
+    <span class="k">when</span> <span class="no">REGULAR</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="mi">2</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">2</span>
+    <span class="k">when</span> <span class="no">NEW_RELEASE</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">days_rented</span> <span class="o">*</span> <span class="mi">3</span>
+    <span class="k">when</span> <span class="no">CHILDREN</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">3</span>
+    <span class="k">end</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>為什麼要移到Movie然後傳入租期參數，而不是在Rental裡傳入影片類型參數呢？
+    <ul>
+      <li>因為客戶希望修改影片分類的方式，要把之後修改的連鎖反應減至最小。</li>
+    </ul>
+  </li>
+  <li>另外再把顧客點數計算一起移到Movie，下方為原本的：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Rental</span>
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span>
+    <span class="p">(</span><span class="n">movie</span><span class="p">.</span><span class="nf">price_code</span> <span class="o">==</span> <span class="no">Movie</span><span class="o">.</span><span class="no">NEW_RELEASE</span> <span class="o">&amp;&amp;</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">?</span> <span class="mi">2</span> <span class="p">:</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>移到Movie後：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Rental</span>
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span>
+    <span class="n">movie</span><span class="p">.</span><span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Movie</span>
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">price_code</span> <span class="o">==</span> <span class="no">NEW_RELEASE</span> <span class="o">&amp;&amp;</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">?</span> <span class="mi">2</span> <span class="p">:</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>目前程式狀態：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Rental</th>
+      <th>Customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>price_code</td>
+      <td>days_rented</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>charge(days_rented)</td>
+      <td>charge()</td>
+      <td>statement()</td>
+    </tr>
+    <tr>
+      <td>frequent_renter_points(days_rented)</td>
+      <td>frequent_renter_points()</td>
+      <td>total_charge()</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>total_frequent_renter_points()</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>html_statement()</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>最後…要來處理繼承！</strong></p>
+
+<ul>
+  <li>為了替換掉case語句，利用Replace Type Code with State/Strategy方式。
+    <ul>
+      <li>自定義一個price_code的setter方法(因為再往後要做好玩的事情)</li>
+      <li>下方是原本的：</li>
+    </ul>
+  </li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Movie</span>
+  <span class="nc">REGULAR</span>     <span class="o">=</span> <span class="mi">0</span>
+  <span class="no">NEW_RELEASE</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="no">CHILDREN</span>    <span class="o">=</span> <span class="mi">2</span>
+
+  <span class="kp">attr_reader</span>   <span class="ss">:title</span>
+  <span class="kp">attr_accessor</span> <span class="ss">:price_code</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">price_code</span><span class="p">)</span>
+    <span class="vi">@title</span><span class="p">,</span> <span class="vi">@price_code</span> <span class="o">=</span> <span class="n">title</span><span class="p">,</span> <span class="n">price_code</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>修改後</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Movie</span>
+  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+  <span class="nf">attr_reader</span> <span class="ss">:price_code</span> <span class="c1">#改成getter而已</span>
+
+  <span class="k">def</span> <span class="nf">price_code</span><span class="o">=</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c1">#自己定義了setter</span>
+    <span class="vi">@price_code</span> <span class="o">=</span> <span class="n">value</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">the_price_code</span><span class="p">)</span> <span class="c1">#這裡也有改</span>
+    <span class="vi">@title</span><span class="p">,</span> <span class="nb">self</span><span class="p">.</span><span class="nf">price_code</span> <span class="o">=</span> <span class="n">title</span><span class="p">,</span> <span class="n">the_price_code</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>接下來添加三個類別：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RegularPrice</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">NewReleasePrice</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">ChildrensPrice</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>繼續在剛剛自定義的price_code setter中做些好玩的事：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">price_code</span><span class="o">=</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="vi">@price_code</span> <span class="o">=</span> <span class="n">value</span>
+  <span class="vi">@price</span> <span class="o">=</span> <span class="k">case</span> <span class="n">price_code</span>
+    <span class="k">when</span> <span class="no">REGULAR</span>     <span class="p">:</span> <span class="no">RegularPrice</span><span class="p">.</span><span class="nf">new</span>
+    <span class="k">when</span> <span class="no">NEW_RELEASE</span> <span class="p">:</span> <span class="no">NewReleasePrice</span><span class="p">.</span><span class="nf">new</span>
+    <span class="k">when</span> <span class="no">CHILDRENS</span>   <span class="p">:</span> <span class="no">ChildrensPrice</span><span class="p">.</span><span class="nf">new</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>作者提到，上方所出現的case將會是重構完成後，唯一一處case語句！
+    <ul>
+      <li>接下來將其他有case的地方改掉，下方是原本的：</li>
+    </ul>
+  </li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Movie</span>
+  <span class="k">def</span> <span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">case</span> <span class="n">price_code</span>
+    <span class="k">when</span> <span class="no">REGULAR</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="mi">2</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">2</span>
+    <span class="k">when</span> <span class="no">NEW_RELEASE</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">days_rented</span> <span class="o">*</span> <span class="mi">3</span>
+    <span class="k">when</span> <span class="no">CHILDREN</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">3</span>
+    <span class="k">end</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>改成：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RegularPrice</span>
+  <span class="k">def</span> <span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">2</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">NewReleasePrice</span>
+  <span class="k">def</span> <span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="n">days_rented</span> <span class="o">*</span> <span class="mi">3</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">ChildrensPrice</span>
+  <span class="k">def</span> <span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">3</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Movie</span>
+  <span class="k">def</span> <span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="vi">@price</span><span class="p">.</span><span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>接下來輪到frequent_renter_points，下方為原本的：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Movie</span>
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">price_code</span> <span class="o">==</span> <span class="no">NEW_RELEASE</span> <span class="o">&amp;&amp;</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">?</span> <span class="mi">2</span> <span class="p">:</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>透過Extract Module：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">module</span> <span class="nn">DefaultPrice</span>
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">RegularPrice</span>
+  <span class="kp">include</span> <span class="no">DefaultPrice</span>
+  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+<span class="nf">end</span>
+
+<span class="k">class</span> <span class="nc">ChildrensPrice</span>
+  <span class="kp">include</span> <span class="no">DefaultPrice</span>
+  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+<span class="nf">end</span>
+
+<span class="k">class</span> <span class="nc">NewReleasePrice</span>
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">?</span> <span class="mi">2</span> <span class="p">:</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Movie</span>
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="vi">@price</span><span class="p">.</span><span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>最後一步，從price_code的setter方法移除case語句，原本要這樣：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="c1"># calling code</span>
+<span class="n">movie</span> <span class="o">=</span> <span class="no">Movie</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"模仿遊戲"</span><span class="p">,</span> <span class="no">Movie</span><span class="o">::</span><span class="no">NEW_RELEASE</span><span class="p">)</span>
+<span class="c1"># and later...</span>
+<span class="n">movie</span><span class="p">.</span><span class="nf">price_code</span> <span class="o">=</span> <span class="no">Movie</span><span class="o">::</span><span class="no">REGULAR</span>
+
+<span class="k">class</span> <span class="nc">Movie</span>
+  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+  <span class="nf">def</span> <span class="n">price_code</span><span class="o">=</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="vi">@price_code</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="vi">@price</span> <span class="o">=</span> <span class="k">case</span> <span class="n">price_code</span>
+      <span class="k">when</span> <span class="no">REGULAR</span>     <span class="p">:</span> <span class="no">RegularPrice</span><span class="p">.</span><span class="nf">new</span>
+      <span class="k">when</span> <span class="no">NEW_RELEASE</span> <span class="p">:</span> <span class="no">NewReleasePrice</span><span class="p">.</span><span class="nf">new</span>
+      <span class="k">when</span> <span class="no">CHILDRENS</span>   <span class="p">:</span> <span class="no">ChildrensPrice</span><span class="p">.</span><span class="nf">new</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>重構後：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="c1"># calling code</span>
+<span class="n">movie</span> <span class="o">=</span> <span class="no">Movie</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"模仿遊戲"</span><span class="p">,</span> <span class="no">NewReleasePrice</span><span class="p">.</span><span class="nf">new</span><span class="p">)</span>
+<span class="c1"># and later...</span>
+<span class="n">movie</span><span class="p">.</span><span class="nf">price</span> <span class="o">=</span> <span class="no">RegularPrice</span><span class="p">.</span><span class="nf">new</span>
+
+<span class="k">class</span> <span class="nc">Movie</span>
+  <span class="kp">attr_writer</span> <span class="ss">:price</span>
+<span class="k">end</span>
+</code></pre>
+
+<h2 id="section-4">大功告成</h2>
+
+<p>最後程式狀態：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Rental</th>
+      <th>Customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>title</td>
+      <td>days_rented</td>
+      <td>name</td>
+    </tr>
+    <tr>
+      <td>charge(days_rented)</td>
+      <td>charge(days_rented)</td>
+      <td>statement()</td>
+    </tr>
+    <tr>
+      <td>frequent_renter_points(days_rented)</td>
+      <td>frequent_renter_points</td>
+      <td>total_charge()</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>total_frequent_renter_points()</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>html_statement()</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>New Release Price</th>
+      <th>Regular Price</th>
+      <th>Childrens Price</th>
+      <th>Default Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>charge(days_rented)</td>
+      <td>charge(days_rented)</td>
+      <td>charge(days_rented)</td>
+      <td>frequent_renter_points(days_rented)</td>
+    </tr>
+    <tr>
+      <td>frequent_renter_points(days_rented)</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>protocol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>charge(days_rented)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>最終程式碼：</p>
+
+<p><strong>Movie</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Movie</span>
+  <span class="kp">attr_reader</span> <span class="ss">:title</span>
+  <span class="kp">attr_writer</span> <span class="ss">:price</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
+    <span class="vi">@title</span><span class="p">,</span> <span class="vi">@price</span> <span class="o">=</span> <span class="n">title</span><span class="p">,</span> <span class="n">price</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="vi">@price</span><span class="p">.</span><span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="vi">@price</span><span class="p">.</span><span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><strong>Rental</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Rental</span>
+  <span class="kp">attr_reader</span> <span class="ss">:movie</span><span class="p">,</span> <span class="ss">:days_rented</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span> <span class="n">days_rented</span><span class="p">)</span>
+    <span class="vi">@movie</span><span class="p">,</span> <span class="vi">@days_rented</span> <span class="o">=</span> <span class="n">movie</span><span class="p">,</span> <span class="n">days_rented</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">charge</span>
+    <span class="n">movie</span><span class="p">.</span><span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+  <span class="k">end</span>
+  
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span>
+    <span class="n">movie</span><span class="p">.</span><span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><strong>Customer</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Customer</span>
+  <span class="kp">attr_reader</span> <span class="ss">:name</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+    <span class="vi">@rentals</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">add_rental</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+    <span class="vi">@rentals</span> <span class="o">&lt;&lt;</span> <span class="n">arg</span>
+  <span class="k">end</span>
+  
+  <span class="k">def</span> <span class="nf">statement</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">"Rental Record for </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+      <span class="c1">#show figures for this rental</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">title</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span> <span class="o">+</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="k">end</span>
+    <span class="c1"># add footer lines</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"Amount owed is </span><span class="si">#{</span><span class="n">total_charge</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"You earned </span><span class="si">#{</span><span class="n">total_frequent_renter_points</span><span class="si">}</span><span class="s2"> frequent renter points"</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">html_statement</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">"&lt;h1&gt;Rentals for &lt;em&gt;</span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="s2">&lt;/em&gt;&lt;/h1&gt;&lt;p&gt;</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
+      <span class="c1"># show figures for this rental</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">element</span><span class="p">.</span><span class="nf">movie</span><span class="p">.</span><span class="nf">title</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="n">element</span><span class="p">.</span><span class="nf">charge</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">+</span> <span class="s2">"&lt;br&gt;</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="k">end</span>
+    <span class="c1">#add footer lines</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"&lt;p&gt;You owe &lt;em&gt;</span><span class="si">#{</span><span class="n">total_charge</span><span class="si">}</span><span class="s2">&lt;/em&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">"On this rental you earned "</span> <span class="o">+</span>
+           <span class="s2">"&lt;em&gt;</span><span class="si">#{</span><span class="n">total_frequent_renter_points</span><span class="si">}</span><span class="s2">&lt;/em&gt; "</span> <span class="o">+</span>
+           <span class="s2">"frequent renter points&lt;/p&gt;"</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">total_charge</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">inject</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">sum</span><span class="p">,</span> <span class="n">rental</span><span class="o">|</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">rental</span><span class="p">.</span><span class="nf">charge</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">total_frequent_renter_points</span>
+    <span class="vi">@rentals</span><span class="p">.</span><span class="nf">inject</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">sum</span><span class="p">,</span> <span class="n">rental</span><span class="o">|</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">rental</span><span class="p">.</span><span class="nf">frequent_renter_points</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><strong>Default Price</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">module</span> <span class="nn">DefaultPrice</span>
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><strong>Regular Price</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RegularPrice</span>
+  <span class="kp">include</span> <span class="no">DefaultPrice</span>
+
+  <span class="k">def</span> <span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">2</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><strong>Childrens Price</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ChildrensPrice</span>
+  <span class="kp">include</span> <span class="no">DefaultPrice</span>
+
+  <span class="k">def</span> <span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">days_rented</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">3</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><strong>New Release Price</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">NewReleasePrice</span>
+  <span class="k">def</span> <span class="nf">charge</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="n">days_rented</span> <span class="o">*</span> <span class="mi">3</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">frequent_renter_points</span><span class="p">(</span><span class="n">days_rented</span><span class="p">)</span>
+    <span class="n">days_rented</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">?</span> <span class="mi">2</span> <span class="p">:</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p><strong>最終程式碼的Test</strong></p>
+
+<ul>
+  <li>因為Movie.new要傳的參數改變了，所以測試也要修改一下：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'minitest/autorun'</span>
+<span class="nb">require_relative</span> <span class="s1">'ch1'</span>
+
+<span class="n">describe</span> <span class="no">Customer</span><span class="p">,</span> <span class="s2">"#statement"</span> <span class="k">do</span>
+  <span class="n">it</span> <span class="s2">"generate statement"</span> <span class="k">do</span>
+    <span class="c1"># movie = Movie.new("Star War", Movie::NEW_RELEASE) # 這行是原本的</span>
+    <span class="n">movie</span> <span class="o">=</span> <span class="no">Movie</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Star War"</span><span class="p">,</span> <span class="no">NewReleasePrice</span><span class="p">.</span><span class="nf">new</span><span class="p">)</span> <span class="c1"># 改成這行</span>
+    <span class="n">rental</span> <span class="o">=</span> <span class="no">Rental</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">customer</span> <span class="o">=</span> <span class="no">Customer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"John Doe"</span><span class="p">)</span>
+
+    <span class="n">customer</span><span class="p">.</span><span class="nf">add_rental</span><span class="p">(</span><span class="n">rental</span><span class="p">)</span>
+    <span class="n">customer</span><span class="p">.</span><span class="nf">statement</span><span class="p">.</span><span class="nf">must_equal</span> <span class="o">&lt;&lt;-</span><span class="no">EOS</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/^\s+/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\n$/</span><span class="p">,</span><span class="s1">''</span><span class="p">)</span><span class="sh">
+      Rental Record for John Doe
+      Star War</span><span class="se">\t</span><span class="sh">9
+      Amount owed is 9
+      You earned 2 frequent renter points
+</span><span class="no">    EOS</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/2015/02/25/refactoring-ruby/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../../../../2016/10/04/my-ruby-life/"><div class="articleContent-paging-item-title single-dot">我的Ruby學習之路</div><div class="articleContent-paging-item-date">2016．Oct．04</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../../../../2014/09/29/a-ruby-week-in-japan-1/"><div class="articleContent-paging-item-title single-dot">A ruby week in Japan</div><div class="articleContent-paging-item-date">2014．Sep．29</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>

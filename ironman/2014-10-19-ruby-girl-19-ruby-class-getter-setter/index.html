@@ -1,0 +1,161 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>Ruby女孩(19)：類別中的getter與setter</title><meta content="Ruby女孩(19)：類別中的getter與setter" name="title" /><meta content="Ruby女孩(19)：類別中的getter與setter" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/ironman/2014-10-19-ruby-girl-19-ruby-class-getter-setter/" name="url" /><meta content="http://blog.annideas.com/ironman/2014-10-19-ruby-girl-19-ruby-class-getter-setter/" property="og:url" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" name="description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" property="og:description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-19-ruby-girl-19-ruby-class-getter-setter ironman_2014-10-19-ruby-girl-19-ruby-class-getter-setter_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(19)：類別中的getter與setter</div><div class="articleContent-date">2014．Oct．19</div><div class="articleContent-article tp-in-content"><p>昨天我們開頭引入了書中的一段話，其中提到了<strong>取得器(getter)</strong>、<strong>設定器(setter)</strong>、<strong>存取器方法(accessor method)</strong>等等，今天會來把這個部分的觀念給弄清楚些！</p>
+
+<p>還記得昨天的例子嗎？我們做了一個名字為RubyGirl的類別，類別中我們給了一個初始化的方法，與一個年齡的方法，如下：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  
+    <span class="vi">@ruby_skill</span> <span class="o">=</span> <span class="n">ruby_skill</span>  
+  <span class="k">end</span>  
+  
+  <span class="k">def</span> <span class="nf">age</span>  
+    <span class="vi">@a</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>現在對這個類別我們可以已經可以創出一個實例，而且有初始值<code>@rubyskill=0</code>：</p>
+
+<pre class="highlight ruby"><code><span class="n">annie</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007fe5623936c8 @ruby_skill=0&gt;  </span>
+</code></pre>
+
+<p>而且也有一個年齡的方法：</p>
+
+<pre class="highlight ruby"><code><span class="n">annie</span><span class="p">.</span><span class="nf">age</span>  
+<span class="o">=&gt;</span> <span class="kp">nil</span>  
+</code></pre>
+
+<p>但是當我們想要改變年齡的值時，它會噴<code>NoMethodError</code>的錯，例如：</p>
+
+<pre class="highlight ruby"><code><span class="n">annie</span><span class="p">.</span><span class="nf">age</span> <span class="o">=</span> <span class="mi">25</span>  
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`age=' for #&lt;RubyGirl:0x007fe5623936c8 @ruby_skill=0, @a=nil&gt;  
+</span></code></pre>
+
+<p>這時候，我們就要來說說<strong>getter</strong>與<strong>setter</strong>了！</p>
+
+<p>目前我們在類別中所定義的年齡，只是<code>@a</code>的getter方法，如果我們需要<code>@a</code>具有可變性，那我們就得再加上一個setter的方法，如下說明：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="c1"># @a的getter方法  </span>
+  <span class="k">def</span> <span class="nf">age</span>  
+    <span class="vi">@a</span>  
+  <span class="k">end</span>  
+  <span class="c1"># @a的setter方法  </span>
+  <span class="k">def</span> <span class="nf">age</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  
+    <span class="vi">@a</span> <span class="o">=</span> <span class="n">x</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>有了setter方法後，我們就可以讓年齡具有改變性：</p>
+
+<pre class="highlight ruby"><code><span class="n">annie</span><span class="p">.</span><span class="nf">age</span>  
+<span class="o">=&gt;</span> <span class="kp">nil</span>  
+<span class="c1">#能得到初始值，是因為我們有定義一個age方法。  </span>
+  
+<span class="n">annie</span><span class="p">.</span><span class="nf">age</span><span class="o">=</span><span class="mi">20</span>  
+<span class="o">=&gt;</span> <span class="mi">20</span>  
+<span class="c1">#能改變age，是因為我們有定義一個age=方法。  </span>
+</code></pre>
+
+<p>由於這一對getter和setter的方法極為常見，為了更方便使用，Ruby提供了一個自動化的做法：<strong>Module定義了attr_reader與attr_accessor這兩個方法</strong>，由於Class是Module的子類別，所以也可以使用這兩個attr_開頭的方法，那這兩個方法是在做什麼呢？</p>
+
+<ul>
+  <li>attr_reader會替具有相同名稱的實體變數建立一般的getter方法</li>
+  <li>attr_accessor會建立getter與setter方法</li>
+  <li>(較不常用的attr_writer會建立setter方法)</li>
+</ul>
+
+<p>例如上面年齡的方法我們可以改寫成：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>是的就這樣，就一行，已經完成了剛剛上面的兩個getter與setter方法，age可以用symbol也可以用string的方式寫。此時，我們可以試著新增一個物件：</p>
+
+<pre class="highlight ruby"><code><span class="n">linda</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007fcae211e928&gt;  </span>
+  
+<span class="n">linda</span><span class="p">.</span><span class="nf">age</span>  
+<span class="o">=&gt;</span> <span class="kp">nil</span>  
+  
+<span class="c1">#因為沒有給初始值，所以出現nil，但是可以getter的！(如果不能getter會說沒有這個方法！)  </span>
+  
+<span class="n">linda</span><span class="p">.</span><span class="nf">age</span><span class="o">=</span><span class="mi">20</span>  
+<span class="o">=&gt;</span> <span class="mi">20</span>  
+  
+<span class="c1">#也成功改變了age的值，可以setter才可以做到這件事。  </span>
+</code></pre>
+
+<p>當然如果你不想被改變這個值的話，你可以用attr_reader：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="kp">attr_reader</span> <span class="ss">:favorite</span>  
+  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+<span class="k">end</span>  
+  
+<span class="n">linda</span><span class="p">.</span><span class="nf">favorite</span> <span class="o">=</span> <span class="s2">"ruby"</span>  
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`favorite=' for #&lt;RubyGirl:0x007fcae211e928 @age=20&gt;  
+</span></code></pre>
+
+<p>注意到了嗎？當你想要把linda物件的favorite方法改成"ruby"時，它不讓你改就是因為沒有favorite=這個方法，也就是沒有setter的方法！</p>
+
+<p>好的，我們來做個統整吧！把昨天跟今天的程式碼整理成：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  
+    <span class="vi">@ruby_skill</span> <span class="o">=</span> <span class="n">ruby_skill</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+  
+<span class="n">ironman</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007fcae21472b0 @ruby_skill=10&gt;  </span>
+  
+<span class="n">ironman</span><span class="p">.</span><span class="nf">age</span>  
+<span class="o">=&gt;</span> <span class="kp">nil</span>  
+  
+<span class="n">ironman</span><span class="p">.</span><span class="nf">age</span> <span class="o">=</span> <span class="mi">25</span>  
+<span class="o">=&gt;</span> <span class="mi">25</span>  
+</code></pre>
+
+<p>總而言之，讀取和設定變數是分開的兩個方法，差別只在於有沒有等號，兩個方法都要使用的話，則可以簡寫成<code>attr_accessor</code>這個方法。</p>
+
+<hr />
+
+<p>19天，</p>
+
+<blockquote>
+  <p>“Replace fear of the unknown with curiosity.”</p>
+</blockquote>
+
+<p>面對不知道的領域，一定要保持好奇心才行，對Ruby 的好奇心從第一天到現在都還在，好險好險….</p>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/ironman/2014-10-19-ruby-girl-19-ruby-class-getter-setter/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！</div><div class="articleContent-paging-item-date">2014．Oct．20</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-18-ruby-girl-18-ruby-class-diy/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(18)：自己的類別自己做啦！</div><div class="articleContent-paging-item-date">2014．Oct．18</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>Ruby女孩(22)：公用、受保護、私用方法大亂鬥</title><meta content="Ruby女孩(22)：公用、受保護、私用方法大亂鬥" name="title" /><meta content="Ruby女孩(22)：公用、受保護、私用方法大亂鬥" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/ironman/2014-10-22-ruby-girl-22-ruby-public-protected-private-methods/" name="url" /><meta content="http://blog.annideas.com/ironman/2014-10-22-ruby-girl-22-ruby-public-protected-private-methods/" property="og:url" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" name="description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" property="og:description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-22-ruby-girl-22-ruby-public-protected-private-methods ironman_2014-10-22-ruby-girl-22-ruby-public-protected-private-methods_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(22)：公用、受保護、私用方法大亂鬥</div><div class="articleContent-date">2014．Oct．22</div><div class="articleContent-article tp-in-content"><p>今天來談談方法的可見性：<strong>公用(public)</strong>、<strong>受保護(protected)</strong>、<strong>私用(private)</strong>。</p>
+
+<p>我們先來看看這三種不同的方法都寫在什麼位置：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ClassName</span>  
+  <span class="c1">#公用(public)的方法都在這裡！  </span>
+  <span class="k">def</span> <span class="nf">method_1</span>  
+  <span class="k">end</span>  
+    
+  <span class="c1">#下面是受保護(protected)的方法  </span>
+  
+  <span class="kp">protected</span>  
+  
+  <span class="c1">#受保護(protected)的方法都要放在這裡！  </span>
+  <span class="k">def</span> <span class="nf">method_2</span>  
+  <span class="k">end</span>  
+  
+  <span class="c1">#下面是私用(private)的方法  </span>
+  
+  <span class="kp">private</span>  
+  
+  <span class="c1">#私用(private)的方法都要放在這裡！  </span>
+  <span class="k">def</span> <span class="nf">method_3</span>  
+  <span class="k">end</span>  
+    
+<span class="k">end</span>  
+</code></pre>
+
+<p>也可以這麼寫：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ClassName</span>  
+  <span class="k">def</span> <span class="nf">method_1</span>  
+  <span class="k">end</span>  
+  <span class="k">def</span> <span class="nf">method_2</span>  
+  <span class="k">end</span>  
+  <span class="k">def</span> <span class="nf">method_3</span>  
+  <span class="k">end</span>  
+  <span class="kp">protected</span> <span class="ss">:method_2</span>  
+  <span class="kp">private</span> <span class="ss">:method_3</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>兩個範例都可以看得出，<code>method_1</code>是public的方法，<code>method_2</code>是protected的方法而<code>method_3</code>則是private的方法，那這些方法的作用跟規定是什麼呢？</p>
+
+<h2 id="public">公用(public)方法</h2>
+
+<ol>
+  <li>沒有特別說明，方法的預設都是public的！</li>
+  <li>基本上第一點是正確的，但有一個例外，initialize方法，會被自動宣告成private的，我們可以來證明看看：</li>
+</ol>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Test</span>  
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">test</span><span class="o">=</span><span class="mi">5566</span><span class="p">)</span>  
+    <span class="vi">@test</span> <span class="o">=</span> <span class="nb">test</span>  
+  <span class="k">end</span>  
+  <span class="k">def</span> <span class="nf">greeting</span>  
+    <span class="nb">puts</span> <span class="s2">"Hi Hi"</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+  
+<span class="n">yo</span> <span class="o">=</span> <span class="no">Test</span><span class="p">.</span><span class="nf">new</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;Test:0x007f852c890900 @test=5566&gt;  </span>
+  
+<span class="n">yo</span><span class="p">.</span><span class="nf">greeting</span>  
+<span class="o">=&gt;</span> <span class="s2">"Hi Hi"</span>  
+  
+<span class="n">yo</span><span class="p">.</span><span class="nf">initialize</span>  
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">private</span> <span class="nb">method</span> <span class="sb">`initialize' called for #&lt;Test:0x007f852c890900 @test=5566&gt;  
+</span></code></pre>
+
+<p>噴錯的訊息很明顯指出initialize是private method，所以不可以像一般public方法直接被實體物件調用。</p>
+
+<ol>
+  <li>基本上前面都是對的，但還有一個例外XD，就是當一個方法被定義在類別之外，它會直接被宣告成Object的私用實體方法，我們來做個實驗看看：</li>
+</ol>
+
+<p><img alt="ruby公用方法的特例" src="http://ithelp.ithome.com.tw/upload/images/20141022/20141022191539544791dbc4244_resize_600.png" /></p>
+
+<p>上面我們定義了一個方法為<code>i_love_ruby</code>，這個方法沒有被某個自定的類別給封裝起來，我們利用<code>Object.private_instance_methods</code>找到了所有屬於Object的私用實體方法，其中也包含了我們自己幫他新定義的<code>i_love_ruby</code>方法。</p>
+
+<h2 id="private">私用(private)方法</h2>
+
+<ol>
+  <li>private方法僅供該類別內部使用，它只能讓該類別(或它的子類別)中的實體方法所呼叫。</li>
+  <li>private方法被調用時會自動在self上進行，無法用手動的方式在某物件上進行，例如：</li>
+</ol>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="k">def</span> <span class="nf">say_hello</span>  
+    <span class="nb">puts</span> <span class="nb">self</span><span class="p">.</span><span class="nf">my_age</span>  
+  <span class="k">end</span>
+
+  <span class="kp">private</span>  
+  <span class="k">def</span> <span class="nf">my_age</span>  
+    <span class="s2">"Hi, I'm 18 years old!"</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>請注意！上方程式碼有錯誤之處！我們把<code>my_age</code>方法定義成private的方法，所以這個方法可以照上述第一點，被類別內部使用。因此可以看到<code>say_hello</code>的方法中，我們有呼叫到<code>my_age</code>，但這寫法有誤，<code>my_age</code>會自動在self上進行，因此前面<strong>不需要再加上self.</strong>，下方程式碼才是正確的：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="k">def</span> <span class="nf">say_hello</span>  
+    <span class="nb">puts</span> <span class="n">my_age</span>  
+  <span class="k">end</span>  
+  <span class="kp">private</span>  
+  <span class="k">def</span> <span class="nf">my_age</span>  
+    <span class="s2">"Hi, I'm 18 years old!"</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+  
+<span class="n">annie</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007ff3b233df30&gt;  </span>
+  
+<span class="n">annie</span><span class="p">.</span><span class="nf">my_age</span>  
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">private</span> <span class="nb">method</span> <span class="sb">`my_age' called for #&lt;RubyGirl:0x007ff3b233df30&gt;  
+  
+annie.say_hello  
+=&gt; "Hi, I'm 18 years old!"  
+</span></code></pre>
+
+<ol>
+  <li>統整第二點的規則，如果method是一個private方法，那只能直接用method這種方式來呼叫它，不能用oooo.method或self.method來呼叫它。[註: oooo為物件名]</li>
+</ol>
+
+<h2 id="protected">受保護(protected)方法</h2>
+
+<ol>
+  <li>與private方法相似，都只能被用在類別或子類別的實體方法中。</li>
+  <li>跟private不同之處，在於protected可以用oooo.method或self.method來呼叫它。[註: oooo為物件名]</li>
+</ol>
+
+<h2 id="section">三種方法大亂鬥</h2>
+
+<p>好的，我們最後用一個例子來統整這三個方法：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="k">def</span> <span class="nf">greeting</span>  
+    <span class="s2">"Hi, I'm </span><span class="si">#{</span><span class="nb">self</span><span class="si">}</span><span class="s2">"</span>  
+  <span class="k">end</span>  
+  
+  <span class="k">def</span> <span class="nf">say_my_email</span>  
+    <span class="s2">"This is my email: </span><span class="si">#{</span><span class="nb">self</span><span class="p">.</span><span class="nf">email</span><span class="si">}</span><span class="s2">"</span>  
+  <span class="k">end</span>  
+  
+  <span class="k">def</span> <span class="nf">say_my_age</span>  
+    <span class="s2">"This is my age: </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2">"</span>  
+  <span class="k">end</span>  
+  
+  <span class="kp">protected</span>  
+  
+  <span class="k">def</span> <span class="nf">email</span>  
+    <span class="s2">"rubygirl@ruby.me"</span>  
+  <span class="k">end</span>  
+  
+  <span class="kp">private</span>  
+  
+  <span class="k">def</span> <span class="nf">age</span>  
+    <span class="mi">18</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+  
+<span class="n">annie</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007fe039a06150&gt;  </span>
+  
+<span class="n">annie</span><span class="p">.</span><span class="nf">greeting</span>  
+<span class="o">=&gt;</span> <span class="s2">"Hi, I'm #&lt;RubyGirl:0x007fe039a06150&gt;"</span>  
+<span class="c1">#greeting屬於public方法，可供該類別的實體物件調用。  </span>
+  
+<span class="n">annie</span><span class="p">.</span><span class="nf">email</span>  
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">protected</span> <span class="nb">method</span> <span class="sb">`email' called for #&lt;RubyGirl:0x007fe039a06150&gt;  
+#email屬於protected方法，只能在類別裡面供實體方法調用。  
+  
+annie.age  
+NoMethodError: private method `</span><span class="n">age</span><span class="err">'</span> <span class="n">called</span> <span class="k">for</span> <span class="c1">#&lt;RubyGirl:0x007fe039a06150&gt;  </span>
+<span class="c1">#age屬於private方法，只能在類別裡面供實體方法調用。  </span>
+  
+<span class="n">annie</span><span class="p">.</span><span class="nf">say_my_email</span>  
+<span class="o">=&gt;</span> <span class="s2">"This is my email: rubygirl@ruby.me"</span>  
+<span class="c1">#注意最上面的方法定義中是寫self.email，這裡也可以改成email，protected方法比較彈性。  </span>
+  
+<span class="n">annie</span><span class="p">.</span><span class="nf">say_my_age</span>  
+<span class="o">=&gt;</span> <span class="s2">"This is my age: 18"</span>  
+<span class="c1">#注意上面的方法定義中是寫age，這裡千萬不能加上self.，private方法不能加上self.。  </span>
+</code></pre>
+
+<hr />
+
+<p>22天了，今天的主題也有點容易搞混呢，希望大家看得不會霧煞煞，有哪裡有問題請一定要跟我說，乾蝦！</p>
+
+<blockquote>
+  <p>The wisest mind has something yet to learn.</p>
+</blockquote>
+
+<p>想學的東西還有好多，只有30天根本不夠，看到有位前輩明明已經達成30天鐵人賽，卻還繼續寫，真的非常佩服啊！</p>
+
+<p>延伸閱讀：<a href="http://blog.eddie.com.tw/2011/07/26/public-protected-and-private-method-in-ruby/">Public, Protected and Private Method in Ruby-高見龍</a> ，這篇文章很受用，能理解如何在子類別中調用父類別的protected與private方法喔！</p>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/ironman/2014-10-22-ruby-girl-22-ruby-public-protected-private-methods/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-23-ruby-girl-23-ruby-inherit/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)</div><div class="articleContent-paging-item-date">2014．Oct．23</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-21-ruby-girl-21-ruby-instance-and-class-variables/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(21)：來聽聽類別變數與類別實體變數的自白(?)</div><div class="articleContent-paging-item-date">2014．Oct．21</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！</title><meta content="Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！" name="title" /><meta content="Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/ironman/2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/" name="url" /><meta content="http://blog.annideas.com/ironman/2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/" property="og:url" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" name="description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" property="og:description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-20-ruby-girl-20-ruby-instance-and-class-methods ironman_2014-10-20-ruby-girl-20-ruby-instance-and-class-methods_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！</div><div class="articleContent-date">2014．Oct．20</div><div class="articleContent-article tp-in-content"><p>前兩天我們所示範的都是<strong>實體方法</strong>，你得真的<code>.new</code>出一個實體物件之後，才能使用的實體方法。今天我們來認識<strong>類別方法</strong>，類別方法顧名思義是給類別本身所使用的方法，它不需要製造出實體物件就可以使用，來看看以下例子：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  
+    <span class="vi">@ruby_skill</span> <span class="o">=</span> <span class="n">ruby_skill</span>  
+  <span class="k">end</span>  
+  
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  
+    <span class="nb">puts</span> <span class="s2">"每一個RubyGirl都有 </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> 個project."</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>比起昨天的程式碼，有沒有注意到多了一個名為self.project的方法，這個方法名稱很特別，前面加上了<code>self</code>(也可以把self改成RubyGirl，功能相同)，像這樣在名稱前面上加上<code>self</code>或<code>類別名稱</code>的方法，都屬於類別方法，那類別方法怎麼調用呢？我們看看以下範例：</p>
+
+<pre class="highlight ruby"><code><span class="no">RubyGirl</span><span class="p">.</span><span class="nf">age</span>  
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`age' for RubyGirl:Class  
+  
+RubyGirl.project  
+=&gt; "每一個RubyGirl都有 1 個project."  
+</span></code></pre>
+
+<p>你可以注意到<code>.age</code>這個方法因為屬於實體方法，他必須要<code>.new</code>出一個實體物件後才能使用。但是<code>.project</code>是可以直接被類別名稱所使用(不需要製作出實體物件)！</p>
+
+<pre class="highlight ruby"><code><span class="n">annie</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007fefc94a26d8 @ruby_skill=0&gt;  </span>
+  
+<span class="n">annie</span><span class="p">.</span><span class="nf">project</span>  
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`project' for #&lt;RubyGirl:0x007fefc94a26d8 @ruby_skill=0&gt;  
+</span></code></pre>
+
+<p>但是當你實際<code>.new</code>出一個屬於RubyGirl的實體物件annie後，這個實體物件只能調用實體方法，他再調用<code>.project</code>方法就會噴錯，由此可知，<strong>實體物件是無法使用類別方法的</strong>！</p>
+
+<p>由於上面的寫法每定義一個類別方法都需要在方法名稱前加上<code>self</code>，可能會讓程式碼不夠明確(書中所述)，因此書中提到，有另一種寫法很符合<strong>D.R.Y(Don't Repeat Yourself)原則</strong>：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  
+  <span class="c1">#實體方法放這裡  </span>
+  
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>  
+  
+    <span class="c1">#類別方法放這裡  </span>
+  
+  <span class="k">end</span>  
+  
+<span class="k">end</span>  
+</code></pre>
+
+<p>所以我們可以把剛剛的程式碼改寫成：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+    
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  
+    <span class="vi">@ruby_skill</span> <span class="o">=</span> <span class="n">ruby_skill</span>  
+  <span class="k">end</span>  
+  
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>  
+    <span class="k">def</span> <span class="nf">project</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  
+      <span class="nb">puts</span> <span class="s2">"每一個RubyGirl都有 </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> 個project."</span>  
+    <span class="k">end</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>有類別方法當然也會有類別變數，類別變數的寫法我們曾經在<a href="../2014-10-04-ruby-girl-4-ruby-intro/">Ruby女孩(4)</a>時有提過，另外也有<strong>類別實體變數</strong>，明天再一次介紹吧。一次搞懂一件事，今天的重點就是要分清楚實體方法跟類別方法的差異，你也了解了嗎XD?</p>
+
+<hr />
+
+<p>20天！加油加油還有三分之一XD</p>
+
+<blockquote>
+  <p>Today I will do what others won't, so tomorrow I can do what others can't.</p>
+</blockquote>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/ironman/2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-21-ruby-girl-21-ruby-instance-and-class-variables/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(21)：來聽聽類別變數與類別實體變數的自白(?)</div><div class="articleContent-paging-item-date">2014．Oct．21</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-19-ruby-girl-19-ruby-class-getter-setter/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(19)：類別中的getter與setter</div><div class="articleContent-paging-item-date">2014．Oct．19</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>

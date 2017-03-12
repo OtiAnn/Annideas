@@ -1,0 +1,85 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>幽靈-Rails的駭客填字遊戲</title><meta content="幽靈-Rails的駭客填字遊戲" name="title" /><meta content="幽靈-Rails的駭客填字遊戲" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/2014/04/16/phanton-hacking-crossword/" name="url" /><meta content="http://blog.annideas.com/2014/04/16/phanton-hacking-crossword/" property="og:url" /><meta content="我是Annie Chen，這篇文章是說明在實作Rails 專案時，可能會遇到的XSS 或SQL Injection 攻擊。" name="description" /><meta content="我是Annie Chen，這篇文章是說明在實作Rails 專案時，可能會遇到的XSS 或SQL Injection 攻擊。" property="og:description" /><meta content="我是Annie Chen，這篇文章是說明在實作Rails 專案時，可能會遇到的XSS 或SQL Injection 攻擊。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="x2014 x2014_04 x2014_04_16 x2014_04_16_phanton-hacking-crossword x2014_04_16_phanton-hacking-crossword_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/categories/開發/"><span class="dev">開 發</span></a></div><div class="articleContent-title">幽靈-Rails的駭客填字遊戲</div><div class="articleContent-date">2014．Apr．16</div><div class="articleContent-article tp-in-content"><p><strong>小心，幽靈就在你身邊！資安問題不・可・不・防！</strong>這篇提到了 XSS 攻擊，在我舊部落格的回應中也有大大說明 XSS 與 SQL Injection 的差別！<a href="https://disqus.com/home/discussion/otiannie5/rails_girls004_wake_up_wake_up_28/">(舊部落格的回應傳送門)</a></p>
+
+<p>大概是ㄧ年多前，好朋友跟我介紹了《幽靈》這部韓劇，我很少看韓劇，因為對於韓劇內容還停留在婆媳問題、絕症、窮酸女與高富帥的愛情故事…Orz，但好朋友在跟我介紹時說，這部完全沒有任何愛情故事、沒有時光穿梭，而是以網路犯罪為主軸所展開的一部推理劇，她說我一定會喜歡！所以我就看了！雖然肥皂劇一定都會加油添醋，但看了之後還真是大開眼界！至於為什麼叫做幽靈，不是因為劇中有鬼，而是因為網路犯罪是藏在科技的背後，讓人神不知鬼不覺地就達到了犯罪目的，下方為<a href="http://zh.wikipedia.org/wiki/%E5%B9%BD%E9%9D%88_(%E9%9F%93%E5%9C%8B%E9%9B%BB%E8%A6%96%E5%8A%87)">《幽靈》維基 </a>介紹：</p>
+
+<blockquote>
+  <p>講述在頂級電腦背後隱藏的虛擬搜查隊打擊網路犯罪的過程之中，揭發螢幕背後恐怖的一面和被掩蓋的事實，無時無刻在使用的twitter、blog 、電子郵件，不經任何考慮隨便的一下點擊，是如何適得其反甚至奪去某些人的性命。</p>
+</blockquote>
+
+<p>停在這裡，想要欣賞駭客攻擊攻防戰的朋友，有空可以去看看這部韓劇哦！這篇文章當然不是在講《幽靈》的觀後心得，而是我在參加<a href="http://ltrt.kktix.cc/">LTRT</a>學習RoR 的過程中，從教練所教的內容中了解的資安問題！</p>
+
+<p>※ LTRT：Rails Girls 在為期兩天的工作坊活動過後，會定期舉辦<a href="http://ltrt.kktix.cc/">Let's Try Rails Tuesday (LTRT)</a>，LTRT 是Rails Girls 活動的後續版本，可以讓學員們繼續學習Rails，也有教練在一旁指導。</p>
+
+<h2 id="section">駭客的填字遊戲</h2>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">youtube</span> <span class="p">(</span><span class="n">aaaaa</span><span class="p">)</span>
+  <span class="sx">%Q(&lt;iframe width="420" height="315" src="//www.youtube.com/embed/</span><span class="si">#{</span><span class="n">aaaaa</span><span class="si">}</span><span class="sx">" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;)</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>上面利用helper ，在網頁中加入一個Youtube 影片嵌入方式，看起來非常正常，如果今天提供給使用者一個form ，讓他可以輸入想看的影片編碼，他只要更改上面<code>#{aaaaa}</code>的內容即可，例如：
+輸入<code>_o0oeyCtoFA</code>，使得iframe 的內容直接變成：</p>
+
+<pre class="highlight html"><code><span class="nt">&lt;iframe</span> <span class="na">width=</span><span class="s">"420"</span> <span class="na">height=</span><span class="s">"315"</span> <span class="na">src=</span><span class="s">"//www.youtube.com/embed/_o0oeyCtoFA"</span> <span class="na">frameborder=</span><span class="s">"0"</span> <span class="na">allowfullscreen</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+</code></pre>
+
+<p>以上屬於正常的使用者，按照規定，輸入符合要求的內容，就能正常在網頁中看到所嵌入的影片，But！教練模仿駭客，玩填字遊戲，他這麼玩：
+輸入<code>_o0oeyCtoFA"&gt;&lt;/iframe&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;iframe width="420</code>，使得iframe 內容變成：</p>
+
+<pre class="highlight html"><code><span class="nt">&lt;iframe</span> <span class="na">width=</span><span class="s">"420"</span> <span class="na">height=</span><span class="s">"315"</span> <span class="na">src=</span><span class="s">"//www.youtube.com/embed/_o0oeyCtoFA"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/iframe&gt;</span>
+  <span class="nt">&lt;script&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;iframe</span> <span class="na">width=</span><span class="s">"420"</span> <span class="na">frameborder=</span><span class="s">"0"</span> <span class="na">allowfullscreen</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+</code></pre>
+
+<p>Cooooooooool！加入了<code>&lt;iframe&gt;&lt;/iframe&gt;</code>標籤頭尾，騙程式<code>&lt;iframe&gt;</code>已經完成，並在中間插入了一個<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>，讓程式正常讀取教練(假駭客)所鍵入的其他程式內容，這個程式執行的結果是，影片能正常播放，但是會另外跳出javascript 的視窗！</p>
+
+<p>如果今天真駭客輸入的是其他惡意程式，暗地進行，那就會如幽靈一般，在神不知鬼不覺的情況下，被竊取資料或其他惡意破壞了！</p>
+
+<p>上方屬於「XSS」攻擊手法，有另外一個更恐怖的<a href="http://zh.wikipedia.org/wiki/SQL%E8%B3%87%E6%96%99%E9%9A%B1%E7%A2%BC%E6%94%BB%E6%93%8A">SQL Injection(SQL資料隱碼攻擊)</a>，SQL Injection 顧名思義就是會調整SQL 語句，直接攻擊資料庫，企圖竊取使用者資料。</p>
+
+<p>維基百科中以一個簡單的例子來說明，現在有會員功能的網站幾乎都設有輸入帳號與密碼的驗證，例如：</p>
+
+<pre class="highlight shell"><code>strSQL <span class="o">=</span> <span class="s2">"SELECT * FROM users WHERE (name = '"</span> + userName + <span class="s2">"') and (pw = '"</span>+ passWord +<span class="s2">"');"</span>
+</code></pre>
+
+<p>駭客只要在 userName 填入：<code>1' OR '1'='1</code>；在passWord填入：<code>1' OR '1'='1</code>，
+此段程式碼會變成：</p>
+
+<pre class="highlight shell"><code>strSQL <span class="o">=</span> <span class="s2">"SELECT * FROM users WHERE (name = '1' OR '1'='1') and (pw = '1' OR '1'='1');"</span>
+</code></pre>
+
+<p>程式會正常執行，駭客可以順利登入網站，因為<code>name = '1' OR '1'='1'</code>return的值是<code>true</code>，<code>pw = '1' OR '1'='1'</code>return的值也是<code>true</code>，Amazing！！！</p>
+
+<hr />
+
+<p>當然，為了不要被駭客輕易登入，程式可以設定一些過濾機制，例如不能輸入<code>'</code>或<code>"</code>，或規定輸入字元的長度等等，這個就等我以後學得更熟再好好的筆記下來了！</p>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/2014/04/16/phanton-hacking-crossword/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../../../05/05/udemy-online-course/"><div class="articleContent-paging-item-title single-dot">Udemy課程-用Rails打造部落格</div><div class="articleContent-paging-item-date">2014．May．05</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../../11/online-resource-of-learning-experience/"><div class="articleContent-paging-item-title single-dot">Ruby/Rails線上學習資源</div><div class="articleContent-paging-item-date">2014．Apr．11</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>

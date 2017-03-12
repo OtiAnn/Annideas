@@ -1,0 +1,216 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>Ruby女孩(21)：來聽聽類別變數與類別實體變數的自白(?)</title><meta content="Ruby女孩(21)：來聽聽類別變數與類別實體變數的自白(?)" name="title" /><meta content="Ruby女孩(21)：來聽聽類別變數與類別實體變數的自白(?)" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/ironman/2014-10-21-ruby-girl-21-ruby-instance-and-class-variables/" name="url" /><meta content="http://blog.annideas.com/ironman/2014-10-21-ruby-girl-21-ruby-instance-and-class-variables/" property="og:url" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" name="description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" property="og:description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-21-ruby-girl-21-ruby-instance-and-class-variables ironman_2014-10-21-ruby-girl-21-ruby-instance-and-class-variables_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(21)：來聽聽類別變數與類別實體變數的自白(?)</div><div class="articleContent-date">2014．Oct．21</div><div class="articleContent-article tp-in-content"><p>昨天我們講完類別方法，今天我們來說明一下類別變數，把昨天的code加一些料，讀讀程式碼看看能不能理解類別變數的作用：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+  <span class="vc">@@size</span> <span class="o">=</span> <span class="mi">0</span>            <span class="c1">#這行是新增加的  </span>
+  
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  
+    <span class="vi">@ruby_skill</span> <span class="o">=</span> <span class="n">ruby_skill</span>  
+    <span class="vc">@@size</span> <span class="o">+=</span> <span class="mi">1</span>         <span class="c1">#這行是新增加的  </span>
+  <span class="k">end</span>  
+  
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>  
+    <span class="k">def</span> <span class="nf">project</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  
+      <span class="nb">puts</span> <span class="s2">"每一個RubyGirl都有 </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> 個project."</span>  
+    <span class="k">end</span>  
+    <span class="k">def</span> <span class="nf">size</span>  
+      <span class="vc">@@size</span>  
+    <span class="k">end</span>  
+    <span class="c1">#上面這三行是新增加的  </span>
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>好的有三個部分新增加了，能讀出現在類別變數與類別方法可以幹嘛？實際測試之前，我們先來說明一下何謂<strong>類別變數</strong>：</p>
+
+<h2 id="section">何謂類別變數？</h2>
+
+<p>以下為『類別變數』的自白XD</p>
+
+<p><strong>1. 我的長相跟實體變數不一樣，實體變數只要背一個@，我要背兩個@@…</strong></p>
+
+<pre class="highlight ruby"><code><span class="vi">@ruby_skill</span> <span class="c1">#實體變數  </span>
+<span class="vc">@@size</span>      <span class="c1">#類別變數  </span>
+</code></pre>
+
+<p><strong>2. 如果需要初始值，我的寫法是寫在類別定義一開始，跟實體變數不一樣(他要被包在initialize方法中)。</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="vc">@@size</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#設定初始值  </span>
+<span class="k">end</span>  
+</code></pre>
+
+<p><strong>3. 我可以遊走在類別中的任何地方，也就是在實體方法跟類別方法中都可以使用。</strong></p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="vc">@@size</span> <span class="o">=</span> <span class="mi">0</span>     
+  <span class="k">def</span> <span class="err">實體方法</span>  
+    <span class="vc">@@size</span> <span class="o">+=</span><span class="mi">1</span>  
+  <span class="k">end</span>  
+  <span class="k">def</span> <span class="err">類別方法</span>  
+    <span class="vc">@@size</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>好的，認識完類別變數，我們來測試剛剛最前面的方法可以得到什麼吧！我們在一開始宣告了<code>@@size</code>類別變數，並給他初始值為<code>0</code>，然後在<code>initialize</code>實體方法中，加上一行<code>@@size+=1</code>，也就是讓這個類別中的實體物件被製造出來時，都自動讓<code>@@size</code>的值+1，這可以怎樣呢？</p>
+
+<pre class="highlight ruby"><code><span class="no">RubyGirl</span><span class="p">.</span><span class="nf">size</span>  
+<span class="o">=&gt;</span> <span class="mi">0</span>  
+  
+<span class="n">annie</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007f98ed81d2c8 @ruby_skill=0&gt;  </span>
+  
+<span class="no">RubyGirl</span><span class="p">.</span><span class="nf">size</span>  
+<span class="o">=&gt;</span> <span class="mi">1</span>  
+  
+<span class="n">linda</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007f98ed82c160 @ruby_skill=0&gt;  </span>
+  
+<span class="no">RubyGirl</span><span class="p">.</span><span class="nf">size</span>  
+<span class="o">=&gt;</span> <span class="mi">2</span>  
+</code></pre>
+
+<p>用這個<code>.size</code>的類別方法，可以知道目前這個類別被建立了多少個物件，酷吧！</p>
+
+<p>還是再複習一下，請注意<code>.size</code>是屬於類別的方法，因此實體物件是不能使用的：</p>
+
+<pre class="highlight ruby"><code><span class="n">annie</span><span class="p">.</span><span class="nf">size</span>  
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`size' for #&lt;RubyGirl:0x007f98ed81d2c8 @ruby_skill=0&gt;  
+</span></code></pre>
+
+<h2 id="section-1">何謂類別實體變數？</h2>
+
+<p>接下來，要來說說容易被混淆的<strong>類別實體變數(class instance variable)</strong></p>
+
+<p>以下是類別實體變數的自白：</p>
+
+<p><strong>1. 我長得跟實體變數一模一樣，我也背一個@</strong></p>
+
+<p><strong>2. 我..我活在類別中的任何地方，除了實體方法以外！</strong></p>
+
+<p>所以你可能找到我的地方就在:</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="vi">@size</span> <span class="o">=</span> <span class="mi">0</span>  
+  <span class="k">def</span> <span class="err">實體方法</span>  
+    <span class="p">.</span><span class="nf">.</span><span class="p">.</span>  
+    <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>  
+    <span class="c1">#沒有@size  </span>
+  <span class="k">end</span>  
+  <span class="k">def</span> <span class="err">類別方法</span>  
+    <span class="vi">@size</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>我們用『類別實體變數』的寫法來改寫剛剛用『類別變數』記錄類別實體個數的程式碼：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+  <span class="vi">@size</span> <span class="o">=</span> <span class="mi">0</span>      <span class="c1">#把類別變數改成類別實體變數  </span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  
+    <span class="vi">@ruby_skill</span> <span class="o">=</span> <span class="n">ruby_skill</span>  
+  <span class="k">end</span>  
+  <span class="c1">#注意上方實體方法中並沒有出現@size  </span>
+    
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>  
+    <span class="k">def</span> <span class="nf">project</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  
+      <span class="nb">puts</span> <span class="s2">"每一個RubyGirl都有 </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> 個project."</span>  
+    <span class="k">end</span>  
+    <span class="k">def</span> <span class="nf">new</span>  
+      <span class="vi">@size</span> <span class="o">+=</span><span class="mi">1</span>  
+      <span class="k">super</span>  
+    <span class="k">end</span>  
+    <span class="c1">#建立新的RubyGirl物件的類別方法  </span>
+    <span class="c1">#在此方法中使用類別實體變數來記錄個數  </span>
+    <span class="c1">#super一定要加！因為我們不是想要把.new的方法完全取代，我們只是要擴充這個方法，super這個關鍵字可以讓我們成功擴充.new的方法  </span>
+  
+    <span class="k">def</span> <span class="nf">size</span>  
+      <span class="vi">@size</span>      <span class="c1">#把類別變數改成類別實體變數  </span>
+    <span class="k">end</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>ok，上面的程式碼已經將原本使用類別變數的方法全改成類別實體變數了，接下來來測試一下：</p>
+
+<pre class="highlight ruby"><code><span class="no">RubyGirl</span><span class="p">.</span><span class="nf">size</span>  
+<span class="o">=&gt;</span> <span class="mi">0</span>  
+  
+<span class="n">annie</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007f97b40fa520 @ruby_skill=0&gt;  </span>
+  
+<span class="no">RubyGirl</span><span class="p">.</span><span class="nf">size</span>  
+<span class="o">=&gt;</span> <span class="mi">1</span>  
+</code></pre>
+
+<p>效果與前面的類別變數是一樣的！由於類別實體變數就是類別物件的實體變數，我們也可以用先前提到的<code>attr_reader</code>或<code>attr_accessor</code>來替換他們的方法寫法：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+  <span class="vi">@size</span> <span class="o">=</span> <span class="mi">0</span>  
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  
+    <span class="vi">@ruby_skill</span> <span class="o">=</span> <span class="n">ruby_skill</span>  
+  <span class="k">end</span>  
+  
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>  
+    <span class="kp">attr_accessor</span> <span class="ss">:size</span>      <span class="c1">#這行是新增加的  </span>
+    <span class="k">def</span> <span class="nf">project</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  
+      <span class="nb">puts</span> <span class="s2">"每一個RubyGirl都有 </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> 個project."</span>  
+    <span class="k">end</span>  
+    <span class="k">def</span> <span class="nf">new</span>  
+      <span class="vi">@size</span> <span class="o">+=</span><span class="mi">1</span>  
+      <span class="k">super</span>  
+    <span class="k">end</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>做個小結：</p>
+
+<ol>
+  <li>實體變數被用在實體方法裡</li>
+  <li>類別變數被用在類別的任何地方(實體方法裡也可以)</li>
+  <li>類別實體變數被用在類別的任何地方，除了實體方法以外</li>
+  <li>實體變數跟類別實體變數都背一個@</li>
+  <li>類別變數背兩個@@</li>
+  <li>實體變數與類別實體變數都可以用attr_accessor的方式改寫</li>
+</ol>
+
+<p>哇，結果今天光是程式碼就佔據好多版面了，明天要來說說<strong>公用方法</strong>、<strong>受保護的方法</strong>與<strong>私用方法</strong>喔，也是非常容易搞混的一環！</p>
+
+<hr />
+
+<p>21天了！</p>
+
+<blockquote>
+  <p>“The only disability in life is a bad attitude. - Matthew Jeffers”</p>
+</blockquote>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/ironman/2014-10-21-ruby-girl-21-ruby-instance-and-class-variables/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-22-ruby-girl-22-ruby-public-protected-private-methods/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(22)：公用、受保護、私用方法大亂鬥</div><div class="articleContent-paging-item-date">2014．Oct．22</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！</div><div class="articleContent-paging-item-date">2014．Oct．20</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>

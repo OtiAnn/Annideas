@@ -1,0 +1,113 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>Ruby女孩(11)：雜湊雜湊雜湊，重要的事情會說三次！</title><meta content="Ruby女孩(11)：雜湊雜湊雜湊，重要的事情會說三次！" name="title" /><meta content="Ruby女孩(11)：雜湊雜湊雜湊，重要的事情會說三次！" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/ironman/2014-10-11-ruby-girl-11-ruby-hash-intro/" name="url" /><meta content="http://blog.annideas.com/ironman/2014-10-11-ruby-girl-11-ruby-hash-intro/" property="og:url" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" name="description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" property="og:description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-11-ruby-girl-11-ruby-hash-intro ironman_2014-10-11-ruby-girl-11-ruby-hash-intro_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(11)：雜湊雜湊雜湊，重要的事情會說三次！</div><div class="articleContent-date">2014．Oct．11</div><div class="articleContent-article tp-in-content"><p>啊，十天後，我們來到了書的第70頁(整本書有455頁)，其實進度有點緩慢Orz 不過還是秉持著第8天的小語：
+<strong>『Keep moving forward. One step at a time.』</strong>，不急，只要我繼續往前進，一次一步慢慢扎穩就好！</p>
+
+<p>好的，來談談Ruby中非常重要的一環：<strong>雜湊(Hash)</strong>。</p>
+
+<h2 id="p70">什麼是雜湊？(p.70)</h2>
+
+<blockquote>
+  <p>『雜湊(Hash)是一種資料結構，其中保存了一組稱為鍵(key)的物件，而且每個鍵都會被關聯到一個值(value)。雜湊也被稱為對映表，因為它會將鍵對應至值。雜湊有時會被稱為關聯陣列(associative array)，因為每個鍵都會被關聯到一個值，所以可將它視為以任何物件(而非整數)為索引值的陣列。』</p>
+</blockquote>
+
+<p>上面的文字完全來自於書本中，雖然讀起來有點跳針XD，但你不得不說，重要的事情會被說三次，你看到上面這段什麼東西出現三次了嗎XD？</p>
+
+<p><strong>『每個鍵都會被關聯到一個值』！！！</strong></p>
+
+<p><strong>『因為它會將鍵對應至值』！！！</strong></p>
+
+<p><strong>『因為每個鍵都會被關聯到一個值』！！！</strong></p>
+
+<p>是的！不管你要叫它什麼名字，它有一個特大重點：<strong>在雜湊中，有一個鍵(key)會對到一個值(value)</strong>！
+馬上來看個例子：</p>
+
+<pre class="highlight ruby"><code><span class="n">rank</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">"非常喜歡"</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">"很喜歡"</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"沒感覺"</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"很討厭"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"非常討厭"</span> <span class="o">=&gt;</span><span class="mi">1</span> <span class="p">}</span>  
+</code></pre>
+
+<p>上面這個雜湊是以大括號 <code>{ }</code> 包起來，其中，鍵(key)指的是"非常喜歡"、"很喜歡"、"沒感覺"、"很討厭"、"非常討厭"，而值(value)指的是5、4、3、2、1。</p>
+
+<p>以下三種寫法都是雜湊的寫法：</p>
+
+<pre class="highlight ruby"><code><span class="n">rank1</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">"非常喜歡"</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">"很喜歡"</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"沒感覺"</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"很討厭"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"非常討厭"</span> <span class="o">=&gt;</span><span class="mi">1</span> <span class="p">}</span>  
+<span class="n">rank2</span> <span class="o">=</span> <span class="p">{</span> <span class="p">:</span><span class="err">非常喜歡</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="err">很喜歡</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="p">:</span><span class="err">沒感覺</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="err">很討厭</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="p">:</span><span class="err">非常討厭</span> <span class="o">=&gt;</span><span class="mi">1</span> <span class="p">}</span>  
+<span class="n">rank3</span> <span class="o">=</span> <span class="p">{</span> <span class="err">非常喜歡</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="err">很喜歡</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="err">沒感覺</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="err">很討厭</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="err">非常討厭</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>  
+</code></pre>
+
+<p>把上面這三行拿去irb 執行後可以看到：</p>
+
+<pre class="highlight ruby"><code><span class="n">rank1</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"非常喜歡"</span><span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"很喜歡"</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"沒感覺"</span><span class="o">=&gt;</span><span class="mi">3</span><span class="p">,</span> <span class="s2">"很討厭"</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"非常討厭"</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">}</span>  
+  
+<span class="n">rank2</span>
+<span class="o">=&gt;</span> <span class="p">{:</span><span class="err">非常喜歡</span><span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="err">很喜歡</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="p">:</span><span class="err">沒感覺</span><span class="o">=&gt;</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="err">很討厭</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="p">:</span><span class="err">非常討厭</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">}</span>  
+  
+<span class="n">rank3</span>
+<span class="o">=&gt;</span> <span class="p">{:</span><span class="err">非常喜歡</span><span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="err">很喜歡</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="p">:</span><span class="err">沒感覺</span><span class="o">=&gt;</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="err">很討厭</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="p">:</span><span class="err">非常討厭</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">}</span>  
+</code></pre>
+
+<p>有注意到嗎？其實rank2 與rank3 執行結果是完全相同的！rank3 的寫法是ruby1.9 之後才支援的寫法，這種寫法比較簡潔方便。但更要注意的是， <strong>"非常喜歡" 和 :非常喜歡 是完全不同的兩種key喔</strong>！以下來證明兩種完全不同(數學老師上身)：</p>
+
+<pre class="highlight ruby"><code><span class="c1">#如果我們想把rank2中的 :非常喜歡 的值從5改成100，我們可以這樣寫：</span>
+<span class="n">rank2</span><span class="p">[:</span><span class="err">非常喜歡</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+  
+<span class="c1">#此時rank2變成：  </span>
+<span class="o">=&gt;</span> <span class="p">{:</span><span class="err">非常喜歡</span><span class="o">=&gt;</span><span class="mi">100</span><span class="p">,</span> <span class="p">:</span><span class="err">很喜歡</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="p">:</span><span class="err">沒感覺</span><span class="o">=&gt;</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="err">很討厭</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="p">:</span><span class="err">非常討厭</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">}</span>  
+  
+<span class="c1">#但如果我的改法是這樣寫：  </span>
+<span class="n">rank2</span><span class="p">[</span><span class="s2">"非常喜歡"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">555</span>  
+  
+<span class="c1">#此時rank2變成：  </span>
+<span class="o">=&gt;</span> <span class="p">{:</span><span class="err">非常喜歡</span><span class="o">=&gt;</span><span class="mi">100</span><span class="p">,</span> <span class="p">:</span><span class="err">很喜歡</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="p">:</span><span class="err">沒感覺</span><span class="o">=&gt;</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="err">很討厭</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="p">:</span><span class="err">非常討厭</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"非常喜歡"</span><span class="o">=&gt;</span><span class="mi">555</span><span class="p">}</span>  
+</code></pre>
+
+<p>如果它找得到相同的key，會直接改掉原本key的值，但是因為他找不到相同的key，所以就在最後面新增了一組key和value。</p>
+
+<p>由上述可知<code>"非常喜歡"</code>與<code>:非常喜歡</code>是完全不同的兩種key，得證XD！</p>
+
+<p>事實上，如果你要比較兩個雜湊的鍵到底有沒有一樣，也可以使用<code>.eql?</code>這個方法，例如：</p>
+
+<pre class="highlight ruby"><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:love</span> <span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span> <span class="ss">:hate</span> <span class="o">=&gt;</span><span class="mi">0</span><span class="p">}</span>  <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:love</span><span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span> <span class="ss">:hate</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">}</span>  
+<span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"love"</span> <span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"hate"</span> <span class="o">=&gt;</span><span class="mi">0</span><span class="p">}</span>  <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"love"</span><span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"hate"</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">}</span>  
+  
+<span class="n">a</span><span class="p">.</span><span class="nf">eql?</span><span class="n">b</span>  <span class="o">=&gt;</span> <span class="kp">false</span>  
+</code></pre>
+
+<p>再次證明這是不一樣的雜湊喔！</p>
+
+<p>其實有個更重要的議題是，字串 <code>" "</code> 跟符號 <code>:</code> 的差異是什麼？好像不太能用一兩句話說清楚，這個書中在本章節最後面有提，到時候會一併說明！</p>
+
+<hr />
+
+<p>第十一天，</p>
+
+<blockquote>
+  <p>Believe in yourself.</p>
+</blockquote>
+
+<p>加油！</p>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/ironman/2014-10-11-ruby-girl-11-ruby-hash-intro/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-12-ruby-girl-12-ruby-range-intro/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(12)：Range讓我知道..我是草莓族，Ruby不是QQ</div><div class="articleContent-paging-item-date">2014．Oct．12</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-10-ruby-girl-10-ruby-array-intro/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(10)：["十年","好姐妹","陣列萬歲"]</div><div class="articleContent-paging-item-date">2014．Oct．10</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>

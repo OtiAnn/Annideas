@@ -1,0 +1,142 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>will_paginate與ransack</title><meta content="will_paginate與ransack" name="title" /><meta content="will_paginate與ransack" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/2014/06/05/will-paginate-and-ransack/" name="url" /><meta content="http://blog.annideas.com/2014/06/05/will-paginate-and-ransack/" property="og:url" /><meta content="我是Annie Chen，這篇文章是說明Rails的兩個gem:will_paginate、ransack，並解決兩個在分頁設定上會互相衝突的地方。" name="description" /><meta content="我是Annie Chen，這篇文章是說明Rails的兩個gem:will_paginate、ransack，並解決兩個在分頁設定上會互相衝突的地方。" property="og:description" /><meta content="我是Annie Chen，這篇文章是說明Rails的兩個gem:will_paginate、ransack，並解決兩個在分頁設定上會互相衝突的地方。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="x2014 x2014_06 x2014_06_05 x2014_06_05_will-paginate-and-ransack x2014_06_05_will-paginate-and-ransack_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/categories/開發/"><span class="dev">開 發</span></a></div><div class="articleContent-title">will_paginate與ransack</div><div class="articleContent-date">2014．Jun．05</div><div class="articleContent-article tp-in-content"><p>這篇主要介紹兩個很方便的gem : will_paginate、ransack</p>
+
+<p>這兩個 gem 很方便，star的人也很多！不過同時使用時會產生一些衝突，在此說明並記錄一下，以免自己未來又遇到一樣的問題！</p>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/mislav/will_paginate">will_paginate</a> 幫過長的頁面加入分頁功能，例如：
+ <img alt="will_paginate_example" src="http://user-image.logdown.io/user/7443/blog/7374/post/203033/Pv1IQSiTfqMcwcz7kONg_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202014-06-06%2015.15.46.png" /></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/activerecord-hackery/ransack">ransack</a> 可讓增加文章搜尋的功能，例如：
+ <img alt="ransack_example" src="http://user-image.logdown.io/user/7443/blog/7374/post/203033/Q2kkwC5HSisAXkbI3gzQ_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202014-06-06%2015.24.53.png" /></p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="willpaginate">will_paginate</h2>
+
+<ul>
+  <li>首先先裝 <strong>will_paginate gem</strong></li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="c1"># Gemfile</span>
+<span class="n">gem</span> <span class="s1">'will_paginate'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0'</span>
+</code></pre>
+
+<ul>
+  <li>接著到需要使用分頁功能的 <code>posts_controller.rb</code> ，將原本在index 中的 <code>@posts=Post.all</code> 修改為：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">index</span>
+  <span class="c1">#分頁設定每頁顯示四篇文章</span>
+  <span class="vi">@posts</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">paginate</span><span class="p">(</span><span class="ss">:page</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="p">[</span><span class="ss">:page</span><span class="p">],</span> <span class="ss">:per_page</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>再到index 的view <code>index.html.erb</code> 中，到希望出現分頁符號的位置加入下方code 以及class 名稱，就完成了：</li>
+</ul>
+
+<pre class="highlight erb"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"apple_pagination"</span><span class="nt">&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="n">will_paginate</span> <span class="vi">@posts</span><span class="cp">%&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+
+<h2 id="ransack">ransack</h2>
+
+<ul>
+  <li>再來裝 <strong>ransack gem</strong></li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="c1"># Gemfile</span>
+<span class="n">gem</span> <span class="s2">"ransack"</span><span class="p">,</span> <span class="ss">github: </span><span class="s2">"activerecord-hackery/ransack"</span><span class="p">,</span> <span class="ss">branch: </span><span class="s2">"rails-4.1"</span>
+</code></pre>
+
+<ul>
+  <li>到 <code>posts_controller.rb</code> 加入：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">index</span>
+  <span class="c1">#這是剛剛will_paginate加的</span>
+  <span class="vi">@posts</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">paginate</span><span class="p">(</span><span class="ss">:page</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="p">[</span><span class="ss">:page</span><span class="p">],</span> <span class="ss">:per_page</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">)</span>
+
+  <span class="c1">#讓posts#index可以顯現搜尋結果，@q 是ransack gem定義的寫法，下方再做說明</span>
+  <span class="vi">@posts</span> <span class="o">=</span> <span class="vi">@q</span><span class="p">.</span><span class="nf">result</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>到 <code>application_controller.rb</code> 加入：</li>
+</ul>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="c1">#讓在執行任何動作之前，先呼叫set_search，才能讓view知道 `@q` 是啥！不然會噴錯，說他找不到ransack！</span>
+  <span class="n">before_action</span> <span class="ss">:set_search</span>
+
+  <span class="kp">protected</span>
+  <span class="k">def</span> <span class="nf">set_search</span>
+    <span class="vi">@q</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:q</span><span class="p">])</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<ul>
+  <li>controller 都設定好就可以去view 加上搜尋表單了：</li>
+</ul>
+
+<pre class="highlight erb"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"search"</span> <span class="nt">&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="n">search_form_for</span> <span class="vi">@q</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span>
+  #search_form_for是ransack自己定義的form helper。
+
+    #cont 就是 contains，所以我設定我的搜尋位置為文章的 title 或 body
+    <span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">text_field</span> <span class="ss">:title_or_body_cont</span> <span class="cp">%&gt;</span>
+
+    <span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">submit</span> <span class="s1">' '</span><span class="p">,</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'btn-search'</span> <span class="cp">%&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+
+<p>搜尋位置的設定可以參考<a href="https://github.com/activerecord-hackery/ransack/blob/master/lib/ransack/constants.rb">這裡</a>。</p>
+
+<hr />
+
+<p>其實，兩個gem 的設定照上述已經搞定了，結果每次我一按搜尋，就噴這個 <code>undefined method total_pages</code> 的錯：</p>
+
+<p><img alt="will_paginate &amp; ransack 的小衝突" src="http://user-image.logdown.io/user/7443/blog/7374/post/203033/RUyEV8a0ROyKx9g7pYyx_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202014-06-06%2018.10.08.png" /></p>
+
+<p>後來試了幾次才知道原來是要在 <code>posts_controller.rb</code> 修正為如下的code，讓無論有沒有搜尋過的posts 都能符合分頁的規定，就沒問題了！</p>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">index</span>
+  <span class="vi">@posts</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">paginate</span><span class="p">(</span><span class="ss">:page</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="p">[</span><span class="ss">:page</span><span class="p">],</span> <span class="ss">:per_page</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="vi">@posts</span> <span class="o">=</span> <span class="vi">@q</span><span class="p">.</span><span class="nf">result</span><span class="p">.</span><span class="nf">paginate</span><span class="p">(</span><span class="ss">:page</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="p">[</span><span class="ss">:page</span><span class="p">],</span> <span class="ss">:per_page</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/2014/06/05/will-paginate-and-ransack/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../../../07/29/helper-help-you-organize-code/"><div class="articleContent-paging-item-title single-dot">用Rails Helper幫你打掃Code</div><div class="articleContent-paging-item-date">2014．Jul．29</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../../../05/25/look-at-the-world/"><div class="articleContent-paging-item-title single-dot">看看世界-多看前輩的code</div><div class="articleContent-paging-item-date">2014．May．25</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>

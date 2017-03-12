@@ -1,0 +1,235 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>Ruby女孩(26)：別鬧了，方法的( )別亂省！</title><meta content="Ruby女孩(26)：別鬧了，方法的( )別亂省！" name="title" /><meta content="Ruby女孩(26)：別鬧了，方法的( )別亂省！" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/ironman/2014-10-26-ruby-girl-26-ruby-method-rule/" name="url" /><meta content="http://blog.annideas.com/ironman/2014-10-26-ruby-girl-26-ruby-method-rule/" property="og:url" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" name="description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" property="og:description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-26-ruby-girl-26-ruby-method-rule ironman_2014-10-26-ruby-girl-26-ruby-method-rule_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(26)：別鬧了，方法的( )別亂省！</div><div class="articleContent-date">2014．Oct．26</div><div class="articleContent-article tp-in-content"><p>接續昨天的話題，昨天我們有提到，<strong>定義一個方法時要注意</strong>：</p>
+
+<ol>
+  <li>方法的名稱有規定寫法，待下方再做解釋</li>
+  <li>( )通常可省略，但也有不可省略之時，也是待下方再做解釋</li>
+  <li>( )中的參數，可直接作為方法程式碼中的變數(參數所提供的值，為調用方法時所給的引數)</li>
+</ol>
+
+<p>好的，今天來說說方法的名稱與( )的規定！</p>
+
+<h2 id="section">方法的名稱</h2>
+
+<ol>
+  <li>慣例以<strong>小寫字母開頭</strong>(雖然大寫可以，但這會讓它看起來很像常數)</li>
+  <li>方法名稱不只一個單字時，通常以<strong>底線符號</strong>分隔，例如：who_am_i</li>
+  <li>方法名稱可以用一個等號、一個問號或一個驚嘆號結尾，例如：<code>age=</code>、<code>include?</code>、<code>sort!</code>
+  - 一個等號：就是之前在類別時有提到的setter做法 » <a href="../2014-10-19-ruby-girl-19-ruby-class-getter-setter/">Ruby女孩(19)</a>
+  - 一個問號：問號就很像一個問題，任何方法名稱只要以問號結尾，都會回傳一個值來回答問問題(通常是true或false)。我們之前常看到<code>is_a?</code>這個方法就是一個例子(範例1)
+  - 一個驚嘆號：驚嘆號有警示的意味存在，使用的時候要很小心，一般沒有加驚嘆號的時候，會做一個副本來儲存變動後的內容；但若是有加驚嘆號的話，他會直接在原物件上修改內容。舉例來說，陣列都會有一個<code>sort</code>的方法，作為排序之用，以下比較<code>sort</code>與<code>sort!</code>的差異(範例2a,2b)</li>
+</ol>
+
+<pre class="highlight ruby"><code><span class="c1">#範例1</span>
+<span class="no">String</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Object</span>  
+<span class="o">=&gt;</span> <span class="kp">true</span>  
+</code></pre>
+
+<p>問題：String是一個物件嗎？
+答案：是的！</p>
+
+<pre class="highlight ruby"><code><span class="c1">#範例2a</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>  
+  
+<span class="n">a</span><span class="p">.</span><span class="nf">object_id</span>  
+<span class="o">=&gt;</span> <span class="mi">70243998348660</span>  
+  
+<span class="n">a</span><span class="p">.</span><span class="nf">sort</span><span class="p">.</span><span class="nf">object_id</span>  
+<span class="o">=&gt;</span> <span class="mi">70244014688220</span>  <span class="c1">#用另一個副本空間來做sort，不會改到原本的物件  </span>
+  
+<span class="n">a</span><span class="p">.</span><span class="nf">sort!</span><span class="p">.</span><span class="nf">object_id</span>  
+<span class="o">=&gt;</span> <span class="mi">70243998348660</span>  <span class="c1">#在原本a所指到的物件上做sort，所以會修改到原本的物件  </span>
+</code></pre>
+
+<p>所以如果這樣看：</p>
+
+<pre class="highlight ruby"><code><span class="c1">#範例2b</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>  
+  
+<span class="n">a</span><span class="p">.</span><span class="nf">sort</span>  
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  
+  
+<span class="n">a</span>  
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1">#原本a所指到的物件並未修改  </span>
+  
+<span class="n">a</span><span class="p">.</span><span class="nf">sort!</span>  
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  
+  
+<span class="n">a</span>  
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1">#原本a所指到的物件被改掉了！  </span>
+</code></pre>
+
+<h2 id="section-1">運算符方法</h2>
+
+<p>Ruby 中有很多運算符，例如<code>+</code>、<code>*</code>…這些其實都是方法，我們平常看到的<code>1 + 2</code>其實是因為<code>1</code>有一個方法叫做<code>+</code>，它也可以這樣寫：</p>
+
+<pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">+</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  
+<span class="err">等同於</span>  
+<span class="mi">1</span><span class="p">.</span><span class="nf">+</span><span class="mi">2</span>  
+<span class="err">等同於</span>  
+<span class="mi">1</span><span class="o">+</span><span class="mi">2</span>  
+</code></pre>
+
+<p><code>1+2</code>當然是最簡便的寫法，不過也許很多人用太習慣了，會不知道原來這也是利用方法的定義來做的，我們甚至可以惡搞改掉<code>+</code>的方法定義(參考自<a href="http://blog.eddie.com.tw/2014/10/16/happy-programming-ruby/">Ruby也可以這樣寫</a>)：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Fixnum</span>  
+  <span class="k">alias</span> <span class="ss">:fake_plus</span> <span class="p">:</span><span class="o">+</span> <span class="c1">#alias用法隨即介紹，請往下看  </span>
+  <span class="k">def</span> <span class="nf">+</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>  
+    <span class="nb">self</span><span class="p">.</span><span class="nf">fake_plus</span><span class="p">(</span><span class="n">num</span><span class="p">).</span><span class="nf">-</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>Fixnum本身就有<code>+</code>這個方法，我們偷偷把<code>+</code>的定義改成<code>+</code>完再<code>-</code>，結果：</p>
+
+<pre class="highlight ruby"><code><span class="mi">1</span><span class="o">+</span><span class="mi">2</span>  
+<span class="o">=&gt;</span> <span class="mi">1</span>  
+  
+<span class="mi">40</span><span class="o">+</span><span class="mi">88</span>  
+<span class="o">=&gt;</span> <span class="mi">40</span>  
+</code></pre>
+
+<p>不知道的人可能以為自己的加法壞掉了，怎麼加都沒變，原來是+的定義被改掉了XD</p>
+
+<h2 id="section-2">方法的別名</h2>
+
+<p>Ruby 中很多方法都有別名，這是一個非常人性化的做法，常常可以讓整串code 更符合語意，例如以前曾介紹過<code>.include?</code>、<code>.member?</code>、<code>.cover?</code>這三個方法就是同義的方法，都在看一個物件有沒有被包含：</p>
+
+<pre class="highlight ruby"><code><span class="n">rubyist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Annie"</span><span class="p">,</span><span class="s2">"Linda"</span><span class="p">,</span><span class="s2">"Ironman"</span><span class="p">]</span>  
+<span class="n">rubyist</span><span class="p">.</span><span class="nf">member?</span> <span class="s2">"Annie"</span>  
+<span class="o">=&gt;</span> <span class="kp">true</span>  
+  
+<span class="n">high_score</span> <span class="o">=</span> <span class="p">(</span><span class="mi">82</span><span class="p">.</span><span class="nf">.</span><span class="mi">98</span><span class="p">)</span>  
+<span class="n">high_score</span><span class="p">.</span><span class="nf">cover?</span> <span class="mi">88</span>  
+<span class="o">=&gt;</span> <span class="kp">true</span>  
+</code></pre>
+
+<p>上面的方法定義相同，但會有比較自然語意的方法！</p>
+
+<p>除了語意之外，還有一種比較實際的理由，就是可以用<code>alias</code>的方式來幫擴充或修改既有的方法！
+alias寫法：<strong>『alias 別名 原名』</strong>，例如剛剛提到的：</p>
+
+<pre class="highlight ruby"><code><span class="k">alias</span> <span class="ss">:fake_plus</span> <span class="p">:</span><span class="o">+</span>  
+
+<span class="c1"># :fake_plus 是我幫他取的別名</span>
+<span class="c1"># :+ 是原本的名字</span>
+</code></pre>
+
+<p>我們再看一個例子：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Test</span>  
+  <span class="k">def</span> <span class="nf">hello</span>  
+    <span class="s2">"我是舊方法"</span>  
+  <span class="k">end</span>  
+  
+  <span class="k">alias</span> <span class="n">old_method</span> <span class="n">hello</span>  
+  
+  <span class="k">def</span> <span class="nf">hello</span>  
+    <span class="s2">"我來擴充新東西了&gt;&gt;"</span> <span class="o">+</span> <span class="n">old_method</span>  
+  <span class="k">end</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>步驟一：在類別中定義舊方法
+步驟二：幫舊方法取別名
+步驟三：用舊方法的名字定義新內容，還可以用舊方法的別名呼叫它！</p>
+
+<p>執行看看：</p>
+
+<pre class="highlight ruby"><code><span class="n">a</span> <span class="o">=</span> <span class="no">Test</span><span class="p">.</span><span class="nf">new</span>  
+<span class="o">=&gt;</span> <span class="c1">#&lt;Test:0x007fa873806ee8&gt;  </span>
+  
+<span class="n">a</span><span class="p">.</span><span class="nf">hello</span>  
+<span class="o">=&gt;</span> <span class="s2">"我來擴充新東西了&gt;&gt;我是舊方法"</span>  
+</code></pre>
+
+<h2 id="section-3">方法與( )</h2>
+
+<p>方法後面跟的( )是可以省略的，除了少數特例之外！</p>
+
+<p><code>puts "Hello"</code> 其實是 <code>puts ("Hello")</code> 的省略版本。</p>
+
+<p><code>3.between? 1,5</code> 與 <code>3.between?(1.5)</code> 也是一樣的！</p>
+
+<p>在方法定義的時候，也可以省略：</p>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>  
+  <span class="n">x</span><span class="o">+</span><span class="n">y</span>  
+<span class="k">end</span>  
+  
+<span class="k">def</span> <span class="nf">sum</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span>  
+  <span class="n">x</span><span class="o">+</span><span class="n">y</span>  
+<span class="k">end</span>  
+</code></pre>
+
+<p>上面這兩個也是一樣的！
+好的，那到底什麼時候不能省略呢？</p>
+
+<p>例如函數之間巢狀使用的時候：</p>
+
+<pre class="highlight ruby"><code><span class="n">f</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)))</span>  
+<span class="n">f</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">)</span>  
+</code></pre>
+
+<p>這不加括號應該很恐怖吧…</p>
+
+<pre class="highlight ruby"><code><span class="n">f</span> <span class="n">g</span> <span class="n">h</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span>  
+</code></pre>
+
+<p>誰看得懂＝＝</p>
+
+<p>還有一些容易顯得含糊不清的寫法，都建議主動加上括號：</p>
+
+<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">pp</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>  
+  <span class="n">num</span><span class="o">*</span><span class="n">num</span>  
+<span class="k">end</span>  
+  
+<span class="n">pp</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>  
+<span class="o">=&gt;</span> <span class="mi">32</span>  
+  
+<span class="n">pp</span> <span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>  
+<span class="o">=&gt;</span> <span class="mi">64</span>  
+</code></pre>
+
+<p>可以看到下面兩個呼叫pp方法的寫法只差有沒有空格，可是卻有不同的結果，因為它得判斷num到底是引入哪個參數，是(2+2)，還是(2+2)*2，所以為了寫清楚，可以改成：</p>
+
+<pre class="highlight ruby"><code><span class="n">pp</span><span class="p">((</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>  
+</code></pre>
+
+<p>這樣就比較不會搞錯！</p>
+
+<p>至於引數的內容也有很多可以講呢！有待明日分曉XD</p>
+
+<hr />
+
+<p>26天了！</p>
+
+<blockquote>
+  <p>“The problem is not the problem. The problem is your attitude about the problem.”</p>
+</blockquote>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/ironman/2014-10-26-ruby-girl-26-ruby-method-rule/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-27-ruby-girl-27-ruby-method-test/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(27)：方法的引數傳遞方式，你覺得很簡單嗎？進來小試身手看看XD</div><div class="articleContent-paging-item-date">2014．Oct．27</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-25-ruby-girl-25-ruby-method-def-undef/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(25)：來認識方法的定義與解除！</div><div class="articleContent-paging-item-date">2014．Oct．25</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>

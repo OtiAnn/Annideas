@@ -1,0 +1,93 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>Ruby女孩(17)：自己做排序的方法！</title><meta content="Ruby女孩(17)：自己做排序的方法！" name="title" /><meta content="Ruby女孩(17)：自己做排序的方法！" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/ironman/2014-10-17-ruby-girl-17-ruby-order-method/" name="url" /><meta content="http://blog.annideas.com/ironman/2014-10-17-ruby-girl-17-ruby-order-method/" property="og:url" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" name="description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" property="og:description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-17-ruby-girl-17-ruby-order-method ironman_2014-10-17-ruby-girl-17-ruby-order-method_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(17)：自己做排序的方法！</div><div class="articleContent-date">2014．Oct．17</div><div class="articleContent-article tp-in-content"><h2 id="section">物件的次序</h2>
+
+<p>昨天在提及相等性時，其中一個方法就是<code>==</code>，今天我們在物件的次序的比較時也可以採用<code>&lt;=&gt;</code>方法，以Integer來說，數字本身就有大小的差別，根據<code>&lt;=&gt;</code>方法會有三種結果：</p>
+
+<pre class="highlight ruby"><code><span class="mi">4</span> <span class="o">&lt;=&gt;</span> <span class="mi">5</span>  
+<span class="o">=&gt;</span> <span class="o">-</span><span class="mi">1</span>    <span class="c1">#當左邊小於右邊時，會回傳-1。  </span>
+  
+<span class="mi">4</span> <span class="o">&lt;=&gt;</span> <span class="mi">4</span>  
+<span class="o">=&gt;</span> <span class="mi">0</span>     <span class="c1">#當左邊等於右邊時，會回傳0。  </span>
+  
+<span class="mi">4</span> <span class="o">&lt;=&gt;</span> <span class="mi">3</span>  
+<span class="o">=&gt;</span> <span class="mi">1</span>     <span class="c1">#當左邊大於右邊時，會回傳1。  </span>
+  
+<span class="s2">"hi"</span> <span class="o">&lt;=&gt;</span> <span class="mi">5</span>  
+<span class="o">=&gt;</span> <span class="kp">nil</span>   <span class="c1">#兩邊為不同類別，是無法比較的，會回傳nil。  </span>
+</code></pre>
+
+<p>像這種次序的比較方式，通常會引用<strong>Comparable 模組(module)</strong>，而成為一個<strong>mixin(混成)</strong>(書中指出在第七章會詳細說明mixin)。</p>
+
+<p>不過其實可以這麼想，當我想要幫物件做排序時，可能會有我自己希望的排序方法，例如我有一個人類的類別，但我們無法直接對兩個人做排序，此時我可以自己定義按照人類的年齡來做排序，我們可以這麼寫：</p>
+
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Person</span>  
+  <span class="kp">include</span> <span class="no">Comparable</span>  
+   
+  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+   
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>  
+    <span class="vi">@age</span> <span class="o">=</span> <span class="n">age</span>  
+  <span class="k">end</span>  
+   
+  <span class="k">def</span> <span class="nf">&lt;</span><span class="o">=&gt;</span> <span class="p">(</span><span class="n">another_person</span><span class="p">)</span>  
+    <span class="n">age</span> <span class="o">&lt;=&gt;</span> <span class="n">another_person</span><span class="p">.</span><span class="nf">age</span>  
+  <span class="k">end</span>  
+   
+<span class="k">end</span>  
+   
+<span class="n">otis</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>  
+   
+<span class="n">annie</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>  
+   
+<span class="n">annie</span> <span class="o">&gt;</span> <span class="n">otis</span>  <span class="o">=&gt;</span> <span class="kp">false</span>  
+</code></pre>
+
+<p>這個範例是指，如果有個類別叫做Person，我們可以引入Comparable模組，並給他們年齡這個屬性，可以直接看在class中的<code>&lt;=&gt;</code>方法，此為我們自己定義的方法，我們把年齡的比較給寫了進去，此時新增兩個人類物件Annie和Otis，並給他們年齡值，此時就可以直接對這兩個物件做比較。</p>
+
+<p>甚至可以幫一個陣列做排序：</p>
+
+<pre class="highlight ruby"><code><span class="p">[</span><span class="n">younger</span><span class="p">,</span> <span class="n">young</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">older</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">66</span><span class="p">].</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">age</span><span class="o">|</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> <span class="n">age</span> <span class="p">)</span> <span class="p">}</span>  
+<span class="c1">#上面這行是在陣列中存入4個人類物件，並且給他們年齡定為16, 28, 43, 66  </span>
+  
+<span class="c1">#當我們自己亂排，再用.sort來排序：  </span>
+<span class="p">[</span><span class="n">older</span><span class="p">,</span> <span class="n">young</span><span class="p">,</span> <span class="n">younger</span><span class="p">,</span> <span class="n">old</span><span class="p">].</span><span class="nf">sort</span>  
+<span class="o">=&gt;</span> <span class="p">[</span><span class="n">younger</span><span class="p">,</span> <span class="n">young</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">older</span><span class="p">]</span>  
+</code></pre>
+
+<p>很酷吧！感覺這是非常方便的一種做法！</p>
+
+<hr />
+
+<p>17天，</p>
+
+<blockquote>
+  <p>覺得為時已晚的時候，恰恰是最早的時候 - 哈佛大學圖書館牆上的訓言</p>
+</blockquote>
+
+<p>只要開始，就不嫌晚，堅持下去吧！</p>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/ironman/2014-10-17-ruby-girl-17-ruby-order-method/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-18-ruby-girl-18-ruby-class-diy/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(18)：自己的類別自己做啦！</div><div class="articleContent-paging-item-date">2014．Oct．18</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-16-ruby-girl-16-ruby-equal-method/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(16)：物件之間相等性的比較</div><div class="articleContent-paging-item-date">2014．Oct．16</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>

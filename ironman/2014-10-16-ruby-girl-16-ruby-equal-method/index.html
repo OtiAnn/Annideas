@@ -1,0 +1,182 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><title>Ruby女孩(16)：物件之間相等性的比較</title><meta content="Ruby女孩(16)：物件之間相等性的比較" name="title" /><meta content="Ruby女孩(16)：物件之間相等性的比較" property="og:title" /><meta content="陳祐禎 Annie Chen" name="author" /><meta content="陳祐禎 Annie Chen" property="og:author" /><meta content="http://blog.annideas.com/ironman/2014-10-16-ruby-girl-16-ruby-equal-method/" name="url" /><meta content="http://blog.annideas.com/ironman/2014-10-16-ruby-girl-16-ruby-equal-method/" property="og:url" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" name="description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" property="og:description" /><meta content="我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。" itemprop="description" /><meta content="website" name="type" /><meta content="website" property="og:type" /><meta content="Annideas?" itemprop="name" /><meta content="http://blog.annideas.com/images/logo.png" property="og:image" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><link href="../../stylesheets/application-d069c6fa.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><script src="../../javascripts/application-139c3f48.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-16-ruby-girl-16-ruby-equal-method ironman_2014-10-16-ruby-girl-16-ruby-equal-method_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="../../images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(16)：物件之間相等性的比較</div><div class="articleContent-date">2014．Oct．16</div><div class="articleContent-article tp-in-content"><h2 id="section">物件類別與物件型別</h2>
+
+<p>我們曾在前面的文章中提及，如果我需要知道某物件是什麼類別，我們可以用<code>.class</code>，如果我們想知道它的父類別可以用<code>.superclass</code>，如果想列出它的祖先們，可以用<code>.ancestors</code>，不過Ruby 其實也有更優雅的寫法XD，以前不知道優雅是什麼，不過我想，就是更人性的方式吧，大家來看看：</p>
+
+<h3 id="section-1">普通的比較</h3>
+
+<pre class="highlight ruby"><code><span class="s2">"oh my god!"</span><span class="p">.</span><span class="nf">class</span> <span class="o">==</span> <span class="no">String</span>  
+<span class="o">=&gt;</span> <span class="kp">true</span>  
+</code></pre>
+
+<h3 id="section-2">優雅優雅優雅優雅優雅的寫法</h3>
+
+<pre class="highlight ruby"><code><span class="s2">"oh my god!"</span><span class="p">.</span><span class="nf">instance_of?</span> <span class="no">String</span>  
+<span class="o">=&gt;</span> <span class="kp">true</span>  
+</code></pre>
+
+<p>但這有個問題，當我寫：</p>
+
+<pre class="highlight ruby"><code><span class="s2">"oh my god!"</span><span class="p">.</span><span class="nf">instance_of?</span> <span class="no">Object</span>  
+<span class="o">=&gt;</span> <span class="kp">false</span>  
+</code></pre>
+
+<p>阿不是一直強調Ruby 中萬事萬物都是物件嗎？怎麼會是錯的？</p>
+
+<p>原來這<code>.class</code>和<code>.instance_of?</code>是不會查到該類別的所有父類別，如果想要查到父類別，就要使用<code>.is_a?</code>這個方法，例如：</p>
+
+<pre class="highlight ruby"><code><span class="n">xxx</span> <span class="o">=</span> <span class="mi">5566</span>  
+<span class="n">xxx</span><span class="p">.</span><span class="nf">instance_of?</span> <span class="no">Fixnum</span>  
+<span class="o">=&gt;</span> <span class="kp">true</span>  
+
+<span class="n">xxx</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Fixnum</span>  
+<span class="o">=&gt;</span> <span class="kp">true</span>  
+  
+<span class="n">xxx</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Integer</span>  
+<span class="o">=&gt;</span> <span class="kp">true</span>  
+  
+<span class="n">xxx</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Numeric</span>  
+<span class="o">=&gt;</span> <span class="kp">true</span>  
+  
+<span class="n">xxx</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Object</span>  
+<span class="o">=&gt;</span> <span class="kp">true</span>  
+</code></pre>
+
+<blockquote>
+  <p>『Ruby 中，每個物件都會具有一個定義明確的類別，而且該類別絕不會在物件存活期間遭到改變。』(p.79)</p>
+</blockquote>
+
+<p>阿勒？類別不會改變嗎？看到這句疑惑了一下，想說我們先前不是才學到可以<code>.to_i</code>、<code>.to_s</code>、<code>.to_sym</code>等方法可以改變物件類別嗎？
+所以測試了一下：</p>
+
+<pre class="highlight ruby"><code><span class="n">x</span> <span class="o">=</span> <span class="s2">"annie"</span>  
+<span class="n">x</span><span class="p">.</span><span class="nf">class</span>  <span class="o">=&gt;</span> <span class="no">String</span>  
+<span class="n">x</span><span class="p">.</span><span class="nf">object_id</span>  <span class="o">=&gt;</span> <span class="mi">70148984557260</span>  
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="nf">to_sym</span>  <span class="o">=&gt;</span> <span class="ss">:annie</span>  
+<span class="n">y</span><span class="p">.</span><span class="nf">object_id</span>  <span class="o">=&gt;</span> <span class="mi">657928</span>  
+<span class="n">x</span><span class="p">.</span><span class="nf">object_id</span>  <span class="o">=&gt;</span> <span class="mi">70148984557260</span>  
+</code></pre>
+
+<p>可以看到我確實把<code>x</code>指向的物件"annie"變成symbol，但這個symbol物件會存到另一個記憶體位置，變成新的物件！再回頭去看<code>x</code>，其實這個物件本身是沒有被改變的！</p>
+
+<h2 id="section-3">物件的相等性</h2>
+
+<p>Ruby 提供了一些驚奇的做法來判斷物件是否相等！這地方我覺得非常重要，了解運算規則後，做邏輯判斷才不會用錯方法！</p>
+
+<h3 id="equal">equal?</h3>
+<p><strong>這個方法判斷兩個值是否指向相同的物件！</strong></p>
+
+<pre class="highlight ruby"><code><span class="n">a</span> <span class="o">=</span> <span class="s2">"Ruby"</span>  
+<span class="n">b</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">"Ruby"</span>  
+<span class="n">a</span><span class="p">.</span><span class="nf">equal?</span> <span class="n">b</span>  <span class="o">=&gt;</span> <span class="kp">false</span>  
+<span class="n">b</span><span class="p">.</span><span class="nf">equal?</span> <span class="n">c</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+</code></pre>
+
+<p>其實<code>.equal?</code>這個方法就是在檢查兩邊所指向的object_id是否一樣！</p>
+
+<h3 id="section-4">==</h3>
+<p><strong>這個方法是在判斷兩邊值的相等性！</strong></p>
+
+<pre class="highlight ruby"><code><span class="n">a</span> <span class="o">=</span> <span class="s2">"Ruby"</span>  
+<span class="n">b</span> <span class="o">=</span> <span class="s2">"Ruby"</span>  
+<span class="n">a</span><span class="p">.</span><span class="nf">equal?</span> <span class="n">b</span>  <span class="o">=&gt;</span> <span class="kp">false</span>  
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+  
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>  
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>  
+<span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>  
+<span class="n">c</span> <span class="o">==</span> <span class="n">d</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+<span class="n">c</span> <span class="o">==</span> <span class="n">e</span>  <span class="o">=&gt;</span> <span class="kp">false</span>  
+</code></pre>
+
+<p>雖然a、b所指向的物件不同，但是兩物件有相同的值，因此做<code>==</code>判斷是true。而c、d、e指向的陣列都是不同物件，但c和d的值完全相等(順序也一樣)，所以相等性判斷為true。反之，e與c、d的值順序不同，相等性判斷就為false。</p>
+
+<p>值得一提的是，<strong>Numeric類別中的數，在做相等性判斷時，會自動進行型別轉換</strong>，例如：</p>
+
+<pre class="highlight ruby"><code><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+</code></pre>
+
+<p>雖然一個是Fixnum、一個是Float，但他很聰明可以判斷這值是相等的！</p>
+
+<p>若要比較範圍和陣列的相等性的話，我們也可以這麼做：</p>
+
+<pre class="highlight ruby"><code><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">3</span><span class="p">).</span><span class="nf">to_a</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+<span class="c1"># 先把一邊轉換，再做比較，此時只看值的話，相等性判斷為true  </span>
+  
+<span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">3</span><span class="p">).</span><span class="nf">to_a</span><span class="p">.</span><span class="nf">equal?</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>  <span class="o">=&gt;</span> <span class="kp">false</span>  
+<span class="c1"># 但別忘了，他還是不同的物件喔！  </span>
+</code></pre>
+
+<p>有相等就有不等，<code>!=</code>(不等於)是拿來測不等性，其實在Ruby的實作中，當他看到<code>!=</code>，只會使用<code>==</code>來判斷是否相等，然後直接把結果反轉，來當作<code>!=</code>的結果。</p>
+
+<h3 id="eql">eql?</h3>
+<p>如果說<code>==</code>是好好先生，那<code>.eql?</code>可以說是嚴格的大叔，<strong>相較於==，.eql?不會進行型別轉換</strong>，我們來看看：</p>
+
+<pre class="highlight ruby"><code><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+<span class="mi">1</span><span class="p">.</span><span class="nf">eql?</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>  <span class="o">=&gt;</span> <span class="kp">false</span>  
+  
+<span class="s2">"Ruby"</span><span class="p">.</span><span class="nf">eql?</span> <span class="s2">"Ruby"</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+</code></pre>
+
+<p>可以看到，不同物件中的值只要一樣，<code>.eql?</code>的判斷依舊會成真，但是型別不同時，他是不會自己幫你判斷的！</p>
+
+<h3 id="section-5">===</h3>
+<p><code>==</code>是測值的相等性，而<code>===</code>是<strong>測情況相等性(case equality)</strong>，直接來看看例子：</p>
+
+<pre class="highlight ruby"><code><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">)</span> <span class="o">===</span> <span class="mi">5</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+<span class="c1"># 範圍是測試值有沒有落在區間中  </span>
+  
+<span class="sr">/\d+/</span> <span class="o">===</span> <span class="s2">"123"</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+<span class="c1"># 正規表達式是測試字串是否符合正規表達式  </span>
+  
+<span class="no">String</span> <span class="o">===</span> <span class="s2">"ya"</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+<span class="c1"># 類別會判斷某物件是不是該類別的實例  </span>
+  
+<span class="ss">:ss</span> <span class="o">===</span> <span class="s2">"ss"</span>  <span class="o">=&gt;</span> <span class="kp">true</span>  
+<span class="c1"># Symbol除了判斷左右兩邊是不是相同的符號，</span>
+<span class="c1"># 如果右邊是字串，他會判斷字串的內容是不是跟自己一樣，是的話也會回傳true！  </span>
+</code></pre>
+
+<p>不過書中說上面這幾種述句不常見，比較常見的是用在case數據的用法，第五章才會提到，我們之後再揭曉！</p>
+
+<h3 id="section-6">=~</h3>
+
+<p>前面幾種方法都是定義於Object，只有現在這個<code>=~</code>方法是定義在String、Regexp中(也包含Symbol)，他所進行的是樣式比對運算。這個部分書上沒有舉例子，我們可以參考<a href="http://guides.ruby.tw/ruby/regexp.html">此文件最下方的例子</a>，以及<a href="http://wiki.plweb.org/?title=Ruby/Chapter&amp;oldid=29360">此份文件</a>有更完整的說明。</p>
+
+<p>這個方法會需要理解正規表達式之後，才能更清楚他的做法。</p>
+
+<hr />
+
+<p>16天，</p>
+
+<blockquote>
+  <p>“You can feel sore tomorrow or you can feel sorry tomorrow. You choose.”</p>
+</blockquote>
+
+<p>未來怎麼樣，都看你今天決定做了什麼，我今天沒看到想要的進度，所以明天一定是感到sorry哭哭</p>
+</div><div class="articleContent-social"><div id="fb-root"></div><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7&appId=838413066169349";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://blog.annideas.com/ironman/2014-10-16-ruby-girl-16-ruby-equal-method/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-17-ruby-girl-17-ruby-order-method/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(17)：自己做排序的方法！</div><div class="articleContent-paging-item-date">2014．Oct．17</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-15-ruby-girl-15-ruby-object-life/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(15)：Ruby物件的生與死</div><div class="articleContent-paging-item-date">2014．Oct．15</div></a></div><div id="disqus_thread"></div>
+<script type="text/javascript">
+//<![CDATA[
+                  var disqus_shortname = 'otiannie5';
+          
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+//]]>
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="../../images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="../../images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a target="_blank" href="/resume"><img class="resume" src="../../images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="../../images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="../../images/facebook-368929ba.svg" /></a></div><div class="desc_block"><div class="name">陳祐禎 Annie</div><div class="description">A coach of Rails Girls Taiwan, a math teacher, a Rails developer.</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">生活 (3)</a></li><li><a class="edu" href="/categories/學習/">學習 (4)</a></li><li><a class="dev" href="/categories/開發/">開發 (7)</a></li><li><a href="/ironman7">鐵人賽文章 (30)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-51807616-2', 'auto');
+ga('send', 'pageview');</script></div></body></html>
