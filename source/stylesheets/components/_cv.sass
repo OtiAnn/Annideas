@@ -30,6 +30,17 @@
     bottom: 0
     text-align: right
     color: #aaa
+    .cv_header_desc:last-child
+      position: absolute
+      right: 0
+      a
+        color: $blue
+        border-bottom: 1px solid #ccc
+        padding-bottom: 3px
+        &.zh-tw
+          display: inline-block
+          width: 48px
+
   @include respond-to('ipad')
     .cv_header_name_block
       .cv_header_chi_name

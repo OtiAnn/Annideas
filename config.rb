@@ -74,6 +74,7 @@ end
 
 with_layout :resume_layout do
   page "/resume*"
+  page "/en/*"
 end
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
