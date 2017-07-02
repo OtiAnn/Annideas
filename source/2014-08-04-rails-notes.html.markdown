@@ -1,22 +1,22 @@
 ---
 title: Rails常用指令小筆記
 date: 2014-08-04 10:16 UTC
-tags: Rails, Postgres
-desc: 我是Annie Chen，這篇文章是記錄自己常用卻常忘的Rails 指令，如：建初始專案時設定資料庫、略過不需要的template、進rails console刪掉錯誤的table。
+tags: Rails, Postgres, Learning
+desc: 這篇文章是記錄自己常用卻常忘的 Rails 指令，如：建初始專案時設定資料庫、略過不需要的 template、進 rails console 刪掉錯誤的 table。
 category: 開發
 ---
 
-這系列文章打算拿來記錄一些常用，卻又常忘的指令或設定！你也會不喜歡rails generate 時幫你多增加一些奇奇怪怪的東西嗎？你也想要在一開始新增專案時就設定好要使用的資料庫類型嗎？你也會有將某個model 刪掉，後來又需要用到時，重新新增卻失敗的情況嗎？明明已經d掉，卻沒d乾淨...
+這系列文章打算拿來記錄一些常用，卻又常忘的指令或設定！你也會不喜歡 rails generate 時幫你多增加一些奇奇怪怪的東西嗎？你也想要在一開始新增專案時就設定好要使用的資料庫類型嗎？你也會有將某個 model 刪掉，後來又需要用到時，重新新增卻失敗的情況嗎？明明已經 d 掉，卻沒 d 乾淨...
 
-這裡的筆記不一定是最佳解，但是是能夠work 的！就是給自己提個醒，會持續更新，有更佳解會來修改！
+這裡的筆記不一定是最佳解，但是是能夠 work 的！就是給自己提個醒，會持續更新，有更佳解會來修改！
 
-##修改rails generate
+##修改 rails generate
 
-我不喜歡在rails generate something 時，產生一堆奇奇怪怪用不到的東西，我可以...
+我不喜歡在 rails generate something 時，產生一堆奇奇怪怪用不到的東西，我可以...
 
 **方法一：**
 
-在command line下指令時，在後面加上：
+在 command line下指令時，在後面加上：
 
 ~~~shell
 $ rails g controller post --skip-assets
@@ -24,7 +24,7 @@ $ rails g controller post --skip-assets
 
 **方法二：**
 
-若懶得每次generate都要打上這個，想要在該專案中永久生效，就在`config/application.rb`中加上：
+若懶得每次 generate 都要打上這個，想要在該專案中永久生效，就在`config/application.rb`中加上：
 
 ~~~ruby
 module Blank
@@ -39,9 +39,9 @@ end
 
 ##預設用pg資料庫
 
-我想要在新增專案時就設定好我要使用postgres！
+我想要在新增專案時就設定好我要使用 postgres！
 
-在command line 直接這樣下指令：
+在 command line 直接這樣下指令：
 
 ~~~shell
 $ rails new myproject -d postgresql
@@ -50,7 +50,7 @@ $ rails new myproject -d postgresql
 
 ##清掉錯誤的table
 
-把某個model 刪掉後，又要再次用它，發現噴很多錯，因為沒刪乾淨，這時可以進入console 把他刪乾淨...
+把某個 model 刪掉後，又要再次用它，發現噴很多錯，因為沒刪乾淨，這時可以進入 console 把他刪乾淨...
 
 ~~~shell
 $ rails c

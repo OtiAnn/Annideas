@@ -1,8 +1,8 @@
 ---
 title: Udemy課程-用Rails打造部落格
 date: 2014-05-05 09:36 UTC
-tags: Udemy, Rails
-desc: 我是Annie Chen，這篇文章是介紹Udemy 中的Rails 課程內容。
+tags: Udemy, Rails, Learning
+desc: 這篇文章是介紹 Udemy 中的 Rails 課程內容。
 category: 學習
 ---
 
@@ -10,7 +10,7 @@ Rails Girls 活動後，一直處於自學而沒有完整課程的訓練，心�
 
 ##Learn Ruby on Rails from Scratch - Udemy 線上課程
 
-[Learn Ryby on Rails from Scratch](https://www.udemy.com/learn-ruby-on-rails-from-scratch/) 是[Udemy](https://www.udemy.com/courses/)線上平台中所開設的影音課程之一，當初會發現這堂課程其實是在手機的APP Store 中看到的，他們的課程也提供行動學習，在手機中聽了幾分鐘就發現自己必須立刻開電腦與老師同步學習才行。下方畫面是跟著老師一同製作完成後的部落格畫面：
+[Learn Ryby on Rails from Scratch](https://www.udemy.com/learn-ruby-on-rails-from-scratch/) 是[Udemy](https://www.udemy.com/courses/)線上平台中所開設的影音課程之一，當初會發現這堂課程其實是在手機的 APP Store 中看到的，他們的課程也提供行動學習，在手機中聽了幾分鐘就發現自己必須立刻開電腦與老師同步學習才行。下方畫面是跟著老師一同製作完成後的部落格畫面：
 
 ![Blog試作1](http://user-image.logdown.io/user/7443/blog/7374/post/197211/mNgph8qIR8iHlArPRx3N_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202014-05-05%2015.55.35.png)
 
@@ -20,7 +20,7 @@ Udemy 課程結業證明：
 
 ![Udemy課程結業證明](http://user-image.logdown.io/user/7443/blog/7374/post/197211/d4NDW8jgRFJOxTlMd6XA_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202014-05-02%2016.44.01.png)
 
-課程總共分成38 個講座，每一個講座為一段10 分鐘～20 分鐘的講解影片，全程都是英文內容，沒有字幕，所以可以順便練聽力XD每個大章節講完會有一段小筆試，加深觀念。老師的開發環境是Windows ，只是老師使用的Rails 並非最新的第四版，因此有些gem 的寫法是不通過的，不過也幸好經過這次的學習，我學會自己搜尋問題，了解解決方法，而且也把之前在Rails Girls 活動中學的功能加進去，感覺踏實許多呢！
+課程總共分成 38 個講座，每一個講座為一段 10 分鐘～ 20 分鐘的講解影片，全程都是英文內容，沒有字幕，所以可以順便練聽力XD 每個大章節講完會有一段小筆試，加深觀念。老師的開發環境是 Windows ，只是老師使用的 Rails 並非最新的第四版，因此有些 gem 的寫法是不通過的，不過也幸好經過這次的學習，我學會自己搜尋問題，了解解決方法，而且也把之前在 Rails Girls 活動中學的功能加進去，感覺踏實許多呢！
 
 ##Learn Ruby on Rails from Scratch - 課程大綱：
 
@@ -91,4 +91,4 @@ Udemy 課程結業證明：
 - 講座 38: Final Heroku Deployment 12:38
 - 測驗 7: Testing and Deployment
 
-這次學習的過程中轉換過一次開發環境，把原本在Windows 系統中的內容移到Mac OSX 中，下一步是要把所學的內容整理出來！包括git 版本控制、資料庫遷移等...加油加油！
+這次學習的過程中轉換過一次開發環境，把原本在 Windows 系統中的內容移到 Mac OSX 中，下一步是要把所學的內容整理出來！包括 git 版本控制、資料庫遷移等...加油加油！

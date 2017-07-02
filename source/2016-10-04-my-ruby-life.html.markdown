@@ -1,8 +1,8 @@
 ---
 title: 我的Ruby學習之路
 date: 2016-10-04 09:11 UTC
-tags: Ruby, Ruby
-desc: 我是陳祐禎 Annie Chen，這篇文章是參加 2014 年 7 月由 Ruby Tuesday 所主辦的一場座談會的會後心得，當時自己是一位剛學 Ruby 滿 3 個月的程式初學者，能夠上台分享心路歷程，是一次非常幸運而且有趣的經驗。
+tags: Ruby, Learning
+desc: 這篇文章是參加 2014 年 7 月由 Ruby Tuesday 所主辦的一場座談會的會後心得，當時自己是一位剛學 Ruby 滿 3 個月的程式初學者，能夠上台分享心路歷程，是一次非常幸運而且有趣的經驗。
 category: 學習
 ---
 

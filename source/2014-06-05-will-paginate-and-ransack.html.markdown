@@ -1,12 +1,12 @@
 ---
 title: will_paginate與ransack
 date: 2014-06-05 10:01 UTC
-tags: Gem, Rails
-desc: 我是Annie Chen，這篇文章是說明Rails的兩個gem:will_paginate、ransack，並解決兩個在分頁設定上會互相衝突的地方。
+tags: Gem, Rails, Learning
+desc: 這篇文章是說明 Rails 的兩個 gem:will_paginate、ransack，並解決兩個在分頁設定上會互相衝突的地方。
 category: 開發
 ---
 
-這篇主要介紹兩個很方便的gem : will_paginate、ransack
+這篇主要介紹兩個很方便的 gem : will_paginate、ransack
 
 這兩個 gem 很方便，star的人也很多！不過同時使用時會產生一些衝突，在此說明並記錄一下，以免自己未來又遇到一樣的問題！
 
@@ -99,11 +99,11 @@ end
 
 ---
 
-其實，兩個gem 的設定照上述已經搞定了，結果每次我一按搜尋，就噴這個 `undefined method total_pages` 的錯：
+其實，兩個 gem 的設定照上述已經搞定了，結果每次我一按搜尋，就噴這個 `undefined method total_pages` 的錯：
 
 ![will_paginate & ransack 的小衝突](http://user-image.logdown.io/user/7443/blog/7374/post/203033/RUyEV8a0ROyKx9g7pYyx_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202014-06-06%2018.10.08.png)
 
-後來試了幾次才知道原來是要在 `posts_controller.rb` 修正為如下的code，讓無論有沒有搜尋過的posts 都能符合分頁的規定，就沒問題了！
+後來試了幾次才知道原來是要在 `posts_controller.rb` 修正為如下的 code，讓無論有沒有搜尋過的 posts 都能符合分頁的規定，就沒問題了！
 
 ~~~ruby
 def index

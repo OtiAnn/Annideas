@@ -1,8 +1,8 @@
 ---
 title: 噢原來CSS要先Reset
 date: 2014-07-29 10:14 UTC
-tags: CSS
-desc: 我是Annie Chen，這篇文章是筆記CSS Reset要打的內容。
+tags: CSS, Learning
+desc: 這篇文章是筆記 CSS Reset 要打的內容。
 category: 開發
 ---
 
@@ -10,11 +10,11 @@ category: 開發
 
 ##CSS Tools: Reset CSS
 
-最近上了前端的基礎課程，才發現在自學的過程中，漏了不少觀念呢！網路上的資源雖然多，但沒有人引導的話，磚牆雖然能蓋起來，但中間的洞很難避免啊！自己在開發網頁的過程中，都是以Google Chrome為主，偶爾打開Safari瞧瞧，沒太大不同就不管了(囧..)
+最近上了前端的基礎課程，才發現在自學的過程中，漏了不少觀念呢！網路上的資源雖然多，但沒有人引導的話，磚牆雖然能蓋起來，但中間的洞很難避免啊！自己在開發網頁的過程中，都是以 Google Chrome 為主，偶爾打開 Safari 瞧瞧，沒太大不同就不管了(囧..)
 
-**以後開發網頁的第一件事，就是先CSS Reset！**
+**以後開發網頁的第一件事，就是先 CSS Reset！**
 
-網路上有許多寫好的reset.css，以下是世界知名的CSS大師[Eric A. Meyer整理出的CSS Reset](http://meyerweb.com/eric/tools/css/reset/)檔：
+網路上有許多寫好的 reset.css，以下是世界知名的 CSS 大師[Eric A. Meyer整理出的CSS Reset](http://meyerweb.com/eric/tools/css/reset/)檔：
 
 ~~~css
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -67,8 +67,8 @@ table {
 }
 ~~~
 
-只要在CSS加上這個檔，所有瀏覽器預設值都統一了！
+只要在 CSS 加上這個檔，所有瀏覽器預設值都統一了！
 
-只不過，因為一切都統一了，預設h1, h2, ...這些字級也都統一了，
-所以接下來得自己給這些h1, h2, ...重新定義才行！
-雖然有些麻煩，但至少在各家瀏覽器上所看見的Style 就會一致囉！
+只不過，因為一切都統一了，預設 h1, h2, ...這些字級也都統一了，
+所以接下來得自己給這些 h1, h2, ...重新定義才行！
+雖然有些麻煩，但至少在各家瀏覽器上所看見的 Style 就會一致囉！

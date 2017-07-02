@@ -1,8 +1,8 @@
 ---
 title: Ruby女孩(26)：別鬧了，方法的( )別亂省！
 date: 2014-10-26 08:58 UTC
-tags: 鐵人賽文章
-desc: 我是Annie，我參加iThome在2014年舉辦的第七屆iT邦幫忙鐵人賽，連續30天不中斷地記錄自己學習Ruby的歷程，這一系列30篇文章，推薦給跟我一樣初學Ruby約半年的朋友參考。
+tags: Ruby, RailsGirls, Rails, Learning, Method
+desc: 我是 Annie，我參加 iThome 在 2014 年舉辦的第七屆 iT 邦幫忙鐵人賽，連續 30 天不中斷地記錄自己學習 Ruby 的歷程，這一系列 30 篇文章，推薦給跟我一樣初學 Ruby 約半年的朋友參考。
 category: 鐵人
 order: 26
 ---
