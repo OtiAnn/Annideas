@@ -6,6 +6,8 @@
 activate :syntax
 
 require 'slim'
+require 'builder'
+
 Slim::Engine.disable_option_validator!
 
 activate :disqus do |d|
@@ -45,6 +47,7 @@ activate :blog do |blog|
 end
 
 page "/feed.xml", layout: false
+page "/sitemap.xml", layout: false
 
 ###
 # Compass
