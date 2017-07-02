@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/2016/10/04/my-ruby-life/"/>
     <id>http://blog.url.com/2016/10/04/my-ruby-life/</id>
     <published>2016-10-04T17:11:00+08:00</published>
-    <updated>2017-06-28T23:11:48+08:00</updated>
+    <updated>2017-07-02T17:50:13+08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -114,7 +114,7 @@
     <link rel="alternate" href="http://blog.url.com/2015/02/25/refactoring-ruby/"/>
     <id>http://blog.url.com/2015/02/25/refactoring-ruby/</id>
     <published>2015-02-25T18:33:00+08:00</published>
-    <updated>2017-06-28T23:11:48+08:00</updated>
+    <updated>2017-07-02T17:50:13+08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1298,39 +1298,39 @@
     <link rel="alternate" href="http://blog.url.com/2014/09/29/a-ruby-week-in-japan-1/"/>
     <id>http://blog.url.com/2014/09/29/a-ruby-week-in-japan-1/</id>
     <published>2014-09-29T15:51:00+08:00</published>
-    <updated>2017-06-28T23:11:48+08:00</updated>
+    <updated>2017-07-02T17:50:13+08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
     <content type="html">&lt;p&gt;很開心可以入選&lt;a href="http://railsgirls.tw/2014/07/28/rubykaigi-scholarship/"&gt;RubyKaigi 2014 獎學金辦法&lt;/a&gt;，這一切都要感謝今年三月參加了&lt;a href="http://railsgirls.tw/2014/04/09/rg-taipei3rd-record/"&gt;Rails Girls Taipei&lt;/a&gt;，才有接下來這一連串的驚喜！9/15 ~9/22 我們展開了一場奇幻(?)的冒險旅程！能夠有這趟旅程，要感謝的人真的很多，請讓我在下面的文章娓娓道來！&lt;/p&gt;
 
-&lt;p&gt;這趟旅程大概可分為幾個部分：IT公司參訪、Ruby Kaigi 2014(含Pre-Ruby Kaigi Welcome Party、Heroku Developer's Dinner)、Ruby Hiroba 2014(含Rails Girls Tokyo 4th)，以及抓住零散時間的一點點的觀光 &lt;em&gt;(Shopping)&lt;/em&gt; 心得。&lt;/p&gt;
+&lt;p&gt;這趟旅程大概可分為幾個部分：IT 公司參訪、Ruby Kaigi 2014(含Pre-Ruby Kaigi Welcome Party、Heroku Developer's Dinner)、Ruby Hiroba 2014(含Rails Girls Tokyo 4th)，以及抓住零散時間的一點點的觀光 &lt;em&gt;(Shopping)&lt;/em&gt; 心得。&lt;/p&gt;
 
 &lt;h2 id="it"&gt;日本IT公司參訪&lt;/h2&gt;
 
-&lt;p&gt;9/16 ~ 9/17 兩天，我們參訪了以下六家日本公司：&lt;a href="http://line.me/ja/"&gt;LINE&lt;/a&gt;、&lt;a href="http://dena.com/"&gt;DeNA&lt;/a&gt;、&lt;a href="http://spicelife.jp/"&gt;spice life&lt;/a&gt;、&lt;a href="http://crowdworks.jp/"&gt;CrowdWorks&lt;/a&gt;、&lt;a href="http://pepabo.com/"&gt;GMO&lt;/a&gt; 以及&lt;a href="http://everyleaf.com/"&gt;万葉&lt;/a&gt;。前面五家公司都在涉谷，是由&lt;a href="http://spicelife.jp/"&gt;spice life&lt;/a&gt; 的開發部長&lt;a href="https://twitter.com/igaiga555/"&gt;五十嵐先生&lt;/a&gt;幫我們安排的，五十嵐先生一整天都陪著我們一起參觀公司，帶我們吃好吃的，替我們打理一切，感到非常窩心(´ ▽ `)，五十嵐先生也寫了一篇關於IT 公司參觀的&lt;a title="五十嵐先生描述與台灣朋友一同參觀IT公司的日記" href="http://igarashikuniaki.net/diary/20140916.html"&gt;日記&lt;/a&gt;，看得懂日文的朋友也可以去看看噢！最後一家&lt;a href="http://everyleaf.com/"&gt;万葉&lt;/a&gt;，是在神保町，這就要感謝&lt;a href="https://twitter.com/ryudoawaru/"&gt;慕凡&lt;/a&gt;、
+&lt;p&gt;9/16 ~ 9/17 兩天，我們參訪了以下六家日本公司：&lt;a href="http://line.me/ja/"&gt;LINE&lt;/a&gt;、&lt;a href="http://dena.com/"&gt;DeNA&lt;/a&gt;、&lt;a href="http://spicelife.jp/"&gt;spice life&lt;/a&gt;、&lt;a href="http://crowdworks.jp/"&gt;CrowdWorks&lt;/a&gt;、&lt;a href="http://pepabo.com/"&gt;GMO&lt;/a&gt; 以及&lt;a href="http://everyleaf.com/"&gt;万葉&lt;/a&gt;。前面五家公司都在涉谷，是由&lt;a href="http://spicelife.jp/"&gt;spice life&lt;/a&gt; 的開發部長&lt;a href="https://twitter.com/igaiga555/"&gt;五十嵐先生&lt;/a&gt;幫我們安排的，五十嵐先生一整天都陪著我們一起參觀公司，帶我們吃好吃的，替我們打理一切，感到非常窩心(´ ▽ `)，五十嵐先生也寫了一篇關於 IT 公司參觀的&lt;a title="五十嵐先生描述與台灣朋友一同參觀IT公司的日記" href="http://igarashikuniaki.net/diary/20140916.html"&gt;日記&lt;/a&gt;，看得懂日文的朋友也可以去看看噢！最後一家&lt;a href="http://everyleaf.com/"&gt;万葉&lt;/a&gt;，是在神保町，這就要感謝&lt;a href="https://twitter.com/ryudoawaru/"&gt;慕凡&lt;/a&gt;、
 &lt;a href="https://twitter.com/eddiekao/"&gt;龍哥&lt;/a&gt;替我們安排的行程了，在万葉聽到很有幫助的想法！接下來分別敘述一下這幾家公司(按照參訪順序排)：&lt;/p&gt;
 
 &lt;h3 id="line"&gt;LINE&lt;/h3&gt;
-&lt;p&gt;&lt;a href="http://line.me/ja/"&gt;LINE&lt;/a&gt; 的總公司與下方將介紹的&lt;a href="http://dena.com/"&gt;DeNA&lt;/a&gt; 公司都是在涉谷Shibuya 的Hikarie 大樓中，進去前得先換上他們的訪客證才能進入～&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://line.me/ja/"&gt;LINE&lt;/a&gt; 的總公司與下方將介紹的&lt;a href="http://dena.com/"&gt;DeNA&lt;/a&gt; 公司都是在涉谷 Shibuya 的 Hikarie 大樓中，進去前得先換上他們的訪客證才能進入～&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="Line總公司一隅" src="/images/article_images/line-7970521d.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Line 總公司一隅" src="/images/article_images/line-7970521d.jpg" /&gt;&lt;/p&gt;
 
-&lt;p&gt;其實一進入LINE的公司中，會瞬間以為自己成了熊大和兔兔的同事一樣，公司的佈置充滿了LINE的人物，&lt;a href="http://www.inside.com.tw/"&gt;Inside&lt;/a&gt;在去年曾經有很詳盡的報導，裡面照片很多，大家也可以連去看看：&lt;a href="http://www.inside.com.tw/2013/03/15/visit-line-hq-at-shibuya-tokyo"&gt;【東京直擊！】參訪 LINE 新總部&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;其實一進入 LINE 的公司中，會瞬間以為自己成了熊大和兔兔的同事一樣，公司的佈置充滿了LINE的人物，&lt;a href="http://www.inside.com.tw/"&gt;Inside&lt;/a&gt;在去年曾經有很詳盡的報導，裡面照片很多，大家也可以連去看看：&lt;a href="http://www.inside.com.tw/2013/03/15/visit-line-hq-at-shibuya-tokyo"&gt;【東京直擊！】參訪 LINE 新總部&lt;/a&gt;。&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="Line公司介紹meeting" src="/images/article_images/line2-5b2e2a23.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Line 公司介紹 meeting" src="/images/article_images/line2-5b2e2a23.jpg" /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;"&gt;(照片來自&lt;a href="https://www.flickr.com/photos/igaiga/sets/72157647698530402/"&gt;五十嵐先生(@igaiga)的flickr&lt;/a&gt;)&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情況，也看得出來跟台灣LINE 的交流頻繁！讓我印象深刻的，是在他們的介紹影片中，有一間遊戲測試室，裡面就是給玩家玩LINE 的週邊遊戲，他們會在另一個房間觀察使用者操作情形，感受得出他們非常重視使用者經驗！
+&lt;p&gt;LINE 公司的介紹很用心！他們多是以台灣為角度在敘述公司情況，也看得出來跟台灣 LINE 的交流頻繁！讓我印象深刻的，是在他們的介紹影片中，有一間遊戲測試室，裡面就是給玩家玩 LINE 的週邊遊戲，他們會在另一個房間觀察使用者操作情形，感受得出他們非常重視使用者經驗！
 大家從照片中應該可以看到桌上有一大堆禮物XD，LINE 超大方的送了很多紀念品給我們，這是我們參觀的第一家公司，意思就是我們會帶著這大包紀念品去其他公司參觀，其他公司應該會有很大的壓力XD"&lt;/p&gt;
 
 &lt;h3 id="dena"&gt;DeNA&lt;/h3&gt;
-&lt;p&gt;&lt;a href="http://dena.com/"&gt;DeNA&lt;/a&gt; 跟LINE 在同一棟大樓，但我們不能直接坐電梯去該樓層，得回到入口處換上DeNA 的訪客證才能進入！他們的安檢真的做得很好啊！&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://dena.com/"&gt;DeNA&lt;/a&gt; 跟 LINE 在同一棟大樓，但我們不能直接坐電梯去該樓層，得回到入口處換上 DeNA 的訪客證才能進入！他們的安檢真的做得很好啊！&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="DeNA的LOGO" src="/images/article_images/dena1-96bbddc7.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="DeNA 的 LOGO" src="/images/article_images/dena1-96bbddc7.jpg" /&gt;&lt;/p&gt;
 
-&lt;p&gt;這是他們的LOGO，很可愛的笑臉:D，他們還特別安排中國籍的經營計劃部方蕾小姐為我們介紹公司，DeNA 在1999 年就成立了，所以公司用的語言幾乎都是Perl，公司的發展非常多面向，有APP、遊戲、教育…還養了一支[棒球隊-橫濱DeNA 海灣之星]呢，我覺得超酷XD！對了，目前中華職棒中信兄弟的投手&lt;a href="http://twbsball.dils.tku.edu.tw/wiki/index.php/%E9%84%AD%E5%87%B1%E6%96%87(1988)/"&gt;鄭凱文&lt;/a&gt;，就曾經是橫濱DeNA 海灣之星的球員喔，鄭凱文超強啊，今年仁川亞運表現超好，我在球場看過他一次，投球超穩！&lt;em&gt;大離題XD&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這是他們的 LOGO，很可愛的笑臉:D，他們還特別安排中國籍的經營計劃部方蕾小姐為我們介紹公司，DeNA 在 1999 年就成立了，所以公司用的語言幾乎都是 Perl，公司的發展非常多面向，有 APP、遊戲、教育…還養了一支&lt;a title="橫濱DeNA海灣之星" href="http://www.baystars.co.jp/"&gt;棒球隊-橫濱 DeNA 海灣之星&lt;/a&gt;呢，我覺得超酷XD！對了，目前中華職棒中信兄弟的投手&lt;a href="http://twbsball.dils.tku.edu.tw/wiki/index.php/%E9%84%AD%E5%87%B1%E6%96%87(1988)/"&gt;鄭凱文&lt;/a&gt;，就曾經是橫濱 DeNA 海灣之星的球員喔，鄭凱文超強啊，今年仁川亞運表現超好，我在球場看過他一次，投球超穩！&lt;em&gt;大離題XD&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img alt="DeNA 的公司內部咖啡廳一隅" src="/images/article_images/dena2-8210bfab.jpg" /&gt;&lt;/p&gt;
 
@@ -1338,51 +1338,51 @@
 
 &lt;h3 id="spice-life"&gt;Spice Life&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href="http://spicelife.jp/"&gt;Spice Life&lt;/a&gt; 公司，有提供製作與印製T-shirt 的服務-&lt;a href="http://tmix.jp/"&gt;tmix&lt;/a&gt;、&lt;a href="http://tmaker.jp/"&gt;Tmaker&lt;/a&gt;，這次看到&lt;a href="http://railsgirls.com/tokyo/"&gt;Rails Girls Tokyo&lt;/a&gt;教練們穿的衣服就是他們幫忙做的！除此之外他們也有推出幫忙送花的服務喔！很特別！&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://spicelife.jp/"&gt;Spice Life&lt;/a&gt; 公司，有提供製作與印製 T-shirt 的服務-&lt;a href="http://tmix.jp/"&gt;tmix&lt;/a&gt;、&lt;a href="http://tmaker.jp/"&gt;Tmaker&lt;/a&gt;，這次看到&lt;a href="http://railsgirls.com/tokyo/"&gt;Rails Girls Tokyo&lt;/a&gt;教練們穿的衣服就是他們幫忙做的！除此之外他們也有推出幫忙送花的服務喔！很特別！&lt;/p&gt;
 
 &lt;p&gt;&lt;img alt="spice life Logo" src="/images/article_images/spicelife-eb9d859a.jpg" /&gt;&lt;/p&gt;
 
-&lt;p&gt;相較於前兩間公司雖然小了些，但他們公司散發出一種非常歡樂的氣息，冰箱裡也擺滿滿工程師們愛喝的飲料，如果辦公室的大小以100 來算的話，大概有80 的區域都是工程師的地盤，剩下20 的區域是給客服以及設計的成員！非常重視工程師呢！&lt;/p&gt;
+&lt;p&gt;相較於前兩間公司雖然小了些，但他們公司散發出一種非常歡樂的氣息，冰箱裡也擺滿滿工程師們愛喝的飲料，如果辦公室的大小以 100 來算的話，大概有 80 的區域都是工程師的地盤，剩下 20 的區域是給客服以及設計的成員！非常重視工程師呢！&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="與spice life開發部長五十嵐先生的大合照" src="/images/article_images/spicelife2-da682506.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="與 spice life 開發部長五十嵐先生的大合照" src="/images/article_images/spicelife2-da682506.jpg" /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;"&gt;(照片來自&lt;a href="https://www.flickr.com/photos/igaiga/sets/72157647698530402/"&gt;五十嵐先生(@igaiga)的flickr&lt;/a&gt;)&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;下面這張，我們三個臺北鐵道女孩所穿的衣服，也是來自Spice Life 的噢！我們最後一天，有穿著它上&lt;a href="http://rubyhiroba.org/2014/presentation.html/"&gt;Ruby Hiroba 2014的生活發表會&lt;/a&gt;，這部分後面的文章會再多作說明！&lt;/p&gt;
+&lt;p&gt;下面這張，我們三個臺北鐵道女孩所穿的衣服，也是來自 Spice Life 的噢！我們最後一天，有穿著它上&lt;a href="http://rubyhiroba.org/2014/presentation.html/"&gt;Ruby Hiroba 2014的生活發表會&lt;/a&gt;，這部分後面的文章會再多作說明！&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="謝謝spicelife送我們三個RailsGirls衣服！" src="/images/article_images/spicelife3-c9df845f.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="謝謝 spicelife 送我們三個 RailsGirls 衣服！" src="/images/article_images/spicelife3-c9df845f.jpg" /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;"&gt;(照片來自&lt;a href="https://www.flickr.com/photos/igaiga/sets/72157647698530402/"&gt;五十嵐先生(@igaiga)的flickr&lt;/a&gt;)&lt;/span&gt;&lt;/p&gt;
 
 &lt;h3 id="crowdworks"&gt;CrowdWorks&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href="http://crowdworks.jp/"&gt;CrowdWorks&lt;/a&gt; 公司就在等等要介紹的&lt;a href="http://pepabo.com/"&gt;GMO&lt;/a&gt; 的對面呢！從照片可以很清楚看到窗外的GMO XD！我們真的很榮幸可以直接聽CrowdWorks 的CTO &lt;a href="https://twitter.com/koichiroo/"&gt;大場光一郎&lt;/a&gt;先生說明公司概況！雖然全程都日文，但好險有慕凡幫我們翻譯QQ！全日本最大的工程、設計接案平台，就是他們公司做的，我隨便點一個網站開發的案子進去，就看到一個Rails 的案子時薪給3000 ~ 4000 日幣，大概台幣850 ~ 1120 元QQ…&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://crowdworks.jp/"&gt;CrowdWorks&lt;/a&gt; 公司就在等等要介紹的&lt;a href="http://pepabo.com/"&gt;GMO&lt;/a&gt; 的對面呢！從照片可以很清楚看到窗外的 GMO XD！我們真的很榮幸可以直接聽 CrowdWorks 的CTO &lt;a href="https://twitter.com/koichiroo/"&gt;大場光一郎&lt;/a&gt;先生說明公司概況！雖然全程都日文，但好險有慕凡幫我們翻譯 QQ！全日本最大的工程、設計接案平台，就是他們公司做的，我隨便點一個網站開發的案子進去，就看到一個 Rails 的案子時薪給 3000 ~ 4000 日幣，大概台幣 850 ~ 1120 元 QQ…&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="與CrowdWorks的CTO大場光一郎先生合照" src="/images/article_images/crowdworks-f5320b05.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="與 CrowdWorks 的 CTO 大場光一郎先生合照" src="/images/article_images/crowdworks-f5320b05.jpg" /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;"&gt;(照片來自&lt;a href="https://www.flickr.com/photos/igaiga/sets/72157647698530402/"&gt;五十嵐先生(@igaiga)的flickr&lt;/a&gt;)&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;啊，轉換個心情，覺得網站有一個功能非常可愛，大家看FB 看到不錯的會按『讚』，有些平台也會給類似『喜歡』的功能，但CrowdWorks 是讓案主可以在案子結束後對接案者按一個『謝謝』的按鈕！覺得非常貼心啊！另外，上網找了一下，有看到類似當時大場先生介紹公司的&lt;a href="https://speakerdeck.com/koichiro/between-front-end-and-server-side-in-service-development/"&gt;投影片&lt;/a&gt;，有興趣大家可以去看看，只是都日文XD，其中印象較深刻的，是他們對UI和UX很重視，有請學生來公司實習，並請學生們組成小組來實際操作他們的網站服務，然後學生們真的對一些使用者經驗的部分提出了建議，公司也真的有採用呢！&lt;/p&gt;
+&lt;p&gt;啊，轉換個心情，覺得網站有一個功能非常可愛，大家看 FB 看到不錯的會按『讚』，有些平台也會給類似『喜歡』的功能，但 CrowdWorks 是讓案主可以在案子結束後對接案者按一個『謝謝』的按鈕！覺得非常貼心啊！另外，上網找了一下，有看到類似當時大場先生介紹公司的&lt;a href="https://speakerdeck.com/koichiro/between-front-end-and-server-side-in-service-development/"&gt;投影片&lt;/a&gt;，有興趣大家可以去看看，只是都日文 XD，其中印象較深刻的，是他們對 UI 和 UX 很重視，有請學生來公司實習，並請學生們組成小組來實際操作他們的網站服務，然後學生們真的對一些使用者經驗的部分提出了建議，公司也真的有採用呢！&lt;/p&gt;
 
 &lt;h3 id="gmo"&gt;GMO&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href="http://pepabo.com/"&gt;GMO&lt;/a&gt; 是我們這一天的最後一站，說實在，整天下來英文、日文資訊轟炸，當時有點累了XD 但在這個moment，出現了非常強大的人物，讓我不得不把眼睛睜亮點！照片中脖子掛著 &lt;em&gt;大砲&lt;/em&gt; 看起來很厲害也真的很厲害的單眼的那位，就是Ruby 的Committer， Hiroshi Shibata 柴田先生，他在Ruby Kaigi 的下一週也有受邀來到台灣的Rails Pacific 演講噢！&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://pepabo.com/"&gt;GMO&lt;/a&gt; 是我們這一天的最後一站，說實在，整天下來英文、日文資訊轟炸，當時有點累了XD 但在這個 moment，出現了非常強大的人物，讓我不得不把眼睛睜亮點！照片中脖子掛著 &lt;em&gt;大砲&lt;/em&gt; 看起來很厲害也真的很厲害的單眼的那位，就是 Ruby 的 Committer， Hiroshi Shibata 柴田先生，他在 Ruby Kaigi 的下一週也有受邀來到台灣的 Rails Pacific 演講噢！&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="與GMO的Shibata先生、Kuribayashi先生合照" src="/images/article_images/gmo-04a9990f.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="與 GMO 的 Shibata 先生、Kuribayashi 先生合照" src="/images/article_images/gmo-04a9990f.jpg" /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;span style="font-size: 14px; display: block; max-width: 700px; text-align: right; margin-top:-25px;"&gt;(照片來自&lt;a href="https://www.flickr.com/photos/igaiga/sets/72157647698530402/"&gt;五十嵐先生(@igaiga)的flickr&lt;/a&gt;)&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;而GMO 本身也是有在做APP、遊戲…產品也是非常多元，不過有一個很特別就是，它提供把域名換成「.tokyo」的服務，詳情也可以在這裡看到：&lt;a href="http://hello.tokyo/en/"&gt;.tokyo&lt;/a&gt;。這天晚上GMO 剛好提供給Pre-Ruby Kaigi Welcome Party 場地，GMO 介紹時其實已有許多人陸陸續續進到會場中，在GMO 介紹完後，我們也真正開始進入認識大大們之旅，這部分就待下篇文章再作說明囉！&lt;/p&gt;
+&lt;p&gt;而 GMO 本身也是有在做 APP、遊戲…產品也是非常多元，不過有一個很特別就是，它提供把域名換成「.tokyo」的服務，詳情也可以在這裡看到：&lt;a href="http://hello.tokyo/en/"&gt;.tokyo&lt;/a&gt;。這天晚上 GMO 剛好提供給 Pre-Ruby Kaigi Welcome Party 場地，GMO 介紹時其實已有許多人陸陸續續進到會場中，在 GMO 介紹完後，我們也真正開始進入認識大大們之旅，這部分就待下篇文章再作說明囉！&lt;/p&gt;
 
 &lt;h3 id="section"&gt;万葉&lt;/h3&gt;
 
-&lt;p&gt;隔天下午我們來到了位在神保町的&lt;a href="http://everyleaf.com/"&gt;万葉&lt;/a&gt;，這家公司令我非常憧憬呢！照片中與我們對話的女士是万葉的代表取締役(應該等同於社長了)&lt;a href="https://twitter.com/nay3/"&gt;大場寧子&lt;/a&gt;，哈！有沒有發現與CrowdWorks 的CTO 一樣叫做大場，原來他們是夫妻啊！夫妻都在做Rails 的工作真是太酷了！不止這樣，在大場女士隔壁的那位是万葉的開發者&lt;a href="https://twitter.com/yotii23/"&gt;鳥井雪&lt;/a&gt;，她致力于推廣RailsGirls，也是本次&lt;a href="http://rubykaigi.org/2014/"&gt;Ruby Kaigi&lt;/a&gt; 的講者，而且她的老公[Sasada 先生]也是很強的人啊！與前面所提的Shibata 先生一樣都是Ruby Committer，Sasada 先生目前也跟Matz 一起在&lt;a href="https://www.heroku.com/"&gt;Heroku&lt;/a&gt; 的團隊中呢！&lt;/p&gt;
+&lt;p&gt;隔天下午我們來到了位在神保町的&lt;a href="http://everyleaf.com/"&gt;万葉&lt;/a&gt;，這家公司令我非常憧憬呢！照片中與我們對話的女士是万葉的代表取締役(應該等同於社長了)&lt;a href="https://twitter.com/nay3/"&gt;大場寧子&lt;/a&gt;，哈！有沒有發現與 CrowdWorks 的 CTO 一樣叫做大場，原來他們是夫妻啊！夫妻都在做 Rails 的工作真是太酷了！不止這樣，在大場女士隔壁的那位是万葉的開發者&lt;a href="https://twitter.com/yotii23/"&gt;鳥井雪&lt;/a&gt;，她致力于推廣 RailsGirls，也是本次&lt;a href="http://rubykaigi.org/2014/"&gt;Ruby Kaigi&lt;/a&gt; 的講者，而且她的老公&lt;a href="https://twitter.com/koichisasada/"&gt;Sasada 先生&lt;/a&gt;也是很強的人啊！與前面所提的 Shibata 先生一樣都是 Ruby Committer，Sasada 先生目前也跟 Matz 一起在&lt;a href="https://www.heroku.com/"&gt;Heroku&lt;/a&gt; 的團隊中呢！&lt;/p&gt;
 
 &lt;p&gt;&lt;img alt="聽万葉的社長大場寧子分享公司的概況" src="/images/article_images/everyleaf-c0762718.jpg" /&gt;&lt;/p&gt;
 
 &lt;p&gt;万葉這家公司有一半的工程師都是女生噢！他們說工作的氣氛非常…吵雜哈哈哈，透過閒談後，才知道這麼厲害的兩位女士，她們本身都是非本科生呢！都是自己對寫程式很有興趣，這著實給我很大的鼓舞啊！她們都是利用自己閒暇時間精進技術，很值得學習！她們兩位在這次&lt;a href="http://rubykaigi.org/2014/"&gt;Ruby Kaigi&lt;/a&gt; 中的演說，也很振奮人心！之後再好好的分享！&lt;/p&gt;
 
-&lt;p&gt;啊，光是介紹我們參觀的IT 公司，就占了這麼大篇幅，接下來RubyKaigi、RubyHiroba..等等，還是移到下一篇比較好！&lt;/p&gt;
+&lt;p&gt;啊，光是介紹我們參觀的IT 公司，就占了這麼大篇幅，接下來 RubyKaigi、RubyHiroba..等等，還是移到下一篇比較好！&lt;/p&gt;
 
 </content>
   </entry>
@@ -1391,17 +1391,17 @@
     <link rel="alternate" href="http://blog.url.com/2014/09/06/rails-girls-taipei-4th/"/>
     <id>http://blog.url.com/2014/09/06/rails-girls-taipei-4th/</id>
     <published>2014-09-07T00:16:00+08:00</published>
-    <updated>2017-06-28T23:11:48+08:00</updated>
+    <updated>2017-07-02T17:50:13+08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;今年四月初才po了一篇&lt;a href="/2014/04/09/fisrt-time-be-a-rails-girl"&gt;第一次成為Rails Girls @Taipei&lt;/a&gt;，當時我第一次進到Rails 的世界中，後來遇到了好多貴人，幫助我能夠持續不斷地在這個世界中探索！今年八月底我以教練的身份再一次參與了這個盛會！很是感動！&lt;/p&gt;
+    <content type="html">&lt;p&gt;今年四月初才 po 了一篇&lt;a href="/2014/04/09/fisrt-time-be-a-rails-girl"&gt;第一次成為Rails Girls @Taipei&lt;/a&gt;，當時我第一次進到 Rails 的世界中，後來遇到了好多貴人，幫助我能夠持續不斷地在這個世界中探索！今年八月底我以教練的身份再一次參與了這個盛會！很是感動！&lt;/p&gt;
 
 &lt;h2 id="rails-girls"&gt;Rails Girls的「教」與「學」&lt;/h2&gt;
 
 &lt;p&gt;我發現自己真的很喜歡教人，應該說很喜歡分享自己咀嚼過的事物(噁)，分享自己跌跌撞撞之後的寶藏，分享能夠脣齒留香的內容，很有成就感！就像三角函數一樣，高中時自己的三角函數並沒有特別好，但現在因為要教人，某種不可抗力的因素會逼迫自己重頭反芻三角函數，反芻完，會有點後悔高中時怎麼沒人叫我教他三角函數XD&lt;/p&gt;
 
-&lt;p&gt;考驗一個人知識到底有沒有學通，最快的方法就是聽他說，有些人說的頭頭是道，但可能只是廣義地繞來繞去避重就輕XD，也有些人能夠交待知識的歷史淵源、前因後果就跟背他家地址一樣熟！在當Rails Girls 學員時，知道自己是初學者，有時候有些問題會不太敢問，因為不知道是不是蠢問題，所以會把問題記起來，說好聽點是把問題記起來，但其實它就這樣被塵封起來了！但準備當Rails Girls 教練時，就會不自覺開始模擬學員可能會出現的疑問，為了不被問倒XD，開始搭建學員的學習鷹架！自己順過幾次要講解的內容後，也終於能有知識內化的感覺！&lt;/p&gt;
+&lt;p&gt;考驗一個人知識到底有沒有學通，最快的方法就是聽他說，有些人說的頭頭是道，但可能只是廣義地繞來繞去避重就輕XD，也有些人能夠交待知識的歷史淵源、前因後果就跟背他家地址一樣熟！在當 Rails Girls 學員時，知道自己是初學者，有時候有些問題會不太敢問，因為不知道是不是蠢問題，所以會把問題記起來，說好聽點是把問題記起來，但其實它就這樣被塵封起來了！但準備當 Rails Girls 教練時，就會不自覺開始模擬學員可能會出現的疑問，為了不被問倒XD，開始搭建學員的學習鷹架！自己順過幾次要講解的內容後，也終於能有知識內化的感覺！&lt;/p&gt;
 
 &lt;h2 id="rails-girls-taipei-4th--"&gt;Rails Girls Taipei 4th @ 犇亞會議中心&lt;/h2&gt;
 
@@ -1411,31 +1411,31 @@
 
 &lt;p&gt;2014/8/29 ~ 30 &lt;a href="http://railsgirls.com/taipei"&gt;Rails Girls Taipei 4th&lt;/a&gt; 活動終於千呼萬喚始出來了XD&lt;/p&gt;
 
-&lt;p&gt;我的兩位學員都沒有碰過Ruby，對Ruby 這個程式語言，或是說對「程式語言」這個詞彙不是很了解，啊！太棒了！教練學員媒合真好XD，如果他們有寫過其他語言，我可能還無法替他們做比較跟說明XD"&lt;/p&gt;
+&lt;p&gt;我的兩位學員都沒有碰過 Ruby，對 Ruby 這個程式語言，或是說對「程式語言」這個詞彙不是很了解，啊！太棒了！教練學員媒合真好XD，如果他們有寫過其他語言，我可能還無法替他們做比較跟說明XD"&lt;/p&gt;
 
-&lt;p&gt;第一天晚上我們完全沈浸在&lt;a href="http://tryruby.org/"&gt;Try Ruby&lt;/a&gt; 的世界中，其實學習Ruby 有非常多的線上資源，曾經也整理了一篇&lt;a href="/2014/04/11/online-resource-of-learning-experience"&gt;Ruby/Rails線上學習資源&lt;/a&gt;，剛好派上用場！Try Ruby 應該是目前較適合作為Ruby 入門磚的一個資源！雖有些觀念也跳蠻快的，不過再開個irb 講解一下，發現兩位學員都能夠理解！真是太棒了！成就感 up up！&lt;/p&gt;
+&lt;p&gt;第一天晚上我們完全沈浸在&lt;a href="http://tryruby.org/"&gt;Try Ruby&lt;/a&gt; 的世界中，其實學習 Ruby 有非常多的線上資源，曾經也整理了一篇&lt;a href="/2014/04/11/online-resource-of-learning-experience"&gt;Ruby/Rails線上學習資源&lt;/a&gt;，剛好派上用場！Try Ruby 應該是目前較適合作為 Ruby 入門磚的一個資源！雖有些觀念也跳蠻快的，不過再開個 irb 講解一下，發現兩位學員都能夠理解！真是太棒了！成就感 up up！&lt;/p&gt;
 
 &lt;p&gt;中間舉了個生活的例子，希望讓他們更有感受。(當初自己在學習時，常常有不知道程式語言可以怎麼應用的困惑，雖然我知道的不多，但希望也可以儘量減少他們這樣的疑問！)&lt;/p&gt;
 
-&lt;p&gt;我老媽前陣子在猶豫是不是要辭職，猶豫太久，我說：『用Ruby 幫你決定吧！』然後就寫下了：&lt;/p&gt;
+&lt;p&gt;我老媽前陣子在猶豫是不是要辭職，猶豫太久，我說：『用 Ruby 幫你決定吧！』然後就寫下了：&lt;/p&gt;
 
 &lt;pre class="highlight shell"&gt;&lt;code&gt;irb&lt;span class="o"&gt;(&lt;/span&gt;main&lt;span class="o"&gt;)&lt;/span&gt;:001:0&amp;gt;[&lt;span class="s2"&gt;"上班"&lt;/span&gt;,&lt;span class="s2"&gt;"不上班"&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;.sample
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;哈，就跟撕花瓣一樣，「他愛我」、「他不愛我」…不用再去撕花瓣了，寫個Ruby就可以知道了，看起來很簡單，但我真的相信多看些簡單的例子，會讓初心者覺得程式其實沒這麼難！因為簡單的例子是很容易可以想像的畫面。如果是寫一個平常生活中想像不出來的例子，共鳴就會減少。&lt;/p&gt;
+&lt;p&gt;哈，就跟撕花瓣一樣，「他愛我」、「他不愛我」…不用再去撕花瓣了，寫個 Ruby 就可以知道了，看起來很簡單，但我真的相信多看些簡單的例子，會讓初心者覺得程式其實沒這麼難！因為簡單的例子是很容易可以想像的畫面。如果是寫一個平常生活中想像不出來的例子，共鳴就會減少。&lt;/p&gt;
 
-&lt;p&gt;第二天，在實際碰Rails 之前，先帶他們認識了終端機，沒想到讓終端機說話，完全可以吸引他們XD，我自己當初發現時，也是覺得超有趣的！&lt;/p&gt;
+&lt;p&gt;第二天，在實際碰 Rails 之前，先帶他們認識了終端機，沒想到讓終端機說話，完全可以吸引他們XD，我自己當初發現時，也是覺得超有趣的！&lt;/p&gt;
 
 &lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;say Hello
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;我的語音有改過，所以是女生發音XD其實後來因為方便，當我不知道哪個單字怎麼念時，我也都會叫終端機講給我聽XD也算是實用啦！&lt;/p&gt;
+&lt;p&gt;我的語音有改過，所以是女生發音XD 其實後來因為方便，當我不知道哪個單字怎麼念時，我也都會叫終端機講給我聽XD也算是實用啦！&lt;/p&gt;
 
 &lt;p&gt;其實可以發現兩天下來，複製貼上這麼多指令後，學員最熟的終端機指令就是 &lt;code&gt;cd&lt;/code&gt; 了XD&lt;/p&gt;
 
-&lt;p&gt;一天半的時間真的好短，Html、CSS 都好想講，可惜時間不允許，不過Rails Girls 活動本來就只是一個提供女孩認識Rails 的機會，對我來說，我參加Rails Girls Taipei 3rd，也只是一個開始，一個相見歡！有興趣繼續深入的話，一定會重頭再學習的！&lt;/p&gt;
+&lt;p&gt;一天半的時間真的好短，Html、CSS 都好想講，可惜時間不允許，不過 Rails Girls 活動本來就只是一個提供女孩認識 Rails 的機會，對我來說，我參加 Rails Girls Taipei 3rd，也只是一個開始，一個相見歡！有興趣繼續深入的話，一定會重頭再學習的！&lt;/p&gt;
 
-&lt;p&gt;本來很擔心自己只有四個多月的經驗，而且又是個非本科的，可能沒辦法太專業說給學員聽，很感謝Rails Girls Taiwan 主辦大大們給我這個機會，我發現，其實就跟我當初當學員的心情一樣，女孩學習程式，不見得會想把自己丟在一個學習最快的地方，而是想找一個學習最快樂的地方！可以分享自己從學員角度學習Ruby、Rails 的經驗給他們，真的蠻開心的！&lt;/p&gt;
+&lt;p&gt;本來很擔心自己只有四個多月的經驗，而且又是個非本科的，可能沒辦法太專業說給學員聽，很感謝 Rails Girls Taiwan 主辦大大們給我這個機會，我發現，其實就跟我當初當學員的心情一樣，女孩學習程式，不見得會想把自己丟在一個學習最快的地方，而是想找一個學習最快樂的地方！可以分享自己從學員角度學習 Ruby、Rails 的經驗給他們，真的蠻開心的！&lt;/p&gt;
 
 &lt;p&gt;謝謝學員最後給我的鼓勵XD 快一起進這個坑吧！！！&lt;/p&gt;
 
@@ -1455,28 +1455,28 @@
     <link rel="alternate" href="http://blog.url.com/2014/08/04/rails-notes/"/>
     <id>http://blog.url.com/2014/08/04/rails-notes/</id>
     <published>2014-08-04T18:16:00+08:00</published>
-    <updated>2017-06-28T23:11:48+08:00</updated>
+    <updated>2017-07-02T17:50:13+08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;這系列文章打算拿來記錄一些常用，卻又常忘的指令或設定！你也會不喜歡rails generate 時幫你多增加一些奇奇怪怪的東西嗎？你也想要在一開始新增專案時就設定好要使用的資料庫類型嗎？你也會有將某個model 刪掉，後來又需要用到時，重新新增卻失敗的情況嗎？明明已經d掉，卻沒d乾淨…&lt;/p&gt;
+    <content type="html">&lt;p&gt;這系列文章打算拿來記錄一些常用，卻又常忘的指令或設定！你也會不喜歡 rails generate 時幫你多增加一些奇奇怪怪的東西嗎？你也想要在一開始新增專案時就設定好要使用的資料庫類型嗎？你也會有將某個 model 刪掉，後來又需要用到時，重新新增卻失敗的情況嗎？明明已經 d 掉，卻沒 d 乾淨…&lt;/p&gt;
 
-&lt;p&gt;這裡的筆記不一定是最佳解，但是是能夠work 的！就是給自己提個醒，會持續更新，有更佳解會來修改！&lt;/p&gt;
+&lt;p&gt;這裡的筆記不一定是最佳解，但是是能夠 work 的！就是給自己提個醒，會持續更新，有更佳解會來修改！&lt;/p&gt;
 
-&lt;h2 id="rails-generate"&gt;修改rails generate&lt;/h2&gt;
+&lt;h2 id="rails-generate"&gt;修改 rails generate&lt;/h2&gt;
 
-&lt;p&gt;我不喜歡在rails generate something 時，產生一堆奇奇怪怪用不到的東西，我可以…&lt;/p&gt;
+&lt;p&gt;我不喜歡在 rails generate something 時，產生一堆奇奇怪怪用不到的東西，我可以…&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;方法一：&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;在command line下指令時，在後面加上：&lt;/p&gt;
+&lt;p&gt;在 command line下指令時，在後面加上：&lt;/p&gt;
 
 &lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;rails g controller post --skip-assets
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;方法二：&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;若懶得每次generate都要打上這個，想要在該專案中永久生效，就在&lt;code&gt;config/application.rb&lt;/code&gt;中加上：&lt;/p&gt;
+&lt;p&gt;若懶得每次 generate 都要打上這個，想要在該專案中永久生效，就在&lt;code&gt;config/application.rb&lt;/code&gt;中加上：&lt;/p&gt;
 
 &lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Blank&lt;/span&gt;
   &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Application&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;Rails&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Application&lt;/span&gt;
@@ -1489,16 +1489,16 @@
 
 &lt;h2 id="pg"&gt;預設用pg資料庫&lt;/h2&gt;
 
-&lt;p&gt;我想要在新增專案時就設定好我要使用postgres！&lt;/p&gt;
+&lt;p&gt;我想要在新增專案時就設定好我要使用 postgres！&lt;/p&gt;
 
-&lt;p&gt;在command line 直接這樣下指令：&lt;/p&gt;
+&lt;p&gt;在 command line 直接這樣下指令：&lt;/p&gt;
 
 &lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;rails new myproject -d postgresql
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id="table"&gt;清掉錯誤的table&lt;/h2&gt;
 
-&lt;p&gt;把某個model 刪掉後，又要再次用它，發現噴很多錯，因為沒刪乾淨，這時可以進入console 把他刪乾淨…&lt;/p&gt;
+&lt;p&gt;把某個 model 刪掉後，又要再次用它，發現噴很多錯，因為沒刪乾淨，這時可以進入 console 把他刪乾淨…&lt;/p&gt;
 
 &lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;rails c
 2.1.2 :001 &amp;gt; ActiveRecord::Migration.drop_table&lt;span class="o"&gt;(&lt;/span&gt;:tablename&lt;span class="o"&gt;)&lt;/span&gt;
@@ -1514,7 +1514,7 @@
     <link rel="alternate" href="http://blog.url.com/2014/07/29/css-first-reset/"/>
     <id>http://blog.url.com/2014/07/29/css-first-reset/</id>
     <published>2014-07-29T18:14:00+08:00</published>
-    <updated>2017-06-28T23:11:48+08:00</updated>
+    <updated>2017-07-02T17:50:13+08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -1522,11 +1522,11 @@
 
 &lt;h2 id="css-tools-reset-css"&gt;CSS Tools: Reset CSS&lt;/h2&gt;
 
-&lt;p&gt;最近上了前端的基礎課程，才發現在自學的過程中，漏了不少觀念呢！網路上的資源雖然多，但沒有人引導的話，磚牆雖然能蓋起來，但中間的洞很難避免啊！自己在開發網頁的過程中，都是以Google Chrome為主，偶爾打開Safari瞧瞧，沒太大不同就不管了(囧..)&lt;/p&gt;
+&lt;p&gt;最近上了前端的基礎課程，才發現在自學的過程中，漏了不少觀念呢！網路上的資源雖然多，但沒有人引導的話，磚牆雖然能蓋起來，但中間的洞很難避免啊！自己在開發網頁的過程中，都是以 Google Chrome 為主，偶爾打開 Safari 瞧瞧，沒太大不同就不管了(囧..)&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;以後開發網頁的第一件事，就是先CSS Reset！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;以後開發網頁的第一件事，就是先 CSS Reset！&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;網路上有許多寫好的reset.css，以下是世界知名的CSS大師&lt;a href="http://meyerweb.com/eric/tools/css/reset/"&gt;Eric A. Meyer整理出的CSS Reset&lt;/a&gt;檔：&lt;/p&gt;
+&lt;p&gt;網路上有許多寫好的 reset.css，以下是世界知名的 CSS 大師&lt;a href="http://meyerweb.com/eric/tools/css/reset/"&gt;Eric A. Meyer整理出的CSS Reset&lt;/a&gt;檔：&lt;/p&gt;
 
 &lt;pre class="highlight css"&gt;&lt;code&gt;&lt;span class="c"&gt;/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -1578,11 +1578,11 @@
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;只要在CSS加上這個檔，所有瀏覽器預設值都統一了！&lt;/p&gt;
+&lt;p&gt;只要在 CSS 加上這個檔，所有瀏覽器預設值都統一了！&lt;/p&gt;
 
-&lt;p&gt;只不過，因為一切都統一了，預設h1, h2, …這些字級也都統一了，
-所以接下來得自己給這些h1, h2, …重新定義才行！
-雖然有些麻煩，但至少在各家瀏覽器上所看見的Style 就會一致囉！&lt;/p&gt;
+&lt;p&gt;只不過，因為一切都統一了，預設 h1, h2, …這些字級也都統一了，
+所以接下來得自己給這些 h1, h2, …重新定義才行！
+雖然有些麻煩，但至少在各家瀏覽器上所看見的 Style 就會一致囉！&lt;/p&gt;
 </content>
   </entry>
 </feed>
