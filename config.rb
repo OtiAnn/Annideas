@@ -119,7 +119,7 @@ helpers do
       end
     else
       link_to category_path(cat_name) do
-        content_tag(:span, cat_name.chars.join(' '), class: "#{cat_class(cat_name)}")
+        content_tag(:span, cat_name.chars.size > 2 ? cat_name : cat_name.chars.join(' '), class: "#{cat_class(cat_name)}")
       end
     end
   end
