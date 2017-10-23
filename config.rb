@@ -2,7 +2,7 @@
 # Blog settings
 ###
 
-# Time.zone = "UTC"
+Time.zone = 'Eastern Time (US & Canada)'
 activate :syntax
 
 require 'slim'
@@ -29,7 +29,7 @@ activate :blog do |blog|
   # blog.month_link = "{year}/{month}"
   # blog.day_link = "{year}/{month}/{day}"
   # blog.default_extension = ".markdown"
-
+  blog.new_article_template = 'my_templates/my_custom_article_template.tt'
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
 
@@ -104,7 +104,8 @@ helpers do
     cat_hash = {
       "學習": "edu",
       "生活": "life",
-      "開發": "dev"
+      "開發": "dev",
+      "楓葉國紀錄": "maple"
     }
 
     return cat_hash[cat_name.to_sym]
