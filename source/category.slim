@@ -5,7 +5,7 @@ pageable: false
 - category = category || current_page.metadata[:locals][:category] || ""
 
 .articleList
-  .articleList-tagName class=cat_class(category) = category.chars.join(' ')
+  .articleList-tagName class=cat_class(category) = category.chars.size > 2 ? category : category.chars.join(' ')
   ul
     - page_articles.each_with_index do |article, i|
       li = link_to article
