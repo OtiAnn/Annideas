@@ -20,6 +20,9 @@ html
           .articleContent-category = link_to current_page.data.category.chars.join(' '), "/ironman7"
           .articleContent-title = current_page.data.title
           .articleContent-date = current_page.data.date.to_date.strftime('%Y．%b．%d')
+          / .articleContent-tags
+          /   - current_page.data.tags.split(', ').each do |tag|
+          /     = link_to "##{tag}", tag_path(tag)
           .articleContent-article.tp-in-content
             = yield
           .articleContent-social
