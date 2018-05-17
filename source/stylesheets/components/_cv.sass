@@ -61,7 +61,7 @@
         position: absolute
 
 
-.cv_experience, .cv_community, .cv_education, .cv_about_me
+.cv_experience, .cv_community, .cv_education, .cv_about_me, .cv_skill
   margin-top: 50px
   h2
     position: relative
@@ -79,7 +79,7 @@
       font-size: inherit
       line-height: 52px
       font-weight: bold
-      color: #FFBB00
+      color: #5e89c1
       text-align: center
       background-color: $white
     &:after
@@ -87,7 +87,7 @@
       display: block
       width: 100%
       height: 3px
-      background: #FFBB00
+      background: #5e89c1
     @include respond-to('iphone')
       font-size: 24px
 
@@ -127,6 +127,16 @@
         margin-right: 15px
         padding-bottom: 3px
         color: $c-blue
+      ul.job_description
+        margin-left: 22px
+        li
+          font-size: 14px
+          margin-bottom: 0px
+          margin-top: 5px
+          color: #555
+          list-style: disc
+        strong
+          font-weight: bold
     @include respond-to('ipad')
       li
         margin-bottom: 40px
@@ -141,3 +151,12 @@
             font-weight: bold
           .job_title
             font-size: 15px
+
+.cv_skill
+  ul li
+    margin-bottom: 0
+    h3
+      font-size: 16px
+    p
+      margin-top: 0
+      line-height: 22px
