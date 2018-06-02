@@ -112,14 +112,20 @@ helpers do
   end
 
   def link_to_cat(cat_name: nil, homepage: true)
+    category_hash = {
+        "生活" => "Life",
+        "學習" => "Learning",
+        "開發" => "Coding",
+        "楓葉國紀錄" => "Canada"
+      }
     if homepage
-      link_to category_path(cat_name) do
+      link_to category_path(cat_name) do 
         content_tag(:span, cat_name[0], class: "#{cat_class(cat_name)} big") + 
         content_tag(:span, cat_name[1], class: "#{cat_class(cat_name)} small")
       end
     else
       link_to category_path(cat_name) do
-        content_tag(:span, cat_name.chars.size > 2 ? cat_name : cat_name.chars.join(' '), class: "#{cat_class(cat_name)}")
+        content_tag(:span, category_hash[cat_name], class: "#{cat_class(cat_name)}")
       end
     end
   end
@@ -128,7 +134,13 @@ helpers do
     articles = blog.articles.select do |article|
       article.data.category == cat_name
     end
-    return "#{cat_name} (#{articles.size})"
+    category_hash = {
+      "生活" => "Life",
+      "學習" => "Learning",
+      "開發" => "Coding",
+      "楓葉國紀錄" => "Canada"
+    }
+    return "#{category_hash[cat_name]} (#{articles.size})"
   end
 
   def date_content(date: nil)

@@ -7,13 +7,13 @@ nav
     = link_to "/" do
       = image_tag "/images/annie_pic.jpg"
   .social_link
-    = link_to "/resume"
+    = link_to "/en/resume"
       = image_tag("me.svg", class: "resume")
     = link_to "https://twitter.com/_OtiAnn", target: "_blank"
       = image_tag("twitter.svg", class: "twitter")
     = link_to "https://www.facebook.com/OtiAnn", target: "_blank"
       = image_tag("facebook.svg", class: "facebook")
-    = link_to "https://www.linkedin.com/in/yu-chen-chen-b72a6598/", target: "_blank"
+    = link_to "https://www.linkedin.com/in/yccannie", target: "_blank"
       = image_tag("linkedin.svg", class: "linkedin")
   .desc_block
     .name = "Yu-Chen (Annie) Chen"
@@ -22,5 +22,5 @@ nav
     li = link_to cat_name_and_articles_count(cat_name: "生活"), category_path("生活"), class: cat_class("生活")
     li = link_to cat_name_and_articles_count(cat_name: "學習"), category_path("學習"), class: cat_class("學習")
     li = link_to cat_name_and_articles_count(cat_name: "開發"), category_path("開發"), class: cat_class("開發")
-    li = link_to "鐵人賽文章 (30)", "/ironman7"
+    li = link_to "Article (30)", "/ironman7"
     li = link_to cat_name_and_articles_count(cat_name: "楓葉國紀錄"), category_path("楓葉國紀錄"), class: cat_class("楓葉國紀錄")
