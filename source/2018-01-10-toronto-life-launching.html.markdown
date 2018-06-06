@@ -8,7 +8,7 @@ category: 楓葉國紀錄
 
 **Welcome to my blog!**
 
-I currently enrolled at George Brown College in postgraduate program in Information Systems Business Analysis.
+I'm currently enrolled at George Brown College in postgraduate program in Information Systems Business Analysis.
 
 If you are looking at this article, I guess you must be the new friend I just met in Toronto. So let me put a brief introduction here! And if you are interested what I've done before, kindly see my previous experience thru this link: [http://blog.annideas.com/en/resume](/en/resume)
 
