@@ -1,0 +1,24 @@
+---
+title: IIBA Certification Preparation
+date: 2018-07-20 01:41 EDT
+tags: IIBA, Business Analyst, Learning
+desc: Learning Schedule for getting the IIBA Certification
+category: 楓葉國紀錄
+---
+During the courses at [George Brown College IS Business Analysis](https://www.georgebrown.ca/t405-2017-2018/), I learned what the role of Business Analyst in an enterprise and how to be a successful BA. However, there are still some abstract concepts. To make sure what I understand what I know and unknow, I am going to review all the content I learned from college and make the note to help myself to reach a thorough understanding. Of course, the final goal is to get the IIBA cetification.
+
+##IIBA (International Institute of Business Analysis)
+
+Extract a description of [IIBA](https://www.iiba.org/) from Wikipedia:
+
+> A non-profit professional association formed in October 2003 with the purpose of supporting and promoting the discipline of business analysis.
+
+As an aspired Business Analyst, I hope I can utilize what I learned from [George Brown College IS Business Analysis](https://www.georgebrown.ca/t405-2017-2018/) program regarding to the practical and theoretical knowledge to extract, analyze and present the key insights of future projects.
+
+To build up a solid foundation, I'm going to record my learning process of a thorough note of studying [BABOK Guide v3](https://www.amazon.ca/Guide-Business-Analysis-Knowledge-Babok/dp/1927584027) (A Guide to the Business Analysis Body of Knowledge) which is the basic knowledge of Business Analysis.
+
+Hopefully, I can get the [ECBA (Entry Certificate in Business Analysis)](http://www.iiba.org/Certification/certificationlevels/level1-ecba.aspx) certification after my preparation.
+
+---
+
+加拿大學院的學制是三個學期，1-4月是第一個學期，5-8月是第二個學期，9-12月是第三個學期。現在也進入第二個學期的尾聲了，學校提供了很多真實案例來啟發我們，讓我們去摸索商業分析師在一個企業中所扮演的角色。在馬不停蹄的上課、考試、作業和報告中，覺得自己也算是摸到了商業分析師的邊邊，有點抽象又有點具體，希望能徹底的把所學給融會貫通。最終目的除了提升自己，當然是要考到證照和找到工作 :D 所以從下一篇開始，便會進入我的 Business Analysis 筆記世界。
