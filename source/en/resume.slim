@@ -9,15 +9,91 @@ date: "2018-01-13 09:11 UTC"
   .cv_header_name_block
     .cv_header_chi_name.eng_ver Yu-Chen Chen
     .cv_header_eng_name = '(Annie)'
-    .cv_header_job_title Web Developer / Instructional Designer
+    .cv_header_job_title Future Business Analyst / Web Developer
   .cv_header_desc_block
     .cv_header_desc Toronto, Canada / Taipei, Taiwan
     .cv_header_desc yccannie.tw@gmail.com
     .cv_header_desc = link_to "[中文]", "/resume/", class: "zh-tw"
+
+.cv_skill
+  h2 title="SKILL"
+  ul
+    li
+      .left_block
+        h3 Business Analysis
+      .right_block
+        p Business Analysis Plan, Business Process Diagram, Data Flow Diagram, Use Case Diagram, Statechart Diagram, Business Rules, Data Dictionary, Data Modelling, Entity Relationship Diagram, Card Sorting, Survey, Persona, Storyboard, Prototype
+    li
+      .left_block
+        h3 Project Management
+      .right_block
+        p Agile Methodology, Behaviour Driven Development
+    li
+      .left_block
+        h3 Web Development
+      .right_block
+        p Ruby, Ruby on Rails, JavaScript, jQuery, Sass, CSS3, MySQL, MongoDB, Git, Google Analytics, AWS (EC2, RDS, S3)
+    li
+      .left_block
+        h3 Tools
+      .right_block
+        p Microsoft Office (Word, Excel, PowerPoint, Visio, Project), LucidChart, Trello, Slack, GitHub, XMind, Balsamiq
+
+.cv_education
+  h2 title="EDUCATION"
+  ul
+    li
+      .left_block
+        h3.school_name George Brown College
+        .during_time Toronto, Canada
+        .during_time 2018 - Current
+      .right_block
+        h3.job_title Information Systems Business Analysis Postgraduate Program, Cumulative GPA: 4.00 / 4.00
+        ul.job_description
+          li Examined the e-Signature case study to elicit the root cause problem, business needs, stakeholder requirements and solutions by creating business analysis plans, interview questions, business process diagrams, business context diagrams, use cases, business rules and data dictionary
+          li Examined the ATM and the kiosk of an airline company case studies to build glossary, conceptual and logical data models with entity relationship diagram
+          li Monitored the schedule of projects and assignments by managing the tasks with group members on Trello
+          li Analyzed the Scotiabank website by conducting the surveys and interviews with the end-users to elicit the requirements and redesigned the streamlined processes and UIs by drawing the Business Process Diagram and the prototypes and storyboards
+        p
+          | Transcript：
+          = link_to "Winter 2018 (Unofficial Transcript)", "/files/GBC_Transcript.pdf", target: "_blank"
+    li
+      .left_block
+        h3.school_name National Taiwan Normal University
+        .during_time Taipei, Taiwan
+        .during_time 2013
+      .right_block
+        h3.job_title Master of Computer Science in Graduate Institute of Information and Computer Education, College of Education
+        p Master’s thesis topic: Effects of Game Context on Third-graders’ Fraction Learning
+        p
+          | Transcript：
+          = link_to "Master's Transcript", "/files/Masters_Transcript.pdf", target: "_blank"
+    li
+      .left_block
+        h3.school_name National Taipei University of Education
+        .during_time Taipei, Taiwan
+        .during_time 2011
+      .right_block
+        h3.job_title Bachelor of Science in Department of Mathematics and Information Education (Mathematics Education)
+        p Maintained a 3.76 GPA while working 20-25 hours per week and in school full-time
+        p
+          | Transcript：
+          = link_to "Bachelor Transcript", "/files/Bachelor_Transcript.pdf", target: "_blank"
     
 .cv_experience
   h2 title="EXPERIENCE"
   ul
+    li
+      .left_block
+        h3.company_name Royal Bank of Canada (RBC)
+        .during_time Toronto, Canada
+        .during_time 2018
+      .right_block
+        h3.job_title Project Control Officer, Fall 2018 Co-op
+        ul.job_description
+          li Worked as a part of Data and Analytics Business Insights team
+          li Supported Project Managers and Scrum Masters to update project related artefacts
+
     li
       .left_block
         h3.company_name i-TRUE Communications Inc.
@@ -27,11 +103,13 @@ date: "2018-01-13 09:11 UTC"
         h3.job_title Ruby on Rails Developer
         ul.job_description
           li Programmed Taiwanese largest beauty and cosmetics portal site
-          li Analyzed, designed and developed a Content Management System (CMS) including the user interface to streamline the relevant department’s working flow
+          li Worked as a part of an agile team
+          li Analyzed, designed and developed a Content Management System (CMS) including the user interface to streamline the relevant department’s workflow
           ul.job_description
             li <strong>Saving 90% time-spent</strong> per case by the simplified CMS
           li Conducted stakeholders meetings and workshops to elicit the requirements
-          li Enhanced team management by building documentation and guideline for the working flow
+          li Managed project effectively and efficiently by excelled communication skills and time management, accomplished the project a week ahead of the schedule
+          li Enhanced team management by building documentation and guideline for the workflow
 
         p
           | Online Products：
@@ -49,6 +127,7 @@ date: "2018-01-13 09:11 UTC"
           li Researched the most suitable approach for non-technical background students to learn the concept of programming
           li Identified the gap between students’ understanding and the instruction to make the courses more effective
           li Elicited the student requirements by conducting interviews and designing questionnaire
+          li Stimulated students engagement and collaborative learning to gain the clarity of Ruby on Rails
 
     li
       .left_block
@@ -215,63 +294,3 @@ date: "2018-01-13 09:11 UTC"
         p
           = link_to "3rd Review", "/2014/04/09/fisrt-time-be-a-rails-girl/", target: "_blank"
           = link_to "4th Review", "/2014/09/06/rails-girls-taipei-4th/", target: "_blank"
-
-.cv_education
-  h2 title="EDUCATION"
-  ul
-    li
-      .left_block
-        h3.school_name George Brown College
-        .during_time Toronto, Canada
-        .during_time 2018 - Current
-      .right_block
-        h3.job_title Information Systems Business Analysis
-        ul.job_description
-          li Gained the fundamental knowledge of Business Analysis via BABOK and case study
-          li Elicited the root cause problem, business needs, stakeholder requirements and solutions from the real-world problem by creating business analysis plan, interview questions, business process diagram, use case, business rules and data dictionary
-
-    li
-      .left_block
-        h3.school_name National Taiwan Normal University
-        .during_time Taipei, Taiwan
-        .during_time 2013
-      .right_block
-        h3.job_title Master of Computer Science in Graduate Institute of Information and Computer Education, College of Education
-        p Master’s thesis topic: Effects of Game Context on Third-graders’ Fraction Learning
-    li
-      .left_block
-        h3.school_name National Taipei University of Education
-        .during_time Taipei, Taiwan
-        .during_time 2011
-      .right_block
-        h3.job_title Bachelor of Science in Department of Mathematics and Information Education (Mathematics Education)
-        p Maintained a 3.00+ GPA while working 20-25 hours per week and in school full-time
-
-.cv_skill
-  h2 title="SKILL"
-  ul
-    li
-      .left_block
-        h3 Business Analysis
-      .right_block
-        p Business Analysis Plan, Business Process Diagram, Use Case Diagram, Business Rules, Data Dictionary, User Interface Requirement
-    li
-      .left_block
-        h3 Project Management
-      .right_block
-        p Agile Methodology, Behaviour Driven Development
-    li
-      .left_block
-        h3 Web Development
-      .right_block
-        p Ruby on Rails, JavaScript, jQuery, Sass, CSS3, MySQL, MongoDB, Git, Google Analytics
-    li
-      .left_block
-        h3 Education
-      .right_block
-        p Training and Development, Game-Based Learning, e-Learning
-    li
-      .left_block
-        h3 Tools
-      .right_block
-        p Microsoft Office (Word, Excel PowerPoint, Visio, Project), LucidChart, Trello, Slack, GitHub, XMind
