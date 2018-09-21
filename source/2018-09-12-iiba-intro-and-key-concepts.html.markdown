@@ -4,6 +4,7 @@ date: 2018-09-12 09:21 EDT
 tags: IIBA, Business Analyst, Learning
 desc: Introduction of the BABOK Guide and the summary of BA Key Concepts
 category: 楓葉國紀錄
+published: false
 ---
 
 ## Introduction of the BABOK Guide
