@@ -17,3 +17,6 @@ gem "middleman-disqus"
 #for config.ru try_static
 gem "rack-contrib"
 gem 'middleman-gh-pages'
+
+gem "sprockets", ">= 2.12.5"
+gem "nokogiri", ">= 1.8.2"
