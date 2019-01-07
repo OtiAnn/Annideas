@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><title>Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？</title><meta content="Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？" name="title" /><meta content="Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？" property="og:title" /><meta content="Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？" name="twitter:title" /><meta content="http://annideas.tw/ironman/2014-10-05-ruby-girl-5-ruby-math-intro/" name="url" /><meta content="http://annideas.tw/ironman/2014-10-05-ruby-girl-5-ruby-math-intro/" property="og:url" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" property="og:description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" itemprop="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="twitter:description" /><meta content="2014-10-05 08:58 UTC" property="article:published_time" /><meta content="https://www.facebook.com/OtiAnn" property="article:author" /><meta content="article" name="type" /><meta content="article" property="og:type" /><meta content="838413066169349" property="fb:app_id" /><meta content="zh_TW" property="og:locale" /><meta content="Annideas?" itemprop="name" /><meta content="Annideas?" property="og:site_name" /><meta content="http://annideas.tw/images/annie_pic.jpg" property="og:image" /><meta content="@_OtiAnn" name="twitter:site" /><meta content="summary_large_image" name="twitter:card" /><meta content="http://annideas.tw/images/annie_pic.jpg" name="twitter:image" /><meta content="@_OtiAnn" name="twitter:creator" /><meta content="wj4kHYLvvEKT7b_B7Fqp56gRY77ipGuhg11O--1EKXw" name="google-site-verification" /><link href="/stylesheets/application-ecf64744.css" rel="stylesheet" /><script src="/javascripts/jquery-3.2.1.min-aa407c6a.js"></script><script src="/javascripts/application-fb8733fc.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-05-ruby-girl-5-ruby-math-intro ironman_2014-10-05-ruby-girl-5-ruby-math-intro_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="/images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？</div><div class="articleContent-date">2014．Oct．05</div><div class="articleContent-article tp-in-content"><p>昨天認識過 <strong>Ruby的語彙符號</strong> 之後，今天開始來認識Ruby 資料型別中的 <strong>數字</strong>。</p>
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><title>Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？</title><meta content="Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？" name="title" /><meta content="Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？" property="og:title" /><meta content="Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？" name="twitter:title" /><meta content="http://annideas.tw/ironman/2014-10-05-ruby-girl-5-ruby-math-intro/" name="url" /><meta content="http://annideas.tw/ironman/2014-10-05-ruby-girl-5-ruby-math-intro/" property="og:url" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" property="og:description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" itemprop="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="twitter:description" /><meta content="2014-10-05 08:58 UTC" property="article:published_time" /><meta content="https://www.facebook.com/OtiAnn" property="article:author" /><meta content="article" name="type" /><meta content="article" property="og:type" /><meta content="838413066169349" property="fb:app_id" /><meta content="zh_TW" property="og:locale" /><meta content="Annideas?" itemprop="name" /><meta content="Annideas?" property="og:site_name" /><meta content="http://annideas.tw/images/annie_pic.jpg" property="og:image" /><meta content="@_OtiAnn" name="twitter:site" /><meta content="summary_large_image" name="twitter:card" /><meta content="http://annideas.tw/images/annie_pic.jpg" name="twitter:image" /><meta content="@_OtiAnn" name="twitter:creator" /><meta content="wj4kHYLvvEKT7b_B7Fqp56gRY77ipGuhg11O--1EKXw" name="google-site-verification" /><link href="/stylesheets/application-ecf64744.css" rel="stylesheet" /><script src="/javascripts/jquery-3.2.1.min-aa407c6a.js"></script><script src="/javascripts/application-fb8733fc.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-05-ruby-girl-5-ruby-math-intro ironman_2014-10-05-ruby-girl-5-ruby-math-intro_index"><div class="wrapper"><a href="/" class="go_home_logo"><img src="/images/go_home_logo-55ba1e01.png" alt="Go home logo" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？</div><div class="articleContent-date">2014．Oct．05</div><div class="articleContent-article tp-in-content"><p>昨天認識過 <strong>Ruby的語彙符號</strong> 之後，今天開始來認識Ruby 資料型別中的 <strong>數字</strong>。</p>
 
 <h2 id="ruby">Ruby的數字類別分層結構</h2>
 
@@ -24,12 +24,11 @@
 
 <p>所以寫了一些程式碼來讓自己更理解一點，在數的後面加上 <code>.class</code> ，可以知道他是什麼類別！</p>
 
-<pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">class</span>       <span class="o">=&gt;</span> <span class="no">Fixnum</span>      <span class="c1">#比較小的整數是Fixnum</span>
-<span class="mi">3</span><span class="o">.</span><span class="mi">14159</span><span class="p">.</span><span class="nf">class</span> <span class="o">=&gt;</span> <span class="no">Float</span>       <span class="c1">#小數都是浮點數</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">class</span>       <span class="o">=&gt;</span> <span class="no">Fixnum</span>      <span class="c1">#比較小的整數是Fixnum</span>
+<span class="mf">3.14159</span><span class="p">.</span><span class="nf">class</span> <span class="o">=&gt;</span> <span class="no">Float</span>       <span class="c1">#小數都是浮點數</span>
 <span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">4</span><span class="n">i</span><span class="p">).</span><span class="nf">class</span>  <span class="o">=&gt;</span> <span class="no">Complex</span>     <span class="c1">#有配個i的都是複數</span>
 <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">).</span><span class="nf">class</span>   <span class="o">=&gt;</span> <span class="no">Fixnum</span>      <span class="c1">#??????????????????</span>
-</code></pre>
-
+</code></pre></div>
 <p>哈，打到這裡出現兩個疑問，小的整數是Fixnum，那要多大才會變成Bignum 呢？書中只提到儲存於31 位元空間內的整數都是Fixnum，但還是太抽象了，所以我立馬試試到底Fixnum 和Bignum 的分界在哪？就出現了下面這個圖XD</p>
 
 <p><img alt="Fixnum和Bignum的分界" src="http://ithelp.ithome.com.tw/upload/images/20141005/20141005222432543154a0dd044_resize_600.png" /></p>
@@ -44,51 +43,47 @@
   <p>『除法運算符取決於運算元所屬類別：如果兩個運算元皆為整數，則會進行截尾整數除法(truncating integer division)運算。如果有一個運算元是一個Float，則會進行浮點數除法運算。』</p>
 </blockquote>
 
-<pre class="highlight ruby"><code><span class="mi">3</span><span class="o">/</span><span class="mi">2</span>   <span class="o">=&gt;</span> <span class="mi">1</span>      <span class="c1">#被截尾了，小數點後全都截光光</span>
-<span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">2</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
-<span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="mi">3</span><span class="o">/</span><span class="mi">2</span>   <span class="o">=&gt;</span> <span class="mi">1</span>      <span class="c1">#被截尾了，小數點後全都截光光</span>
+<span class="mf">3.0</span><span class="o">/</span><span class="mi">2</span> <span class="o">=&gt;</span> <span class="mf">1.5</span>
+<span class="mi">3</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">=&gt;</span> <span class="mf">1.5</span>
 <span class="mi">1</span><span class="o">/</span><span class="mi">4</span>   <span class="o">=&gt;</span> <span class="mi">0</span>      <span class="c1">#被截尾了，小數點後全都截光光</span>
-<span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">4</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="o">.</span><span class="mi">25</span>
+<span class="mf">1.0</span><span class="o">/</span><span class="mi">4</span> <span class="o">=&gt;</span> <span class="mf">0.25</span>
 <span class="c1">#只要分子或分母出現浮點數，都會按照浮點數的除法運算</span>
-</code></pre>
-
+</code></pre></div>
 <p>這樣可以了解為什麼3/2當時會出現Fixnum 了，因為他的結果是1，所以當然判斷它為Fixnum。</p>
 
 <h2 id="ruby-1">Ruby的算術</h2>
 
 <p>接下來提幾個基本的數學除法運算，還記得國小數學老師就有教，除以零是沒有意義的，做答請回答「無意義」，我們看看Ruby 怎麼處理除以零的問題：</p>
 
-<pre class="highlight ruby"><code><span class="mi">0</span><span class="o">/</span><span class="mi">2</span>   <span class="o">=&gt;</span> <span class="mi">0</span>
-<span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">2</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span>       <span class="c1"># 0除以別人都很正常</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="mi">0</span><span class="o">/</span><span class="mi">2</span>   <span class="o">=&gt;</span> <span class="mi">0</span>
+<span class="mf">0.0</span><span class="o">/</span><span class="mi">2</span> <span class="o">=&gt;</span> <span class="mf">0.0</span>       <span class="c1"># 0除以別人都很正常</span>
 
 <span class="mi">2</span><span class="o">/</span><span class="mi">0</span>   <span class="no">ZeroDivisionError</span><span class="p">:</span> <span class="n">divided</span> <span class="n">by</span> <span class="mi">0</span> <span class="c1"># 整數除以0會出現Error</span>
-<span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="no">NaN</span>       <span class="c1"># NaN = Not-a-Number</span>
-<span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="no">NaN</span>       <span class="c1"># NaN = Not-a-Number</span>
-<span class="mi">9</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="no">Infinity</span>  <span class="c1"># 哇9.2除以0有無限大的力量(?)</span>
-</code></pre>
-
+<span class="mi">0</span><span class="o">/</span><span class="mf">0.0</span> <span class="o">=&gt;</span> <span class="no">NaN</span>       <span class="c1"># NaN = Not-a-Number</span>
+<span class="mf">0.0</span><span class="o">/</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="no">NaN</span>       <span class="c1"># NaN = Not-a-Number</span>
+<span class="mf">9.2</span><span class="o">/</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="no">Infinity</span>  <span class="c1"># 哇9.2除以0有無限大的力量(?)</span>
+</code></pre></div>
 <p>有點酷，明明都是除以0，卻有三種不同的結果！整數的跟小學老師教的一樣，不可以做沒意義的事，所以出Error，但是另外兩種就很神奇，書中只說0.0/0.0是一個特例，而另外9.2/0有無窮大的的結果(?) 是說書中有提到浮點數除以0是不會報錯的，只會傳回Infinity，很想知道原因，這部分我還需要再查查資料、做做功課才能理解，之後懂了再補上來！</p>
 
 <p>最後再來簡介幾個書中提到的算術例子給大家參考：</p>
 
-<pre class="highlight ruby"><code><span class="mi">2</span><span class="o">**</span><span class="mi">10</span>       <span class="o">=&gt;</span> <span class="mi">1024</span>      <span class="c1"># 2的10次方</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="mi">2</span><span class="o">**</span><span class="mi">10</span>       <span class="o">=&gt;</span> <span class="mi">1024</span>      <span class="c1"># 2的10次方</span>
 <span class="mi">2</span><span class="o">**-</span><span class="mi">1</span>       <span class="o">=&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># 2的-1次方</span>
-<span class="mi">25</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span>       <span class="c1"># 25的1/2次方 = 25的平方根</span>
-<span class="mi">8</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span>  <span class="o">=&gt;</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>       <span class="c1"># 8的1/3次方 = 8的立方根</span>
+<span class="mi">25</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="mf">5.0</span>       <span class="c1"># 25的1/2次方 = 25的平方根</span>
+<span class="mi">8</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span>  <span class="o">=&gt;</span> <span class="mf">2.0</span>       <span class="c1"># 8的1/3次方 = 8的立方根</span>
 <span class="mi">4</span><span class="o">**</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span>     <span class="o">=&gt;</span> <span class="mi">262144</span>    <span class="c1"># 計算順序由右到左，等於4**(3**2) = 4**9</span>
-</code></pre>
-
+</code></pre></div>
 <p>打到這裡突然又想到，所有比20 位還多的整數都是Bignum嗎？沒有範圍嗎？所以做了以下測試：</p>
 
-<pre class="highlight ruby"><code><span class="mi">2</span><span class="o">**</span><span class="mi">10000000000000000000000000000000000000000</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="mi">2</span><span class="o">**</span><span class="mi">10000000000000000000000000000000000000000</span>
  <span class="ss">warning: </span><span class="k">in</span> <span class="n">a</span><span class="o">**</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span> <span class="n">may</span> <span class="n">be</span> <span class="n">too</span> <span class="n">big</span>
 <span class="o">=&gt;</span> <span class="no">Infinity</span>
 
 <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">10000000000000000000000000000000000000000</span><span class="p">).</span><span class="nf">class</span>
  <span class="ss">warning: </span><span class="k">in</span> <span class="n">a</span><span class="o">**</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span> <span class="n">may</span> <span class="n">be</span> <span class="n">too</span> <span class="n">big</span>
 <span class="o">=&gt;</span> <span class="no">Float</span>
-</code></pre>
-
+</code></pre></div>
 <p>當數字太大，系統會跟你警告！這太大了噢！然後跟你說這已經是Infinity 無窮大的數了，這時候檢查他的類別，當他大到無窮大時，他就不是屬於Bignum 的類別，而是Float 浮點數了！酷XD！數字真有趣XD</p>
 
 <hr />
@@ -106,7 +101,7 @@
   js = d.createElement(s); js.id = id;
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=838413066169349&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://annideas.tw/ironman/2014-10-05-ruby-girl-5-ruby-math-intro/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-06-ruby-girl-6-ruby-string-intro/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(6)：Ruby的"-字-字-字-字-字-"</div><div class="articleContent-paging-item-date">2014．Oct．06</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-04-ruby-girl-4-ruby-intro/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(4)：Ruby的語彙結構簡介</div><div class="articleContent-paging-item-date">2014．Oct．04</div></a></div><div id="disqus_thread"></div>
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://annideas.tw/ironman/2014-10-05-ruby-girl-5-ruby-math-intro/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a href="../2014-10-06-ruby-girl-6-ruby-string-intro/" class="articleContent-paging-item articleContent-paging-item--prev"><div class="articleContent-paging-item-title single-dot">Ruby女孩(6)：Ruby的"-字-字-字-字-字-"</div><div class="articleContent-paging-item-date">2014．Oct．06</div></a><a href="../2014-10-04-ruby-girl-4-ruby-intro/" class="articleContent-paging-item articleContent-paging-item--next"><div class="articleContent-paging-item-title single-dot">Ruby女孩(4)：Ruby的語彙結構簡介</div><div class="articleContent-paging-item-date">2014．Oct．04</div></a></div><div id="disqus_thread"></div>
 <script type="text/javascript">
 //<![CDATA[
                   var disqus_shortname = 'otiannie5';
@@ -122,7 +117,7 @@
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a><script>$('.designer a').click(function(){
   ga('send', 'event', 'Footer', 'click', 'Otis Chou');
-})</script></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="/images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="/images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a href="/en/resume"><img class="resume" src="/images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="/images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="/images/facebook-368929ba.svg" /></a><a target="_blank" href="https://www.linkedin.com/in/yccannie"><img class="linkedin" src="/images/linkedin-2ba621d9.svg" /></a></div><div class="desc_block"><div class="name">Yu-Chen (Annie) Chen</div><div class="description">2+ years Web Developer, 7+ years Instructor</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">Life (3)</a></li><li><a class="edu" href="/categories/學習/">Learning (4)</a></li><li><a class="dev" href="/categories/開發/">Coding (7)</a></li><li><a href="/ironman7">Article (30)</a></li><li><a class="maple" href="/categories/楓葉國紀錄/">Canada (2)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+})</script></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="/images/cross-e391fcc8.svg" alt="Cross" /><div class="avatar"><a href="/"><img src="/images/annie_pic-a20039dc.jpg" alt="Annie pic" /></a></div><div class="social_link"><a href="/en/resume"><img class="resume" src="/images/me-123f788f.svg" alt="Me" /></a><a href="https://twitter.com/_OtiAnn" target="_blank"><img class="twitter" src="/images/twitter-e0f1f272.svg" alt="Twitter" /></a><a href="https://www.facebook.com/OtiAnn" target="_blank"><img class="facebook" src="/images/facebook-368929ba.svg" alt="Facebook" /></a><a href="https://www.linkedin.com/in/yccannie" target="_blank"><img class="linkedin" src="/images/linkedin-2ba621d9.svg" alt="Linkedin" /></a></div><div class="desc_block"><div class="name">Yu-Chen (Annie) Chen</div><div class="description">2+ years Web Developer, 7+ years Instructor</div></div><ul class="catgory_list"><li><a href="/categories/生活/" class="life">Life (3)</a></li><li><a href="/categories/學習/" class="edu">Learning (4)</a></li><li><a href="/categories/開發/" class="dev">Coding (7)</a></li><li><a href="/ironman7">Article (30)</a></li><li><a href="/categories/楓葉國紀錄/" class="maple">Canada (2)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

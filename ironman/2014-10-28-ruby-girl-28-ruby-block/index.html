@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><title>Ruby女孩(28)：慢慢打開區塊引數的包裝</title><meta content="Ruby女孩(28)：慢慢打開區塊引數的包裝" name="title" /><meta content="Ruby女孩(28)：慢慢打開區塊引數的包裝" property="og:title" /><meta content="Ruby女孩(28)：慢慢打開區塊引數的包裝" name="twitter:title" /><meta content="http://annideas.tw/ironman/2014-10-28-ruby-girl-28-ruby-block/" name="url" /><meta content="http://annideas.tw/ironman/2014-10-28-ruby-girl-28-ruby-block/" property="og:url" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" property="og:description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" itemprop="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="twitter:description" /><meta content="2014-10-28 08:58 UTC" property="article:published_time" /><meta content="https://www.facebook.com/OtiAnn" property="article:author" /><meta content="article" name="type" /><meta content="article" property="og:type" /><meta content="838413066169349" property="fb:app_id" /><meta content="zh_TW" property="og:locale" /><meta content="Annideas?" itemprop="name" /><meta content="Annideas?" property="og:site_name" /><meta content="http://annideas.tw/images/annie_pic.jpg" property="og:image" /><meta content="@_OtiAnn" name="twitter:site" /><meta content="summary_large_image" name="twitter:card" /><meta content="http://annideas.tw/images/annie_pic.jpg" name="twitter:image" /><meta content="@_OtiAnn" name="twitter:creator" /><meta content="wj4kHYLvvEKT7b_B7Fqp56gRY77ipGuhg11O--1EKXw" name="google-site-verification" /><link href="/stylesheets/application-ecf64744.css" rel="stylesheet" /><script src="/javascripts/jquery-3.2.1.min-aa407c6a.js"></script><script src="/javascripts/application-fb8733fc.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-28-ruby-girl-28-ruby-block ironman_2014-10-28-ruby-girl-28-ruby-block_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="/images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(28)：慢慢打開區塊引數的包裝</div><div class="articleContent-date">2014．Oct．28</div><div class="articleContent-article tp-in-content"><p>昨天提到的引數有好幾種，今天要來介紹Ruby 常用的block 引數：<strong>『區塊引數』</strong>。</p>
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><title>Ruby女孩(28)：慢慢打開區塊引數的包裝</title><meta content="Ruby女孩(28)：慢慢打開區塊引數的包裝" name="title" /><meta content="Ruby女孩(28)：慢慢打開區塊引數的包裝" property="og:title" /><meta content="Ruby女孩(28)：慢慢打開區塊引數的包裝" name="twitter:title" /><meta content="http://annideas.tw/ironman/2014-10-28-ruby-girl-28-ruby-block/" name="url" /><meta content="http://annideas.tw/ironman/2014-10-28-ruby-girl-28-ruby-block/" property="og:url" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" property="og:description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" itemprop="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="twitter:description" /><meta content="2014-10-28 08:58 UTC" property="article:published_time" /><meta content="https://www.facebook.com/OtiAnn" property="article:author" /><meta content="article" name="type" /><meta content="article" property="og:type" /><meta content="838413066169349" property="fb:app_id" /><meta content="zh_TW" property="og:locale" /><meta content="Annideas?" itemprop="name" /><meta content="Annideas?" property="og:site_name" /><meta content="http://annideas.tw/images/annie_pic.jpg" property="og:image" /><meta content="@_OtiAnn" name="twitter:site" /><meta content="summary_large_image" name="twitter:card" /><meta content="http://annideas.tw/images/annie_pic.jpg" name="twitter:image" /><meta content="@_OtiAnn" name="twitter:creator" /><meta content="wj4kHYLvvEKT7b_B7Fqp56gRY77ipGuhg11O--1EKXw" name="google-site-verification" /><link href="/stylesheets/application-ecf64744.css" rel="stylesheet" /><script src="/javascripts/jquery-3.2.1.min-aa407c6a.js"></script><script src="/javascripts/application-fb8733fc.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-28-ruby-girl-28-ruby-block ironman_2014-10-28-ruby-girl-28-ruby-block_index"><div class="wrapper"><a href="/" class="go_home_logo"><img src="/images/go_home_logo-55ba1e01.png" alt="Go home logo" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(28)：慢慢打開區塊引數的包裝</div><div class="articleContent-date">2014．Oct．28</div><div class="articleContent-article tp-in-content"><p>昨天提到的引數有好幾種，今天要來介紹Ruby 常用的block 引數：<strong>『區塊引數』</strong>。</p>
 
 <p>區塊是什麼呢？本篇文章只有先撥開一點點它的包裝，更深入的內容還有待之後分享！</p>
 
@@ -10,14 +10,12 @@
 
 <p>好的，先不要把這個跟雜湊搞混了，我們以前在<a href="../2014-10-11-ruby-girl-11-ruby-hash-intro/">Ruby女孩(11)</a>中提到的雜湊，雜湊是長這樣的：</p>
 
-<pre class="highlight ruby"><code><span class="p">{</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"Annie"</span><span class="p">,</span><span class="ss">:age</span> <span class="o">=&gt;</span> <span class="mi">99</span><span class="p">}</span>  
-</code></pre>
-
+<div class="highlight"><pre class="highlight ruby"><code><span class="p">{</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"Annie"</span><span class="p">,</span><span class="ss">:age</span> <span class="o">=&gt;</span> <span class="mi">99</span><span class="p">}</span>  
+</code></pre></div>
 <p>或</p>
 
-<pre class="highlight ruby"><code><span class="p">{</span><span class="ss">name: </span><span class="s2">"Annie"</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">99</span><span class="p">}</span>  
-</code></pre>
-
+<div class="highlight"><pre class="highlight ruby"><code><span class="p">{</span><span class="ss">name: </span><span class="s2">"Annie"</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">99</span><span class="p">}</span>  
+</code></pre></div>
 <p>很明顯你在雜湊中會看到一對一對的<strong>鍵(Key)</strong>與<strong>值(Value)</strong>，與Numeric、String與Array一樣都是Ruby中的資料型別。但今天所要認識的<strong>『區塊(block)』</strong>，它並不是另一種資料型別，它是迭代器的基礎，我們接下來會好好認識它是怎麼運作，而方法要如何調用它？</p>
 
 <h2 id="section">區塊的語法</h2>
@@ -29,34 +27,30 @@
   <li>有一慣例，當區塊方法只有一行時，使用<code>{}</code>；若超過一行，則使用<code>do</code>/<code>end</code>。</li>
 </ol>
 
-<pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">upto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span> <span class="p">}</span>  
-</code></pre>
-
+<div class="highlight"><pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">upto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span> <span class="p">}</span>  
+</code></pre></div>
 <p>或</p>
 
-<pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">upto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">upto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>  
   <span class="nb">puts</span> <span class="n">x</span>  
 <span class="k">end</span>  
-</code></pre>
-
+</code></pre></div>
 <ol>
   <li>如果想省略圓括號，要小心！請看以下範例：</li>
 </ol>
 
-<pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">upto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span><span class="p">}</span>     <span class="c1">#正常執行  </span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="mi">1</span><span class="p">.</span><span class="nf">upto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span><span class="p">}</span>     <span class="c1">#正常執行  </span>
 <span class="mi">1</span><span class="p">.</span><span class="nf">upto</span> <span class="mi">10</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span> <span class="k">end</span> <span class="c1">#正常執行  </span>
 <span class="mi">1</span><span class="p">.</span><span class="nf">upto</span> <span class="mi">10</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span><span class="p">}</span>      <span class="c1">#SyntaxError  </span>
-</code></pre>
-
+</code></pre></div>
 <p><strong>區塊會找緊接著它的方法試圖傳進去</strong>，第三種會出現SyntaxError，就是因為它以為緊跟著它的方法是10，才會噴錯！所以若想省略方法的圓括號，請改以<code>do</code>/<code>end</code>撰寫。不然就不要省略！！</p>
 
 <ol>
   <li>區塊本身也可以類似方法而有多個參數，例如：</li>
 </ol>
 
-<pre class="highlight ruby"><code><span class="nb">test</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">、</span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2">、</span><span class="si">#{</span><span class="n">z</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>  
-</code></pre>
-
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">test</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">、</span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2">、</span><span class="si">#{</span><span class="n">z</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>  
+</code></pre></div>
 <ol>
   <li>區塊本身的參數也有一慣例寫法，會跟左括號<code>{</code>或<code>do</code>寫在同一行。</li>
 </ol>
@@ -67,7 +61,7 @@
 
 <p>由於區塊是不具名稱的，他們的調用是要前綴一個<strong>『&amp;』</strong>符號，而且規定<strong>一定要寫在引數的最後一個</strong>！實際使用的方式如下：</p>
 
-<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="o">&amp;</span><span class="n">d</span><span class="p">)</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="o">&amp;</span><span class="n">d</span><span class="p">)</span>  
   <span class="nb">puts</span> <span class="s2">"a=</span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2">"</span>  
   <span class="nb">puts</span> <span class="s2">"b=</span><span class="si">#{</span><span class="n">b</span><span class="si">}</span><span class="s2">"</span>  
   <span class="nb">puts</span> <span class="s2">"c=</span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="s2">"</span>  
@@ -84,23 +78,21 @@
 <span class="n">ruby</span>  
 <span class="n">ruby</span>  
 <span class="n">ruby</span>  
-</code></pre>
-
+</code></pre></div>
 <p>你可以注意到，我們在方法後面直接丟入了一個區塊作為<code>&amp;d</code>的引數，並且在方法中，用<code>.call</code>來給予區塊本身的區塊參數！那<code>.call</code>這個方法是誰的方法呢？我們可以用這個方法看看區塊到底是誰？</p>
 
-<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">who_am_i</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">who_am_i</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>  
   <span class="s2">"我其實是</span><span class="si">#{</span><span class="n">block</span><span class="p">.</span><span class="nf">class</span><span class="si">}</span><span class="s2">"</span>  
 <span class="k">end</span>  
   
 <span class="n">who_am_i</span><span class="p">{}</span>  
 <span class="o">=&gt;</span> <span class="s2">"我其實是Proc"</span>  
-</code></pre>
-
+</code></pre></div>
 <p>好像解謎一樣，一層一層把區塊的秘密掀出來XD 原來區塊是<code>Proc</code>，<code>Proc</code>和<code>Lambda</code>是另一組容易被搞混的詞，這個部分我得好好吸收一下才知道怎麼寫出來不會誤導大家！有待明天揭曉XD</p>
 
 <p>最後補充一個書上目前沒看到的傳遞引數的方式：</p>
 
-<pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="o">**</span><span class="n">c</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">)</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="o">**</span><span class="n">c</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">)</span>  
   <span class="nb">puts</span> <span class="s2">"a=</span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2">"</span>  
   <span class="nb">puts</span> <span class="s2">"b=</span><span class="si">#{</span><span class="n">b</span><span class="si">}</span><span class="s2">"</span>  
   <span class="nb">puts</span> <span class="s2">"c=</span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="s2">"</span>  
@@ -113,8 +105,7 @@
 <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>  
 <span class="n">c</span><span class="o">=</span><span class="p">{</span><span class="ss">:x</span><span class="o">=&gt;</span><span class="mi">6</span><span class="p">,</span> <span class="ss">:y</span><span class="o">=&gt;</span><span class="mi">7</span><span class="p">}</span>  
 <span class="mi">100</span>  
-</code></pre>
-
+</code></pre></div>
 <p>有看見上面的c前綴的是<code>**</code>，與<code>*</code>不同的是，<code>**</code>可以傳進雜湊的值，也因此你才可以看到上面<code>puts c</code>之後的結果！</p>
 
 <hr />
@@ -132,7 +123,7 @@
   js = d.createElement(s); js.id = id;
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=838413066169349&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://annideas.tw/ironman/2014-10-28-ruby-girl-28-ruby-block/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-29-ruby-girl-29-ruby-proc-lambda/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(29)：揭開區塊的面紗-Proc、lambda</div><div class="articleContent-paging-item-date">2014．Oct．29</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-27-ruby-girl-27-ruby-method-test/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(27)：方法的引數傳遞方式，你覺得很簡單嗎？進來小試身手看看XD</div><div class="articleContent-paging-item-date">2014．Oct．27</div></a></div><div id="disqus_thread"></div>
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://annideas.tw/ironman/2014-10-28-ruby-girl-28-ruby-block/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a href="../2014-10-29-ruby-girl-29-ruby-proc-lambda/" class="articleContent-paging-item articleContent-paging-item--prev"><div class="articleContent-paging-item-title single-dot">Ruby女孩(29)：揭開區塊的面紗-Proc、lambda</div><div class="articleContent-paging-item-date">2014．Oct．29</div></a><a href="../2014-10-27-ruby-girl-27-ruby-method-test/" class="articleContent-paging-item articleContent-paging-item--next"><div class="articleContent-paging-item-title single-dot">Ruby女孩(27)：方法的引數傳遞方式，你覺得很簡單嗎？進來小試身手看看XD</div><div class="articleContent-paging-item-date">2014．Oct．27</div></a></div><div id="disqus_thread"></div>
 <script type="text/javascript">
 //<![CDATA[
                   var disqus_shortname = 'otiannie5';
@@ -148,7 +139,7 @@
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a><script>$('.designer a').click(function(){
   ga('send', 'event', 'Footer', 'click', 'Otis Chou');
-})</script></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="/images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="/images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a href="/en/resume"><img class="resume" src="/images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="/images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="/images/facebook-368929ba.svg" /></a><a target="_blank" href="https://www.linkedin.com/in/yccannie"><img class="linkedin" src="/images/linkedin-2ba621d9.svg" /></a></div><div class="desc_block"><div class="name">Yu-Chen (Annie) Chen</div><div class="description">2+ years Web Developer, 7+ years Instructor</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">Life (3)</a></li><li><a class="edu" href="/categories/學習/">Learning (4)</a></li><li><a class="dev" href="/categories/開發/">Coding (7)</a></li><li><a href="/ironman7">Article (30)</a></li><li><a class="maple" href="/categories/楓葉國紀錄/">Canada (2)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+})</script></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="/images/cross-e391fcc8.svg" alt="Cross" /><div class="avatar"><a href="/"><img src="/images/annie_pic-a20039dc.jpg" alt="Annie pic" /></a></div><div class="social_link"><a href="/en/resume"><img class="resume" src="/images/me-123f788f.svg" alt="Me" /></a><a href="https://twitter.com/_OtiAnn" target="_blank"><img class="twitter" src="/images/twitter-e0f1f272.svg" alt="Twitter" /></a><a href="https://www.facebook.com/OtiAnn" target="_blank"><img class="facebook" src="/images/facebook-368929ba.svg" alt="Facebook" /></a><a href="https://www.linkedin.com/in/yccannie" target="_blank"><img class="linkedin" src="/images/linkedin-2ba621d9.svg" alt="Linkedin" /></a></div><div class="desc_block"><div class="name">Yu-Chen (Annie) Chen</div><div class="description">2+ years Web Developer, 7+ years Instructor</div></div><ul class="catgory_list"><li><a href="/categories/生活/" class="life">Life (3)</a></li><li><a href="/categories/學習/" class="edu">Learning (4)</a></li><li><a href="/categories/開發/" class="dev">Coding (7)</a></li><li><a href="/ironman7">Article (30)</a></li><li><a href="/categories/楓葉國紀錄/" class="maple">Canada (2)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

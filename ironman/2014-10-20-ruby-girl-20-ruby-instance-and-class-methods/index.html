@@ -1,7 +1,7 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><title>Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！</title><meta content="Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！" name="title" /><meta content="Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！" property="og:title" /><meta content="Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！" name="twitter:title" /><meta content="http://annideas.tw/ironman/2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/" name="url" /><meta content="http://annideas.tw/ironman/2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/" property="og:url" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" property="og:description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" itemprop="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="twitter:description" /><meta content="2014-10-20 08:58 UTC" property="article:published_time" /><meta content="https://www.facebook.com/OtiAnn" property="article:author" /><meta content="article" name="type" /><meta content="article" property="og:type" /><meta content="838413066169349" property="fb:app_id" /><meta content="zh_TW" property="og:locale" /><meta content="Annideas?" itemprop="name" /><meta content="Annideas?" property="og:site_name" /><meta content="http://annideas.tw/images/annie_pic.jpg" property="og:image" /><meta content="@_OtiAnn" name="twitter:site" /><meta content="summary_large_image" name="twitter:card" /><meta content="http://annideas.tw/images/annie_pic.jpg" name="twitter:image" /><meta content="@_OtiAnn" name="twitter:creator" /><meta content="wj4kHYLvvEKT7b_B7Fqp56gRY77ipGuhg11O--1EKXw" name="google-site-verification" /><link href="/stylesheets/application-ecf64744.css" rel="stylesheet" /><script src="/javascripts/jquery-3.2.1.min-aa407c6a.js"></script><script src="/javascripts/application-fb8733fc.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-20-ruby-girl-20-ruby-instance-and-class-methods ironman_2014-10-20-ruby-girl-20-ruby-instance-and-class-methods_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="/images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！</div><div class="articleContent-date">2014．Oct．20</div><div class="articleContent-article tp-in-content"><p>前兩天我們所示範的都是<strong>實體方法</strong>，你得真的<code>.new</code>出一個實體物件之後，才能使用的實體方法。今天我們來認識<strong>類別方法</strong>，類別方法顧名思義是給類別本身所使用的方法，它不需要製造出實體物件就可以使用，來看看以下例子：</p>
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><title>Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！</title><meta content="Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！" name="title" /><meta content="Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！" property="og:title" /><meta content="Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！" name="twitter:title" /><meta content="http://annideas.tw/ironman/2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/" name="url" /><meta content="http://annideas.tw/ironman/2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/" property="og:url" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" property="og:description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" itemprop="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="twitter:description" /><meta content="2014-10-20 08:58 UTC" property="article:published_time" /><meta content="https://www.facebook.com/OtiAnn" property="article:author" /><meta content="article" name="type" /><meta content="article" property="og:type" /><meta content="838413066169349" property="fb:app_id" /><meta content="zh_TW" property="og:locale" /><meta content="Annideas?" itemprop="name" /><meta content="Annideas?" property="og:site_name" /><meta content="http://annideas.tw/images/annie_pic.jpg" property="og:image" /><meta content="@_OtiAnn" name="twitter:site" /><meta content="summary_large_image" name="twitter:card" /><meta content="http://annideas.tw/images/annie_pic.jpg" name="twitter:image" /><meta content="@_OtiAnn" name="twitter:creator" /><meta content="wj4kHYLvvEKT7b_B7Fqp56gRY77ipGuhg11O--1EKXw" name="google-site-verification" /><link href="/stylesheets/application-ecf64744.css" rel="stylesheet" /><script src="/javascripts/jquery-3.2.1.min-aa407c6a.js"></script><script src="/javascripts/application-fb8733fc.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-20-ruby-girl-20-ruby-instance-and-class-methods ironman_2014-10-20-ruby-girl-20-ruby-instance-and-class-methods_index"><div class="wrapper"><a href="/" class="go_home_logo"><img src="/images/go_home_logo-55ba1e01.png" alt="Go home logo" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(20)：一次弄懂一件事，今天來分清楚實體方法跟類別方法的差異！</div><div class="articleContent-date">2014．Oct．20</div><div class="articleContent-article tp-in-content"><p>前兩天我們所示範的都是<strong>實體方法</strong>，你得真的<code>.new</code>出一個實體物件之後，才能使用的實體方法。今天我們來認識<strong>類別方法</strong>，類別方法顧名思義是給類別本身所使用的方法，它不需要製造出實體物件就可以使用，來看看以下例子：</p>
 
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
-  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="nb">attr_accessor</span> <span class="ss">:age</span>  
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  
     <span class="vi">@ruby_skill</span> <span class="o">=</span> <span class="n">ruby_skill</span>  
   <span class="k">end</span>  
@@ -10,31 +10,28 @@
     <span class="nb">puts</span> <span class="s2">"每一個RubyGirl都有 </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> 個project."</span>  
   <span class="k">end</span>  
 <span class="k">end</span>  
-</code></pre>
-
+</code></pre></div>
 <p>比起昨天的程式碼，有沒有注意到多了一個名為self.project的方法，這個方法名稱很特別，前面加上了<code>self</code>(也可以把self改成RubyGirl，功能相同)，像這樣在名稱前面上加上<code>self</code>或<code>類別名稱</code>的方法，都屬於類別方法，那類別方法怎麼調用呢？我們看看以下範例：</p>
 
-<pre class="highlight ruby"><code><span class="no">RubyGirl</span><span class="p">.</span><span class="nf">age</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="no">RubyGirl</span><span class="p">.</span><span class="nf">age</span>  
 <span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`age' for RubyGirl:Class  
   
 RubyGirl.project  
 =&gt; "每一個RubyGirl都有 1 個project."  
-</span></code></pre>
-
+</span></code></pre></div>
 <p>你可以注意到<code>.age</code>這個方法因為屬於實體方法，他必須要<code>.new</code>出一個實體物件後才能使用。但是<code>.project</code>是可以直接被類別名稱所使用(不需要製作出實體物件)！</p>
 
-<pre class="highlight ruby"><code><span class="n">annie</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">annie</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
 <span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007fefc94a26d8 @ruby_skill=0&gt;  </span>
   
 <span class="n">annie</span><span class="p">.</span><span class="nf">project</span>  
 <span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`project' for #&lt;RubyGirl:0x007fefc94a26d8 @ruby_skill=0&gt;  
-</span></code></pre>
-
+</span></code></pre></div>
 <p>但是當你實際<code>.new</code>出一個屬於RubyGirl的實體物件annie後，這個實體物件只能調用實體方法，他再調用<code>.project</code>方法就會噴錯，由此可知，<strong>實體物件是無法使用類別方法的</strong>！</p>
 
 <p>由於上面的寫法每定義一個類別方法都需要在方法名稱前加上<code>self</code>，可能會讓程式碼不夠明確(書中所述)，因此書中提到，有另一種寫法很符合<strong>D.R.Y(Don't Repeat Yourself)原則</strong>：</p>
 
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
   
   <span class="c1">#實體方法放這裡  </span>
   
@@ -45,12 +42,11 @@ RubyGirl.project
   <span class="k">end</span>  
   
 <span class="k">end</span>  
-</code></pre>
-
+</code></pre></div>
 <p>所以我們可以把剛剛的程式碼改寫成：</p>
 
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
-  <span class="kp">attr_accessor</span> <span class="ss">:age</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span>  
+  <span class="nb">attr_accessor</span> <span class="ss">:age</span>  
     
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  
     <span class="vi">@ruby_skill</span> <span class="o">=</span> <span class="n">ruby_skill</span>  
@@ -62,8 +58,7 @@ RubyGirl.project
     <span class="k">end</span>  
   <span class="k">end</span>  
 <span class="k">end</span>  
-</code></pre>
-
+</code></pre></div>
 <p>有類別方法當然也會有類別變數，類別變數的寫法我們曾經在<a href="../2014-10-04-ruby-girl-4-ruby-intro/">Ruby女孩(4)</a>時有提過，另外也有<strong>類別實體變數</strong>，明天再一次介紹吧。一次搞懂一件事，今天的重點就是要分清楚實體方法跟類別方法的差異，你也了解了嗎XD?</p>
 
 <hr />
@@ -79,7 +74,7 @@ RubyGirl.project
   js = d.createElement(s); js.id = id;
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=838413066169349&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://annideas.tw/ironman/2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-21-ruby-girl-21-ruby-instance-and-class-variables/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(21)：來聽聽類別變數與類別實體變數的自白(?)</div><div class="articleContent-paging-item-date">2014．Oct．21</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-19-ruby-girl-19-ruby-class-getter-setter/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(19)：類別中的getter與setter</div><div class="articleContent-paging-item-date">2014．Oct．19</div></a></div><div id="disqus_thread"></div>
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://annideas.tw/ironman/2014-10-20-ruby-girl-20-ruby-instance-and-class-methods/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a href="../2014-10-21-ruby-girl-21-ruby-instance-and-class-variables/" class="articleContent-paging-item articleContent-paging-item--prev"><div class="articleContent-paging-item-title single-dot">Ruby女孩(21)：來聽聽類別變數與類別實體變數的自白(?)</div><div class="articleContent-paging-item-date">2014．Oct．21</div></a><a href="../2014-10-19-ruby-girl-19-ruby-class-getter-setter/" class="articleContent-paging-item articleContent-paging-item--next"><div class="articleContent-paging-item-title single-dot">Ruby女孩(19)：類別中的getter與setter</div><div class="articleContent-paging-item-date">2014．Oct．19</div></a></div><div id="disqus_thread"></div>
 <script type="text/javascript">
 //<![CDATA[
                   var disqus_shortname = 'otiannie5';
@@ -95,7 +90,7 @@ RubyGirl.project
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a><script>$('.designer a').click(function(){
   ga('send', 'event', 'Footer', 'click', 'Otis Chou');
-})</script></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="/images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="/images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a href="/en/resume"><img class="resume" src="/images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="/images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="/images/facebook-368929ba.svg" /></a><a target="_blank" href="https://www.linkedin.com/in/yccannie"><img class="linkedin" src="/images/linkedin-2ba621d9.svg" /></a></div><div class="desc_block"><div class="name">Yu-Chen (Annie) Chen</div><div class="description">2+ years Web Developer, 7+ years Instructor</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">Life (3)</a></li><li><a class="edu" href="/categories/學習/">Learning (4)</a></li><li><a class="dev" href="/categories/開發/">Coding (7)</a></li><li><a href="/ironman7">Article (30)</a></li><li><a class="maple" href="/categories/楓葉國紀錄/">Canada (2)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+})</script></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="/images/cross-e391fcc8.svg" alt="Cross" /><div class="avatar"><a href="/"><img src="/images/annie_pic-a20039dc.jpg" alt="Annie pic" /></a></div><div class="social_link"><a href="/en/resume"><img class="resume" src="/images/me-123f788f.svg" alt="Me" /></a><a href="https://twitter.com/_OtiAnn" target="_blank"><img class="twitter" src="/images/twitter-e0f1f272.svg" alt="Twitter" /></a><a href="https://www.facebook.com/OtiAnn" target="_blank"><img class="facebook" src="/images/facebook-368929ba.svg" alt="Facebook" /></a><a href="https://www.linkedin.com/in/yccannie" target="_blank"><img class="linkedin" src="/images/linkedin-2ba621d9.svg" alt="Linkedin" /></a></div><div class="desc_block"><div class="name">Yu-Chen (Annie) Chen</div><div class="description">2+ years Web Developer, 7+ years Instructor</div></div><ul class="catgory_list"><li><a href="/categories/生活/" class="life">Life (3)</a></li><li><a href="/categories/學習/" class="edu">Learning (4)</a></li><li><a href="/categories/開發/" class="dev">Coding (7)</a></li><li><a href="/ironman7">Article (30)</a></li><li><a href="/categories/楓葉國紀錄/" class="maple">Canada (2)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

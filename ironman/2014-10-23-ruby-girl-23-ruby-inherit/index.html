@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><title>Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)</title><meta content="Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)" name="title" /><meta content="Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)" property="og:title" /><meta content="Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)" name="twitter:title" /><meta content="http://annideas.tw/ironman/2014-10-23-ruby-girl-23-ruby-inherit/" name="url" /><meta content="http://annideas.tw/ironman/2014-10-23-ruby-girl-23-ruby-inherit/" property="og:url" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" property="og:description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" itemprop="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="twitter:description" /><meta content="2014-10-23 08:58 UTC" property="article:published_time" /><meta content="https://www.facebook.com/OtiAnn" property="article:author" /><meta content="article" name="type" /><meta content="article" property="og:type" /><meta content="838413066169349" property="fb:app_id" /><meta content="zh_TW" property="og:locale" /><meta content="Annideas?" itemprop="name" /><meta content="Annideas?" property="og:site_name" /><meta content="http://annideas.tw/images/annie_pic.jpg" property="og:image" /><meta content="@_OtiAnn" name="twitter:site" /><meta content="summary_large_image" name="twitter:card" /><meta content="http://annideas.tw/images/annie_pic.jpg" name="twitter:image" /><meta content="@_OtiAnn" name="twitter:creator" /><meta content="wj4kHYLvvEKT7b_B7Fqp56gRY77ipGuhg11O--1EKXw" name="google-site-verification" /><link href="/stylesheets/application-ecf64744.css" rel="stylesheet" /><script src="/javascripts/jquery-3.2.1.min-aa407c6a.js"></script><script src="/javascripts/application-fb8733fc.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-23-ruby-girl-23-ruby-inherit ironman_2014-10-23-ruby-girl-23-ruby-inherit_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="/images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)</div><div class="articleContent-date">2014．Oct．23</div><div class="articleContent-article tp-in-content"><p>今天要來看看怎麼建立類別的孩子、孫子、子子孫孫們！實際上先前我們已經有偷偷用過了，不過今天來做個詳細的介紹！</p>
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><title>Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)</title><meta content="Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)" name="title" /><meta content="Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)" property="og:title" /><meta content="Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)" name="twitter:title" /><meta content="http://annideas.tw/ironman/2014-10-23-ruby-girl-23-ruby-inherit/" name="url" /><meta content="http://annideas.tw/ironman/2014-10-23-ruby-girl-23-ruby-inherit/" property="og:url" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" property="og:description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" itemprop="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="twitter:description" /><meta content="2014-10-23 08:58 UTC" property="article:published_time" /><meta content="https://www.facebook.com/OtiAnn" property="article:author" /><meta content="article" name="type" /><meta content="article" property="og:type" /><meta content="838413066169349" property="fb:app_id" /><meta content="zh_TW" property="og:locale" /><meta content="Annideas?" itemprop="name" /><meta content="Annideas?" property="og:site_name" /><meta content="http://annideas.tw/images/annie_pic.jpg" property="og:image" /><meta content="@_OtiAnn" name="twitter:site" /><meta content="summary_large_image" name="twitter:card" /><meta content="http://annideas.tw/images/annie_pic.jpg" name="twitter:image" /><meta content="@_OtiAnn" name="twitter:creator" /><meta content="wj4kHYLvvEKT7b_B7Fqp56gRY77ipGuhg11O--1EKXw" name="google-site-verification" /><link href="/stylesheets/application-ecf64744.css" rel="stylesheet" /><script src="/javascripts/jquery-3.2.1.min-aa407c6a.js"></script><script src="/javascripts/application-fb8733fc.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-23-ruby-girl-23-ruby-inherit ironman_2014-10-23-ruby-girl-23-ruby-inherit_index"><div class="wrapper"><a href="/" class="go_home_logo"><img src="/images/go_home_logo-55ba1e01.png" alt="Go home logo" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(23)：Ruby中的繼承者們！有錢真好(誤)</div><div class="articleContent-date">2014．Oct．23</div><div class="articleContent-article tp-in-content"><p>今天要來看看怎麼建立類別的孩子、孫子、子子孫孫們！實際上先前我們已經有偷偷用過了，不過今天來做個詳細的介紹！</p>
 
 <h2 id="section">建立子類別</h2>
 
@@ -6,30 +6,28 @@
 
 <p>還記得我們寫過…</p>
 
-<pre class="highlight ruby"><code><span class="no">Fixnum</span><span class="p">.</span><span class="nf">ancestors</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="no">Fixnum</span><span class="p">.</span><span class="nf">ancestors</span>  
 <span class="o">=&gt;</span> <span class="p">[</span><span class="no">Fixnum</span><span class="p">,</span> <span class="no">Integer</span><span class="p">,</span> <span class="no">Numeric</span><span class="p">,</span> <span class="no">Comparable</span><span class="p">,</span> <span class="no">Object</span><span class="p">,</span> <span class="no">Kernel</span><span class="p">,</span> <span class="no">BasicObject</span><span class="p">]</span>  
-</code></pre>
-
+</code></pre></div>
 <p>Fixnum的爸爸是Integer，其他都是Fixnum的祖先，Fixnum有其他祖先所定義的所有方法！</p>
 
 <p>那如果我們要自己寫一個子類別的話該怎麼做呢？很簡單我們只需要一個<strong>『&lt;』</strong>符號就好了！</p>
 
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span> <span class="o">&lt;</span> <span class="no">Girl</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RubyGirl</span> <span class="o">&lt;</span> <span class="no">Girl</span>  
   
 <span class="k">end</span>  
-</code></pre>
-
+</code></pre></div>
 <p>上面我將RubyGirl定義成是Girl的子類別，所以會有所有Girl的方法！例如：</p>
 
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Girl</span>  
-  <span class="kp">attr_accessor</span> <span class="ss">:talk</span><span class="p">,</span> <span class="ss">:height</span><span class="p">,</span> <span class="ss">:weight</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Girl</span>  
+  <span class="nb">attr_accessor</span> <span class="ss">:talk</span><span class="p">,</span> <span class="ss">:height</span><span class="p">,</span> <span class="ss">:weight</span>  
   <span class="k">def</span> <span class="nf">talk</span>  
     <span class="s2">"Hi, nice to meet you!"</span>  
   <span class="k">end</span>  
 <span class="k">end</span>
 
 <span class="k">class</span> <span class="nc">RubyGirl</span> <span class="o">&lt;</span> <span class="no">Girl</span>  
-  <span class="kp">attr_accessor</span> <span class="ss">:age</span><span class="p">,</span> <span class="ss">:ruby_skill</span>  
+  <span class="nb">attr_accessor</span> <span class="ss">:age</span><span class="p">,</span> <span class="ss">:ruby_skill</span>  
 
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>  
     <span class="vi">@height</span> <span class="o">=</span> <span class="n">height</span>  
@@ -41,19 +39,17 @@
   
 <span class="n">annie</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span>  
 <span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007fa7c3052e78 @height=180, @weight=40, @ruby_skill=60, @age=18&gt;  </span>
-</code></pre>
-
+</code></pre></div>
 <p>看到了嗎，我們明明是在Girl這個類別定義身高、體重這兩個方法，而annie是RubyGirl類別的實體物件，但annie初始化時也可以使用Girl中的方法！當然，annie也享有說話這個方法，因為RubyGirl繼承Girl，所以：</p>
 
-<pre class="highlight ruby"><code><span class="n">annie</span><span class="p">.</span><span class="nf">talk</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">annie</span><span class="p">.</span><span class="nf">talk</span>  
 <span class="o">=&gt;</span> <span class="s2">"Hi, nice to meet you!"</span>  
-</code></pre>
-
+</code></pre></div>
 <h2 id="section-1">覆寫方法</h2>
 
 <p>不過有時候，孩子可能不太喜歡父母的規定，例如annie的talk並不想要這麼死板XD，那RubyGirl這個類別可以做些修改來重新定義父母的行為，例如：</p>
 
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Girl</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Girl</span>  
   <span class="k">def</span> <span class="nf">talk</span>  
     <span class="s2">"Hi, nice to meet you!"</span>  
   <span class="k">end</span>  
@@ -70,15 +66,14 @@
   
 <span class="n">annie</span><span class="p">.</span><span class="nf">talk</span>  
 <span class="o">=&gt;</span> <span class="s2">"Hey, folks~~~"</span>  
-</code></pre>
-
+</code></pre></div>
 <blockquote>
   <p>『當方法被調用時，會動態查找該方法，所以會發現該方法的定義或是他的新定義。』(p.246)</p>
 </blockquote>
 
 <p>有些父母比較彈性，會在自己的方法中挖空，讓子女來定義也是完全可以的噢，以下我們來介紹抽象的類別：</p>
 
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Girl</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Girl</span>  
   <span class="k">def</span> <span class="nf">talk</span>  
     <span class="s2">"</span><span class="si">#{</span><span class="n">greeting</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">who</span><span class="si">}</span><span class="s2">"</span>  
   <span class="k">end</span>  
@@ -100,16 +95,15 @@
   
 <span class="n">annie</span><span class="p">.</span><span class="nf">talk</span>  
 <span class="o">=&gt;</span> <span class="s2">"Hey, folks~~~"</span>  
-</code></pre>
-
+</code></pre></div>
 <h2 id="section-2">覆寫私用方法</h2>
 
 <p>昨天有提到，一個類別的私用方法不能被類別以外的地方使用，但是是可以被子類別調用與覆寫的，我們曾經在<a href="../2014-10-21-ruby-girl-21-ruby-instance-and-class-variables/">Ruby女孩(21)</a>中提到一個叫做<code>super</code>的寫法，當時只有簡單說明，如果我們<strong>想要擴充而非完全取代舊有的方法</strong>，那我們一定要加上<code>super</code>才行！</p>
 
 <p><code>super</code>是一種透過鏈結(chaining)的方式來覆寫父類別的方法，下面的例子指出，我在建立RubyGirl的實體物件時，初始化的內容包含四個引數，其中兩個來自父類別的相同名稱方法中(height,weight來自Girl的initialize方法)，後面兩個則在自己的類別中處理(ruby_skill,age來自RubyGirl自己的initialize方法)。</p>
 
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Girl</span>  
-  <span class="kp">attr_accessor</span> <span class="ss">:height</span><span class="p">,</span> <span class="ss">:weight</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Girl</span>  
+  <span class="nb">attr_accessor</span> <span class="ss">:height</span><span class="p">,</span> <span class="ss">:weight</span>  
 
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="n">weight</span><span class="p">)</span>  
     <span class="vi">@height</span> <span class="o">=</span> <span class="n">height</span>  
@@ -117,7 +111,7 @@
   <span class="k">end</span>  
 <span class="k">end</span>  
 <span class="k">class</span> <span class="nc">RubyGirl</span> <span class="o">&lt;</span> <span class="no">Girl</span>  
-  <span class="kp">attr_accessor</span> <span class="ss">:age</span><span class="p">,</span> <span class="ss">:ruby_skill</span>  
+  <span class="nb">attr_accessor</span> <span class="ss">:age</span><span class="p">,</span> <span class="ss">:ruby_skill</span>  
   
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="n">weight</span><span class="p">,</span><span class="n">ruby_skill</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>  
     <span class="k">super</span><span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="n">weight</span><span class="p">)</span>  
@@ -128,15 +122,14 @@
   
 <span class="n">annie</span> <span class="o">=</span> <span class="no">RubyGirl</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>  
 <span class="o">=&gt;</span> <span class="c1">#&lt;RubyGirl:0x007fa81b017140 @height=180, @weight=40, @ruby_skill=60, @age=18&gt;  </span>
-</code></pre>
-
+</code></pre></div>
 <h2 id="section-3">當繼承遇到公用、受保護、私用方法</h2>
 
 <p>最後我們來看看繼承與昨天公用、受保護、私用方法之間錯綜複雜的關係為何？</p>
 
 <p>直接來看例子，你就可以知道生在好的人家裡面多重要了(大誤)，繼承者完全可以使用老爸的公用、受保護、私用方法！</p>
 
-<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Father</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">Father</span>  
   <span class="k">def</span> <span class="nf">friend</span>  
     <span class="s2">"Dad have a lot of friends"</span>  
   <span class="k">end</span>  
@@ -195,8 +188,7 @@
        <span class="s2">"Dad have a lot of friends"</span>  
        <span class="s2">"Dad have a lot of money"</span>  
        <span class="s2">"Dad have a lot of company"</span>  
-</code></pre>
-
+</code></pre></div>
 <p>這個故事告訴我們，越後面出生的越幸福(誤)，不過好像也可以這麼作結論，孩子的東西永遠比父母多，而且父母有的孩子一定有！ＱＱ</p>
 
 <hr />
@@ -214,7 +206,7 @@
   js = d.createElement(s); js.id = id;
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=838413066169349&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://annideas.tw/ironman/2014-10-23-ruby-girl-23-ruby-inherit/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-24-ruby-girl-24-ruby-module-class/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(24)：模組是不生孩子的！模組與類別差異及mixin介紹</div><div class="articleContent-paging-item-date">2014．Oct．24</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-22-ruby-girl-22-ruby-public-protected-private-methods/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(22)：公用、受保護、私用方法大亂鬥</div><div class="articleContent-paging-item-date">2014．Oct．22</div></a></div><div id="disqus_thread"></div>
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://annideas.tw/ironman/2014-10-23-ruby-girl-23-ruby-inherit/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a href="../2014-10-24-ruby-girl-24-ruby-module-class/" class="articleContent-paging-item articleContent-paging-item--prev"><div class="articleContent-paging-item-title single-dot">Ruby女孩(24)：模組是不生孩子的！模組與類別差異及mixin介紹</div><div class="articleContent-paging-item-date">2014．Oct．24</div></a><a href="../2014-10-22-ruby-girl-22-ruby-public-protected-private-methods/" class="articleContent-paging-item articleContent-paging-item--next"><div class="articleContent-paging-item-title single-dot">Ruby女孩(22)：公用、受保護、私用方法大亂鬥</div><div class="articleContent-paging-item-date">2014．Oct．22</div></a></div><div id="disqus_thread"></div>
 <script type="text/javascript">
 //<![CDATA[
                   var disqus_shortname = 'otiannie5';
@@ -230,7 +222,7 @@
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a><script>$('.designer a').click(function(){
   ga('send', 'event', 'Footer', 'click', 'Otis Chou');
-})</script></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="/images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="/images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a href="/en/resume"><img class="resume" src="/images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="/images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="/images/facebook-368929ba.svg" /></a><a target="_blank" href="https://www.linkedin.com/in/yccannie"><img class="linkedin" src="/images/linkedin-2ba621d9.svg" /></a></div><div class="desc_block"><div class="name">Yu-Chen (Annie) Chen</div><div class="description">2+ years Web Developer, 7+ years Instructor</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">Life (3)</a></li><li><a class="edu" href="/categories/學習/">Learning (4)</a></li><li><a class="dev" href="/categories/開發/">Coding (7)</a></li><li><a href="/ironman7">Article (30)</a></li><li><a class="maple" href="/categories/楓葉國紀錄/">Canada (2)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+})</script></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="/images/cross-e391fcc8.svg" alt="Cross" /><div class="avatar"><a href="/"><img src="/images/annie_pic-a20039dc.jpg" alt="Annie pic" /></a></div><div class="social_link"><a href="/en/resume"><img class="resume" src="/images/me-123f788f.svg" alt="Me" /></a><a href="https://twitter.com/_OtiAnn" target="_blank"><img class="twitter" src="/images/twitter-e0f1f272.svg" alt="Twitter" /></a><a href="https://www.facebook.com/OtiAnn" target="_blank"><img class="facebook" src="/images/facebook-368929ba.svg" alt="Facebook" /></a><a href="https://www.linkedin.com/in/yccannie" target="_blank"><img class="linkedin" src="/images/linkedin-2ba621d9.svg" alt="Linkedin" /></a></div><div class="desc_block"><div class="name">Yu-Chen (Annie) Chen</div><div class="description">2+ years Web Developer, 7+ years Instructor</div></div><ul class="catgory_list"><li><a href="/categories/生活/" class="life">Life (3)</a></li><li><a href="/categories/學習/" class="edu">Learning (4)</a></li><li><a href="/categories/開發/" class="dev">Coding (7)</a></li><li><a href="/ironman7">Article (30)</a></li><li><a href="/categories/楓葉國紀錄/" class="maple">Canada (2)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

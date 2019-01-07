@@ -1,80 +1,71 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><title>Ruby女孩(6)：Ruby的"-字-字-字-字-字-"</title><meta content="Ruby女孩(6)：Ruby的"-字-字-字-字-字-"" name="title" /><meta content="Ruby女孩(6)：Ruby的"-字-字-字-字-字-"" property="og:title" /><meta content="Ruby女孩(6)：Ruby的"-字-字-字-字-字-"" name="twitter:title" /><meta content="http://annideas.tw/ironman/2014-10-06-ruby-girl-6-ruby-string-intro/" name="url" /><meta content="http://annideas.tw/ironman/2014-10-06-ruby-girl-6-ruby-string-intro/" property="og:url" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" property="og:description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" itemprop="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="twitter:description" /><meta content="2014-10-06 08:58 UTC" property="article:published_time" /><meta content="https://www.facebook.com/OtiAnn" property="article:author" /><meta content="article" name="type" /><meta content="article" property="og:type" /><meta content="838413066169349" property="fb:app_id" /><meta content="zh_TW" property="og:locale" /><meta content="Annideas?" itemprop="name" /><meta content="Annideas?" property="og:site_name" /><meta content="http://annideas.tw/images/annie_pic.jpg" property="og:image" /><meta content="@_OtiAnn" name="twitter:site" /><meta content="summary_large_image" name="twitter:card" /><meta content="http://annideas.tw/images/annie_pic.jpg" name="twitter:image" /><meta content="@_OtiAnn" name="twitter:creator" /><meta content="wj4kHYLvvEKT7b_B7Fqp56gRY77ipGuhg11O--1EKXw" name="google-site-verification" /><link href="/stylesheets/application-ecf64744.css" rel="stylesheet" /><script src="/javascripts/jquery-3.2.1.min-aa407c6a.js"></script><script src="/javascripts/application-fb8733fc.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-06-ruby-girl-6-ruby-string-intro ironman_2014-10-06-ruby-girl-6-ruby-string-intro_index"><div class="wrapper"><a class="go_home_logo" href="/"><img src="/images/go_home_logo-55ba1e01.png" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(6)：Ruby的"-字-字-字-字-字-"</div><div class="articleContent-date">2014．Oct．06</div><div class="articleContent-article tp-in-content"><p>昨天提到了數字，發現Ruby 替數字做的分類與生活中不太相同，那文字呢？今天來說說 <strong>Ruby資料型別中的文字</strong>。</p>
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width; initial-scale=1.0" name="viewport" /><title>Ruby女孩(6)：Ruby的"-字-字-字-字-字-"</title><meta content="Ruby女孩(6)：Ruby的"-字-字-字-字-字-"" name="title" /><meta content="Ruby女孩(6)：Ruby的"-字-字-字-字-字-"" property="og:title" /><meta content="Ruby女孩(6)：Ruby的"-字-字-字-字-字-"" name="twitter:title" /><meta content="http://annideas.tw/ironman/2014-10-06-ruby-girl-6-ruby-string-intro/" name="url" /><meta content="http://annideas.tw/ironman/2014-10-06-ruby-girl-6-ruby-string-intro/" property="og:url" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" property="og:description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" itemprop="description" /><meta content="參加連續30天寫文章的技術鐵人賽，我選擇讀一本『The Ruby Programming Language』，整理在書中所吸取的知識，試著以不斷詢問為什麼的方式，追根究底的讀通 Ruby 語言的基礎。" name="twitter:description" /><meta content="2014-10-06 08:58 UTC" property="article:published_time" /><meta content="https://www.facebook.com/OtiAnn" property="article:author" /><meta content="article" name="type" /><meta content="article" property="og:type" /><meta content="838413066169349" property="fb:app_id" /><meta content="zh_TW" property="og:locale" /><meta content="Annideas?" itemprop="name" /><meta content="Annideas?" property="og:site_name" /><meta content="http://annideas.tw/images/annie_pic.jpg" property="og:image" /><meta content="@_OtiAnn" name="twitter:site" /><meta content="summary_large_image" name="twitter:card" /><meta content="http://annideas.tw/images/annie_pic.jpg" name="twitter:image" /><meta content="@_OtiAnn" name="twitter:creator" /><meta content="wj4kHYLvvEKT7b_B7Fqp56gRY77ipGuhg11O--1EKXw" name="google-site-verification" /><link href="/stylesheets/application-ecf64744.css" rel="stylesheet" /><script src="/javascripts/jquery-3.2.1.min-aa407c6a.js"></script><script src="/javascripts/application-fb8733fc.js"></script><link href="/images/icon-f0edf780.png" rel="shortcut icon" /></head><body class="ironman ironman_2014-10-06-ruby-girl-6-ruby-string-intro ironman_2014-10-06-ruby-girl-6-ruby-string-intro_index"><div class="wrapper"><a href="/" class="go_home_logo"><img src="/images/go_home_logo-55ba1e01.png" alt="Go home logo" /><h1 class="title">Annideas?</h1></a><div class="container"><div class="articleContent"><div class="articleContent-category"><a href="/ironman7">鐵 人</a></div><div class="articleContent-title">Ruby女孩(6)：Ruby的"-字-字-字-字-字-"</div><div class="articleContent-date">2014．Oct．06</div><div class="articleContent-article tp-in-content"><p>昨天提到了數字，發現Ruby 替數字做的分類與生活中不太相同，那文字呢？今天來說說 <strong>Ruby資料型別中的文字</strong>。</p>
 
 <h2 id="section">加上單引號的字串</h2>
 
-<pre class="highlight ruby"><code><span class="s1">'-字-字-字-字-字-字-字-'</span> <span class="c1">#一堆字被串起來，就是字串。  </span>
-</code></pre>
-
+<div class="highlight"><pre class="highlight ruby"><code><span class="s1">'-字-字-字-字-字-字-字-'</span> <span class="c1">#一堆字被串起來，就是字串。  </span>
+</code></pre></div>
 <p>Ruby 會認單引號來當作字串的開始跟結尾，但是如果字串裡需要出現單引號怎麼辦？</p>
 
-<pre class="highlight ruby"><code><span class="s1">'安安你好嗎？I'</span><span class="n">m</span> <span class="n">fine!</span><span class="err">'</span>  
-</code></pre>
-
+<div class="highlight"><pre class="highlight ruby"><code><span class="s1">'安安你好嗎？I'</span><span class="n">m</span> <span class="n">fine!</span><span class="err">'</span>  
+</code></pre></div>
 <p>Ruby看見的字串只有 <code>'安安你好嗎？I'</code> ，還有後面的字串開頭<code>'</code>，這時候執行程式碼，他會以為你還沒打完，執行時沒有效果！所以為了避免這種問題，就需要在字串裡的單引號前，加上<strong>倒斜線(backslash)</strong>來避開才行：</p>
 
-<pre class="highlight ruby"><code><span class="s1">'安安你好嗎？I\'m fine!'</span> <span class="c1">#仔細看I'm改成I\'m！  </span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="s1">'安安你好嗎？I\'m fine!'</span> <span class="c1">#仔細看I'm改成I\'m！  </span>
 
 <span class="o">=&gt;</span> <span class="s2">"安安你好嗎？I'm fine!"</span> <span class="c1">#它會自動把斜線拿掉！  </span>
-</code></pre>
-
+</code></pre></div>
 <p>那如果字串裡想畫個像 <code>/( ' V ' )/</code> 這樣子的表情符號該怎麼寫呢XD？</p>
 
-<pre class="highlight ruby"><code><span class="s1">'/(  \'  V  \'  )/'</span> <span class="c1">#就把兩個眼睛前面都加上反斜線就好！  </span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="s1">'/(  \'  V  \'  )/'</span> <span class="c1">#就把兩個眼睛前面都加上反斜線就好！  </span>
 
 <span class="o">=&gt;</span> <span class="s2">"/(  '  V  '  )/"</span>  
-</code></pre>
-
+</code></pre></div>
 <p>這種單引號的字串可以跨很多列，如果你字比較多想要分行寫，你可以：</p>
 
-<pre class="highlight ruby"><code><span class="s1">'安安，  
+<div class="highlight"><pre class="highlight ruby"><code><span class="s1">'安安，  
 你好！  
 天氣真不錯！'</span>   <span class="c1">#因為Ruby都只認單引號當開頭與結尾，所以他自動會幫忙轉成一行，但...  </span>
 
 <span class="o">=&gt;</span> <span class="s2">"安安，</span><span class="se">\n</span><span class="s2">你好！</span><span class="se">\n</span><span class="s2">天氣真不錯！"</span>  
-</code></pre>
-
+</code></pre></div>
 <p>字串裡面被包了奇怪的東西<code>\n</code>，那是 <strong>換列字符</strong>，如果想要字串裡乾淨一些，可以再派出反斜線：</p>
 
-<pre class="highlight ruby"><code><span class="s1">'安安，'</span><span class="p">\</span>    <span class="c1">#這行行尾要加上反斜線規避  </span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="s1">'安安，'</span><span class="p">\</span>    <span class="c1">#這行行尾要加上反斜線規避  </span>
 <span class="s1">'你好！'</span><span class="p">\</span>    <span class="c1">#這行也要加  </span>
 <span class="s1">'天氣真不錯！'</span>  <span class="c1">#最後一行可別加！加了他就不知道你到結尾了～  </span>
 
 <span class="o">=&gt;</span> <span class="s2">"安安，你好！天氣真不錯！"</span>  
-</code></pre>
-
+</code></pre></div>
 <h2 id="section-1">加上雙引號的字串</h2>
 
 <p>比起單引號，雙引號彈性多了！雙引號最厲害的是可以在字串裡面插入任意的Ruby 運算式(在Ruby 中稱為<strong>『字串安插(string interpolation)』</strong>)，不過這些運算式，要被放在 <code>#{ }</code> 裡面，例如：</p>
 
-<pre class="highlight ruby"><code><span class="s2">"我喜歡吃</span><span class="si">#{</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">個便當！"</span>  
+<div class="highlight"><pre class="highlight ruby"><code><span class="s2">"我喜歡吃</span><span class="si">#{</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">個便當！"</span>  
 
 <span class="o">=&gt;</span> <span class="s2">"我喜歡吃2個便當！"</span>  
-</code></pre>
-
+</code></pre></div>
 <p>這好處有很多很多，譬如可以先定義一個變數，再把變數放入字串裡面：</p>
 
-<pre class="highlight ruby"><code><span class="n">a</span> <span class="o">=</span> <span class="s1">'Ruby!'</span> <span class="c1">#先設個變數a等於字串Ruby  </span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">a</span> <span class="o">=</span> <span class="s1">'Ruby!'</span> <span class="c1">#先設個變數a等於字串Ruby  </span>
 <span class="s2">"我喜歡：</span><span class="si">#{</span><span class="n">a</span><span class="o">*</span><span class="mi">3</span><span class="si">}</span><span class="s2">"</span>  
 
 <span class="o">=&gt;</span> <span class="s2">"我喜歡Ruby!Ruby!Ruby!"</span>  
-</code></pre>
-
+</code></pre></div>
 <p>雙引號字串還有另一個特色，就是支援了一些<strong>倒斜線規避序列(backslash escape sequence)</strong>，例如：</p>
 
-<pre class="highlight ruby"><code><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="c1">#代表換列(Newline)  </span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="c1">#代表換列(Newline)  </span>
 <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span> <span class="c1">#代表跳格(Tab)  </span>
 <span class="s2">"</span><span class="se">\s</span><span class="s2">"</span> <span class="c1">#代表空格(Space)  </span>
 
 <span class="s2">"國父</span><span class="se">\s</span><span class="s2">孫中山先生"</span>  
 
 <span class="o">=&gt;</span> <span class="s2">"國父 孫中山先生  
-</span></code></pre>
-
+</span></code></pre></div>
 <p>除了上述提到三個之外，還有很多，有興趣的朋友可以參考<a href="http://guides.ruby.tw/ruby/regexp.html">這裡</a>。</p>
 
 <p>但其實，當字串裡有出現撇號或引號時，很難直接拿來使用，一直規避就飽了(就像前面的文字符號一樣，很麻煩)，所以Ruby 又發明了兩個語法來支援這種狀況：<code>%q</code>與<code>%Q</code>。</p>
 
-<pre class="highlight ruby"><code><span class="sx">%q(我是安妮 I'm Annie)</span>  <span class="c1">#%q作用跟單引號相同</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="sx">%q(我是安妮 I'm Annie)</span>  <span class="c1">#%q作用跟單引號相同</span>
 
 <span class="o">=&gt;</span> <span class="s2">"我是安妮 I'm Annie"</span>  
 
@@ -85,8 +76,7 @@
 <span class="sx">%Q(/(  '  V  '  )/)</span>  
 
 <span class="o">=&gt;</span> <span class="s2">"/(  '  V  '  )/"</span>  
-</code></pre>
-
+</code></pre></div>
 <p>有了<code>%q</code>與<code>%Q</code>，就不需要一直在字串裡規避引號了，方便又清楚(大心)！</p>
 
 <hr />
@@ -104,7 +94,7 @@
   js = d.createElement(s); js.id = id;
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=838413066169349&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://annideas.tw/ironman/2014-10-06-ruby-girl-6-ruby-string-intro/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a class="articleContent-paging-item articleContent-paging-item--prev" href="../2014-10-07-ruby-girl-7-ruby-string-compare/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(7)：原來字串也可以比大小？</div><div class="articleContent-paging-item-date">2014．Oct．07</div></a><a class="articleContent-paging-item articleContent-paging-item--next" href="../2014-10-05-ruby-girl-5-ruby-math-intro/"><div class="articleContent-paging-item-title single-dot">Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？</div><div class="articleContent-paging-item-date">2014．Oct．05</div></a></div><div id="disqus_thread"></div>
+}(document, 'script', 'facebook-jssdk'));</script><div class="fb-like" data-action="like" data-href="http://annideas.tw/ironman/2014-10-06-ruby-girl-6-ruby-string-intro/" data-layout="button_count" data-share="true" data-show-faces="true" data-size="small" data-width="700px"></div></div><div class="articleContent-paging"><a href="../2014-10-07-ruby-girl-7-ruby-string-compare/" class="articleContent-paging-item articleContent-paging-item--prev"><div class="articleContent-paging-item-title single-dot">Ruby女孩(7)：原來字串也可以比大小？</div><div class="articleContent-paging-item-date">2014．Oct．07</div></a><a href="../2014-10-05-ruby-girl-5-ruby-math-intro/" class="articleContent-paging-item articleContent-paging-item--next"><div class="articleContent-paging-item-title single-dot">Ruby女孩(5)：Ruby的數學跟老師教的數學都不一樣？</div><div class="articleContent-paging-item-date">2014．Oct．05</div></a></div><div id="disqus_thread"></div>
 <script type="text/javascript">
 //<![CDATA[
                   var disqus_shortname = 'otiannie5';
@@ -120,7 +110,7 @@
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div><div class="designer">Designed with <span class="love">❤</span> by <a href="http://otischou.tw/">Otis Chou</a><script>$('.designer a').click(function(){
   ga('send', 'event', 'Footer', 'click', 'Otis Chou');
-})</script></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="/images/cross-e391fcc8.svg" /><div class="avatar"><a href="/"><img src="/images/annie_pic-a20039dc.jpg" /></a></div><div class="social_link"><a href="/en/resume"><img class="resume" src="/images/me-123f788f.svg" /></a><a target="_blank" href="https://twitter.com/_OtiAnn"><img class="twitter" src="/images/twitter-e0f1f272.svg" /></a><a target="_blank" href="https://www.facebook.com/OtiAnn"><img class="facebook" src="/images/facebook-368929ba.svg" /></a><a target="_blank" href="https://www.linkedin.com/in/yccannie"><img class="linkedin" src="/images/linkedin-2ba621d9.svg" /></a></div><div class="desc_block"><div class="name">Yu-Chen (Annie) Chen</div><div class="description">2+ years Web Developer, 7+ years Instructor</div></div><ul class="catgory_list"><li><a class="life" href="/categories/生活/">Life (3)</a></li><li><a class="edu" href="/categories/學習/">Learning (4)</a></li><li><a class="dev" href="/categories/開發/">Coding (7)</a></li><li><a href="/ironman7">Article (30)</a></li><li><a class="maple" href="/categories/楓葉國紀錄/">Canada (2)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+})</script></div></div><div class="menu_icon_block" data-show-menu=""><div class="menu_icon"></div></div><div class="mask" data-hide-menu=""></div><nav><img class="close" data-hide-menu="true" src="/images/cross-e391fcc8.svg" alt="Cross" /><div class="avatar"><a href="/"><img src="/images/annie_pic-a20039dc.jpg" alt="Annie pic" /></a></div><div class="social_link"><a href="/en/resume"><img class="resume" src="/images/me-123f788f.svg" alt="Me" /></a><a href="https://twitter.com/_OtiAnn" target="_blank"><img class="twitter" src="/images/twitter-e0f1f272.svg" alt="Twitter" /></a><a href="https://www.facebook.com/OtiAnn" target="_blank"><img class="facebook" src="/images/facebook-368929ba.svg" alt="Facebook" /></a><a href="https://www.linkedin.com/in/yccannie" target="_blank"><img class="linkedin" src="/images/linkedin-2ba621d9.svg" alt="Linkedin" /></a></div><div class="desc_block"><div class="name">Yu-Chen (Annie) Chen</div><div class="description">2+ years Web Developer, 7+ years Instructor</div></div><ul class="catgory_list"><li><a href="/categories/生活/" class="life">Life (3)</a></li><li><a href="/categories/學習/" class="edu">Learning (4)</a></li><li><a href="/categories/開發/" class="dev">Coding (7)</a></li><li><a href="/ironman7">Article (30)</a></li><li><a href="/categories/楓葉國紀錄/" class="maple">Canada (2)</a></li></ul></nav><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
