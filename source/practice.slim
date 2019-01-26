@@ -1,0 +1,16 @@
+---
+pageable: false
+desc: 我是Annie，這裡的是我的 Play Ground，主要存放我用來練習前端技術的小專案。
+---
+
+.articleList
+  .articleList-tagName Practice Projects
+  .articleList-topic-desc-block
+    h2.articleList-topic Practice is not for perfection, is for permanence
+    .articleList-desc
+      | Hey! Here's my play ground which I use to practice and improve my frontend framework knowledge and skills. 
+  ul
+    li = link_to "/practice/ttc_ridership_analysis"
+      = image_tag("pacman.svg", class: "pacman")
+      h2.articleList-title = "TTC Ridership Analysis 1985-2018"
+      .articleList-date.tool = "Vue.js + D3.js v5"

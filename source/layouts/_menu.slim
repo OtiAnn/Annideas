@@ -9,8 +9,8 @@ nav
   .social_link
     = link_to "/en/resume"
       = image_tag("me.svg", class: "resume")
-    = link_to "https://twitter.com/_OtiAnn", target: "_blank"
-      = image_tag("twitter.svg", class: "twitter")
+    / = link_to "https://twitter.com/_OtiAnn", target: "_blank"
+    /   = image_tag("twitter.svg", class: "twitter")
     = link_to "https://www.facebook.com/OtiAnn", target: "_blank"
       = image_tag("facebook.svg", class: "facebook")
     = link_to "https://www.linkedin.com/in/yccannie", target: "_blank"
@@ -24,3 +24,7 @@ nav
     li = link_to cat_name_and_articles_count(cat_name: "開發"), category_path("開發"), class: cat_class("開發")
     li = link_to "Article (30)", "/ironman7"
     li = link_to cat_name_and_articles_count(cat_name: "楓葉國紀錄"), category_path("楓葉國紀錄"), class: cat_class("楓葉國紀錄")
+    li.practice_link
+      = link_to "/practice"
+        = "Practice (1)"
+        = image_tag("pacman.svg", class: "pacman")

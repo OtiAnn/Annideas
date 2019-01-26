@@ -80,7 +80,7 @@ with_layout :resume_layout do
   page "/en/*"
 end
 
-page "/practice/*", layout: :no_desc_layout
+page "/practice/*", layout: :practice_layout
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
