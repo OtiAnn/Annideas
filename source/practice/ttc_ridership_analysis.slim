@@ -15,134 +15,12 @@ framework: 'D3'
       .year-mark Year: 2018
 
 javascript:
-  const sample = [
-    {
-      2017:[
-        {
-          fare_media: "TOKENS",
-          payment: 76106
-        },
-        {
-          fare_media: "TICKETS",
-          payment: 0
-        },
-        {
-          fare_media: "TWO-FARE",
-          payment: 0
-        },
-        {
-          fare_media: "PRESTO - SINGLE RIDE",
-          payment: 67829
-        },
-        {
-          fare_media: "PRESTO - ADULT TWO-HOUR FREE RIDE",
-          payment: 0
-        },
-        {
-          fare_media: "PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
-          payment: 0
-        },
-        {
-          fare_media: "PRESTO - SRVM TOKEN RIDE",
-          payment: 1271
-        },
-        {
-          fare_media: "PRESTO - SRVM CASH RIDE",
-          payment: 821
-        },
-        {
-          fare_media: "PRESTO - MONTHLY PASS",
-          payment: 1613
-        },
-        {
-          fare_media: "PRESTO - POST-SECONDARY MONTHLY PASS",
-          payment: 0
-        },
-        {
-          fare_media: "REGULAR MONTHLY PASS",
-          payment: 174549
-        },
-        {
-          fare_media: "POST-SECONDARY PASS",
-          payment: 52721
-        },
-        {
-          fare_media: "TWIN-GO PASS",
-          payment: 0
-        },
-        {
-          fare_media: "WEEKLY PASS",
-          payment: 6653
-        },
-        {
-          fare_media: "CASH",
-          payment: 36045
-        }
-      ],
-      2018: [
-        {
-          fare_media: "TOKENS",
-          payment: 46974
-        },
-        {
-          fare_media: "TICKETS",
-          payment: 0
-        },
-        {
-          fare_media: "TWO-FARE",
-          payment: 0
-        },
-        {
-          fare_media: "PRESTO - SINGLE RIDE",
-          payment: 116888
-        },
-        {
-          fare_media: "PRESTO - ADULT TWO-HOUR FREE RIDE",
-          payment: 1752
-        },
-        {
-          fare_media: "PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
-          payment: 74
-        },
-        {
-          fare_media: "PRESTO - SRVM TOKEN RIDE",
-          payment: 1049
-        },
-        {
-          fare_media: "PRESTO - SRVM CASH RIDE",
-          payment: 856
-        },
-        {
-          fare_media: "PRESTO - MONTHLY PASS",
-          payment: 19111
-        },
-        {
-          fare_media: "PRESTO - POST-SECONDARY MONTHLY PASS",
-          payment: 744
-        },
-        {
-          fare_media: "REGULAR MONTHLY PASS",
-          payment: 133448
-        },
-        {
-          fare_media: "POST-SECONDARY PASS",
-          payment: 50082
-        },
-        {
-          fare_media: "TWIN-GO PASS",
-          payment: 0
-        },
-        {
-          fare_media: "WEEKLY PASS",
-          payment: 4982
-        },
-        {
-          fare_media: "CASH",
-          payment: 32251
-        }
-      ]
+  var vm = new Vue({
+    el: '#app',
+    data:{
+      sliderValue: 2018
     }
-  ];
+  })
 
   const svg = d3.select('svg');
   const svgContainer = d3.select('#container');
@@ -153,53 +31,14 @@ javascript:
 
   const chart = svg.append('g')
     .attr('transform', `translate(${margin.left}, ${margin.top})`);
-
-  const yScale = d3.scaleBand()
-    .range([0, height])
-    .domain(sample[0][2018].map((s) => s.fare_media))
-    .padding(0.3)
   
   const xScale = d3.scaleLinear()
     .range([0, width])
     .domain([0, 215000]);
 
-  const makeYLines = () => d3.axisLeft()
-    .scale(yScale)
-
   chart.append('g')
     .attr('transform', `translate(0, ${height})`)
     .call(d3.axisBottom(xScale));
-
-  chart.append('g')
-    .call(d3.axisLeft(yScale));
-
-  chart.append('g')
-    .attr('class', 'grid')
-    .call(makeYLines()
-      .tickSize(-width, 0, 0)
-      .tickFormat('')
-    )
-
-  const barGroups = chart.selectAll()
-    .data(sample[0][2018])
-    .enter()
-    .append('g')
-
-  barGroups
-    .append('rect')
-    .attr('class', 'bar')
-    // .attr('x', (g) => xScale(g.payment))
-    .attr('width', (g) => xScale(g.payment))
-    .attr('y', (g) => yScale(g.fare_media))
-    .attr('height', yScale.bandwidth())
-    
-  barGroups 
-    .append('text')
-    .attr('class', 'fare_media')
-    .attr('x', (a) => xScale(a.payment) + 30)
-    .attr('y', (a) => yScale(a.fare_media) + yScale.bandwidth() / 1.5)
-    .attr('text-anchor', 'middle')
-    .text((a) => `$${d3.format(",")(a.payment)}`)
   
   svg
     .append('text')
@@ -231,62 +70,99 @@ javascript:
     .attr('text-anchor', 'start')
     .text('Source: City of Toronto / Open Data, 2018')
 
-  var vm = new Vue({
-    el: '#app',
-    data:{
-      sliderValue: 2018
-    }
-  })
+  d3.json("/files/test_data.json").then(function(data) {
+    const sample = data;
+    
+    const yScale = d3.scaleBand()
+      .range([0, height])
+      .domain(sample[0][2018].map((s) => s.fare_media))
+      .padding(0.3)
+    
+    const makeYLines = () => d3.axisLeft()
+      .scale(yScale)
+    
+    chart.append('g')
+      .call(d3.axisLeft(yScale));
+  
+    chart.append('g')
+      .attr('class', 'grid')
+      .call(makeYLines()
+        .tickSize(-width, 0, 0)
+        .tickFormat('')
+      )
 
-  // ** Update data section (Called from the onclick)
-  function updateData() {
-    svg.selectAll("rect.bar").remove()
-    svg.selectAll("text.fare_media").remove()
-    // Get the data again
     const barGroups = chart.selectAll()
-      .data(sample[0][vm.sliderValue])
+      .data(sample[0][2018])
       .enter()
+      .append('g')
 
     barGroups
       .append('rect')
       .attr('class', 'bar')
-      // .transition()
-      // .duration(500)
+      // .attr('x', (g) => xScale(g.payment))
       .attr('width', (g) => xScale(g.payment))
       .attr('y', (g) => yScale(g.fare_media))
       .attr('height', yScale.bandwidth())
       
-    barGroups
+    barGroups 
       .append('text')
       .attr('class', 'fare_media')
-      // .transition()
-      // .duration(500)
       .attr('x', (a) => xScale(a.payment) + 30)
       .attr('y', (a) => yScale(a.fare_media) + yScale.bandwidth() / 1.5)
       .attr('text-anchor', 'middle')
       .text((a) => `$${d3.format(",")(a.payment)}`)
+    
+    // ** Update data section (Called from the onclick)
+    function updateData() {
+      svg.selectAll("rect.bar").remove()
+      svg.selectAll("text.fare_media").remove()
+      // Get the data again
+      const barGroups = chart.selectAll()
+        .data(sample[0][vm.sliderValue])
+        .enter()
 
-    d3.select("text.title").text(`TTC Ridership Analysis ${vm.sliderValue}`);
-    d3.selectAll('.year-mark').remove()
-    d3.select(".slidecontainer").append('div')
-      .attr('class', 'year-mark')
-      .text(`Year: ${vm.sliderValue}`)
-  }
+      barGroups
+        .append('rect')
+        .attr('class', 'bar')
+        // .transition()
+        // .duration(500)
+        .attr('width', (g) => xScale(g.payment))
+        .attr('y', (g) => yScale(g.fare_media))
+        .attr('height', yScale.bandwidth())
+        
+      barGroups
+        .append('text')
+        .attr('class', 'fare_media')
+        // .transition()
+        // .duration(500)
+        .attr('x', (a) => xScale(a.payment) + 30)
+        .attr('y', (a) => yScale(a.fare_media) + yScale.bandwidth() / 1.5)
+        .attr('text-anchor', 'middle')
+        .text((a) => `$${d3.format(",")(a.payment)}`)
 
-  d3.select('#myRange').on('change', function() {
-    updateData();
-  });
-
-  d3.select('button.slider-prev').on('click', function() {
-    if (vm.sliderValue > 1985) {
-      vm.sliderValue -= 1
-      updateData();
+      d3.select("text.title").text(`TTC Ridership Analysis ${vm.sliderValue}`);
+      d3.selectAll('.year-mark').remove()
+      d3.select(".slidecontainer").append('div')
+        .attr('class', 'year-mark')
+        .text(`Year: ${vm.sliderValue}`)
     }
-  });
 
-  d3.select('button.slider-next').on('click', function() {
-    if (vm.sliderValue < 2018) {
-      vm.sliderValue += 1
+
+    d3.select('#myRange').on('change', function() {
       updateData();
-    }
+    });
+
+    d3.select('button.slider-prev').on('click', function() {
+      if (vm.sliderValue > 1985) {
+        vm.sliderValue -= 1
+        updateData();
+      }
+    });
+
+    d3.select('button.slider-next').on('click', function() {
+      if (vm.sliderValue < 2018) {
+        vm.sliderValue += 1
+        updateData();
+      }
+    });
   });

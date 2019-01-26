@@ -1,0 +1,124 @@
+[{
+  "2017": [{
+      "fare_media": "TOKENS",
+      "payment": 76106
+    },
+    {
+      "fare_media": "TICKETS",
+      "payment": 0
+    },
+    {
+      "fare_media": "TWO-FARE",
+      "payment": 0
+    },
+    {
+      "fare_media": "PRESTO - SINGLE RIDE",
+      "payment": 67829
+    },
+    {
+      "fare_media": "PRESTO - ADULT TWO-HOUR FREE RIDE",
+      "payment": 0
+    },
+    {
+      "fare_media": "PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+      "payment": 0
+    },
+    {
+      "fare_media": "PRESTO - SRVM TOKEN RIDE",
+      "payment": 1271
+    },
+    {
+      "fare_media": "PRESTO - SRVM CASH RIDE",
+      "payment": 821
+    },
+    {
+      "fare_media": "PRESTO - MONTHLY PASS",
+      "payment": 1613
+    },
+    {
+      "fare_media": "PRESTO - POST-SECONDARY MONTHLY PASS",
+      "payment": 0
+    },
+    {
+      "fare_media": "REGULAR MONTHLY PASS",
+      "payment": 174549
+    },
+    {
+      "fare_media": "POST-SECONDARY PASS",
+      "payment": 52721
+    },
+    {
+      "fare_media": "TWIN-GO PASS",
+      "payment": 0
+    },
+    {
+      "fare_media": "WEEKLY PASS",
+      "payment": 6653
+    },
+    {
+      "fare_media": "CASH",
+      "payment": 36045
+    }
+  ],
+  "2018": [{
+      "fare_media": "TOKENS",
+      "payment": 46974
+    },
+    {
+      "fare_media": "TICKETS",
+      "payment": 0
+    },
+    {
+      "fare_media": "TWO-FARE",
+      "payment": 0
+    },
+    {
+      "fare_media": "PRESTO - SINGLE RIDE",
+      "payment": 116888
+    },
+    {
+      "fare_media": "PRESTO - ADULT TWO-HOUR FREE RIDE",
+      "payment": 1752
+    },
+    {
+      "fare_media": "PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+      "payment": 74
+    },
+    {
+      "fare_media": "PRESTO - SRVM TOKEN RIDE",
+      "payment": 1049
+    },
+    {
+      "fare_media": "PRESTO - SRVM CASH RIDE",
+      "payment": 856
+    },
+    {
+      "fare_media": "PRESTO - MONTHLY PASS",
+      "payment": 19111
+    },
+    {
+      "fare_media": "PRESTO - POST-SECONDARY MONTHLY PASS",
+      "payment": 744
+    },
+    {
+      "fare_media": "REGULAR MONTHLY PASS",
+      "payment": 133448
+    },
+    {
+      "fare_media": "POST-SECONDARY PASS",
+      "payment": 50082
+    },
+    {
+      "fare_media": "TWIN-GO PASS",
+      "payment": 0
+    },
+    {
+      "fare_media": "WEEKLY PASS",
+      "payment": 4982
+    },
+    {
+      "fare_media": "CASH",
+      "payment": 32251
+    }
+  ]
+}]
