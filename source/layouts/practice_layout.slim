@@ -6,7 +6,7 @@ html
     meta name="viewport" content="width=device-width; initial-scale=1.0"
     
     - custom_title = "#{current_page.data.title} Practice | Annideas?"
-    = partial "layouts/head_config", locals: { info: { custom_title: custom_title, current_desc: "這是我的 Play Ground，主要存放我練習的小專案。"} }
+    = partial "layouts/head_config", locals: { info: { custom_title: custom_title } }
     
     = stylesheet_link_tag "application"
     = javascript_include_tag "jquery-3.2.1.min", "application"
