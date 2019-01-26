@@ -1,0 +1,122 @@
+#layout
+  font-family: 'Open Sans', sans-serif
+  text-align: center
+
+  #container
+    width: 1200px
+    height: 600px
+    margin: auto
+    background-color: #2F4A6D
+
+  svg
+    width: 100%
+    height: 100%
+
+  .bar
+    fill: #80cbc4
+
+  text
+    font-size: 12px
+    fill: #fff
+
+  path
+    stroke: gray
+
+  line
+    stroke: gray
+    &#limit
+      stroke: #FED966
+      stroke-width: 3
+      stroke-dasharray: 3 6
+
+  .grid
+    path
+      stroke-width: 0
+    .tick line
+      stroke: #9FAAAE
+      stroke-opacity: 0.3
+
+  text.fare_media
+    font-size: 12px
+
+  text.title
+    font-size: 22px
+    font-weight: 600
+
+  text.label
+    font-size: 12px
+    font-weight: 400
+
+  text.source
+    font-size: 10px
+
+  .slider
+    -webkit-appearance: none
+    appearance: none
+    height: 40px
+    width: 500px
+    background: #777
+    outline: none
+    opacity: 0.7
+    -webkit-transition: .2s
+    transition: opacity .2s
+    box-shadow: 0 0 0 10px #d3d3d3
+    cursor: pointer
+    vertical-align: middle
+    
+    &:hover
+      opacity: 0.8
+
+    &::-webkit-slider-thumb
+      -webkit-appearance: none
+      appearance: none
+      width: 25px
+      height: 25px
+      background: #FFF
+      cursor: pointer
+      border-radius: 50%
+      box-shadow: 2px 2px 1px 0 #333
+
+    &::-moz-range-thumb
+      width: 25px
+      height: 25px
+      background: #FFF
+      cursor: pointer
+      border-radius: 50%
+      box-shadow: 2px 2px 1px 0 #333
+
+  .slidecontainer
+    margin-top: 20px
+
+    button
+      -webkit-appearance: none
+      appearance: none
+      width: 25px
+      height: 40px
+      background: #777
+      cursor: pointer
+      opacity: 0.7
+      box-shadow: 0 0 0 10px #d3d3d3
+      vertical-align: middle
+      margin: 0 20px
+      color: #FFF
+      font-weight: bold
+      outline: none
+      
+      &:hover
+        opacity: 0.8
+
+      &.slider-prev
+        border-radius: 20px 0 0 20px
+
+      &.slider-next
+        border-radius: 0 20px 20px 0
+
+      &.slider-prev:after
+        content: '〈'
+
+      &.slider-next:after
+        content: '〉'
+
+  .year-mark
+    margin-top: 20px
