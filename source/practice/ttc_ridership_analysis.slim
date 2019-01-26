@@ -32,8 +32,7 @@ javascript:
   })
 
   const svg = d3.select('svg');
-  const svgContainer = d3.select('#container');
-  
+
   const margin = {top: 50, right: 50, bottom: 80, left: 400};
   const width = 1200 - margin.left - margin.right;
   const height = 600 - margin.top - margin.bottom;
@@ -121,33 +120,24 @@ javascript:
       .attr('text-anchor', 'middle')
       .text((a) => `$${d3.format(",")(a.payment)}`)
     
-    // ** Update data section (Called from the onclick)
     function updateData() {
-      svg.selectAll("rect.bar").remove()
-      svg.selectAll("text.fare_media").remove()
-      // Get the data again
-      const barGroups = chart.selectAll()
+      chart.selectAll('rect.bar')
         .data(sample[0][vm.sliderValue])
-        .enter()
-
-      barGroups
-        .append('rect')
-        .attr('class', 'bar')
-        // .transition()
-        // .duration(500)
-        .attr('width', (g) => xScale(g.payment))
         .attr('y', (g) => yScale(g.fare_media))
         .attr('height', yScale.bandwidth())
+        .transition()
+        .duration(500)
+        .attr('width', (g) => xScale(g.payment))
         
-      barGroups
-        .append('text')
-        .attr('class', 'fare_media')
-        // .transition()
-        // .duration(500)
-        .attr('x', (a) => xScale(a.payment) + 30)
+      chart
+        .selectAll('text.fare_media')
+        .data(sample[0][vm.sliderValue])
         .attr('y', (a) => yScale(a.fare_media) + yScale.bandwidth() / 1.5)
         .attr('text-anchor', 'middle')
         .text((a) => `$${d3.format(",")(a.payment)}`)
+        .transition()
+        .duration(500)
+        .attr('x', (a) => xScale(a.payment) + 30)
 
       d3.select("text.title").text(`TTC Ridership Analysis ${vm.sliderValue}`);
       d3.selectAll('.year-mark').remove()
