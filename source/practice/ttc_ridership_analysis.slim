@@ -23,7 +23,7 @@ blockquote
       button.slider-next
       .year-block
         - (1985..2018).to_a.each do |i|
-          div class="year-mark" attr-year="#{i}" = i
+          div class="year-mark #{'select' if i == 2018}" attr-year="#{i}" = i
 
 javascript:
   var vm = new Vue({
@@ -73,6 +73,13 @@ javascript:
     .attr('text-anchor', 'middle')
     .text(`TTC Ridership Analysis 2018`)
 
+  svg.append('text')
+    .attr('class', 'year')
+    .attr('x', 40)
+    .attr('y', height + 135)
+    .attr('text-anchor', 'start')
+    .text('Year')
+  
   svg.append('text')
     .attr('class', 'source')
     .attr('x', width + margin.left / 2)
@@ -142,12 +149,9 @@ javascript:
         .attr('x', (a) => xScale(a.payment) + 30)
 
       d3.select("text.title").text(`TTC Ridership Analysis ${vm.sliderValue}`);
-      // d3.selectAll('.year-mark').remove()
-      // d3.select(".slidecontainer").append('div')
-      //   .attr('class', 'year-mark')
-      //   .text(`Year: ${vm.sliderValue}`)
+      d3.select(".year-mark.select").classed("select", false);
+      d3.select("[attr-year='" + vm.sliderValue + "']").classed("select", true);
     }
-
 
     d3.select('#myRange').on('change', function() {
       updateData();
@@ -165,10 +169,5 @@ javascript:
         vm.sliderValue = parseInt(vm.sliderValue) + 1;
         updateData();
       }
-    });
-
-    d3.select('.year-mark').on('click', function() {
-      var year = this.attr('year');
-      updateData(year);
     });
   });

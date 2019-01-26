@@ -57,19 +57,26 @@ body.practice_ttc_ridership_analysis
 
   text.source
     font-size: 10px
+    opacity: 0.5
 
   .slider
     -webkit-appearance: none
     appearance: none
-    height: 3px
-    width: 935px
+    height: 22px
+    width: 938px
     background: #FED966
     outline: none
     opacity: 0.7
-    -webkit-transition: .2s
-    transition: opacity .2s
+    -webkit-transition: 0.2s
+    transition: opacity 0.2s
     cursor: pointer
     vertical-align: middle
+    position: relative
+    right: 2px
+    z-index: 2
+    border: 10px solid #2f4a6d
+    border-left: none
+    border-right: none
     
     &:hover
       opacity: 1
@@ -92,10 +99,9 @@ body.practice_ttc_ridership_analysis
 
   .slidecontainer
     position: relative
-    top: -95px
+    top: -100px
 
     button
-      display: none
       -webkit-appearance: none
       appearance: none
       cursor: pointer
@@ -105,12 +111,20 @@ body.practice_ttc_ridership_analysis
       color: #FED966
       font-weight: bold
       outline: none
+      background-color: transparent
+      width: 20px
+      height: 30px
+      position: relative
+      z-index: 3
+      top: 6px
       
       &:hover
         opacity: 0.8
 
       &.slider-prev:after
         content: '〈'
+        position: relative
+        left: -4px
 
       &.slider-next:after
         content: '〉'
@@ -124,3 +138,5 @@ body.practice_ttc_ridership_analysis
       color: #FFFFFF
       font-size: 8px
       padding-right: 6px
+      &.select
+        color: #FED966
