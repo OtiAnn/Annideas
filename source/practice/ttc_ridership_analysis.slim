@@ -35,7 +35,7 @@ javascript:
 
   const svg = d3.select('svg');
 
-  const margin = {top: 50, right: 50, bottom: 160, left: 400};
+  const margin = {top: 80, right: 50, bottom: 160, left: 400};
   const width = 1200 - margin.left - margin.right;
   const height = 700 - margin.top - margin.bottom;
 
@@ -62,7 +62,7 @@ javascript:
   svg.append('text')
     .attr('class', 'label')
     .attr('x', width / 2 + margin.left)
-    .attr('y', height + margin.right * 2)
+    .attr('y', height + margin.right * 2.4)
     .attr('text-anchor', 'middle')
     .text('Payment ($)')
   
@@ -75,15 +75,16 @@ javascript:
 
   svg.append('text')
     .attr('class', 'year')
-    .attr('x', 40)
-    .attr('y', height + 135)
-    .attr('text-anchor', 'start')
+    .attr('x', -(height) - 165)
+    .attr('y', margin.top / 2.4)
+    .attr('transform', 'rotate(-90)')
+    .attr('text-anchor', 'middle')
     .text('Year')
   
   svg.append('text')
     .attr('class', 'source')
-    .attr('x', width + margin.left / 2)
-    .attr('y', height + margin.bottom * 1.2)
+    .attr('x', width + margin.left/2.5)
+    .attr('y', height + margin.bottom * 1.4)
     .attr('text-anchor', 'start')
     .text('Source: City of Toronto / Open Data, 2018')
 
