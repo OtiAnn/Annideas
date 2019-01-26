@@ -154,14 +154,14 @@ javascript:
 
     d3.select('button.slider-prev').on('click', function() {
       if (vm.sliderValue > 1985) {
-        vm.sliderValue -= 1
+        vm.sliderValue -= 1;
         updateData();
       }
     });
 
     d3.select('button.slider-next').on('click', function() {
       if (vm.sliderValue < 2018) {
-        vm.sliderValue += 1
+        vm.sliderValue = parseInt(vm.sliderValue) + 1;
         updateData();
       }
     });
