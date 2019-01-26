@@ -1,124 +1,2112 @@
-[{
-  "2017": [{
-      "fare_media": "TOKENS",
-      "payment": 76106
-    },
-    {
-      "fare_media": "TICKETS",
-      "payment": 0
-    },
-    {
-      "fare_media": "TWO-FARE",
-      "payment": 0
-    },
-    {
-      "fare_media": "PRESTO - SINGLE RIDE",
-      "payment": 67829
-    },
-    {
-      "fare_media": "PRESTO - ADULT TWO-HOUR FREE RIDE",
-      "payment": 0
-    },
-    {
-      "fare_media": "PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
-      "payment": 0
-    },
-    {
-      "fare_media": "PRESTO - SRVM TOKEN RIDE",
-      "payment": 1271
-    },
-    {
-      "fare_media": "PRESTO - SRVM CASH RIDE",
-      "payment": 821
-    },
-    {
-      "fare_media": "PRESTO - MONTHLY PASS",
-      "payment": 1613
-    },
-    {
-      "fare_media": "PRESTO - POST-SECONDARY MONTHLY PASS",
-      "payment": 0
-    },
-    {
-      "fare_media": "REGULAR MONTHLY PASS",
-      "payment": 174549
-    },
-    {
-      "fare_media": "POST-SECONDARY PASS",
-      "payment": 52721
-    },
-    {
-      "fare_media": "TWIN-GO PASS",
-      "payment": 0
-    },
-    {
-      "fare_media": "WEEKLY PASS",
-      "payment": 6653
-    },
-    {
-      "fare_media": "CASH",
-      "payment": 36045
-    }
-  ],
-  "2018": [{
-      "fare_media": "TOKENS",
-      "payment": 46974
-    },
-    {
-      "fare_media": "TICKETS",
-      "payment": 0
-    },
-    {
-      "fare_media": "TWO-FARE",
-      "payment": 0
-    },
-    {
-      "fare_media": "PRESTO - SINGLE RIDE",
-      "payment": 116888
-    },
-    {
-      "fare_media": "PRESTO - ADULT TWO-HOUR FREE RIDE",
-      "payment": 1752
-    },
-    {
-      "fare_media": "PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
-      "payment": 74
-    },
-    {
-      "fare_media": "PRESTO - SRVM TOKEN RIDE",
-      "payment": 1049
-    },
-    {
-      "fare_media": "PRESTO - SRVM CASH RIDE",
-      "payment": 856
-    },
-    {
-      "fare_media": "PRESTO - MONTHLY PASS",
-      "payment": 19111
-    },
-    {
-      "fare_media": "PRESTO - POST-SECONDARY MONTHLY PASS",
-      "payment": 744
-    },
-    {
-      "fare_media": "REGULAR MONTHLY PASS",
-      "payment": 133448
-    },
-    {
-      "fare_media": "POST-SECONDARY PASS",
-      "payment": 50082
-    },
-    {
-      "fare_media": "TWIN-GO PASS",
-      "payment": 0
-    },
-    {
-      "fare_media": "WEEKLY PASS",
-      "payment": 4982
-    },
-    {
-      "fare_media": "CASH",
-      "payment": 32251
-    }
-  ]
-}]
+[  
+  {  
+    "1985":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":128207
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":48793
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":94970
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":63986
+      }
+    ],
+    "1986":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":126217
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":42052
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":7347
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":101901
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":66475
+      }
+    ],
+    "1987":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":127088
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":38944
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":8976
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":109151
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":75308
+      }
+    ],
+    "1988":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":122180
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":39514
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":18837
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":119264
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":66872
+      }
+    ],
+    "1989":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":114874
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":37401
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":27025
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":113506
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":65665
+      }
+    ],
+    "1990":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":119538
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":38369
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":22313
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":116610
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":2758
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":67296
+      }
+    ],
+    "1991":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":111365
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":35788
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":17927
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":108148
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":3235
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":60034
+      }
+    ],
+    "1992":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":114064
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":53655
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":11201
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":109509
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":2924
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":23696
+      }
+    ],
+    "1993":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":104016
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":57710
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":12894
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":100607
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":2514
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":22131
+      }
+    ],
+    "1994":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":97877
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":62700
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":13265
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":96907
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":2111
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":20708
+      }
+    ],
+    "1995":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":87775
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":70369
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":12525
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":96803
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":1976
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":20930
+      }
+    ],
+    "1996":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":87857
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":67164
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":4329
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":86549
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":1652
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":32642
+      }
+    ],
+    "1997":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":86991
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":66177
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":91521
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":1592
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":46209
+      }
+    ],
+    "1998":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":85303
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":66490
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":98473
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":1649
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":49658
+      }
+    ],
+    "1999":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":83028
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":64109
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":103447
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":1430
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":54835
+      }
+    ],
+    "2000":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":82218
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":66331
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":112081
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":1105
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":61539
+      }
+    ],
+    "2001":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":83771
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":70930
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":118176
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":1118
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":58400
+      }
+    ],
+    "2002":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":82102
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":74578
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":116805
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":762
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":51052
+      }
+    ],
+    "2003":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":80330
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":71485
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":119681
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":51328
+      }
+    ],
+    "2004":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":80859
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":72952
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":125836
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":55172
+      }
+    ],
+    "2005":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":82162
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":73151
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":140594
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":1296
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":47521
+      }
+    ],
+    "2006":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":75340
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":68546
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":171314
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":5413
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":38684
+      }
+    ],
+    "2007":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":69134
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":65398
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":195001
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":7126
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":36317
+      }
+    ],
+    "2008":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":94210
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":34445
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":203313
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":7517
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":39408
+      }
+    ],
+    "2009":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":114686
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":8807
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":208172
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":8738
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":41445
+      }
+    ],
+    "2010":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":120366
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":1298
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":203101
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":9200
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":9237
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":43149
+      }
+    ],
+    "2011":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":124748
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":1139
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":194928
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":32091
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":9893
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":43795
+      }
+    ],
+    "2012":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":117962
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":4399
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":205086
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":35019
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":10185
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":46467
+      }
+    ],
+    "2013":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":112360
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":8194
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":213982
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":38426
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":9557
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":48623
+      }
+    ],
+    "2014":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":111157
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":9862
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":214932
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":42855
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":9361
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":49120
+      }
+    ],
+    "2015":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":110945
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":13323
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":204509
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":48396
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":8843
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":48873
+      }
+    ],
+    "2016":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":102073
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":27397
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":1157
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":582
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":194820
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":51861
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":7547
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":41536
+      }
+    ],
+    "2017":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":76106
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":67829
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":1271
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":821
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":1613
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":174549
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":52721
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":6653
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":36045
+      }
+    ],
+    "2018":[  
+      {  
+        "fare_media":"TOKENS",
+        "payment":46974
+      },
+      {  
+        "fare_media":"TICKETS",
+        "payment":0
+      },
+      {  
+        "fare_media":"TWO-FARE",
+        "payment":0
+      },
+      {  
+        "fare_media":"PRESTO - SINGLE RIDE",
+        "payment":116888
+      },
+      {  
+        "fare_media":"PRESTO - ADULT TWO-HOUR FREE RIDE",
+        "payment":1752
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY TWO-HOUR FREE RIDE",
+        "payment":74
+      },
+      {  
+        "fare_media":"PRESTO - SRVM TOKEN RIDE",
+        "payment":1049
+      },
+      {  
+        "fare_media":"PRESTO - SRVM CASH RIDE",
+        "payment":856
+      },
+      {  
+        "fare_media":"PRESTO - MONTHLY PASS",
+        "payment":19111
+      },
+      {  
+        "fare_media":"PRESTO - POST-SECONDARY MONTHLY PASS",
+        "payment":744
+      },
+      {  
+        "fare_media":"REGULAR MONTHLY PASS",
+        "payment":133448
+      },
+      {  
+        "fare_media":"POST-SECONDARY PASS",
+        "payment":50082
+      },
+      {  
+        "fare_media":"TWIN-GO PASS",
+        "payment":0
+      },
+      {  
+        "fare_media":"WEEKLY PASS",
+        "payment":4982
+      },
+      {  
+        "fare_media":"CASH",
+        "payment":32251
+      }
+    ]
+  }
+]
