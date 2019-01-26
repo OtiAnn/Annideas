@@ -15,13 +15,15 @@ blockquote
 
 #layout
   #container
-    svg viewbox=("0 0 1200 600")
+    svg viewbox=("0 0 1200 700")
   #app
     .slidecontainer
       button.slider-prev
       input#myRange.slider max="2018" min="1985" type="range" v-model="sliderValue"
       button.slider-next
-      .year-mark Year: 2018
+      .year-block
+        - (1985..2018).to_a.each do |i|
+          div class="year-mark" attr-year="#{i}" = i
 
 javascript:
   var vm = new Vue({
@@ -33,9 +35,9 @@ javascript:
 
   const svg = d3.select('svg');
 
-  const margin = {top: 50, right: 50, bottom: 80, left: 400};
+  const margin = {top: 50, right: 50, bottom: 160, left: 400};
   const width = 1200 - margin.left - margin.right;
-  const height = 600 - margin.top - margin.bottom;
+  const height = 700 - margin.top - margin.bottom;
 
   const chart = svg.append('g')
     .attr('transform', `translate(${margin.left}, ${margin.top})`);
@@ -74,7 +76,7 @@ javascript:
   svg.append('text')
     .attr('class', 'source')
     .attr('x', width + margin.left / 2)
-    .attr('y', height + margin.bottom * 1.5)
+    .attr('y', height + margin.bottom * 1.2)
     .attr('text-anchor', 'start')
     .text('Source: City of Toronto / Open Data, 2018')
 
@@ -140,10 +142,10 @@ javascript:
         .attr('x', (a) => xScale(a.payment) + 30)
 
       d3.select("text.title").text(`TTC Ridership Analysis ${vm.sliderValue}`);
-      d3.selectAll('.year-mark').remove()
-      d3.select(".slidecontainer").append('div')
-        .attr('class', 'year-mark')
-        .text(`Year: ${vm.sliderValue}`)
+      // d3.selectAll('.year-mark').remove()
+      // d3.select(".slidecontainer").append('div')
+      //   .attr('class', 'year-mark')
+      //   .text(`Year: ${vm.sliderValue}`)
     }
 
 
@@ -163,5 +165,10 @@ javascript:
         vm.sliderValue = parseInt(vm.sliderValue) + 1;
         updateData();
       }
+    });
+
+    d3.select('.year-mark').on('click', function() {
+      var year = this.attr('year');
+      updateData(year);
     });
   });
