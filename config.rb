@@ -104,8 +104,7 @@ helpers do
     cat_hash = {
       "學習": "edu",
       "生活": "life",
-      "開發": "dev",
-      "楓葉國紀錄": "maple"
+      "開發": "dev"
     }
 
     return cat_hash[cat_name.to_sym]
@@ -115,8 +114,7 @@ helpers do
     category_hash = {
         "生活" => "Life",
         "學習" => "Learning",
-        "開發" => "Coding",
-        "楓葉國紀錄" => "Canada"
+        "開發" => "Coding"
       }
     if homepage
       link_to category_path(cat_name) do 
@@ -137,8 +135,7 @@ helpers do
     category_hash = {
       "生活" => "Life",
       "學習" => "Learning",
-      "開發" => "Coding",
-      "楓葉國紀錄" => "Canada"
+      "開發" => "Coding"
     }
     return "#{category_hash[cat_name]} (#{articles.size})"
   end

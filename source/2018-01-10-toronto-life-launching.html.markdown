@@ -3,7 +3,7 @@ title: Toronto Life Launching..
 date: 2018-01-10 17:49 EDT
 tags: Toronto
 desc: 第二次來到多倫多，將在這裡讀 post-graduate program，預計待至少一年半，於是打開了一個新的分類，幫自己記錄在楓葉國的所見所聞。
-category: 楓葉國紀錄
+category: 生活
 published: false
 ---
 
