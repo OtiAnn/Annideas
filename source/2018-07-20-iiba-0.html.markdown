@@ -4,6 +4,7 @@ date: 2018-07-20 01:41 EDT
 tags: IIBA, Business Analyst, Learning
 desc: Learning Schedule for getting the IIBA Certification
 category: 楓葉國紀錄
+published: false
 ---
 During the courses at [George Brown College IS Business Analysis](https://www.georgebrown.ca/t405-2017-2018/), I've learned what the role of Business Analyst in an enterprise and how to be a successful BA. However, there are still some abstract concepts. To make sure what I understand what I know and unknow, I am going to review all the content I learned from college and make the note to help myself to reach a thorough understanding. Of course, the final goal is to get the IIBA cetification.
 

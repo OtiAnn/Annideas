@@ -17,73 +17,7 @@ date: "2021-08-13 08:22 UTC"
 
 .cv_skill
   h2 title="SKILL"
-  ul
-    li
-      .left_block
-        h3 Data Engineering
-      .right_block
-        p Kafka, Java, Python, Scala, Django, Flask, Docker, OpenShift, Jenkins, Elasticsearch, Kibana, Tableau
-    li
-      .left_block
-        h3 Web Development
-      .right_block
-        p Ruby, Ruby on Rails, JavaScript, jQuery, Sass, CSS3, HTML, CSS, SQL, MySQL, MongoDB, Git, Google Analytics, AWS (EC2, RDS, S3), Selenium Automation Testing
-    li
-      .left_block
-        h3 Business Analysis
-      .right_block
-        p Business Analysis Plan, Business Process Diagram, Data Flow Diagram, Use Case Diagram, Statechart Diagram, Business Rules, Data Dictionary, Data Modelling, Entity Relationship Diagram, Card Sorting, Survey, Persona, Storyboard, Prototype
-    li
-      .left_block
-        h3 Project Management
-      .right_block
-        p Agile Methodology, Behaviour Driven Development, EPPM system (Enterprise Project Portfolio Management)
-    li
-      .left_block
-        h3 Tools
-      .right_block
-        p Microsoft Office (Word, Excel, PowerPoint, Visio, Project), LucidChart, Trello, Slack, GitHub, XMind, Balsamiq
-
-.cv_education
-  h2 title="EDUCATION"
-  ul
-    li
-      .left_block
-        h3.school_name George Brown College
-        .during_time Toronto, Canada
-        .during_time 2018
-      .right_block
-        h3.job_title Information Systems Business Analysis Postgraduate Program, Cumulative GPA: 4.00 / 4.00
-        ul.job_description
-          li Examined the e-Signature case study to elicit the root cause problem, business needs, stakeholder requirements and solutions by creating business analysis plans, interview questions, business process diagrams, business context diagrams, use cases, business rules and data dictionary
-          li Examined the ATM and the kiosk of an airline company case studies to build glossary, conceptual and logical data models with entity relationship diagram
-          li Monitored the schedule of projects and assignments by managing the tasks with group members on Trello
-          li Analyzed the Scotiabank website by conducting the surveys and interviews with the end-users to elicit the requirements and redesigned the streamlined processes and UIs by drawing the Business Process Diagram and the prototypes and storyboards
-        p
-          | Transcript：
-          = link_to "Winter 2018 (Unofficial Transcript)", "/files/GBC_Transcript.pdf", target: "_blank"
-    li
-      .left_block
-        h3.school_name National Taiwan Normal University
-        .during_time Taipei, Taiwan
-        .during_time 2013
-      .right_block
-        h3.job_title Master of Computer Science in Graduate Institute of Information and Computer Education, College of Education
-        p Master’s thesis topic: Effects of Game Context on Third-graders’ Fraction Learning
-        p
-          | Transcript：
-          = link_to "Master's Transcript", "/files/Masters_Transcript.pdf", target: "_blank"
-    li
-      .left_block
-        h3.school_name National Taipei University of Education
-        .during_time Taipei, Taiwan
-        .during_time 2011
-      .right_block
-        h3.job_title Bachelor of Science in Department of Mathematics and Information Education (Mathematics Education)
-        p Maintained a 3.76 GPA while working 20-25 hours per week and in school full-time
-        p
-          | Transcript：
-          = link_to "Bachelor Transcript", "/files/Bachelor_Transcript.pdf", target: "_blank"
+  = partial "en/skill"
     
 .cv_experience
   h2 title="EXPERIENCE"
@@ -242,6 +176,47 @@ date: "2021-08-13 08:22 UTC"
           li Conducted group sessions to coach entry-level instructors to improve teaching skills and meet students’ needs
           li Managed every student’s profile to track the learning processes
           li Conducted phone interviews to collect feedback from students’ guardian
+
+.cv_education
+  h2 title="EDUCATION"
+  ul
+    li
+      .left_block
+        h3.school_name George Brown College
+        .during_time Toronto, Canada
+        .during_time 2018
+      .right_block
+        h3.job_title Information Systems Business Analysis Postgraduate Program, Cumulative GPA: 4.00 / 4.00
+        ul.job_description
+          li Examined the e-Signature case study to elicit the root cause problem, business needs, stakeholder requirements and solutions by creating business analysis plans, interview questions, business process diagrams, business context diagrams, use cases, business rules and data dictionary
+          li Examined the ATM and the kiosk of an airline company case studies to build glossary, conceptual and logical data models with entity relationship diagram
+          li Monitored the schedule of projects and assignments by managing the tasks with group members on Trello
+          li Analyzed the Scotiabank website by conducting the surveys and interviews with the end-users to elicit the requirements and redesigned the streamlined processes and UIs by drawing the Business Process Diagram and the prototypes and storyboards
+        p
+          | Transcript：
+          = link_to "Winter 2018 (Unofficial Transcript)", "/files/GBC_Transcript.pdf", target: "_blank"
+    li
+      .left_block
+        h3.school_name National Taiwan Normal University
+        .during_time Taipei, Taiwan
+        .during_time 2013
+      .right_block
+        h3.job_title Master of Computer Science in Graduate Institute of Information and Computer Education, College of Education
+        p Master’s thesis topic: Effects of Game Context on Third-graders’ Fraction Learning
+        p
+          | Transcript：
+          = link_to "Master's Transcript", "/files/Masters_Transcript.pdf", target: "_blank"
+    li
+      .left_block
+        h3.school_name National Taipei University of Education
+        .during_time Taipei, Taiwan
+        .during_time 2011
+      .right_block
+        h3.job_title Bachelor of Science in Department of Mathematics and Information Education (Mathematics Education)
+        p Maintained a 3.76 GPA while working 20-25 hours per week and in school full-time
+        p
+          | Transcript：
+          = link_to "Bachelor Transcript", "/files/Bachelor_Transcript.pdf", target: "_blank"
 
 .cv_community
   h2 title="MILESTONE"
