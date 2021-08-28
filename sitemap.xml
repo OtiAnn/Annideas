@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://annideas.tw/categories/生活/</loc>
+    <loc>http://annideas.tw/categories/開發/</loc>
     <lastmod>2021-08-28T00:00:00-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -205,13 +205,13 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://annideas.tw/categories/學習/</loc>
+    <loc>http://annideas.tw/categories/生活/</loc>
     <lastmod>2021-08-28T00:00:00-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://annideas.tw/categories/開發/</loc>
+    <loc>http://annideas.tw/categories/學習/</loc>
     <lastmod>2021-08-28T00:00:00-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -350,6 +350,12 @@
   </url>
   <url>
     <loc>http://annideas.tw/resume/</loc>
+    <lastmod>2021-08-28T00:00:00-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://annideas.tw/2021/08/21/thanks-to-5-years-ago-myself/</loc>
     <lastmod>2021-08-28T00:00:00-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -715,6 +721,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://annideas.tw/2021/</loc>
+    <lastmod>2021-08-28T00:00:00-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://annideas.tw/2021/08/</loc>
+    <lastmod>2021-08-28T00:00:00-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://annideas.tw/2021/08/21/</loc>
+    <lastmod>2021-08-28T00:00:00-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://annideas.tw/2016/</loc>
     <lastmod>2021-08-28T00:00:00-04:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -829,6 +853,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://annideas.tw/stylesheets/application-c5790129.css</loc>
+    <lastmod>2021-08-28T00:00:00-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://annideas.tw/stylesheets/practice/ttc_ridership_analysis-53e97f96.css</loc>
     <lastmod>2021-08-28T00:00:00-04:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -848,12 +878,6 @@
   </url>
   <url>
     <loc>http://annideas.tw/stylesheets/reset-c42ca721.css</loc>
-    <lastmod>2021-08-28T00:00:00-04:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://annideas.tw/stylesheets/application-c5790129.css</loc>
     <lastmod>2021-08-28T00:00:00-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
