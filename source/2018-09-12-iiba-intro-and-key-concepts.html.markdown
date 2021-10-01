@@ -3,7 +3,7 @@ title: iiba-intro-and-key-concepts
 date: 2018-09-12 09:21 EDT
 tags: IIBA, Business Analyst, Learning
 desc: Introduction of the BABOK Guide and the summary of BA Key Concepts
-category: 楓葉國紀錄
+category: 學習
 published: false
 ---
 

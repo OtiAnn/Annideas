@@ -2,14 +2,14 @@
 pageable: false
 title: "陳祐禎 YU CHEN CHEN (Annie) | Annideas?"
 desc: "Hi there, I'm YU CHEN CHEN (Annie). This is my resume about working and study experience, and also communties involement."
-date: "2020-03-02 01:41 UTC"
+date: "2021-08-13 08:22 UTC"
 ---
 
 .cv_header
   .cv_header_name_block
     .cv_header_chi_name.eng_ver Yu-Chen Chen
     .cv_header_eng_name = '(Annie)'
-    .cv_header_job_title Future Business Analyst / Web Developer
+    .cv_header_job_title  Data Engineer / Web Developer
   .cv_header_desc_block
     .cv_header_desc Toronto, Canada / Taipei, Taiwan
     .cv_header_desc yccannie.tw@gmail.com
@@ -17,69 +17,7 @@ date: "2020-03-02 01:41 UTC"
 
 .cv_skill
   h2 title="SKILL"
-  ul
-    li
-      .left_block
-        h3 Web Development
-      .right_block
-        p Ruby, Ruby on Rails, JavaScript, jQuery, Sass, CSS3, HTML, CSS, SQL, MySQL, MongoDB, Git, Google Analytics, AWS (EC2, RDS, S3)
-    li
-      .left_block
-        h3 Business Analysis
-      .right_block
-        p Business Analysis Plan, Business Process Diagram, Data Flow Diagram, Use Case Diagram, Statechart Diagram, Business Rules, Data Dictionary, Data Modelling, Entity Relationship Diagram, Card Sorting, Survey, Persona, Storyboard, Prototype
-    li
-      .left_block
-        h3 Project Management
-      .right_block
-        p Agile Methodology, Behaviour Driven Development, EPPM system (Enterprise Project Portfolio Management)
-    
-    li
-      .left_block
-        h3 Tools
-      .right_block
-        p Microsoft Office (Word, Excel, PowerPoint, Visio, Project), LucidChart, Trello, Slack, GitHub, XMind, Balsamiq
-
-.cv_education
-  h2 title="EDUCATION"
-  ul
-    li
-      .left_block
-        h3.school_name George Brown College
-        .during_time Toronto, Canada
-        .during_time 2018
-      .right_block
-        h3.job_title Information Systems Business Analysis Postgraduate Program, Cumulative GPA: 4.00 / 4.00
-        ul.job_description
-          li Examined the e-Signature case study to elicit the root cause problem, business needs, stakeholder requirements and solutions by creating business analysis plans, interview questions, business process diagrams, business context diagrams, use cases, business rules and data dictionary
-          li Examined the ATM and the kiosk of an airline company case studies to build glossary, conceptual and logical data models with entity relationship diagram
-          li Monitored the schedule of projects and assignments by managing the tasks with group members on Trello
-          li Analyzed the Scotiabank website by conducting the surveys and interviews with the end-users to elicit the requirements and redesigned the streamlined processes and UIs by drawing the Business Process Diagram and the prototypes and storyboards
-        p
-          | Transcript：
-          = link_to "Winter 2018 (Unofficial Transcript)", "/files/GBC_Transcript.pdf", target: "_blank"
-    li
-      .left_block
-        h3.school_name National Taiwan Normal University
-        .during_time Taipei, Taiwan
-        .during_time 2013
-      .right_block
-        h3.job_title Master of Computer Science in Graduate Institute of Information and Computer Education, College of Education
-        p Master’s thesis topic: Effects of Game Context on Third-graders’ Fraction Learning
-        p
-          | Transcript：
-          = link_to "Master's Transcript", "/files/Masters_Transcript.pdf", target: "_blank"
-    li
-      .left_block
-        h3.school_name National Taipei University of Education
-        .during_time Taipei, Taiwan
-        .during_time 2011
-      .right_block
-        h3.job_title Bachelor of Science in Department of Mathematics and Information Education (Mathematics Education)
-        p Maintained a 3.76 GPA while working 20-25 hours per week and in school full-time
-        p
-          | Transcript：
-          = link_to "Bachelor Transcript", "/files/Bachelor_Transcript.pdf", target: "_blank"
+  = partial "en/skill"
     
 .cv_experience
   h2 title="EXPERIENCE"
@@ -88,7 +26,47 @@ date: "2020-03-02 01:41 UTC"
       .left_block
         h3.company_name Royal Bank of Canada (RBC)
         .during_time Toronto, Canada
-        .during_time 2019 - Current
+        .during_time 2021 - Current
+      .right_block
+        h3.job_title Data Engineer - Data and Analytics Business Insights team
+        ul.job_description
+          li
+            strong Intelligent Email Management:
+          ul
+            li Cooperation with Data Science team to productionize the ML models identifying different types of emails which help advisors prioritize responding to important client emails, resulting in faster response times within SLA and improved client experience.
+            li Build the microservices including Kafka Java application and web API service to stream the incoming emails in real-time
+            
+    li
+      .left_block
+        h3.company_name Royal Bank of Canada (RBC)
+        .during_time Toronto, Canada
+        .during_time 2020 - 2021
+      .right_block
+        h3.job_title Operations Manager - IT Advanced - Data and Analytics Business Insights team
+        ul.job_description
+          li
+            strong Automated Reporting:
+          ul
+            li Established Business Intelligence reporting that can be automated using Tableau, Kibana or other reporting tools
+            li Defined, communicated and enforced reporting and analytics standards and policies
+            li Collected the data of team work effort from current systems (e.g. Elasticsearch cluster, JIRA, MIS, and Planveiw)
+            li Using Python and PowerShell to call JIRA REST APIs, experience extracting, transforming, and loading data, as well as automate data consumption from various means such as stored procedures in spreadsheets to Tableau dashboards
+            li Using version control technologies or tools (e.g. Github, JIRA, Confluence) to  continuous integration/delivery best-practices
+            li Created executive-level dashboards and visualizations for senior leadership
+            li Delivered fully integrated, clear, concise and timely reports and presentations identifying trends, issues and opportunities
+          li
+            strong Product Management/Engagement:
+          ul
+            li Collaborated with DNA Data Services/Products management team, Data Squad teams, Data architecture team, and engagement team to build the product marketing materials
+            li Provided the insights of enterprise-wide projects using SQL to pull the data from MIS system and Planview; consolidate the view to make data visible and knowable
+            li Collaborated with DNA PMO to maintain the project/program related artefacts
+            li Collaborated with DNA Planning team to provide the resource plan across all Data Services/Products; timely maintain the information from financial systems (e.g. MIS and Planview)
+            li Assisted teams to set up the agile environment and introduce the management tools/methods
+    li
+      .left_block
+        h3.company_name Royal Bank of Canada (RBC)
+        .during_time Toronto, Canada
+        .during_time 2019 - 2020
       .right_block
         h3.job_title Jr. Project Manager and Program Support - Data and Analytics Business Insights team
         ul.job_description
@@ -98,8 +76,8 @@ date: "2020-03-02 01:41 UTC"
             li Established Business Intelligence reporting that can be automated using Tableau, Kibana or other reporting tools
             li Created executive-level dashboards and visualizations for senior leadership; the reports were created by different views which could fit the varied audience and meet widely needs
             li Using PowerShell to call JIRA REST APIs, experience extracting, transforming, and loading data, as well as automate data consumption from various means such as stored procedures in spreadsheets to Tableau dashboards
-            li using version control technologies or tools (e.g. Github, JIRA, Confluence) to  continuous integration/delivery best-practices
-            li the benefits of reusability and scalability of the reports potentially create value for the team management
+            li Using version control technologies or tools (e.g. Github, JIRA, Confluence) to  continuous integration/delivery best-practices
+            li Provided the benefits of reusability and scalability of the reports potentially create value for the team management
           li
             strong Product Management/Engagement:
           ul
@@ -198,6 +176,47 @@ date: "2020-03-02 01:41 UTC"
           li Conducted group sessions to coach entry-level instructors to improve teaching skills and meet students’ needs
           li Managed every student’s profile to track the learning processes
           li Conducted phone interviews to collect feedback from students’ guardian
+
+.cv_education
+  h2 title="EDUCATION"
+  ul
+    li
+      .left_block
+        h3.school_name George Brown College
+        .during_time Toronto, Canada
+        .during_time 2018
+      .right_block
+        h3.job_title Information Systems Business Analysis Postgraduate Program, Cumulative GPA: 4.00 / 4.00
+        ul.job_description
+          li Examined the e-Signature case study to elicit the root cause problem, business needs, stakeholder requirements and solutions by creating business analysis plans, interview questions, business process diagrams, business context diagrams, use cases, business rules and data dictionary
+          li Examined the ATM and the kiosk of an airline company case studies to build glossary, conceptual and logical data models with entity relationship diagram
+          li Monitored the schedule of projects and assignments by managing the tasks with group members on Trello
+          li Analyzed the Scotiabank website by conducting the surveys and interviews with the end-users to elicit the requirements and redesigned the streamlined processes and UIs by drawing the Business Process Diagram and the prototypes and storyboards
+        p
+          | Transcript：
+          = link_to "Winter 2018 (Unofficial Transcript)", "/files/GBC_Transcript.pdf", target: "_blank"
+    li
+      .left_block
+        h3.school_name National Taiwan Normal University
+        .during_time Taipei, Taiwan
+        .during_time 2013
+      .right_block
+        h3.job_title Master of Computer Science in Graduate Institute of Information and Computer Education, College of Education
+        p Master’s thesis topic: Effects of Game Context on Third-graders’ Fraction Learning
+        p
+          | Transcript：
+          = link_to "Master's Transcript", "/files/Masters_Transcript.pdf", target: "_blank"
+    li
+      .left_block
+        h3.school_name National Taipei University of Education
+        .during_time Taipei, Taiwan
+        .during_time 2011
+      .right_block
+        h3.job_title Bachelor of Science in Department of Mathematics and Information Education (Mathematics Education)
+        p Maintained a 3.76 GPA while working 20-25 hours per week and in school full-time
+        p
+          | Transcript：
+          = link_to "Bachelor Transcript", "/files/Bachelor_Transcript.pdf", target: "_blank"
 
 .cv_community
   h2 title="MILESTONE"
